@@ -1,10 +1,9 @@
 <template>
-  <section class="container home text-center">
+  <section class="main-layout main-content">
     <h1>Home Page</h1>
-    <h5 class="text-center">
+    <h5>
       Powered up Frontend 
     </h5>
-    <img alt="Vue logo" src="../assets/logo.png">
   </section>
 
   
