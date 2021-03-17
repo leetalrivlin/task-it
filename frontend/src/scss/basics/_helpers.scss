@@ -1,0 +1,69 @@
+/* FLEX HELPERS */
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.flex.space-between {
+  justify-content: space-between;
+}
+
+.flex.justify-center {
+  justify-content: center;
+}
+
+.flex.justify-end {
+  justify-content: flex-end;
+}
+
+.flex.align-center {
+  align-items: center;
+}
+
+.flex.flex-grow {
+  flex: 1;
+}
+
+/* LIST HELPERS */
+
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.site-block {
+  margin-bottom: rem(20px);
+}
+
+/* BUTTON HELPERS */
+.el-btn {
+  background-color: hsla(0,0%,100%,.24);
+  &:hover {
+    background-color: hsla(0,0%,100%,.32);
+    border-color: #bfbfbfd6;
+    color: #FFF;
+  }
+}
+
+// ASPECT RATIOS
+
+.ratio-16-9 {
+  @include aspect-ratio(100, 56);
+}
+
+.ratio-square {
+  @include aspect-ratio(100, 100);
+}
+
+.ratio-card {
+  @include aspect-ratio(100, 80);
+}
+
+.ratio-poster {
+  @include aspect-ratio(100, 150);
+}
