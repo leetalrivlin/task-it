@@ -1,9 +1,44 @@
-.group-container {
-  .group {
-    background-color: $clr2;
-    border-radius: 3px;
-    margin-inline-end: 8px;
+.board-details {
+  .group-container {
+    .group {
+      background-color: $clr2;
+      border-radius: 3px;
+      margin-inline-end: 8px;
+      width: 270px;
+      padding: 10px;
+    }
+  }
+  .new-group {
     width: 270px;
-    padding: 10px;
+
+    a {
+      display: block;
+      border-radius: 3px;
+      padding: 6px 8px;
+      background-color: hsla(0, 0%, 100%, 0.24);
+      color: white;
+      cursor: pointer;
+      transition: color 85ms ease-in;
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.32);
+      }
+    }
+    form {
+      background-color: $clr2;
+      border-radius: 3px;
+      padding: 3px;
+      input {
+        width: 100%;
+        margin-block-end: 2px;
+      }
+      .btn-container{
+        button{
+          margin-inline-end: 5px;
+        }
+        i{
+          cursor: pointer;
+        }
+      }
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { storageService } from './async-storage.service';
 import { httpService } from './http.service';
+import { utilService } from './util.service';
 
 const BOARD_URL = 'boardDb';
 const gBoards = [
@@ -154,6 +155,7 @@ const gBoards = [
 export const boardService = {
   getBoards,
   getById,
+  getEmptyGroup,
 };
 
 async function getBoards() {
@@ -191,4 +193,12 @@ async function update(user) {
   return storageService.put('user', user);
   // user = await httpService.put(`user/${user._id}`, user)
   // Handle case in which admin updates other user's details
+}
+
+function getEmptyGroup(){
+  return {
+    id: utilService.makeId(3),
+    title: '',
+    tasks: []
+  }
 }
