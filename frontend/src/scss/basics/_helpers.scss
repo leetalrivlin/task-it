@@ -49,6 +49,7 @@
   border: none;
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.32);
+    // background-color: rgba(9, 30, 66, 0.08);
     border-color: #bfbfbfd6;
     color: #fff;
   }
@@ -56,10 +57,10 @@
 
 .el-close {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 10px;
+  right: 10px;
   color: $clr1;
-  background-color: transparent;
+  background-color: hsla(0, 0%, 100%, 0.24);
   border: none;
   &:hover {
     background-color: rgba(9, 30, 66, 0.08);

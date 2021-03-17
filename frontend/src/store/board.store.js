@@ -11,6 +11,7 @@ import {
 export const boardStore = {
   state: {
     board: null,
+    task: null,
   },
   getters: {
     board(state) {
@@ -21,12 +22,14 @@ export const boardStore = {
     setBoard(state, { board }) {
       state.board = board;
     },
+    setTask(state, { task }) {
+      state.task = task;
+    }
   },
   actions: {
     async loadBoard({ commit }, { boardId }) {
       try {
         const board = await boardService.getById(boardId);
-        console.log('board', board);
         commit({ type: 'setBoard', board });
         // socketService.emit('watch-board', boardId) // join('u101')
         // socketService.off('board-updated')
@@ -41,5 +44,14 @@ export const boardStore = {
         throw err;
       }
     },
+    async loadTask({ commit }, { boardId, groupId, taskId }) {
+      try {
+        console.log('taskId',taskId);
+        const task = await boardService.getTaskById(boardId, groupId, taskId);
+        commit({ type: 'setTask', task });
+      } catch(err) {
+        console.log('cannot load task',err);
+      }
+    }
   },
 };

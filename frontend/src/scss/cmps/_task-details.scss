@@ -7,5 +7,28 @@
   width: 55%;
   min-height: 85%;
   border-radius: 3px;
+
+  .cover-container {
+    min-height: rem(116px);
+    background-color: lightcoral;
+    display: flex;
+    flex-direction: row-reverse;
+
+    .cover-btn {
+      align-self: flex-end;
+      &:hover {
+        background-color: rgba(9, 30, 66, 0.08);
+        border-color: #bfbfbfd6;
+        color: $clr1;
+      }
+    }
+  }
+}
+
+.details-layout {
   padding: 10px;
+}
+
+.task-list-link {
+  color: $clr1;
 }

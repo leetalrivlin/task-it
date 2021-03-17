@@ -156,6 +156,7 @@ export const boardService = {
   getBoards,
   getById,
   getEmptyGroup,
+  getTaskById,
 };
 
 async function getBoards() {
@@ -177,7 +178,7 @@ async function getBoards() {
 async function getById(boardId) {
   try {
     const board = await storageService.get(BOARD_URL, boardId);
-    console.log('board',board);
+    console.log('board', board);
     return board;
   } catch (err) {
     console.log(`cnat load board ${boardId}`, err);
@@ -196,10 +197,35 @@ async function update(user) {
   // Handle case in which admin updates other user's details
 }
 
-function getEmptyGroup(){
+async function getGroupById(boardId, groupId) {
+  try {
+    const board = await getById(boardId);
+    const group = board.find(group => {
+      return group.id === groupId;
+    })
+    return group;
+  } catch(err) {
+    console.log('cannot get group',err);
+  }
+}
+
+async function getTaskById(boardId, groupId, taskId) {
+  try {
+    const board = await getById(boardId);
+    const group = await getGroupById(boardId, groupId);
+    const task = board.group.find((task) => {
+      return task.id === taskId;
+    });
+    return task;
+  } catch (err) {
+    console.log('cannot get task', err);
+  }
+}
+
+function getEmptyGroup() {
   return {
     id: utilService.makeId(3),
     title: '',
-    tasks: []
-  }
+    tasks: [],
+  };
 }
