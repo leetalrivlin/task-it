@@ -1,3 +1,15 @@
 .board-header {
   height: rem(50px);
+  a{
+    border-radius: 3px;
+    line-height: 32px;
+    padding: 0 12px;
+    color: white;
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+
+  .board-title{
+    font-family: Segoe-Bold;
+  }
 }

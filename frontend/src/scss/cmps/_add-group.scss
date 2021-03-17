@@ -1,0 +1,44 @@
+.add-group {
+  width: 270px;
+
+  a {
+    display: block;
+    border-radius: 3px;
+    padding: 6px 8px;
+    background-color: hsla(0, 0%, 100%, 0.24);
+    color: white;
+    cursor: pointer;
+    &:hover {
+      background-color: hsla(0, 0%, 100%, 0.32);
+    }
+  }
+  form {
+    background-color: $clr2;
+    border-radius: 3px;
+    padding: 4px;
+    input {
+      width: 100%;
+      margin-block-end: 4px;
+    }
+    .btn-container {
+      button {
+        margin-inline-end: 5px;
+      }
+      i {
+        cursor: pointer;
+      }
+    }
+  }
+}
+.slide-fade-enter-active {
+  transition: all 0.1s ease;
+}
+.slide-fade-leave-active {
+  transition: all 0.2s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-leave-to {
+  opacity: 0.5;
+}
+.slide-fade-enter {
+  opacity: 0.5;
+}

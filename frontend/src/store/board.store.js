@@ -2,7 +2,7 @@ import { boardService } from '../services/board.service';
 import {
   socketService,
   SOCKET_EMIT_USER_WATCH,
-  SOCKET_EVENT_USER_UPDATED,
+  SOCKET_EVENT_USER_UPDATED
 } from '../services/socket.service';
 
 // var localLoggedinUser = null;
@@ -10,17 +10,20 @@ import {
 
 export const boardStore = {
   state: {
-    board: null,
+    board: null
   },
   getters: {
     board(state) {
       return state.board;
-    },
+    }
   },
   mutations: {
     setBoard(state, { board }) {
       state.board = board;
     },
+    updateBoard(state, { board }) {
+      state.board = board;
+    }
   },
   actions: {
     async loadBoard({ commit }, { boardId }) {
@@ -41,5 +44,14 @@ export const boardStore = {
         throw err;
       }
     },
-  },
+    async updateBoard({ commit }, { board }) {
+      try {
+        commit({ type: 'updateBoard', board });
+        const updatedBoard = await boardService.updateBoard(board);
+        console.log(updatedBoard);
+      } catch (err) {
+        console.log('cant update board', err);
+      }
+    }
+  }
 };
