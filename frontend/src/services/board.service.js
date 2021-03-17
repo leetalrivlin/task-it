@@ -11,22 +11,22 @@ const gBoards = [
     createdBy: {
       _id: 'u101',
       fullname: 'Abi Abambi',
-      imgUrl: 'http://some-img',
+      imgUrl: 'http://some-img'
     },
     style: {},
     labels: [
       {
         id: 'l101',
         title: 'Favourite',
-        color: '#61bd4f',
-      },
+        color: '#61bd4f'
+      }
     ],
     members: [
       {
         _id: 'u101',
         fullname: 'Tal Tarablus',
-        imgUrl: 'https://www.google.com',
-      },
+        imgUrl: 'https://www.google.com'
+      }
     ],
     groups: [
       {
@@ -35,14 +35,14 @@ const gBoards = [
         tasks: [
           {
             id: 'c101',
-            title: 'Replace logo',
+            title: 'Replace logo'
           },
           {
             id: 'c102',
-            title: 'Add Samples',
-          },
+            title: 'Add Samples'
+          }
         ],
-        style: {},
+        style: {}
       },
       {
         id: 'g102',
@@ -50,15 +50,15 @@ const gBoards = [
         tasks: [
           {
             id: 'c103',
-            title: 'Do that',
+            title: 'Do that'
           },
           {
             id: 'c104',
-            title: 'Do it',
-          },
+            title: 'Do it'
+          }
         ],
-        style: {},
-      },
+        style: {}
+      }
     ],
     activities: [
       {
@@ -68,14 +68,14 @@ const gBoards = [
         byMember: {
           _id: 'u101',
           fullname: 'Abi Abambi',
-          imgUrl: 'http://some-img',
+          imgUrl: 'http://some-img'
         },
         task: {
           id: 'c101',
-          title: 'Replace Logo',
-        },
-      },
-    ],
+          title: 'Replace Logo'
+        }
+      }
+    ]
   },
   {
     _id: 'b1012',
@@ -84,22 +84,22 @@ const gBoards = [
     createdBy: {
       _id: 'u101',
       fullname: 'Abi Abambi',
-      imgUrl: 'http://some-img',
+      imgUrl: 'http://some-img'
     },
     style: {},
     labels: [
       {
         id: 'l101',
         title: 'Favourite',
-        color: '#61bd4f',
-      },
+        color: '#61bd4f'
+      }
     ],
     members: [
       {
         _id: 'u101',
         fullname: 'Tal Tarablus',
-        imgUrl: 'https://www.google.com',
-      },
+        imgUrl: 'https://www.google.com'
+      }
     ],
     groups: [
       {
@@ -108,14 +108,14 @@ const gBoards = [
         tasks: [
           {
             id: 'c105',
-            title: 'Replace logo',
+            title: 'Replace logo'
           },
           {
             id: 'c106',
-            title: 'Add Samples',
-          },
+            title: 'Add Samples'
+          }
         ],
-        style: {},
+        style: {}
       },
       {
         id: 'g104',
@@ -123,15 +123,15 @@ const gBoards = [
         tasks: [
           {
             id: 'c107',
-            title: 'Do that',
+            title: 'Do that'
           },
           {
             id: 'c108',
-            title: 'Do it',
-          },
+            title: 'Do it'
+          }
         ],
-        style: {},
-      },
+        style: {}
+      }
     ],
     activities: [
       {
@@ -141,22 +141,22 @@ const gBoards = [
         byMember: {
           _id: 'u101',
           fullname: 'Abi Abambi',
-          imgUrl: 'http://some-img',
+          imgUrl: 'http://some-img'
         },
         task: {
           id: 'c101',
-          title: 'Replace Logo',
-        },
-      },
-    ],
-  },
+          title: 'Replace Logo'
+        }
+      }
+    ]
+  }
 ];
 
 export const boardService = {
   getBoards,
   getById,
   getEmptyGroup,
-  getTaskById,
+  updateBoard
 };
 
 async function getBoards() {
@@ -172,6 +172,15 @@ async function getBoards() {
     // return httpService.get(`user`)
   } catch (err) {
     console.log('cant load boards', err);
+  }
+}
+
+async function updateBoard(board) {
+  try {
+    const updatedBoard = await storageService.put(BOARD_URL, board);
+    return updateBoard;
+  } catch (err) {
+    console.log('cant update board', err);
   }
 }
 
@@ -226,6 +235,6 @@ function getEmptyGroup() {
   return {
     id: utilService.makeId(3),
     title: '',
-    tasks: [],
+    tasks: []
   };
 }

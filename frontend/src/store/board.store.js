@@ -2,7 +2,7 @@ import { boardService } from '../services/board.service';
 import {
   socketService,
   SOCKET_EMIT_USER_WATCH,
-  SOCKET_EVENT_USER_UPDATED,
+  SOCKET_EVENT_USER_UPDATED
 } from '../services/socket.service';
 
 // var localLoggedinUser = null;
@@ -16,7 +16,7 @@ export const boardStore = {
   getters: {
     board(state) {
       return state.board;
-    },
+    }
   },
   mutations: {
     setBoard(state, { board }) {
@@ -24,6 +24,9 @@ export const boardStore = {
     },
     setTask(state, { task }) {
       state.task = task;
+    },
+    updateBoard(state, { board }) {
+      state.board = board;
     }
   },
   actions: {
@@ -44,14 +47,14 @@ export const boardStore = {
         throw err;
       }
     },
-    async loadTask({ commit }, { boardId, groupId, taskId }) {
+    async updateBoard({ commit }, { board }) {
       try {
-        console.log('taskId',taskId);
-        const task = await boardService.getTaskById(boardId, groupId, taskId);
-        commit({ type: 'setTask', task });
-      } catch(err) {
-        console.log('cannot load task',err);
+        commit({ type: 'updateBoard', board });
+        const updatedBoard = await boardService.updateBoard(board);
+        console.log(updatedBoard);
+      } catch (err) {
+        console.log('cant update board', err);
       }
     }
-  },
+  }
 };

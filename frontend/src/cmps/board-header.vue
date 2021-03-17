@@ -1,10 +1,17 @@
 <template>
-  <header class="main-layout flex board-header"></header>
+  <header class="flex align-center board-header">
+    <a class="el-btn board-title">{{board.title}}</a>
+  </header>
 </template>
 
 <script>
-export default {};
-</script>
+export default {
+  name:"boardHeader",
+  props:{
+    board:{
+      type:Object
+    }
+  }
 
-<style>
-</style>
+};
+</script>

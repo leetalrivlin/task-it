@@ -15,10 +15,10 @@ export const store = new Vuex.Store({
     userStore,
     socketStore,
     reviewStore,
-    boardStore,
+    boardStore
   },
   state: {
-    boards: null,
+    boards: null
   },
   mutations: {
     setBoards(state, { boards }) {
@@ -34,5 +34,5 @@ export const store = new Vuex.Store({
         console.log('cannot load boards', err);
       }
     },
-  },
+  }
 });

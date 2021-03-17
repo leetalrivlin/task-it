@@ -1,8 +1,12 @@
 .main-header {
   height: rem(50px);
   filter: brightness(80%);
-  background-color: rgba(222, 191, 201, 0.89);
+  background-color: rgba(196, 145, 162, 0.89);
+  color: $clr1;
 
+  a{
+    color: $clr1;
+  }
 
   nav {
     > * {
