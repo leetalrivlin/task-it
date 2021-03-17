@@ -175,6 +175,7 @@ async function getBoards() {
 async function getById(boardId) {
   try {
     const board = await storageService.get(BOARD_URL, boardId);
+    console.log('board',board);
     return board;
   } catch (err) {
     console.log(`cnat load board ${boardId}`, err);
