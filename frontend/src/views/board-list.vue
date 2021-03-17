@@ -1,5 +1,5 @@
 <template>
-  <section class="board-list">
+  <section class="main-layout main-content board-list">
     <h1>board list</h1>
     <!-- <button @click='getBoard'>board</button> -->
     <router-link :to="'/board/b101'">Board</router-link>

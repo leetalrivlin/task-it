@@ -1,5 +1,5 @@
 <template>
-  <section class="board-details">
+  <section class="main-layout main-content board-details">
     <board-header />
     <ul v-if="board" class="clean-list flex group-container">
       <li v-for="group in board.groups" :key="group.id" class="group">

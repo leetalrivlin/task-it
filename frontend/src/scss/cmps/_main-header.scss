@@ -1,3 +1,12 @@
-* {
-  box-sizing: border-box;
+.main-header {
+  height: rem(50px);
+  filter: brightness(80%);
+  background-color: rgba(222, 191, 201, 0.89);
+
+
+  nav {
+    > * {
+      margin-inline-start: rem(20px);
+    }
+  }
 }

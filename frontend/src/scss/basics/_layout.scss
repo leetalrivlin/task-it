@@ -1,58 +1,66 @@
 .main-layout {
-    display: grid;
-    grid-template-columns: 2rem 1fr 2rem;
-
-    > * {
-        grid-column: 2;
-    }
-
-    > .full {
-        grid-column: 1 / -1;
-    }
-
-    @include for-narrow-layout {
-        grid-template-columns: 
-        minmax(2rem, 1fr)
-        minmax(auto, $break-narrow)
-        minmax(2rem, 1fr)
-        ;     
-    }
-
-    @include for-normal-layout {
-        grid-template-columns: 
-        minmax(2rem, 1fr)
-        minmax(auto, $break-normal)
-        minmax(2rem, 1fr)
-        ;     
-    }
-
-    @include for-wide-layout {
-        grid-template-columns: 
-        minmax(2rem, 1fr)
-        minmax(auto, $break-wide)
-        minmax(2rem, 1fr)
-        ;     
-    }
-
+  padding-inline-start: 20px;
+  padding-inline-end: 20px;
 }
 
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
-    grid-gap: 16px;
-    grid-auto-flow: dense;
-
-    grid-auto-rows: 300px;
-
-    > * {
-        @include aspect-ratio(1, 1);
-    }
-
-    > *:nth-child(3n) {
-        grid-row: span 2;
-    }
-
-    > *:nth-child(4n) {
-        grid-column: span 2;
-    }
+.main-content {
+  min-height: 95.4vh;
 }
+// .main-layout {
+//     display: grid;
+//     grid-template-columns: 1rem 1fr 1rem;
+
+//     > * {
+//         grid-column: 2;
+//     }
+
+//     > .full {
+//         grid-column: 1 / -1;
+//     }
+
+//     @include for-narrow-layout {
+//         grid-template-columns:
+//         minmax(1rem, 1fr)
+//         minmax(auto, $break-narrow)
+//         minmax(1rem, 1fr)
+//         ;
+//     }
+
+//     @include for-normal-layout {
+//         grid-template-columns:
+//         minmax(1rem, 1fr)
+//         minmax(auto, $break-normal)
+//         minmax(1rem, 1fr)
+//         ;
+//     }
+
+//     @include for-wide-layout {
+//         grid-template-columns:
+//         minmax(1rem, 1fr)
+//         minmax(auto, $break-wide)
+//         minmax(1rem, 1fr)
+//         ;
+//     }
+
+// }
+
+// .card-grid {
+//     display: grid;
+//     grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
+//     grid-gap: 16px;
+//     grid-auto-flow: dense;
+
+//     grid-auto-rows: 300px;
+
+//     > * {
+//         @include aspect-ratio(1, 1);
+//     }
+
+//     > *:nth-child(3n) {
+//         grid-row: span 2;
+//     }
+
+//     > *:nth-child(4n) {
+//         grid-column: span 2;
+//     }
+// }
