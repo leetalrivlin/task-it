@@ -1,8 +1,14 @@
 <template>
   <section class="task">
-    {{ task.title }}
+    <div class="task-area">
+      {{ task.title }}
+    </div>
+
+  
   </section>
 </template>
+
+
 
 <script>
 export default {
@@ -12,6 +18,15 @@ export default {
       type: Object,
     },
   },
+  method:{
+    addTask(){
+
+
+    }
+
+    } 
+    
+
 };
 </script>
 
