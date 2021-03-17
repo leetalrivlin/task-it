@@ -13,9 +13,8 @@
     <div class="add-task" @click.stop>
       <template v-if="isAdd">
         <textarea name="" id="" cols="30" rows="2"></textarea>
-        <button @click="saveTask" class="add-btn el-btn"> Add Task
-        </button>
-          <i class="el-icon-close" @click="closeTask"> </i>
+        <el-button type="info" @click="saveTask">Add Task</el-button>
+        <i class="el-icon-close" @click="closeTask"> </i>
       </template>
       <div v-else @click="addTask">
         <i class="el-icon-plus"></i><span>{{ addTxt }}</span>
@@ -34,13 +33,13 @@ export default {
   props: {
     group: {
       type: Object,
-    }
-      },
-    data() {
-      return {
-        isAdd: false,
-        taskTxt: "",
-    }
+    },
+  },
+  data() {
+    return {
+      isAdd: false,
+      taskTxt: "",
+    };
   },
   methods: {
     taskClicked(taskId) {
