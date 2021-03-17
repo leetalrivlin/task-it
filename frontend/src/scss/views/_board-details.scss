@@ -1,4 +1,6 @@
 .board-details {
+  overflow-x: scroll;
+  
   .group-container {
     .group {
       background-color: $clr2;

@@ -5,7 +5,7 @@
         <i class="el-icon-plus"></i>
         {{ newGroupTxt }}</a
       >
-      <form v-else>
+      <form v-else @submit.prevent="saveGroup">
         <el-input
           v-model="emptyGroup.title"
           placeholder="Enter list title..."
@@ -36,7 +36,7 @@ export default {
     saveGroup() {
       console.log('saving');
       this.$emit('saveGroup', this.emptyGroup);
-      this.emptyGroup = null;
+      this.emptyGroup =  boardService.getEmptyGroup();
     },
     createNewGroup() {
       this.isCreating = true;
