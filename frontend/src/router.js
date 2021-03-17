@@ -36,7 +36,7 @@ export const router = new Router({
       component: boardList
     },
     {
-      path: '/board/:boardId/',
+      path: '/board/:boardId',
       name: 'board',
       component: boardDetails,
       children: [

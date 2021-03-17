@@ -4,7 +4,7 @@ import {router} from './router'
 import {store} from './store/store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import './assets/styles/main.scss'
+// import './assets/styles/main.scss'
 import './registerServiceWorker'
 import './scss/main.scss'
 
