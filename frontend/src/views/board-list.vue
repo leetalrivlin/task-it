@@ -2,7 +2,7 @@
   <section class="board-list">
     <h1>board list</h1>
     <!-- <button @click='getBoard'>board</button> -->
-    <router-link :to="'board/b101'">Board</router-link>
+    <router-link :to="'/board/b101'">Board</router-link>
   </section>
 </template>
 

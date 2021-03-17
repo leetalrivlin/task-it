@@ -1,19 +1,25 @@
 <template>
   <section class="board-details">
-    <h1>hii</h1>
     <board-header />
-    <section v-if="board" class="group-container">
-      {{board}}
-    </section>
-    <router-view />
+    <ul v-if="board" class="clean-list flex group-container">
+      <li v-for="group in board.groups" :key="group.id" class="group">
+        <group :group="group" />
+      </li>
+    </ul>
+    <router-view/>
   </section>
 </template>
 
 <script>
 import boardHeader from "../cmps/board-header.vue";
+import group from "../cmps/group.vue";
+
 export default {
   name: "boardDetails",
-  components: { boardHeader },
+  components: {
+    boardHeader,
+    group,
+  },
   data() {
     return {
       boardId: null,

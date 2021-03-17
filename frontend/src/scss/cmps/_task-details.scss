@@ -1,3 +1,11 @@
-* {
-    box-sizing: border-box;
+.task-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #F5F5F7;
+  width: 770px;
+  min-height: 1000px;
+  border-radius: 3px;
+  padding: 10px;
 }

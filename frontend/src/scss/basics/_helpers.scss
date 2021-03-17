@@ -42,11 +42,31 @@
 
 /* BUTTON HELPERS */
 .el-btn {
-  background-color: hsla(0,0%,100%,.24);
+  background-color: hsla(0, 0%, 100%, 0.24);
+  border: none;
   &:hover {
-    background-color: hsla(0,0%,100%,.32);
+    background-color: hsla(0, 0%, 100%, 0.32);
     border-color: #bfbfbfd6;
-    color: #FFF;
+    color: #fff;
+  }
+}
+
+.el-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: $clr1;
+  background-color: transparent;
+  border: none;
+  &:hover {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: $clr1;
+    border: none;
+  }
+  &:focus {
+    background-color: rgba(9, 30, 66, 0.08);
+    color: $clr1;
+    border: none;
   }
 }
 
