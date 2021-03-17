@@ -1,6 +1,6 @@
 <template>
   <ul class="clean-list flex column group-content">
-    <h2>
+    <h2 contenteditable="true">
       {{ group.title }}
     </h2>
     <li
@@ -10,24 +10,17 @@
     >
       <task :task="task" />
     </li>
-    <div class="add-task" @click.stop>
-      <template v-if="isAdd">
-        <textarea name="" id="" cols="30" rows="2"></textarea>
-        <el-button type="info" @click="saveTask">Add Task</el-button>
-        <i class="el-icon-close" @click="closeTask"> </i>
-      </template>
-      <div v-else @click="addTask">
-        <i class="el-icon-plus"></i><span>{{ addTxt }}</span>
-      </div>
-    </div>
+    <add-task :group="group" />
   </ul>
 </template>
 
 <script>
 import task from "../cmps/task.vue";
+import addTask from "../cmps/add-task.vue";
 export default {
   components: {
     task,
+    addTask,
   },
   name: "group",
   props: {
@@ -36,10 +29,7 @@ export default {
     },
   },
   data() {
-    return {
-      isAdd: false,
-      taskTxt: "",
-    };
+    return {};
   },
   methods: {
     taskClicked(taskId) {
@@ -48,23 +38,8 @@ export default {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}/${taskId}`);
     },
-    saveTask() {
-      if (!this.taskTxt) return;
-      this.$emit("saveTask", this.taskTxt, this.group.id);
-      this.taskTxt = "";
-    },
-    addTask() {
-      this.isAdd = true;
-    },
-    closeTask() {
-      this.isAdd = false;
-      this.taskTxt = "";
-    },
   },
   computed: {
-    addTxt() {
-      return this.group.tasks.length ? "Add another task" : "Add a task";
-    },
     // taskDetails(taskId) {
     //   return `/${this.$route.params.boardId}/${taskId}`;
     // },
@@ -72,5 +47,3 @@ export default {
 };
 </script>
 
-<style>
-</style>
