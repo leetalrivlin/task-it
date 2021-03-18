@@ -8,7 +8,7 @@
       v-for="task in group.tasks"
       :key="task.id"
     >
-      <task :task="task" />
+      <task :task="task" @deleteTask="deleteTask" />
     </li>
     <add-task @saveTask="saveTask" :group="group" />
   </ul>
@@ -40,7 +40,11 @@ export default {
     },
     saveTask(taskTitle , groupId){
        this.$emit("saveTask",taskTitle,groupId );
-    }
+    },
+     deleteTask(task) {
+      this.$emit('deleteTask',task);
+    },
+
   },
   computed: {},
 };

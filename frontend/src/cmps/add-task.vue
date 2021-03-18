@@ -5,14 +5,16 @@
         <i class="el-icon-plus"></i> {{ addTxt }}
       </a>
       <form v-else @submit.prevent="saveTask">
-        <el-input
-          type="textarea"
-          :rows="2"
-          placeholder="Please input"
+        <textarea
+          @keydown.enter.exact.prevent
+          @keyup.enter.exact="saveTask"
+          placeholder="Enter a title for this task…"
+          maxlength="120"
           v-model="emptyTask.title"
           autofocus
+          class="textarea"
         >
-        </el-input>
+        </textarea>
         <div class="flex align-center">
           <el-button type="info" @click="saveTask">Add Task</el-button>
           <i class="el-icon-close" @click="closeTask"> </i>
