@@ -1,32 +1,36 @@
 <template>
-  <section class="task-details">
+  <section v-if="task" class="task-details">
     <section v-if="cover" class="details-layout cover-container">
       <el-button class="cover-btn el-btn">Cover</el-button>
     </section>
-    <header class="details-layout flex column space-between details-header">
-      <h1>task name</h1>
-      <p>In list <a href="#" class="task-list-link">List name</a></p>
-    </header>
-    <el-button
-      class="el-close"
-      icon="el-icon-close"
-      circle
-      @click="closeDetails"
-    ></el-button>
+    <section class="details-content">
+      <header class="details-layout flex column space-between details-header">
+        <h1>{{task.title}}</h1>
+        <p>In list <a href="#" class="task-list-link">List name</a></p>
+      </header>
+      <el-button
+        class="el-close"
+        icon="el-icon-close"
+        circle
+        @click="closeDetails"
+      ></el-button>
+    </section>
   </section>
 </template>
 
 <script>
 export default {
-  name: "taskDetails",
+  name: 'taskDetails',
   data() {
     return {
-      cover: true,
-    }
+      cover: true
+    };
   },
   computed: {
-    board() {
-      return this.$store.getters.board;
+    task() {
+      const task = this.$store.getters.task;
+      console.log('task',task);
+      return task;
     }
   },
   methods: {
@@ -34,21 +38,11 @@ export default {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}`);
     },
-    getTask(taskId) {
-      const board = this.$store.getters.board;
-      const currTasks = board.groups.map(group => {
-      return group.tasks.filter(t => {
-          return t.id === taskId;
-        });
-      })
-      console.log('currTasks',currTasks);
-    }
   },
   created() {
     const taskId = this.$route.params.taskId;
-    const task = this.getTask(taskId);
-    this.$store.commit({ type: 'setTask', task });
+    this.$store.commit({type: 'setTaskById', taskId});
+    // this.$store.commit({ type: 'setTask', task });
   }
 };
 </script>
-
