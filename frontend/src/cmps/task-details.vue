@@ -35,16 +35,11 @@ export default {
       this.$router.push(`/board/${boardId}`);
     },
     getTask(taskId) {
-      const board = this.$store.getters.board;
-      console.log('board',board);
-      const task = board.groups.map(group => {
-        return group.tasks.find(t => {
-          console.log('t.id',t.id);
-          console.log('taskId',taskId);
-          return t.id === taskId
-        });
+      // const board = this.$store.getters.board;
+      const currTasks = this.board.groups.map(group => {
+        return group.tasks.find(t => t.id === taskId);
       })
-      console.log('task',task);
+      console.log('currTasks',currTasks);
     }
   },
   created() {
