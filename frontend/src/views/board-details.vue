@@ -4,7 +4,7 @@
     <section class="flex align-start board-content">
       <ul class="clean-list flex group-container">
         <li v-for="group in board.groups" :key="group.id" class="group">
-          <group @saveTask="saveTask" @deleteTask="deleteTask" :group="group" />
+          <group @saveTask="saveTask" @deleteTask="deleteTask" @updateGroup="updateBoard" :group="group" />
         </li>
       </ul>
       <add-group @saveGroup="saveGroup" />
