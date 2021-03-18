@@ -55,28 +55,28 @@ export default {
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
     saveTask(taskTitle, groupId) {
-      console.log('taskTitle , groupId', taskTitle, groupId);
-      const group = this.board.groups.find((group) => {
-        return group.id === groupId;
-      });
+      const group = this.getGroup(groupId);
       group.tasks.push(taskTitle);
-      const idx = this.board.groups.findIndex(({ id }) => id === group.id);
-      this.board.groups.splice(idx, 1, group);
+      this.updateBoard(group);
+    },
+    deleteTask(task, groupId) {
+      const group = this.getGroup(groupId);
+      const taskIdx = group.tasks.findIndex(({ id }) => id === task.id);
+      group.tasks.splice(taskIdx, 1);
+      this.updateBoard(group);
+    },
+    updateBoard(updatedGroup) {
+      const idx = this.board.groups.findIndex(
+        ({ id }) => id === updatedGroup.id
+      );
+      this.board.groups.splice(idx, 1, updatedGroup);
       const cloneBoard = clone(this.board);
-      console.log('cloneBoard', cloneBoard);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
-    delteTask(task) {
-      console.log('task', task);
-      // const group = this.board.groups.find((group) => {
-      //   return group.id === groupId;
-      // });
-      // group.tasks.push(taskTitle);
-      // const idx = this.board.groups.findIndex(({ id }) => id === group.id);
-      // this.board.groups.splice(idx, 1, group);
-      // const cloneBoard = clone(this.board);
-      // console.log('cloneBoard', cloneBoard);
-      // this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
+    getGroup(groupId) {
+      return this.board.groups.find((group) => {
+        return group.id === groupId;
+      });
     },
   },
   computed: {
