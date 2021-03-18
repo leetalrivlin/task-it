@@ -20,6 +20,8 @@
           @deleteTask="deleteTask"
           @changeTitle="updateBoard"
           @updateGroup="updateBoard"
+          @deleteGroup="deleteGroup"
+          @closeMenu="closeMenu"
           :group="group"
         />
         <!-- </li> -->
@@ -83,6 +85,18 @@ export default {
       group.tasks.splice(taskIdx, 1);
       this.updateBoard(group);
     },
+    deleteGroup(groupId){
+      console.log(groupId,'groupId');
+       const group = this.getGroup(groupId);
+       const groupIdx = this.board.groups.findIndex(
+        ({ id }) => id === groupId
+      );
+      console.log(groupIdx);
+      this.board.groups.splice(groupIdx, 1);
+      const cloneBoard = clone(this.board);
+      this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
+      
+    },
     updateBoard(updatedGroup) {
       const idx = this.board.groups.findIndex(
         ({ id }) => id === updatedGroup.id
@@ -102,7 +116,9 @@ export default {
         return group.id === groupId;
       });
     },
-  
+    closeMenu(){
+      console.log('hi');
+    }
   },
   computed: {
     board() {

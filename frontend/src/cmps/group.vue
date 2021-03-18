@@ -1,6 +1,6 @@
 <template>
   <div v-if="group" class="flex column group-content">
-    <div class="group-header flex space-between">
+    <div class="group-header flex space-between align-center">
       <input
         type="text"
         class="title flex align-center"
@@ -8,9 +8,16 @@
         @change="inputChange"
         @keyup.enter.exact="inputChange"
       />
-      <i class="el-icon-more" @click="deleteGroup"> </i>
+      <i @click="toggleMenu" class="el-icon-more group-action">
+      <group-menu
+        class="group-menu"
+        v-if="isGroupMenu"
+        @deleteGroup="deleteGroup"
+        @closeMenu="closeMenu"
+      />
+       </i>
     </div>
-  
+
     <draggable
       class="clean-list"
       :list="group.tasks"
@@ -34,6 +41,7 @@
 
 <script>
 import task from '../cmps/task.vue';
+import groupMenu from '../cmps/group-menu.vue';
 import addTask from '../cmps/add-task.vue';
 import draggable from 'vuedraggable';
 const clone = require('rfdc')({ proto: true });
@@ -43,6 +51,7 @@ export default {
     task,
     addTask,
     draggable,
+    groupMenu,
   },
   name: 'group',
   props: {
@@ -53,9 +62,13 @@ export default {
   data() {
     return {
       isDragging: false,
+      isGroupMenu: false,
     };
   },
   methods: {
+    toggleMenu() {
+      this.isGroupMenu=!this.isGroupMenu;
+    },
     taskClicked(taskId) {
       console.log('taskId', taskId);
       console.log(this.$route.params.boardId);
@@ -78,12 +91,14 @@ export default {
       this.$emit('deleteTask', task, this.group.id);
     },
     deleteGroup() {
-      console.log(this.group, 'task');
-      // this.$emit('deleteGroup', this.group.id);
+      this.$emit('deleteGroup', this.group.id);
     },
     inputChange() {
       this.$emit('changeTitle', this.group);
     },
+    closeMenu() {
+       this.$emit('closeMenu');
+    }
   },
   computed: {},
 };

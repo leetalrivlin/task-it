@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     saveTask() {
+      if(!this.emptyTask.title)return
       this.$emit('saveTask', this.emptyTask);
       this.emptyTask = boardService.getEmptyTask();
     },
