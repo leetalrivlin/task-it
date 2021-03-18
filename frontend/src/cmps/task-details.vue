@@ -24,17 +24,33 @@ export default {
       cover: true,
     }
   },
+  computed: {
+    board() {
+      return this.$store.getters.board;
+    }
+  },
   methods: {
     closeDetails() {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}`);
     },
+    getTask(taskId) {
+      const board = this.$store.getters.board;
+      console.log('board',board);
+      const task = board.groups.map(group => {
+        return group.tasks.find(t => {
+          console.log('t.id',t.id);
+          console.log('taskId',taskId);
+          return t.id === taskId
+        });
+      })
+      console.log('task',task);
+    }
   },
   created() {
-    const boardId = this.$route.params.boardId;
-    const groupId = this.$route.params.groupId;
     const taskId = this.$route.params.taskId;
-    this.$store.dispatch({type: 'loadTask', boardId, groupId, taskId})
+    const task = this.getTask(taskId);
+    this.$store.commit({ type: 'setTask', task });
   }
 };
 </script>

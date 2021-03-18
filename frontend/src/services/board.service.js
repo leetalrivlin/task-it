@@ -156,7 +156,9 @@ export const boardService = {
   getBoards,
   getById,
   getEmptyGroup,
-  updateBoard
+  updateBoard,
+  getTaskById,
+  getGroupById
 };
 
 async function getBoards() {

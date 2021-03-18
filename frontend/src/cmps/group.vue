@@ -8,9 +8,9 @@
       v-for="task in group.tasks"
       :key="task.id"
     >
-      <task :task="task" />
+      <task :task="task"/>
     </li>
-    <add-task :group="group" />
+    <add-task :group="group"/>
   </ul>
 </template>
 

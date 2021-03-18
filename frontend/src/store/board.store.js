@@ -16,6 +16,9 @@ export const boardStore = {
   getters: {
     board(state) {
       return state.board;
+    },
+    task(state) {
+      return state.task;
     }
   },
   mutations: {
@@ -55,6 +58,6 @@ export const boardStore = {
       } catch (err) {
         console.log('cant update board', err);
       }
-    }
+    },
   }
 };
