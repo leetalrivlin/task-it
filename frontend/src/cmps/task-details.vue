@@ -20,7 +20,8 @@
         <i class="el-icon-edit d-icon"></i>
         <div class="d-content">
           <h1>Description</h1>
-          <textarea name="" id="" cols="20" rows="5"></textarea>
+          <p v-if="task.description">{{task.description}}</p>
+          <textarea v-else name="" id="" cols="20" rows="5"></textarea>
         </div>
       </div>
       <div class="d-checklist">

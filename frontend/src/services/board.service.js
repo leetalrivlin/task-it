@@ -35,11 +35,12 @@ const gBoards = [
         tasks: [
           {
             id: 'c101',
-            title: 'Replace logo'
+            title: 'Replace logo',
           },
           {
             id: 'c102',
-            title: 'Add Samples'
+            title: 'Add Samples',
+            description: 'A description about our project',
           }
         ],
         style: {}
