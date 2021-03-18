@@ -16,7 +16,7 @@
           <group
             @saveTask="saveTask"
             @deleteTask="deleteTask"
-            @changeTitle="changeTitle"
+            @changeTitle="updateBoard"
             @updateGroup="updateBoard"
             :group="group"
           />
@@ -107,6 +107,13 @@ export default {
       console.log(this.board);
       // this.$emit('updateGroup', clone(this.group))
     },
+
+    getGroup(groupId) {
+      return this.board.groups.find((group) => {
+        return group.id === groupId;
+      });
+    },
+   
   },
   computed: {
     board() {
