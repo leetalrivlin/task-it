@@ -4,7 +4,7 @@
     <section class="flex align-start board-content">
       <ul v-if="board" class="clean-list flex group-container">
         <li v-for="group in board.groups" :key="group.id" class="group">
-          <group :group="group" />
+          <group @saveTask="saveTask" :group="group" />
         </li>
       </ul>
       <add-group v-if="board" @saveGroup="saveGroup" />
@@ -47,6 +47,16 @@ export default {
     saveGroup(newGroup) {
       console.log(newGroup);
       this.board.groups.push(newGroup);
+      const cloneBoard = clone(this.board);
+      console.log('cloneBoard', cloneBoard);
+      this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
+    },
+    saveTask(taskTitle, groupId) {
+      console.log('taskTitle , groupId', taskTitle, groupId);
+      const group = this.board.groups.find((group) => {
+        return group.id === groupId;
+      });
+      group.tasks.push(taskTitle);
       const cloneBoard = clone(this.board);
       console.log('cloneBoard', cloneBoard);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });

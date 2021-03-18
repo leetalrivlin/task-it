@@ -8,21 +8,21 @@
       v-for="task in group.tasks"
       :key="task.id"
     >
-      <task :task="task"/>
+      <task :task="task" />
     </li>
-    <add-task :group="group"/>
+    <add-task @saveTask="saveTask" :group="group" />
   </ul>
 </template>
 
 <script>
-import task from "../cmps/task.vue";
-import addTask from "../cmps/add-task.vue";
+import task from '../cmps/task.vue';
+import addTask from '../cmps/add-task.vue';
 export default {
   components: {
     task,
     addTask,
   },
-  name: "group",
+  name: 'group',
   props: {
     group: {
       type: Object,
@@ -33,17 +33,16 @@ export default {
   },
   methods: {
     taskClicked(taskId) {
-      console.log("taskId", taskId);
+      console.log('taskId', taskId);
       console.log(this.$route.params.boardId);
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}/${taskId}`);
     },
+    saveTask(taskTitle , groupId){
+       this.$emit("saveTask",taskTitle,groupId );
+    }
   },
-  computed: {
-    // taskDetails(taskId) {
-    //   return `/${this.$route.params.boardId}/${taskId}`;
-    // },
-  },
+  computed: {},
 };
 </script>
 

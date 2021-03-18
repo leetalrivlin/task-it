@@ -1,11 +1,11 @@
 <template>
   <div class="add-task" @click.stop>
-    <section v-if="isAdd">
+    <section v-if="emptyTask">
       <el-input
         type="textarea"
         :rows="2"
         placeholder="Please input"
-        v-model="textarea"
+        v-model="emptyTask.title"
         autofocus
       >
       </el-input>
@@ -21,11 +21,11 @@
 </template>
 
 <script>
+import { boardService } from '../services/board.service.js';
 export default {
   data() {
     return {
-      isAdd: false,
-      textarea: "",
+      emptyTask: null,
     };
   },
   props: {
@@ -35,21 +35,19 @@ export default {
   },
   methods: {
     saveTask() {
-      if (!this.taskTxt) return;
-      this.$emit("saveTask", this.taskTxt, this.group.id);
-      this.textarea = "";
+      this.$emit('saveTask', this.emptyTask, this.group.id);
+      this.emptyTask = boardService.getEmptyTask();
     },
     addTask() {
-      this.isAdd = true;
+      this.emptyTask = boardService.getEmptyTask();
     },
     closeTask() {
-      this.isAdd = false;
-      this.textarea = "";
+      this.emptyTask =null;
     },
   },
   computed: {
     addTxt() {
-      return this.group.tasks.length ? "Add another task" : "Add a task";
+      return this.group.tasks.length ? 'Add another task' : 'Add a task';
     },
   },
 };

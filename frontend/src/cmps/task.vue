@@ -3,8 +3,6 @@
     <div class="task-area">
       {{ task.title }}
     </div>
-
-  
   </section>
 </template>
 
@@ -12,21 +10,13 @@
 
 <script>
 export default {
-  name: "task",
+  name: 'task',
   props: {
     task: {
       type: Object,
     },
   },
-  method:{
-    addTask(){
-
-
-    }
-
-    } 
-    
-
+  method: {},
 };
 </script>
 
