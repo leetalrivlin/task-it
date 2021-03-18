@@ -1,13 +1,13 @@
 <template>
-  <section class="main-layout main-content board-details">
-    <board-header v-if="board" :board="board" />
+  <section v-if="board" class="main-layout main-content board-details">
+    <board-header :board="board" />
     <section class="flex align-start board-content">
-      <ul v-if="board" class="clean-list flex group-container">
+      <ul class="clean-list flex group-container">
         <li v-for="group in board.groups" :key="group.id" class="group">
           <group :group="group" />
         </li>
       </ul>
-      <add-group v-if="board" @saveGroup="saveGroup" />
+      <add-group @saveGroup="saveGroup" />
       <router-view />
     </section>
   </section>

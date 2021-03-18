@@ -11,7 +11,7 @@ import {
 export const boardStore = {
   state: {
     board: null,
-    task: null,
+    task: null
   },
   getters: {
     board(state) {
@@ -28,8 +28,12 @@ export const boardStore = {
     setTask(state, { task }) {
       state.task = task;
     },
-    updateBoard(state, { board }) {
-      state.board = board;
+    setTaskById(state, {taskId}) {
+      state.board.groups.forEach(group => {
+        group.tasks.forEach(task => {
+          if (task.id === taskId) state.task = task;
+        });
+      });
     }
   },
   actions: {
@@ -52,12 +56,12 @@ export const boardStore = {
     },
     async updateBoard({ commit }, { board }) {
       try {
-        commit({ type: 'updateBoard', board });
+        commit({ type: 'setBoard', board });
         const updatedBoard = await boardService.updateBoard(board);
         console.log(updatedBoard);
       } catch (err) {
         console.log('cant update board', err);
       }
-    },
+    }
   }
 };
