@@ -18,6 +18,8 @@ import { boardService } from '../services/board.service.js';
 import boardHeader from '../cmps/board-header.vue';
 import group from '../cmps/group.vue';
 import addGroup from '../cmps/add-group.vue';
+import draggable from 'vuedraggable';
+
 const clone = require('rfdc')({ proto: true });
 
 export default {
@@ -26,6 +28,7 @@ export default {
     boardHeader,
     group,
     addGroup,
+    draggable,
   },
   data() {
     return {
