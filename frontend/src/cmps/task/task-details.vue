@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import taskDescription from './task-description.vue';
-import taskController from './task-controller.vue';
+import taskDescription from '../task/task-details/task-description.vue';
+import taskController from '../task/task-details/task-controller.vue'
 
 const clone = require('rfdc')({ proto: true });
 

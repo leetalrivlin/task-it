@@ -12,9 +12,6 @@
     >
     </i>
     </div>
-    <!-- <h2 contenteditable="true">
-      {{ group.title }}
-    </h2> -->
     <draggable
       class="clean-list"
       :list="group.tasks"
@@ -22,6 +19,7 @@
       @change="moveTask"
       @start="isDragging = true"
       @end="isDragging = false"
+      group="tasks"
     >
       <li
         @click="taskClicked(task.id)"
