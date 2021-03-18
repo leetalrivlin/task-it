@@ -52,7 +52,6 @@ export default {
   },
   data() {
     return {
-      newGroup: this.group,
       isDragging: false,
     };
   },
@@ -80,7 +79,6 @@ export default {
       console.log(task, 'task');
       this.$emit('deleteTask', task, this.group.id);
     },
-
     onMove({ relatedContext, draggedContext }) {
       console.log('relatedContext', relatedContext);
       console.log('draggedContext', draggedContext);

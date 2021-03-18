@@ -2,7 +2,16 @@
   <section v-if="board" class="main-layout main-content board-details">
     <board-header :board="board" />
     <section class="flex align-start board-content">
-      <ul class="clean-list flex group-container">
+      <draggable
+        class="clean-list flex group-container"
+        :list="board.groups"
+        tag="ul"
+        :move="onMove"
+        @change="moveGroup"
+        @start="isDragging = true"
+        @end="isDragging = false"
+      >
+        <!-- <ul class="clean-list flex group-container"> -->
         <li v-for="group in board.groups" :key="group.id" class="group">
           <group
             @saveTask="saveTask"
@@ -12,7 +21,8 @@
             :group="group"
           />
         </li>
-      </ul>
+        <!-- </ul> -->
+      </draggable>
       <add-group @saveGroup="saveGroup" />
       <router-view />
     </section>
@@ -39,6 +49,7 @@ export default {
   data() {
     return {
       boardId: null,
+      isDragging: false,
     };
   },
   methods: {
@@ -79,22 +90,36 @@ export default {
       const cloneBoard = clone(this.board);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
-    getGroup(groupId) {
-      return this.board.groups.find((group) => {
-        return group.id === groupId;
-      });
-    },
     changeTitle(group) {
       console.log(group);
+    },
+    onMove({ relatedContext, draggedContext }) {
+      console.log('relatedContext', relatedContext);
+      console.log('draggedContext', draggedContext);
+      const relatedElement = relatedContext.element;
+      const draggedElement = draggedContext.element;
+      return (
+        (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
+      );
+    },
+    moveGroup(ev) {
+      console.log('ev', ev.moved);
+      console.log(this.board);
+      // this.$emit('updateGroup', clone(this.group))
     },
   },
   computed: {
     board() {
       return clone(this.$store.getters.board);
     },
+    getGroup(groupId) {
+      return this.board.groups.find((group) => {
+        return group.id === groupId;
+      });
+    },
   },
   mounted() {
-    console.log(this.$route.params);
+    console.log('boardDetails is mounted');
     this.boardId = this.$route.params.boardId;
     this.getBoard();
   },
