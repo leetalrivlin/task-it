@@ -157,8 +157,8 @@ export const boardService = {
   getById,
   getEmptyGroup,
   updateBoard,
-  getTaskById,
-  getGroupById
+  // getTaskById,
+  // getGroupById
 };
 
 async function getBoards() {
@@ -208,30 +208,30 @@ async function update(user) {
   // Handle case in which admin updates other user's details
 }
 
-async function getGroupById(boardId, groupId) {
-  try {
-    const board = await getById(boardId);
-    const group = board.find(group => {
-      return group.id === groupId;
-    })
-    return group;
-  } catch(err) {
-    console.log('cannot get group',err);
-  }
-}
+// async function getGroupById(boardId, groupId) {
+//   try {
+//     const board = await getById(boardId);
+//     const group = board.find(group => {
+//       return group.id === groupId;
+//     })
+//     return group;
+//   } catch(err) {
+//     console.log('cannot get group',err);
+//   }
+// }
 
-async function getTaskById(boardId, groupId, taskId) {
-  try {
-    const board = await getById(boardId);
-    const group = await getGroupById(boardId, groupId);
-    const task = board.group.find((task) => {
-      return task.id === taskId;
-    });
-    return task;
-  } catch (err) {
-    console.log('cannot get task', err);
-  }
-}
+// async function getTaskById(boardId, groupId, taskId) {
+//   try {
+//     const board = await getById(boardId);
+//     const group = await getGroupById(boardId, groupId);
+//     const task = board.group.find((task) => {
+//       return task.id === taskId;
+//     });
+//     return task;
+//   } catch (err) {
+//     console.log('cannot get task', err);
+//   }
+// }
 
 function getEmptyGroup() {
   return {
