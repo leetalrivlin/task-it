@@ -12,16 +12,18 @@
         group="groups"
       >
         <!-- <transition-group name="drag-drop"> -->
-          <group
-            v-for="group in board.groups"
-            :key="group.id"
-            class="group"
-            @saveTask="saveTask"
-            @deleteTask="deleteTask"
-            @changeTitle="updateBoard"
-            @updateGroup="updateBoard"
-            :group="group"
-          />
+        <group
+          v-for="group in board.groups"
+          :key="group.id"
+          class="group"
+          @saveTask="saveTask"
+          @deleteTask="deleteTask"
+          @changeTitle="updateBoard"
+          @updateGroup="updateBoard"
+          @deleteGroup="deleteGroup"
+          :group="group"
+        />
+
         <!-- </transition-group> -->
       </draggable>
       <add-group @saveGroup="saveGroup" />
@@ -82,6 +84,15 @@ export default {
       const taskIdx = group.tasks.findIndex(({ id }) => id === task.id);
       group.tasks.splice(taskIdx, 1);
       this.updateBoard(group);
+    },
+    deleteGroup(groupId) {
+      console.log(groupId, 'groupId');
+      const group = this.getGroup(groupId);
+      const groupIdx = this.board.groups.findIndex(({ id }) => id === groupId);
+      console.log(groupIdx);
+      this.board.groups.splice(groupIdx, 1);
+      const cloneBoard = clone(this.board);
+      this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
     updateBoard(updatedGroup) {
       const idx = this.board.groups.findIndex(
