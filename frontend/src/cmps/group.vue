@@ -10,7 +10,7 @@
       v-for="task in group.tasks"
       :key="task.id"
     >
-      <task :task="task" />
+      <task :task="task" @deleteTask="deleteTask" />
     </li>
     <add-task @saveTask="saveTask" :group="group" />
   <!-- </ul> -->
@@ -50,6 +50,7 @@ export default {
     saveTask(taskTitle , groupId){
        this.$emit("saveTask",taskTitle,groupId );
     },
+<<<<<<< HEAD
      onMove({ relatedContext, draggedContext }) {
        console.log('relatedContext',relatedContext);
        console.log('draggedContext',draggedContext);
@@ -59,6 +60,12 @@ export default {
         (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
       );
     }
+=======
+     deleteTask(task) {
+      this.$emit('deleteTask',task);
+    },
+
+>>>>>>> bfae99aa72c17c32f1c6004e200f1e8ea176da4d
   },
   computed: {},
 };

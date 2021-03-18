@@ -1,8 +1,18 @@
 <template>
-  <section class="task">
+  <section
+    class="task"
+    @mouseover="taskOnFocus = true"
+    @mouseleave="taskOnFocus = false"
+  >
     <div class="task-area">
       {{ task.title }}
     </div>
+    <i
+      v-if="taskOnFocus"
+      class="el-icon-close delete-task"
+      @click.stop="deleteTask"
+    >
+    </i>
   </section>
 </template>
 
@@ -16,7 +26,16 @@ export default {
       type: Object,
     },
   },
-  method: {},
+  data() {
+    return {
+      taskOnFocus: null,
+    };
+  },
+  methods: {
+    deleteTask() {
+      this.$emit('deleteTask', this.task);
+    },
+  },
 };
 </script>
 
