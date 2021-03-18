@@ -1,10 +1,10 @@
 <template>
-  <section class=" flex column group-content">
+  <section class="flex column group-content">
     <h2 contenteditable="true">
       {{ group.title }}
     </h2>
     <draggable
-    class="clean-list"
+      class="clean-list"
       :list="group.tasks"
       :move="onMove"
       tag="ul"
