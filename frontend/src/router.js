@@ -7,7 +7,7 @@ import loginSignup from './views/login-signup.vue'
 import userDetails from './views/user-details.vue'
 import boardList from './views/board-list.vue'
 import boardDetails from './views/board-details.vue'
-import taskDetails from './cmps/task-details.vue'
+import taskDetails from './cmps/task/task-details.vue'
 
 Vue.use(Router)
 

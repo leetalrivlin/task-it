@@ -18,6 +18,7 @@
       @change="moveTask"
       @start="isDragging = true"
       @end="isDragging = false"
+      group="tasks"
     >
       <li
         @click="taskClicked(task.id)"

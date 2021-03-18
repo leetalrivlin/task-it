@@ -9,6 +9,7 @@
         @change="moveGroup"
         @start="isDragging = true"
         @end="isDragging = false"
+        group="groups"
       >
         <!-- <li v-for="group in board.groups" :key="group.id" class="group"> -->
         <group
@@ -31,7 +32,7 @@
 
 <script>
 import { boardService } from '../services/board.service.js';
-import boardHeader from '../cmps/board-header.vue';
+import boardHeader from '../cmps/board/board-header.vue';
 import group from '../cmps/group.vue';
 import addGroup from '../cmps/add-group.vue';
 import draggable from 'vuedraggable';
