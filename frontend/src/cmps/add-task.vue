@@ -33,7 +33,7 @@ export default {
     };
   },
   props: {
-    task: {
+    tasksLen: {
       type: Number,
     },
   },
@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     addTxt() {
-      return this.task ? 'Add another task' : 'Add a task';
+      return this.tasksLen === 0 ? 'Add a task' : 'Add another task';
     },
   },
 };

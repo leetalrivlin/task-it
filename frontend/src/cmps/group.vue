@@ -14,12 +14,12 @@
     <draggable
       class="clean-list"
       :list="group.tasks"
-      :move="onMove"
       tag="ul"
+      :move="onMove"
+      @change="moveTask"
       @start="isDragging = true"
       @end="isDragging = false"
     >
-      <!-- <ul class="clean-list flex column group-content"> -->
       <li
         @click="taskClicked(task.id)"
         v-for="task in group.tasks"
@@ -27,8 +27,7 @@
       >
         <task :task="task" @deleteTask="deleteTask" />
       </li>
-      <add-task @saveTask="saveTask" :task="group.tasks.length" />
-      <!-- </ul> -->
+      <add-task @saveTask="saveTask" :tasksLen="group.tasks.length"  />
     </draggable>
   </section>
 </template>
@@ -37,6 +36,7 @@
 import task from '../cmps/task.vue';
 import addTask from '../cmps/add-task.vue';
 import draggable from 'vuedraggable';
+const clone = require('rfdc')({ proto: true });
 
 export default {
   components: {
@@ -65,6 +65,20 @@ export default {
     },
     saveTask(taskTitle) {
       this.$emit('saveTask', taskTitle, this.group.id);
+    },
+
+    moveTask(ev) {
+      console.log('ev', ev.moved);
+      console.log(this.group);
+      this.$emit('updateGroup', clone(this.group))
+    },
+
+    saveTask(taskTitle) {
+      this.$emit('saveTask', taskTitle, this.group.id);
+    },
+    deleteTask(task) {
+      console.log(task, 'task');
+      this.$emit('deleteTask', task, this.group.id);
     },
 
     onMove({ relatedContext, draggedContext }) {

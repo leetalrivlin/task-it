@@ -8,6 +8,7 @@
             @saveTask="saveTask"
             @deleteTask="deleteTask"
             @changeTitle="changeTitle"
+            @updateGroup="updateBoard"
             :group="group"
           />
         </li>
@@ -85,8 +86,7 @@ export default {
     },
     changeTitle(group) {
       console.log(group);
-
-    }
+    },
   },
   computed: {
     board() {
