@@ -68,8 +68,9 @@ export default {
         (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
       );
     },
-    deleteTask(task) {
-      this.$emit('deleteTask', task);
+    deleteTask(task ) {
+      console.log(task , 'task');
+      this.$emit('deleteTask', task, this.group.id);
     },
   },
   computed: {},
