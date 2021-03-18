@@ -1,23 +1,25 @@
 <template>
-  <div class="add-task" @click.stop>
-    <section v-if="emptyTask">
-      <el-input
-        type="textarea"
-        :rows="2"
-        placeholder="Please input"
-        v-model="emptyTask.title"
-        autofocus
-      >
-      </el-input>
-      <div class="flex align-center">
-        <el-button type="info" @click="saveTask">Add Task</el-button>
-        <i class="el-icon-close" @click="closeTask"> </i>
-      </div>
-    </section>
-    <a v-else @click="addTask" class="adding flex align-center">
-      <i class="el-icon-plus"></i> {{ addTxt }}
-    </a>
-  </div>
+  <section class="add-task" @click.stop>
+    <transition name="slide-fade" mode="out-in">
+      <a v-if="!emptyTask" @click="addTask" class="adding flex align-center">
+        <i class="el-icon-plus"></i> {{ addTxt }}
+      </a>
+      <form v-else @submit.prevent="saveTask">
+        <el-input
+          type="textarea"
+          :rows="2"
+          placeholder="Please input"
+          v-model="emptyTask.title"
+          autofocus
+        >
+        </el-input>
+        <div class="flex align-center">
+          <el-button type="info" @click="saveTask">Add Task</el-button>
+          <i class="el-icon-close" @click="closeTask"> </i>
+        </div>
+      </form>
+    </transition>
+  </section>
 </template>
 
 <script>
@@ -42,7 +44,7 @@ export default {
       this.emptyTask = boardService.getEmptyTask();
     },
     closeTask() {
-      this.emptyTask =null;
+      this.emptyTask = null;
     },
   },
   computed: {

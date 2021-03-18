@@ -57,6 +57,8 @@ export default {
         return group.id === groupId;
       });
       group.tasks.push(taskTitle);
+      const idx = this.board.groups.findIndex(({ id }) => id === group.id);
+      this.board.groups.splice(idx, 1, group);
       const cloneBoard = clone(this.board);
       console.log('cloneBoard', cloneBoard);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
