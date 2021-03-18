@@ -1,17 +1,25 @@
 <template>
-  <section class="flex column group-content">
-    <h2 contenteditable="true">
+  <section v-if="group" class="flex column group-content">
+    <div class="group-header">
+      <input
+        type="text"
+        class="title flex align-center"
+        v-model="group.title"
+        @change="inputChange"
+      />
+    </div>
+    <!-- <h2 contenteditable="true">
       {{ group.title }}
-    </h2>
+    </h2> -->
     <draggable
       class="clean-list"
       :list="group.tasks"
-      :move="onMove"
       tag="ul"
+      :move="onMove"
+      @change="moveTask"
       @start="isDragging = true"
       @end="isDragging = false"
     >
-      <!-- <ul class="clean-list flex column group-content"> -->
       <li
         @click="taskClicked(task.id)"
         v-for="task in group.tasks"
@@ -19,8 +27,7 @@
       >
         <task :task="task" @deleteTask="deleteTask" />
       </li>
-      <add-task @saveTask="saveTask" :group="group" />
-      <!-- </ul> -->
+      <add-task @saveTask="saveTask" :tasksLen="group.tasks.length"  />
     </draggable>
   </section>
 </template>
@@ -29,6 +36,7 @@
 import task from '../cmps/task.vue';
 import addTask from '../cmps/add-task.vue';
 import draggable from 'vuedraggable';
+const clone = require('rfdc')({ proto: true });
 
 export default {
   components: {
@@ -55,10 +63,24 @@ export default {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}/${taskId}`);
     },
-    saveTask(taskTitle, groupId) {
-      this.$emit('saveTask', taskTitle, groupId);
+    saveTask(taskTitle) {
+      this.$emit('saveTask', taskTitle, this.group.id);
     },
-  
+
+    moveTask(ev) {
+      console.log('ev', ev.moved);
+      console.log(this.group);
+      this.$emit('updateGroup', clone(this.group))
+    },
+
+    saveTask(taskTitle) {
+      this.$emit('saveTask', taskTitle, this.group.id);
+    },
+    deleteTask(task) {
+      console.log(task, 'task');
+      this.$emit('deleteTask', task, this.group.id);
+    },
+
     onMove({ relatedContext, draggedContext }) {
       console.log('relatedContext', relatedContext);
       console.log('draggedContext', draggedContext);
@@ -68,10 +90,13 @@ export default {
         (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
       );
     },
-    deleteTask(task ) {
-      console.log(task , 'task');
+    deleteTask(task) {
+      console.log(task, 'task');
       this.$emit('deleteTask', task, this.group.id);
     },
+    inputChange(){
+       this.$emit('changeTitle', this.group);
+    }
   },
   computed: {},
 };
