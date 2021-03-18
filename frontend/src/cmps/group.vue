@@ -58,6 +58,7 @@ export default {
     saveTask(taskTitle, groupId) {
       this.$emit('saveTask', taskTitle, groupId);
     },
+  
     onMove({ relatedContext, draggedContext }) {
       console.log('relatedContext', relatedContext);
       console.log('draggedContext', draggedContext);
