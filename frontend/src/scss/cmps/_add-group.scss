@@ -1,8 +1,11 @@
 .add-group {
   width: 270px;
+  box-sizing: content-box;
+  padding-inline-end: 10px;
 
   a {
     display: block;
+    width: 270px;
     border-radius: 3px;
     padding: 6px 8px;
     background-color: hsla(0, 0%, 100%, 0.24);
@@ -16,9 +19,11 @@
     background-color: $clr2;
     border-radius: 3px;
     padding: 4px;
+    width: 270px;
+
     input {
-      width: 100%;
       margin-block-end: 4px;
+      width: 100%;
     }
     .btn-container {
       button {

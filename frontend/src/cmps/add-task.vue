@@ -15,7 +15,7 @@
       </div>
     </section>
     <a v-else @click="addTask" class="adding flex align-center">
-      <i class="el-icon-plus"></i>{{ addTxt }}
+      <i class="el-icon-plus"></i> {{ addTxt }}
     </a>
   </div>
 </template>

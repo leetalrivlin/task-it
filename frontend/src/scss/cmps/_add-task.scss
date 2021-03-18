@@ -1,0 +1,16 @@
+.add-task {
+    .adding {
+        display: block;
+        color: #6b778c;
+    }
+    .el-button--info {
+        margin-inline-end: 10px;
+    }
+    .el-textarea__inner {
+        padding: 6px 8px;
+        margin-block-end: 10px;
+    }
+    .el-icon-close:before{
+        font-size: rem(16px);
+    }
+}
