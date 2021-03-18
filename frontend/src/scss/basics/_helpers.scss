@@ -49,9 +49,24 @@
   border: none;
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.32);
-    // background-color: rgba(9, 30, 66, 0.08);
     border-color: #bfbfbfd6;
     color: #fff;
+  }
+}
+
+.el-btn-details {
+  background-color: $clr7;
+  border: none;
+  color: $clr1;
+  &:hover {
+    background-color: rgba(9, 30, 66, 0.116);
+    border-color: #bfbfbfd6;
+    color: $clr1;
+  }
+  &:focus {
+    background-color: rgba(9, 30, 66, 0.116);
+    border-color: #bfbfbfd6;
+    color: $clr1;
   }
 }
 

@@ -3,7 +3,9 @@
     <i class="el-icon-s-unfold d-icon task-details-icon"></i>
     <div class="d-content">
       <h1 class="task-details-header">Description</h1>
-      <a v-if="!isAddDesc" class="emptyDesc" href="#" @click="addDesc">{{ descriptionTxt }}</a>
+      <a v-if="!isAddDesc" class="emptyDesc" href="#" @click="addDesc">{{
+        descriptionTxt
+      }}</a>
       <form v-else action="">
         <textarea
           class="textarea"
@@ -33,7 +35,7 @@ export default {
   },
   data() {
     return {
-      isAddDesc: false
+      isAddDesc: false,
     };
   },
   computed: {
@@ -44,12 +46,13 @@ export default {
     }
   },
   methods: {
-    saveDesc() {
-      this.$emit('saveDescription', this.task);
-    },
-        addDesc() {
+    addDesc() {
       this.isAddDesc = true;
       if (!this.task.description) this.task.description = '';
+    },
+    saveDesc() {
+      this.$emit('saveDescription', this.task);
+      this.isAddDesc = false;
     }
   },
   created() {}

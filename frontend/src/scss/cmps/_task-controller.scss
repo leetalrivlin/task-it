@@ -1,5 +1,6 @@
 .cntrlr-container {
     width: 100%;
+    padding-inline-start: 10px;
     >* {
         width: 100%;
         margin-bottom: 10px;
@@ -7,15 +8,14 @@
     .btns-title {
         align-self: flex-start;
         font-size: rem(12px);
+        color: #5e6c84;
     }
-    .el-btn {
-        width: 100%;
-        margin: 0 0 10px 0;
-        background-color: $clr7;
-        text-align: left;
-        &:hover {
-            color: $clr1;
-            background-color: rgba(9, 30, 66, 0.116);
+    .nav-container {
+        button{
+            width: 100%;
+            margin: 0 0 10px 0;
+            text-align: left;
         }
-    }
+    }  
 }
+

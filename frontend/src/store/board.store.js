@@ -4,6 +4,7 @@ import {
   SOCKET_EMIT_USER_WATCH,
   SOCKET_EVENT_USER_UPDATED
 } from '../services/socket.service';
+const clone = require('rfdc')({ proto: true });
 
 // var localLoggedinUser = null;
 // if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null);
@@ -68,9 +69,21 @@ export const boardStore = {
       }
     },
 
-    async updateTask({ commit }, { task }) {
+    async updateTask({commit, dispatch, state}, { task }) {
       try {
         commit({ type: 'setTask', task });
+        // commit('updateTaskInBoard');
+        const boardCopy = clone(state.board);
+        const groupCopy = clone(state.group);
+        const taskIdx = groupCopy.tasks.findIndex(
+          ({ id }) => id === task.id
+        );
+        const groupIdx = boardCopy.groups.findIndex(
+          ({ id }) => id === groupCopy.id
+        );
+        groupCopy.tasks.splice(taskIdx, 1, task);
+        boardCopy.groups.splice(groupIdx, 1, groupCopy);
+        dispatch({type: 'updateBoard', board: boardCopy})
       } catch (err) {
         console.log('cannot update task', err);
       }

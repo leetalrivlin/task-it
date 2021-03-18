@@ -1,0 +1,22 @@
+// .el-progress-bar {
+//     margin: rem(18px), 0;
+// }
+
+form {
+  border-radius: 3px;
+  padding: 0;
+
+  input {
+    margin-block-start: rem(12px);
+    margin-block-end: rem(4px);
+    width: 100%;
+  }
+  .btn-container {
+    button {
+      margin-inline-end: 5px;
+    }
+    i {
+      cursor: pointer;
+    }
+  }
+}
