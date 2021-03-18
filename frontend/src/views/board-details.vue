@@ -7,7 +7,7 @@
           <group
             @saveTask="saveTask"
             @deleteTask="deleteTask"
-            @changeTitle="changeTitle"
+            @changeTitle="updateBoard"
             @updateGroup="updateBoard"
             :group="group"
           />
@@ -79,14 +79,13 @@ export default {
       const cloneBoard = clone(this.board);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
+
     getGroup(groupId) {
       return this.board.groups.find((group) => {
         return group.id === groupId;
       });
     },
-    changeTitle(group) {
-      console.log(group);
-    },
+   
   },
   computed: {
     board() {
