@@ -1,20 +1,16 @@
 <template>
   <div v-if="group" class="flex column group-content">
-    <div class="group-header">
+    <div class="group-header flex space-between">
       <input
         type="text"
         class="title flex align-center"
         v-model="group.title"
         @change="inputChange"
+        @keyup.enter.exact="inputChange"
       />
-       <i
-      class="el-icon-more"
-    >
-    </i>
+      <i class="el-icon-more" @click="deleteGroup"> </i>
     </div>
-    <!-- <h2 contenteditable="true">
-      {{ group.title }}
-    </h2> -->
+  
     <draggable
       class="clean-list"
       :list="group.tasks"
@@ -80,9 +76,9 @@ export default {
       console.log(task, 'task');
       this.$emit('deleteTask', task, this.group.id);
     },
-    deleteTask(task) {
-      console.log(task, 'task');
-      this.$emit('deleteTask', task, this.group.id);
+    deleteGroup() {
+      console.log(this.group, 'task');
+      // this.$emit('deleteGroup', this.group.id);
     },
     inputChange() {
       this.$emit('changeTitle', this.group);
