@@ -1,20 +1,28 @@
 <template>
-<draggable :list="group.tasks" :move="onMove" tag="ul" @start="isDragging=true" @end="isDragging=false" class="clean-list flex column group-content">
-
-  <!-- <ul class="clean-list flex column group-content"> -->
+  <section class=" flex column group-content">
     <h2 contenteditable="true">
       {{ group.title }}
     </h2>
-    <li
-      @click="taskClicked(task.id)"
-      v-for="task in group.tasks"
-      :key="task.id"
+    <draggable
+    class="clean-list"
+      :list="group.tasks"
+      :move="onMove"
+      tag="ul"
+      @start="isDragging = true"
+      @end="isDragging = false"
     >
-      <task :task="task" @deleteTask="deleteTask" />
-    </li>
-    <add-task @saveTask="saveTask" :group="group" />
-  <!-- </ul> -->
-</draggable>
+      <!-- <ul class="clean-list flex column group-content"> -->
+      <li
+        @click="taskClicked(task.id)"
+        v-for="task in group.tasks"
+        :key="task.id"
+      >
+        <task :task="task" @deleteTask="deleteTask" />
+      </li>
+      <add-task @saveTask="saveTask" :group="group" />
+      <!-- </ul> -->
+    </draggable>
+  </section>
 </template>
 
 <script>
@@ -26,7 +34,7 @@ export default {
   components: {
     task,
     addTask,
-    draggable
+    draggable,
   },
   name: 'group',
   props: {
@@ -36,8 +44,8 @@ export default {
   },
   data() {
     return {
-      newGroup : this.group,
-      isDragging:false
+      newGroup: this.group,
+      isDragging: false,
     };
   },
   methods: {
@@ -47,25 +55,21 @@ export default {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}/${taskId}`);
     },
-    saveTask(taskTitle , groupId){
-       this.$emit("saveTask",taskTitle,groupId );
+    saveTask(taskTitle, groupId) {
+      this.$emit('saveTask', taskTitle, groupId);
     },
-<<<<<<< HEAD
-     onMove({ relatedContext, draggedContext }) {
-       console.log('relatedContext',relatedContext);
-       console.log('draggedContext',draggedContext);
+    onMove({ relatedContext, draggedContext }) {
+      console.log('relatedContext', relatedContext);
+      console.log('draggedContext', draggedContext);
       const relatedElement = relatedContext.element;
       const draggedElement = draggedContext.element;
       return (
         (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
       );
-    }
-=======
-     deleteTask(task) {
-      this.$emit('deleteTask',task);
     },
-
->>>>>>> bfae99aa72c17c32f1c6004e200f1e8ea176da4d
+    deleteTask(task) {
+      this.$emit('deleteTask', task);
+    },
   },
   computed: {},
 };
