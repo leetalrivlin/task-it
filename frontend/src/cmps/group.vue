@@ -13,7 +13,7 @@
         class="group-menu"
         v-if="isGroupMenu"
         @deleteGroup="deleteGroup"
-        @closeMenu="closeMenu"
+        @closeMenu="toggleMenu"
       />
        </i>
     </div>

@@ -21,7 +21,6 @@
           @changeTitle="updateBoard"
           @updateGroup="updateBoard"
           @deleteGroup="deleteGroup"
-          @closeMenu="closeMenu"
           :group="group"
         />
 
@@ -113,9 +112,6 @@ export default {
       return this.board.groups.find((group) => {
         return group.id === groupId;
       });
-    },
-    closeMenu() {
-      console.log('hi');
     },
   },
   computed: {

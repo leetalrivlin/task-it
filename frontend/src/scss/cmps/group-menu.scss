@@ -6,12 +6,19 @@
   width: 200px;
   border-radius: 3px;
   z-index: 1;
-  height: 200px;
+  height: 100px;
   font-family: Segoe, serif;
   margin: -20px;
-
+  color: #5e6c84;
+  line-height: 40px;
+  border-bottom: 1px solid rgba(9,30,66,.13);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+  
   .group-details-header {
-    font-size: 16px;
+    font-size: rem(14px);
     line-height: 20px;
     padding: 8px 0;
     margin: 0 0 4px 50px;
@@ -19,6 +26,10 @@
 
   .close-btn {
     margin: 12px;
+  }
+
+  .menu-opt{
+    margin: 0  44px ;
   }
 
 
