@@ -1,5 +1,5 @@
 <template>
-  <section v-if="group" class="flex column group-content">
+  <div v-if="group" class="flex column group-content">
     <div class="group-header">
       <input
         type="text"
@@ -7,6 +7,10 @@
         v-model="group.title"
         @change="inputChange"
       />
+       <i
+      class="el-icon-more"
+    >
+    </i>
     </div>
     <!-- <h2 contenteditable="true">
       {{ group.title }}
@@ -15,7 +19,6 @@
       class="clean-list"
       :list="group.tasks"
       tag="ul"
-      :move="onMove"
       @change="moveTask"
       @start="isDragging = true"
       @end="isDragging = false"
@@ -27,9 +30,9 @@
       >
         <task :task="task" @deleteTask="deleteTask" />
       </li>
-      <add-task @saveTask="saveTask" :tasksLen="group.tasks.length"  />
+      <add-task @saveTask="saveTask" :tasksLen="group.tasks.length" />
     </draggable>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -52,7 +55,6 @@ export default {
   },
   data() {
     return {
-      newGroup: this.group,
       isDragging: false,
     };
   },
@@ -67,10 +69,8 @@ export default {
       this.$emit('saveTask', taskTitle, this.group.id);
     },
 
-    moveTask(ev) {
-      console.log('ev', ev.moved);
-      console.log(this.group);
-      this.$emit('updateGroup', clone(this.group))
+    moveTask() {
+      this.$emit('updateGroup', clone(this.group));
     },
 
     saveTask(taskTitle) {
@@ -80,23 +80,13 @@ export default {
       console.log(task, 'task');
       this.$emit('deleteTask', task, this.group.id);
     },
-
-    onMove({ relatedContext, draggedContext }) {
-      console.log('relatedContext', relatedContext);
-      console.log('draggedContext', draggedContext);
-      const relatedElement = relatedContext.element;
-      const draggedElement = draggedContext.element;
-      return (
-        (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
-      );
-    },
     deleteTask(task) {
       console.log(task, 'task');
       this.$emit('deleteTask', task, this.group.id);
     },
-    inputChange(){
-       this.$emit('changeTitle', this.group);
-    }
+    inputChange() {
+      this.$emit('changeTitle', this.group);
+    },
   },
   computed: {},
 };
