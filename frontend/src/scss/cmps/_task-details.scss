@@ -1,12 +1,13 @@
 .task-details {
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%);
   background-color: $clr3;
-  width: 55%;
+  width: 70%;
   min-height: 85%;
   border-radius: 3px;
+  margin-block-end: 100px;
 
   .cover-container {
     min-height: rem(116px);
@@ -30,7 +31,7 @@
   display: grid;
   height: 100%;
   grid-template-columns: rem(20.4px) 2fr 1fr rem(20.4px);
-  grid-template-rows: rem(80px) 1fr 1fr;
+  grid-template-rows: rem(80px) minmax(rem(80px), rem(150px)) 1fr;
 }
 
 .d-header {
