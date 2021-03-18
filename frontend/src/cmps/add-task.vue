@@ -1,31 +1,35 @@
 <template>
-  <div class="add-task" @click.stop>
-    <section v-if="isAdd">
-      <el-input
-        type="textarea"
-        :rows="2"
-        placeholder="Please input"
-        v-model="textarea"
-        autofocus
-      >
-      </el-input>
-      <div class="flex align-center">
-        <el-button type="info" @click="saveTask">Add Task</el-button>
-        <i class="el-icon-close" @click="closeTask"> </i>
-      </div>
-    </section>
-    <a v-else @click="addTask" class="adding flex align-center">
-      <i class="el-icon-plus"></i> {{ addTxt }}
-    </a>
-  </div>
+  <section class="add-task" @click.stop>
+    <transition name="slide-fade" mode="out-in">
+      <a v-if="!emptyTask" @click="addTask" class="adding flex align-center">
+        <i class="el-icon-plus"></i> {{ addTxt }}
+      </a>
+      <form v-else @submit.prevent="saveTask">
+        <textarea
+          @keydown.enter.exact.prevent
+          @keyup.enter.exact="saveTask"
+          placeholder="Enter a title for this task…"
+          maxlength="120"
+          v-model="emptyTask.title"
+          autofocus
+          class="textarea"
+        >
+        </textarea>
+        <div class="flex align-center">
+          <el-button type="info" @click="saveTask">Add Task</el-button>
+          <i class="el-icon-close" @click="closeTask"> </i>
+        </div>
+      </form>
+    </transition>
+  </section>
 </template>
 
 <script>
+import { boardService } from '../services/board.service.js';
 export default {
   data() {
     return {
-      isAdd: false,
-      textarea: "",
+      emptyTask: null,
     };
   },
   props: {
@@ -35,21 +39,19 @@ export default {
   },
   methods: {
     saveTask() {
-      if (!this.taskTxt) return;
-      this.$emit("saveTask", this.taskTxt, this.group.id);
-      this.textarea = "";
+      this.$emit('saveTask', this.emptyTask, this.group.id);
+      this.emptyTask = boardService.getEmptyTask();
     },
     addTask() {
-      this.isAdd = true;
+      this.emptyTask = boardService.getEmptyTask();
     },
     closeTask() {
-      this.isAdd = false;
-      this.textarea = "";
+      this.emptyTask = null;
     },
   },
   computed: {
     addTxt() {
-      return this.group.tasks.length ? "Add another task" : "Add a task";
+      return this.group.tasks.length ? 'Add another task' : 'Add a task';
     },
   },
 };

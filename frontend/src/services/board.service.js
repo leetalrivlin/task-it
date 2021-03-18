@@ -156,6 +156,7 @@ export const boardService = {
   getBoards,
   getById,
   getEmptyGroup,
+  getEmptyTask,
   updateBoard,
   // getTaskById,
   // getGroupById
@@ -238,5 +239,11 @@ function getEmptyGroup() {
     id: utilService.makeId(3),
     title: '',
     tasks: []
+  };
+}
+function getEmptyTask() {
+  return {
+    id: utilService.makeId(3),
+    title: '',
   };
 }
