@@ -1,6 +1,6 @@
 .board-header {
   height: rem(50px);
-  a{
+  a {
     border-radius: 3px;
     line-height: 32px;
     padding: 0 12px;
@@ -9,7 +9,20 @@
     text-transform: capitalize;
   }
 
-  .board-title{
+  .board-title {
     font-family: Segoe-Bold;
+  }
+  .board-menu-btn {
+    position: relative;
+  }
+  .slide-enter-active {
+    transition: all 0.3s ease;
+  }
+  .slide-leave-active {
+    transition: all 0.3s ease;
+  }
+  .slide-enter,
+  .slide-leave-to {
+    transform: translateX(350px);
   }
 }

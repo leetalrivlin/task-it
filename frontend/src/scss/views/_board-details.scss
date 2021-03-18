@@ -1,6 +1,7 @@
 .board-details {
-  overflow-x: scroll;
-  
+  .board-content {
+    overflow-x: scroll;
+  }
   .group-container {
     .group {
       background-color: $clr2;
@@ -10,5 +11,8 @@
       padding: 10px;
       height: fit-content;
     }
+  }
+  .drag-drop-move {
+    transition: transform 1s;
   }
 }
