@@ -85,7 +85,7 @@ export default {
         return group.id === groupId;
       });
     },
-   
+  
   },
   computed: {
     board() {

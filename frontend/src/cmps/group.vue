@@ -1,12 +1,16 @@
 <template>
   <section v-if="group" class="flex column group-content">
-    <div class="group-header">
+    <div class="group-header flex space-between">
       <input
         type="text"
         class="title flex align-center"
         v-model="group.title"
         @change="inputChange"
       />
+       <i
+      class="el-icon-more"
+    >
+    </i>
     </div>
     <!-- <h2 contenteditable="true">
       {{ group.title }}
