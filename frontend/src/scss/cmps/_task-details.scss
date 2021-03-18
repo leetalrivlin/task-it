@@ -28,30 +28,26 @@
 .details-grid {
   display: grid;
   height: 100%;
-  grid-template-columns: 5px 2fr 1fr 5px;
-  grid-template-rows: 60px 1fr 1fr;
+  grid-template-columns: rem(5px) 2fr 1fr rem(5px);
+  grid-template-rows: rem(80px) 1fr 1fr;
 }
 
 .d-header {
   grid-column: 2 / -2;
   grid-row: 1;
-  background-color: blue;
   display: grid;
   grid-template-columns: rem(50px) 1fr;
 
   .d-icon {
     grid-column: 1;
-    background-color: green;
   }
   .d-content {
     grid-column: 2;
-    background-color: rgb(60, 0, 128);
   }
 }
 .d-cntrlr {
   grid-column: 3;
   grid-row: 2 / -1;
-  background-color: aqua;
 }
 
 .d-desc {
@@ -62,36 +58,54 @@
 
   .d-icon {
     grid-column: 1;
-    background-color: green;
   }
   .d-content {
     grid-column: 2;
-    background-color: rgb(60, 0, 128);
   }
 }
-
-
 
 .d-checklist {
   grid-column: 2;
   grid-row: 3;
   display: grid;
-  background-color: rgb(251, 255, 0);
   grid-template-columns: rem(50px) 1fr;
   .d-icon {
     grid-column: 1;
-    background-color: green;
   }
   .d-content {
     grid-column: 2;
-    background-color: rgb(60, 0, 128);
   }
 }
 
 .details-layout {
   padding: 10px;
 }
+.task-title-container {
+  h1 {
+    font-size: rem(20px);
+    padding: 4px 0;
+  }
+  p {
+    color: #5e6c84;
+    font-size: rem(14px);
+  }
+}
 
 .task-list-link {
   color: $clr1;
+}
+
+.task-details-header {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 8px 0;
+  margin: 0 0 4px;
+}
+
+.task-details-icon {
+  line-height: 20px;
+  padding: 8px 0;
+  margin: 0 0 4px;
+  display: flex;
+  justify-content: center;
 }

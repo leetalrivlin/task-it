@@ -11,6 +11,7 @@ import {
 export const boardStore = {
   state: {
     board: null,
+    group: null,
     task: null
   },
   getters: {
@@ -31,7 +32,10 @@ export const boardStore = {
     setTaskById(state, {taskId}) {
       state.board.groups.forEach(group => {
         group.tasks.forEach(task => {
-          if (task.id === taskId) state.task = task;
+          if (task.id === taskId) {
+            state.task = task;
+            state.group = group;
+          }
         });
       });
     }
@@ -61,6 +65,14 @@ export const boardStore = {
         console.log(updatedBoard);
       } catch (err) {
         console.log('cant update board', err);
+      }
+    },
+
+    async updateTask({ commit }, { task }) {
+      try {
+
+      } catch(err) {
+        console.log('cannot update task',err);
       }
     }
   }

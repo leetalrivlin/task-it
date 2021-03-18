@@ -40,7 +40,6 @@ const gBoards = [
           {
             id: 'c102',
             title: 'Add Samples',
-            description: 'A description about our project',
           }
         ],
         style: {}

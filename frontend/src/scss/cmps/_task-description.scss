@@ -1,0 +1,11 @@
+.task-desc-container {
+    .emptyDesc {
+        color: $clr1;
+        background-color: rgba(9, 30, 66, 0.048);
+        padding: 8px 12px;
+        border-radius: 3px;
+        width: 100%;
+        min-height: 40px;
+        font-size: rem(14px);
+    }
+}
