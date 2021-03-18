@@ -58,6 +58,20 @@ button {
   cursor: pointer;
 }
 
+.textarea {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  resize: none;
+  outline: none;
+  border: none;
+  width: 250px;
+  height: 65px;
+  border-radius: 3px;
+  font-family: Segoe, serif;
+  letter-spacing: normal;
+  font-size: em(16px);
+}
+
 // button:hover {
 //   filter: brightness(85%);
 // }

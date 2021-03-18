@@ -1,8 +1,16 @@
 <template>
-  <section class="flex column group-content">
-    <h2 contenteditable="true">
+  <section v-if="group" class="flex column group-content">
+    <div class="group-header">
+      <input
+        type="text"
+        class="title flex align-center"
+        v-model="group.title"
+        @change="inputChange"
+      />
+    </div>
+    <!-- <h2 contenteditable="true">
       {{ group.title }}
-    </h2>
+    </h2> -->
     <draggable
       class="clean-list"
       :list="group.tasks"
@@ -19,7 +27,7 @@
       >
         <task :task="task" @deleteTask="deleteTask" />
       </li>
-      <add-task @saveTask="saveTask" :group="group" />
+      <add-task @saveTask="saveTask" :task="group.tasks.length" />
       <!-- </ul> -->
     </draggable>
   </section>
@@ -55,10 +63,10 @@ export default {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}/${taskId}`);
     },
-    saveTask(taskTitle, groupId) {
-      this.$emit('saveTask', taskTitle, groupId);
+    saveTask(taskTitle) {
+      this.$emit('saveTask', taskTitle, this.group.id);
     },
-  
+
     onMove({ relatedContext, draggedContext }) {
       console.log('relatedContext', relatedContext);
       console.log('draggedContext', draggedContext);
@@ -68,10 +76,13 @@ export default {
         (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
       );
     },
-    deleteTask(task ) {
-      console.log(task , 'task');
+    deleteTask(task) {
+      console.log(task, 'task');
       this.$emit('deleteTask', task, this.group.id);
     },
+    inputChange(){
+       this.$emit('changeTitle', this.group);
+    }
   },
   computed: {},
 };

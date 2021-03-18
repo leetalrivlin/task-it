@@ -33,13 +33,13 @@ export default {
     };
   },
   props: {
-    group: {
-      type: Object,
+    task: {
+      type: Number,
     },
   },
   methods: {
     saveTask() {
-      this.$emit('saveTask', this.emptyTask, this.group.id);
+      this.$emit('saveTask', this.emptyTask);
       this.emptyTask = boardService.getEmptyTask();
     },
     addTask() {
@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     addTxt() {
-      return this.group.tasks.length ? 'Add another task' : 'Add a task';
+      return this.task ? 'Add another task' : 'Add a task';
     },
   },
 };
