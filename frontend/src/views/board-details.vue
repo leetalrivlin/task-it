@@ -1,7 +1,7 @@
 <template>
-  <section v-if="board" class="main-layout main-content board-details">
+  <section v-if="board" class="main-layout board-details">
     <board-header :board="board" />
-    <section class="flex align-start board-content">
+    <section class="flex align-start main-content board-content">
       <draggable
         class="flex group-container"
         :list="board.groups"
@@ -11,18 +11,18 @@
         @end="isDragging = false"
         group="groups"
       >
-        <!-- <li v-for="group in board.groups" :key="group.id" class="group"> -->
-        <group
-          v-for="group in board.groups"
-          :key="group.id"
-          class="group"
-          @saveTask="saveTask"
-          @deleteTask="deleteTask"
-          @changeTitle="updateBoard"
-          @updateGroup="updateBoard"
-          :group="group"
-        />
-        <!-- </li> -->
+        <!-- <transition-group name="drag-drop"> -->
+          <group
+            v-for="group in board.groups"
+            :key="group.id"
+            class="group"
+            @saveTask="saveTask"
+            @deleteTask="deleteTask"
+            @changeTitle="updateBoard"
+            @updateGroup="updateBoard"
+            :group="group"
+          />
+        <!-- </transition-group> -->
       </draggable>
       <add-group @saveGroup="saveGroup" />
       <router-view />
@@ -102,7 +102,6 @@ export default {
         return group.id === groupId;
       });
     },
-  
   },
   computed: {
     board() {
