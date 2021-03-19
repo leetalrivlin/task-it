@@ -1,7 +1,7 @@
 <template>
   <header class="flex align-center space-between board-header">
-    <a class="el-btn board-title">{{ board.title }}</a>
-    <a class="el-btn board-menu-btn" @click="isMenuOpen = true">Menu</a>
+      <el-button class="el-btn board-title">{{ board.title }}</el-button>
+      <el-button class="el-btn board-menu-btn" icon="el-icon-more" @click="isMenuOpen = true">Show Menu</el-button>
     <transition name="slide">
       <board-menu v-if="isMenuOpen" @closeMenu="isMenuOpen = false" />
     </transition>
