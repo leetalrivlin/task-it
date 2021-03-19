@@ -11,7 +11,7 @@
         :show-text="showTxt"
       ></el-progress>
 
-      <a class="el-btn-details emptyChecklist">Add an item</a>
+      <a class="el-btn-details details-item-btn checklist-btn">Add an item</a>
       </div>
 
       <form @submit.prevent="saveChecklist" class="d-content">

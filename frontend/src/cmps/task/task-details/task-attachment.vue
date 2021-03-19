@@ -18,7 +18,7 @@
                   <p><a href="">Delete</a> - <a href="">Edit</a></p>
               </div>
           </li>
-          <a class="el-btn-details emptyChecklist">Add an attachment</a>
+          <a class="el-btn-details details-item-btn attachment-btn">Add an attachment</a>
       </div>
       
   </section>
