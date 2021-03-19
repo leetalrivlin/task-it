@@ -3,10 +3,10 @@
     <i class="el-icon-s-unfold d-icon task-details-icon"></i>
     <div class="d-content">
       <h1 class="task-details-header">Description</h1>
-      <a v-if="!isAddDesc" class="emptyDesc" href="" @click="addDesc">{{
+      <a v-if="!isAddDesc" class="emptyDesc" :class="descStyle" @click="addDesc">{{
         descriptionTxt
       }}</a>
-      <form v-else action="">
+      <form v-else >
         <textarea
           class="textarea"
           @keyup.enter.exact="saveDesc"
@@ -43,8 +43,13 @@ export default {
       return this.task.description
         ? this.task.description
         : 'Add a more detailed description...';
+    },
+    descStyle() {
+       const className = (this.task.description) ? 'fullDesc' : 'emptyDesc';
+       return className
     }
   },
+
   methods: {
     addDesc() {
       this.isAddDesc = true;

@@ -1,5 +1,5 @@
 <template>
-  <section v-if="task" class="task-details">
+  <section v-if="task" class="task-details" v-click-outside="closeDetails">
     <el-button
       class="el-close"
       icon="el-icon-close"
@@ -15,7 +15,7 @@
         <!-- <img src="../assets/icons/clock.svg" class="d-icon task-details-icon"> -->
         <div class="d-content task-title-container">
           <h1>{{ task.title }}</h1>
-          <p>In list <a href="#" class="task-list-link">List name</a></p>
+          <p>In list <a class="task-list-link">List name</a></p>
         </div>
       </header>
       <task-controller />
