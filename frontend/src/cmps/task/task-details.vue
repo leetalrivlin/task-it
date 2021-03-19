@@ -16,11 +16,11 @@
           <p>In list <a class="task-list-link">List name</a></p>
         </div>
       </header>
-      
-      <task-controller />
+
+      <task-controller @openChecklist="openChecklistCntrlr"/>
       <section class="flex column task-main">
         <task-description :task="task" @saveDescription="updateTask" />
-        <task-checklist :task="task" />
+        <task-checklist :task="task" :checklist="this.checklist"/>
         <task-attachment />
       </section>
     </section>
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+
+import { boardService } from '../../services/board.service';
 import taskController from '../task/task-details/task-controller.vue';
 import taskDescription from '../task/task-details/task-description.vue';
 import taskChecklist from '../task/task-details/task-checklist.vue';
@@ -51,6 +53,7 @@ export default {
   data() {
     return {
       cover: true,
+      checklist: null,
     };
   },
   computed: {
@@ -65,6 +68,10 @@ export default {
     },
     updateTask(updatedTask) {
       this.$store.dispatch({ type: 'updateTask', task: updatedTask });
+    },
+    openChecklistCntrlr() {
+      const emptyCheckList = boardService.getEmptyChecklist();
+      this.checklist = emptyCheckList;
     },
   },
   created() {

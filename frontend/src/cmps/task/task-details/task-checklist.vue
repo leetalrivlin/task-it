@@ -10,37 +10,42 @@
         type="line"
         :show-text="showTxt"
       ></el-progress>
+    </div>
 
-      <a class="el-btn-details details-item-btn checklist-btn">Add an item</a>
-      </div>
+    <div class="d-content">
+      <a
+        v-if="!isAddChecklist"
+        class="el-btn-details details-item-btn checklist-btn"
+        @click="isAddChecklist = true"
+        >Add an item</a
+      >
 
-      <form @submit.prevent="saveChecklist" class="d-content">
-        <el-input type="text" placeholder="Add an item"></el-input>
+      <form v-else>
+        <el-input type="text" placeholder="Add an item" v-model="todo"></el-input>
         <div class="btn-container">
           <el-button
             class="task-details-btn"
             type="info"
-            @click.prevent="addTodo"
+            @click.prevent="saveChecklist"
             >Add</el-button
           >
-          <i class="el-icon-close" @click="isAddTodo = false"></i>
+          <i class="el-icon-close" @click="isAddChecklist = false"></i>
         </div>
       </form>
-    <!-- <ul class="clean-list"> -->
+    </div>
+
     <el-checkbox
-      @change="checked = !checked"
+      @click="checked = !checked"
       v-model="checked"
       class="d-icon"
+      name="checkbox-item"
     ></el-checkbox>
-    <li class="clean-list">
-      <span class="d-content">Manage service support</span>
-    </li>
-    <!-- </ul> -->
+    <label class="d-content" for="checkbox-item">Manage service support</label>
   </section>
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faCheckSquare);
@@ -49,12 +54,16 @@ export default {
   props: {
     task: {
       type: Object
+    },
+    checklist: {
+      type: Object
     }
   },
   data() {
     return {
+      isAddChecklist: false,
       isChecklist: false,
-      isAddTodo: false,
+      todo: '',
       checked: false
     };
   },
@@ -68,13 +77,16 @@ export default {
       console.log('todo saved');
     },
     saveChecklist() {
-      console.log('checklist saved');
+      console.log('save todo:',this.todo);
     }
   },
-  mounted() {
+  created() {
+    // console.log('task in created', this.task);
+    console.log('empty checkbox in created', this.checklist);
     if (this.task.checklists && this.task.checklists.length > 0) {
       this.isChecklist = true;
     }
-  }
+  },
+  mounted() {}
 };
 </script>
