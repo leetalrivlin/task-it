@@ -11,8 +11,8 @@
 
 // COMPONENTS
 @import 'cmps/group-menu';
-@import 'cmps/board-header';
-@import 'cmps/board-menu';
+@import 'cmps/board/board-header';
+@import 'cmps/board/board-menu';
 @import 'cmps/board-preview';
 @import 'cmps/task-details';
 @import 'cmps/task-description';
@@ -26,9 +26,10 @@
 @import 'cmps/user-msg';
 @import 'cmps/add-group';
 @import 'cmps/add-task';
-@import 'cmps/about-board';
 @import 'cmps/task-cover';
 @import 'cmps/cover-controller';
+@import 'cmps/board/board-menu/menu-about';
+@import 'cmps/board/board-menu/menu-main';
 
 // VIEWS
 @import 'views/app';

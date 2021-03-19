@@ -1,0 +1,19 @@
+.menu-main {
+  .menu-main-item {
+    border-radius: 3px;
+    font-size: 0.875rem;
+    color: #4d5a76;
+
+    cursor: pointer;
+    cursor: pointer;
+    &:hover {
+      color: $clr1;
+      background-color: rgba(9, 30, 66, 0.08);
+    }
+
+    .icon {
+      font-size: rem(16px);
+      margin-inline-end: 5px;
+    }
+  }
+}
