@@ -14,6 +14,7 @@
         v-if="isGroupMenu"
         @deleteGroup="deleteGroup"
         @closeMenu="toggleMenu"
+        v-click-outside="toggleMenu"
       />
        </i>
     </div>

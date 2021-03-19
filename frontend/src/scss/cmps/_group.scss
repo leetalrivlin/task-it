@@ -20,8 +20,17 @@
                 box-shadow: inset 0 0 0 2px #464646;
             }
         }
-        .group-action{
+        .group-action {
             position: relative;
+            font-size: 1em;
+            color: #6b778c;
+            padding: 8px 8px;
+            border-radius: 3px;
+
+            &:hover {
+                color: #172b4d;
+                background-color: rgba(9, 30, 66, 0.08);
+            }
         }
     }
 }
