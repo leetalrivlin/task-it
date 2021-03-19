@@ -5,7 +5,6 @@
       <i class="el-icon-user icon"></i>
        <h4>Made by</h4> 
     </div>
-    
   </div>
 </template>
 
