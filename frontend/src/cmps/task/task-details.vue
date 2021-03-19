@@ -12,8 +12,8 @@
     </section>
     <section class="details-grid">
       <header class="d-header header-container">
-        <i class="el-icon-c-scale-to-original d-icon task-details-icon"></i>
-        <!-- <img src="../assets/icons/clock.svg" class="d-icon task-details-icon"> -->
+        <!-- <i class="el-icon-c-scale-to-original d-icon task-details-icon"></i> -->
+        <font-awesome-icon class="d-icon" icon="columns" />
         <div class="d-content task-title-container">
           <h1>{{ task.title }}</h1>
           <p>In list <a class="task-list-link">List name</a></p>
@@ -34,7 +34,10 @@ import taskController from '../task/task-details/task-controller.vue';
 import taskDescription from '../task/task-details/task-description.vue';
 import taskChecklist from '../task/task-details/task-checklist.vue';
 import taskAttachment from '../task/task-details/task-attachment.vue';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faColumns } from '@fortawesome/free-solid-svg-icons';
 
+library.add(faColumns);
 const clone = require('rfdc')({ proto: true });
 
 export default {

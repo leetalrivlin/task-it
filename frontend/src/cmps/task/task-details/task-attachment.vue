@@ -1,6 +1,7 @@
 <template>
   <section class="task-attachment-container d-desc">
-      <i class="el-icon-paperclip d-icon task-details-icon"></i>
+      <!-- <i class="el-icon-paperclip d-icon task-details-icon"></i> -->
+      <font-awesome-icon class="d-icon" icon="paperclip" />
       <div class="d-content">
           <h1 class="task-details-header">Attachment</h1>
           <!-- Should be replaced to one li with a v-for on the images: -->
@@ -25,5 +26,9 @@
 </template>
 
 <script>
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faPaperclip);
 export default {};
 </script>
