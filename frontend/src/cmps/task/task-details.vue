@@ -6,11 +6,10 @@
       circle
       @click="closeDetails"
     ></el-button>
-    <section v-if="cover" class="details-layout cover-container">
+    <section v-if="cover" class="cover-container">
       <el-button class="cover-btn el-btn">Cover</el-button>
     </section>
     <section class="details-grid">
-
       <header class="d-header header-container">
         <i class="el-icon-c-scale-to-original d-icon task-details-icon"></i>
         <!-- <img src="../assets/icons/clock.svg" class="d-icon task-details-icon"> -->
@@ -19,11 +18,11 @@
           <p>In list <a href="#" class="task-list-link">List name</a></p>
         </div>
       </header>
-
       <task-controller />
-      <task-description :task="task" @saveDescription="updateTask" />
-      <task-checklist :task="task"/>
-
+      <section class="flex column task-main">
+        <task-description :task="task" @saveDescription="updateTask" />
+        <task-checklist :task="task" />
+      </section>
     </section>
   </section>
 </template>
@@ -54,7 +53,7 @@ export default {
       this.$router.push(`/board/${boardId}`);
     },
     updateTask(updatedTask) {
-      this.$store.dispatch({type: 'updateTask', task: updatedTask});
+      this.$store.dispatch({ type: 'updateTask', task: updatedTask });
     }
   },
   created() {

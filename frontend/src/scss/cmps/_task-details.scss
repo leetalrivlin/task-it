@@ -7,13 +7,14 @@
   width: 70%;
   min-height: 85%;
   border-radius: 3px;
-  margin-block-end: 100px;
 
   .cover-container {
     min-height: rem(116px);
     background-color: lightcoral;
     display: flex;
     flex-direction: row-reverse;
+    padding: rem(8px);
+    border-radius: 3px 3px 0 0;
 
     .cover-btn {
       align-self: flex-end;
@@ -24,18 +25,32 @@
       }
     }
   }
+
+  .task-main {
+    >* {
+      margin-block-end: 20px;
+    }
+  }
 }
 
 //TASK DETAILS GRID
 .details-grid {
+  padding: 0 rem(20.4px);
   display: grid;
-  height: 100%;
-  grid-template-columns: rem(20.4px) 2fr 1fr rem(20.4px);
-  grid-template-rows: rem(80px) minmax(rem(80px), rem(150px)) 1fr;
+  grid-template-columns: 2fr 0.8fr;
+  // grid-template-columns: rem(20.4px) 2fr 1fr rem(20.4px);
+  grid-template-rows: rem(100px) minmax(rem(80px), 1fr);
+  // grid-template-rows: rem(80px) minmax(rem(80px), rem(150px)) 1fr;
+  column-gap: rem(20.4px);
+}
+
+.d-cntrlr {
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .d-header {
-  grid-column: 2 / -2;
+  grid-column: 1 / -1;
   grid-row: 1;
   display: grid;
   grid-template-columns: rem(30px) 1fr;
@@ -47,13 +62,9 @@
     grid-column: 2;
   }
 }
-.d-cntrlr {
-  grid-column: 3;
-  grid-row: 2 / -1;
-}
 
 .d-desc {
-  grid-column: 2;
+  grid-column: 1 / 2;
   grid-row: 2;
   display: grid;
   grid-template-columns: rem(30px) 1fr;
@@ -67,8 +78,8 @@
 }
 
 .d-checklist {
-  grid-column: 2;
-  grid-row: 3;
+  grid-column: 1 / 2;
+  grid-row: 2;
   display: grid;
   grid-template-columns: rem(30px) 1fr;
   grid-template-rows: 1fr 1fr;
@@ -78,22 +89,20 @@
   .d-content {
     grid-column: 2;
   }
-  .d-checklist {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
+  // .d-checklist {
+  //   grid-column: 1 / -1;
+  //   grid-row: 2;
+  // }
 }
 //////////
 
-.details-layout {
-  padding: 5px;
-}
 .header-container {
   margin: rem(14px) 0 rem(14px) 0;
   .task-title-container {
     h1 {
       font-size: rem(20px);
-      padding: 4px 0;
+      padding: 8px 0;
+      line-height: rem(20px);
     }
     p {
       color: #5e6c84;
@@ -118,6 +127,10 @@
   padding: 8px 0;
   margin: 0 0 4px;
   display: flex;
-  // justify-content: center;
   justify-content: flex-start;
+}
+
+.task-details-btn {
+  padding: rem(6px) rem(12px);
+  font-size: rem(14px);
 }

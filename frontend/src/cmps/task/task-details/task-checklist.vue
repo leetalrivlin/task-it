@@ -1,5 +1,5 @@
 <template>
-  <section class="d-checklist">
+  <section class="d-checklist checklist-container">
     <i class="el-icon-edit-outline d-icon task-details-icon"></i>
 
     <div class="d-content">
@@ -10,24 +10,32 @@
         type="line"
         :show-text="showTxt"
       ></el-progress>
+
+      <a class="el-btn-details emptyChecklist" href="">Add an item</a>
+
       <form @submit.prevent="saveChecklist">
         <el-input type="text" placeholder="Add an item"></el-input>
         <div class="btn-container">
-          <el-button type="info" @click.prevent="addTodo">Add</el-button>
+          <el-button
+            class="task-details-btn"
+            type="info"
+            @click.prevent="addTodo"
+            >Add</el-button
+          >
           <i class="el-icon-close" @click="isAddTodo = false"></i>
         </div>
       </form>
     </div>
-      <!-- <ul class="clean-list"> -->
-          <el-checkbox
-            @change="checked = !checked"
-            v-model="checked"
-            class="d-icon"
-          ></el-checkbox>
-        <li class="clean-list"><span class="d-content">Add Task</span>
-        </li>
-        <!-- <li>Manage service support</li> -->
-      <!-- </ul> -->
+    <!-- <ul class="clean-list"> -->
+    <el-checkbox
+      @change="checked = !checked"
+      v-model="checked"
+      class="d-icon"
+    ></el-checkbox>
+    <li class="clean-list">
+      <span class="d-content">Manage service support</span>
+    </li>
+    <!-- </ul> -->
   </section>
 </template>
 
@@ -40,6 +48,7 @@ export default {
   },
   data() {
     return {
+      isChecklist: false,
       isAddTodo: false,
       checked: false
     };
@@ -55,13 +64,12 @@ export default {
     },
     saveChecklist() {
       console.log('checklist saved');
-    },
-    renderCheckList() {
-      const checklists = this.task.checklists;
     }
   },
   mounted() {
-    if (!this.task.checklists) this.renderCheckList();
+    if (this.task.checklists && this.task.checklists.length > 0) {
+      this.isChecklist = true;
+    }
   }
 };
 </script>

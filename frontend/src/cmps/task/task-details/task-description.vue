@@ -3,7 +3,7 @@
     <i class="el-icon-s-unfold d-icon task-details-icon"></i>
     <div class="d-content">
       <h1 class="task-details-header">Description</h1>
-      <a v-if="!isAddDesc" class="emptyDesc" href="#" @click="addDesc">{{
+      <a v-if="!isAddDesc" class="emptyDesc" href="" @click="addDesc">{{
         descriptionTxt
       }}</a>
       <form v-else action="">
@@ -18,7 +18,7 @@
           v-model="task.description"
         ></textarea>
         <div class="btn-container">
-          <el-button type="info" @click.prevent="saveDesc">Save</el-button>
+          <el-button class="task-details-btn" type="info" @click.prevent="saveDesc">Save</el-button>
           <i class="el-icon-close" @click="isAddDesc = false"></i>
         </div>
       </form>
