@@ -12,8 +12,9 @@
       ></el-progress>
 
       <a class="el-btn-details emptyChecklist">Add an item</a>
+      </div>
 
-      <form @submit.prevent="saveChecklist">
+      <form @submit.prevent="saveChecklist" class="d-content">
         <el-input type="text" placeholder="Add an item"></el-input>
         <div class="btn-container">
           <el-button
@@ -25,7 +26,6 @@
           <i class="el-icon-close" @click="isAddTodo = false"></i>
         </div>
       </form>
-    </div>
     <!-- <ul class="clean-list"> -->
     <el-checkbox
       @change="checked = !checked"

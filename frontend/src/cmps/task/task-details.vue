@@ -22,6 +22,7 @@
       <section class="flex column task-main">
         <task-description :task="task" @saveDescription="updateTask" />
         <task-checklist :task="task" />
+        <task-attachment />
       </section>
     </section>
   </section>
@@ -31,12 +32,13 @@
 import taskController from '../task/task-details/task-controller.vue';
 import taskDescription from '../task/task-details/task-description.vue';
 import taskChecklist from '../task/task-details/task-checklist.vue';
+import taskAttachment from '../task/task-details/task-attachment.vue';
 
 const clone = require('rfdc')({ proto: true });
 
 export default {
   name: 'taskDetails',
-  components: { taskDescription, taskController, taskChecklist },
+  components: { taskDescription, taskController, taskChecklist, taskAttachment },
   data() {
     return {
       cover: true
