@@ -7,8 +7,8 @@
   right: 0;
   z-index: 1;
   border-radius: 3px;
-  box-shadow: 0 12px 24px -6px rgba(9, 30, 66, 0.25),
-    0 0 0 1px rgba(9, 30, 66, 0.08);
+  box-shadow: 0 12px 24px -6px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
+  overflow-y: scroll;
   .icon-back {
     font-weight: 600;
     position: absolute;
@@ -42,6 +42,7 @@
     height: 100%;
     padding: 12px 6px 12px 12px;
     position: relative;
+   
 
     .board-settings-menu {
       .board-settings-menu-item {
@@ -62,5 +63,12 @@
         }
       }
     }
+  }
+  .slide-in-enter-active {
+    transition: all 0.2s ease;
+  }
+ 
+  .slide-in-enter {
+    transform: translateX(350px);
   }
 }

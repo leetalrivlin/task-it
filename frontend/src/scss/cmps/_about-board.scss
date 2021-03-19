@@ -1,10 +1,10 @@
 .about-this-board-section {
     z-index: 2;
     background-color: #ebecf0;
-    height: 300px;
     position: absolute;
     top: 0;
-    width: 100%;
+   
+    
     .header {
         margin: 12px 0 12px 12px;
         font-size: 0.875rem;
@@ -13,5 +13,21 @@
             font-weight: 800;
             margin-inline-end: 10px;
         }
+    }
+    .avatar {
+        margin: 12px 0 12px 12px;
+    }
+    .info {
+        padding: 5px;
+    }
+    .d-content {
+        margin: 12px 0 12px 12px;
+        .details {
+            padding: 5px;
+        }
+    }
+    .discription{
+        margin: 12px 0 12px 12px;
+        max-width: 35ch;
     }
 }

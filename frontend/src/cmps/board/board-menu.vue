@@ -30,9 +30,15 @@
           <span>Search cards </span>
         </a>
       </div>
+      <transition name="slide-in">
       <about-board v-if="isAbout" />
+       </transition>
+       <transition name="slide-in">
       <change-bgc v-if="isBgc" />
+      </transition>
+       <transition name="slide-in">
       <search-board v-if="isSearch" />
+      </transition>
     </div>
   </section>
 </template>
