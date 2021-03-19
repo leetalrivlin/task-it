@@ -3,10 +3,9 @@
     <section class="cover-btn-cntr">
       <el-button
         icon="el-icon-set-up"
-        class="cover-btn el-btn"
+        class="el-btn-details fa-nav-icon cover-btn"
         @click="isEditCover = !isEditCover"
-      >
-        Cover
+      >Cover
       </el-button>
       <cover-controller v-if="isEditCover" @closeCntrl="isEditCover = false" />
     </section>
