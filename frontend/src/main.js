@@ -7,7 +7,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import './registerServiceWorker';
 import './scss/main.scss';
 import vClickOutside from 'v-click-outside'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(vClickOutside)
 Vue.use(ElementUI);
 Vue.config.productionTip = false;
