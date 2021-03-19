@@ -73,15 +73,17 @@ const board1 = {
   ],
 };
 const board2 = {
-  _id: 'b1012',
-  title: 'Trello Proj',
+  _id: 'b102',
+  title: 'Web Development',
   createdAt: 1589563468418,
   createdBy: {
     _id: 'u101',
-    fullname: 'Abi Abambi',
+    fullname: 'Chen Sella',
     imgUrl: 'http://some-img',
   },
-  style: {},
+  style: {
+    backgroundColor: '#91a8c4e3',
+  },
   labels: [
     {
       id: 'l101',
@@ -92,14 +94,19 @@ const board2 = {
   members: [
     {
       _id: 'u101',
-      fullname: 'Tal Tarablus',
+      fullname: 'Chen Sella',
+      imgUrl: 'https://www.google.com',
+    },
+    {
+      _id: 'u102',
+      fullname: 'Liz Amir',
       imgUrl: 'https://www.google.com',
     },
   ],
   groups: [
     {
       id: 'g103',
-      title: 'First Assignment',
+      title: 'Backlog',
       tasks: [
         {
           id: 'c105',
@@ -109,20 +116,60 @@ const board2 = {
           id: 'c106',
           title: 'Add Samples',
         },
+        {
+          id: 'c107',
+          title: 'Finish marketing new platform',
+          cover:{
+            backgroundColor :'#EF7564'
+          }
+        },
       ],
       style: {},
     },
     {
       id: 'g104',
-      title: 'Second Assignment',
+      title: 'New Features',
       tasks: [
         {
-          id: 'c107',
-          title: 'Do that',
+          id: 'c108',
+          title: 'Implement search bar',
+          cover:{
+            img:'https://images.unsplash.com/photo-1586769852836-bc069f19e1b6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80'
+          }
         },
         {
-          id: 'c108',
-          title: 'Do it',
+          id: 'c109',
+          title: ' Chrome Extensions for CSM tools',
+        },
+      ],
+      style: {},
+    },
+    {
+      id: 'g105',
+      title: 'Running Tasks',
+      tasks: [
+        {
+          id: 'c110',
+          title: 'Ikea Build',
+        },
+        {
+          id: 'c111',
+          title: 'Happy Hour!',
+        },
+      ],
+      style: {},
+    },
+    {
+      id: 'g106',
+      title: 'Fix & Upgrades',
+      tasks: [
+        {
+          id: 'c112',
+          title: 'Main Dashboard UI Edits',
+        },
+        {
+          id: 'c113',
+          title: 'Toolbar bug- when opening a task',
         },
       ],
       style: {},
