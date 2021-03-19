@@ -1,5 +1,30 @@
 .task-attachment-container {
-    img {
-        width: 30%;
+  .task-attachment {
+    margin-block-end: 10px;
+
+    .img-container {
+      width: 25%;
+      height: rem(100px);
+      background-color: $clr2;
+      border-radius: 3px;
+      img {
+          height: 100%;
+        object-fit: cover;
+      }
     }
+
+    .img-desc {
+      margin-inline-start: rem(20px);
+      font-size: rem(14px);
+      h1 {
+        font-size: rem(14px);
+        font-weight: 400;
+      }
+      a {
+        color: $clr1;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
 }
