@@ -8,6 +8,17 @@
 
   .task-content {
     padding: 6px 8px;
+    position: relative;
+    .task-title {
+      overflow-wrap: anywhere;
+      width: 93%;
+    }
+  }
+
+  .delete-task{
+      position: absolute;
+      right: 6px;
+      top: 11px;
   }
 
   .task-cover {

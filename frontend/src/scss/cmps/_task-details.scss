@@ -10,24 +10,27 @@
 
   .cover-container {
     min-height: rem(116px);
-    background-color: lightcoral;
-    display: flex;
     flex-direction: row-reverse;
-    padding: rem(8px);
     border-radius: 3px 3px 0 0;
 
     .cover-btn {
       align-self: flex-end;
+      position: absolute;
+      top: 130px;
+      right: 8px;
       &:hover {
         background-color: rgba(9, 30, 66, 0.08);
         border-color: #bfbfbfd6;
         color: $clr1;
       }
     }
+    .cover-img {
+      width: 250px;
+    }
   }
 
   .task-main {
-    >* {
+    > * {
       margin-block-end: 20px;
     }
   }
