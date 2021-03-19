@@ -1,7 +1,7 @@
 <template>
   <section v-if="board" class="main-layout board-details">
     <board-header :board="board" />
-    <section class="flex align-start main-content board-content">
+    <section class="flex align-start board-content">
       <draggable
         class="flex group-container"
         :list="board.groups"
