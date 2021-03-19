@@ -9,7 +9,7 @@
             border-radius: 3px;
             width: 100%;
             outline: none;
-            color: #172b4db8;
+            color: $clr1;
             font-weight: 600;
             font-size: rem(16px);
             border: none;
@@ -28,7 +28,7 @@
             border-radius: 3px;
 
             &:hover {
-                color: #172b4d;
+                color: $clr1;
                 background-color: rgba(9, 30, 66, 0.08);
             }
         }
