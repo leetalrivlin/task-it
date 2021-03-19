@@ -1,7 +1,11 @@
 <template>
   <section class="board-menu">
-    <header class="menu-header flex align-center justify-center ">
-      <i v-if="isBack" class="el-icon-arrow-left icon-back" @click="backMenu"></i>
+    <header class="menu-header flex align-center justify-center">
+      <i
+        v-if="isBack"
+        class="el-icon-arrow-left icon-back"
+        @click="backMenu"
+      ></i>
       <h4>{{ title }}</h4>
       <i class="el-icon-close close-menu" @click="closeMenue"></i>
     </header>
@@ -24,7 +28,7 @@
           <span>Search cards </span>
         </a>
       </div>
-      <about-board v-if="isAbout && isOption" />
+      <about-board v-if="isAbout" />
     </div>
   </section>
 </template>
@@ -37,11 +41,10 @@ library.add(faSquare);
 export default {
   data() {
     return {
-      isBack:false,
+      isBack: false,
       isAbout: false,
       isBgc: false,
       isSearch: false,
-      isOption: false,
     };
   },
   methods: {
@@ -53,23 +56,19 @@ export default {
       this.isAbout = true;
       this.isBack = true;
     },
-    backMenu(){
-       this.isAbout = false;
-      this.isOption =true;
+    backMenu() {
+      this.isAbout = false;
       this.isBack = false;
-      this.isBgc= false;
-      this.isSearch= false;
-    }
+      this.isBgc = false;
+      this.isSearch = false;
+    },
   },
   computed: {
     title() {
-      return !this.isOption
-        ? 'Menu'
-        : this.isAbout
-        ? 'About this board'
-        : this.isBgc
-        ? 'Change background'
-        : 'Search cards';
+      if (this.isAbout) return 'About this board';
+      else if (this.isBgc) return 'Change background';
+      else if (this.isSearch) return 'Search cards';
+      else return 'Menu';
     },
   },
   components: {
