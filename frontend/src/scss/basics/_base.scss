@@ -72,6 +72,20 @@ button {
   font-size: em(16px);
 }
 
-// button:hover {
-//   filter: brightness(85%);
-// }
+// SCROLL BAR
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+ }
+ ::-webkit-scrollbar-thumb {
+  background: linear-gradient(13deg, 14%, 64%);
+  border-radius: 15px;
+ }
+ ::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(13deg, #DBDBDB 14%,#dbdbdb 64%);
+ }
+ ::-webkit-scrollbar-track{
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: inset 7px 10px 12px #f0f0f0;
+ }
