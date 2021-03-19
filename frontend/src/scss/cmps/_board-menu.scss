@@ -8,14 +8,20 @@
   z-index: 1;
   border-radius: 3px;
   box-shadow: 0 12px 24px -6px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08);
-
+  .icon-back {
+    font-weight: 600;
+    position: absolute;
+    left: 22px;
+    top: 18px;
+  }
   .menu-header {
-    padding: 12px 0;
+    padding: 12px 6px 12px 12px;
+    text-align: center;
 
     .close-menu {
       position: absolute;
       right: 12px;
-      top: 13px;
+      top: 18px;
 
       font-size: rem(20px);
       cursor: pointer;
@@ -33,6 +39,7 @@
   .menu-content {
     height: 100%;
     padding: 12px 6px 12px 12px;
+    position: relative;
 
     .board-settings-menu {
       .board-settings-menu-item {

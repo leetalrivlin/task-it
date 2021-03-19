@@ -1,0 +1,16 @@
+.about-this-board-section {
+    z-index: 2;
+    background-color: #ebecf0;
+    height: 300px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    .header {
+    
+        margin: 5px;
+        .icon {
+            font-weight: 800;
+            margin-inline-end: 10px;
+        }
+    }
+}
