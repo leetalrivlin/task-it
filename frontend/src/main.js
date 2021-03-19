@@ -8,6 +8,8 @@ import './registerServiceWorker';
 import './scss/main.scss';
 import vClickOutside from 'v-click-outside'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Avatar from 'vue-avatar'
+
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(vClickOutside)
@@ -17,5 +19,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
+  Avatar,
   render: h => h(app)
 }).$mount('#app');

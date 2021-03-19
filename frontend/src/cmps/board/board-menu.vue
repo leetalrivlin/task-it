@@ -11,39 +11,36 @@
     </header>
     <hr class="board-menu-header-divider" />
     <div class="menu-content flex column">
-      <div class="board-settings-menu">
-        <a
-          class="board-settings-menu-item flex align-center"
-          @click="toggleAbout"
-        >
-          <i class="el-icon-info icon"></i>
-          <span>About this board </span>
-        </a>
-        <a class="board-settings-menu-item flex align-center"
-        @click="toggleBgc">
-          <font-awesome-icon icon="square" class="icon" />
-          <span>Change background </span>
-        </a>
-        <a class="board-settings-menu-item flex align-center"
-        @click="toggleSearch">
-          <i class="el-icon-search icon"></i>
-          <span>Search cards </span>
-        </a>
-      </div>
-      <about-board v-if="isAbout" />
-      <change-bgc v-if="isBgc" />
-      <search-board v-if="isSearch" />
+      <menu-main
+        v-if="isMain"
+        @openAbout="toggleAbout"
+        @openBgc="toggleBgc"
+        @openSearch="toggleSearch"
+      />
+      <transition name="slide-in">
+        <menu-about v-if="isAbout" />
+      </transition>
+      <transition name="slide-in">
+        <menu-bgc v-if="isBgc" />
+      </transition>
+      <transition name="slide-in">
+        <menu-search v-if="isSearch" />
+      </transition>
     </div>
   </section>
 </template>
 
 <script>
+import menuMain from './board-menu/menu-main.vue';
+import menuAbout from './board-menu/menu-about.vue';
+import menuBgc from './board-menu/menu-bgc';
+import menuSearch from './board-menu/menu-search.vue';
+
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import aboutBoard from './about-board';
-import changeBgc from './change-bgc';
-import searchBoard from './search-board';
+
 library.add(faSquare);
+
 export default {
   data() {
     return {
@@ -51,23 +48,28 @@ export default {
       isAbout: false,
       isBgc: false,
       isSearch: false,
+      isMain: true,
     };
   },
   methods: {
     closeMenue() {
-      console.log('closing');
       this.$emit('closeMenu');
     },
     toggleAbout() {
       this.isAbout = true;
+      this.isMain = false;
       this.isBack = true;
     },
     toggleBgc() {
       this.isBgc = true;
+      this.isMain = false;
+
       this.isBack = true;
     },
     toggleSearch() {
       this.isSearch = true;
+      this.isMain = false;
+
       this.isBack = true;
     },
     backMenu() {
@@ -75,6 +77,7 @@ export default {
       this.isBack = false;
       this.isBgc = false;
       this.isSearch = false;
+      this.isMain = true;
     },
   },
   computed: {
@@ -86,9 +89,10 @@ export default {
     },
   },
   components: {
-    aboutBoard,
-    changeBgc,
-    searchBoard,
+    menuMain,
+    menuBgc,
+    menuAbout,
+    menuSearch,
   },
 };
 </script>

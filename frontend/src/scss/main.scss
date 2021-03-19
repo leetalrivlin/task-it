@@ -9,24 +9,33 @@
 @import 'basics/base';
 @import 'basics/layout';
 
-// COMPONENTS
-@import 'cmps/group-menu';
-@import 'cmps/board-header';
-@import 'cmps/board-menu';
-@import 'cmps/board-preview';
-@import 'cmps/task-details';
-@import 'cmps/task-description';
-@import 'cmps/task-controller';
-@import 'cmps/task-checklist';
-@import 'cmps/task-attachment';
-@import 'cmps/group';
-@import 'cmps/task';
+// CMPS
 @import 'cmps/chart';
-@import 'cmps/main-header';
 @import 'cmps/user-msg';
-@import 'cmps/add-group';
+@import 'cmps/main-header';
+@import 'cmps/board/board-menu/menu-main';
+@import 'cmps/board/board-menu/menu-about';
+
+// CMPS- BOARD
+@import 'cmps/board/board-header';
+@import 'cmps/board/board-menu';
+@import 'cmps/board-preview';
+
+// CMPS- TASK
+@import 'cmps/task/task-details';
+@import 'cmps/task/task-description';
+@import 'cmps/task/task-controller';
+@import 'cmps/task/task-checklist';
+@import 'cmps/task/task-attachment';
+@import 'cmps/task/task-cover';
+@import 'cmps/task/cover-controller';
 @import 'cmps/add-task';
-@import 'cmps/about-board';
+@import 'cmps/task';
+
+//CMPS- GROUP
+@import 'cmps/group';
+@import 'cmps/group-menu';
+@import 'cmps/add-group';
 
 // VIEWS
 @import 'views/app';
