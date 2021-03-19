@@ -60,6 +60,29 @@
   background-color: $clr7;
   border: none;
   color: $clr1;
+
+  &:hover {
+    background-color: rgba(9, 30, 66, 0.116);
+    border-color: #bfbfbfd6;
+    color: $clr1;
+  }
+  &:focus {
+    background-color: rgba(9, 30, 66, 0.116);
+    border-color: #bfbfbfd6;
+    color: $clr1;
+  }
+}
+
+.details-item-btn {
+  margin-block-start: 12px;
+  display: block;
+  width: 100px;
+  text-align: center;
+  color: $clr1;
+  background-color: rgba(9, 30, 66, 0.048);
+  padding: 8px;
+  border-radius: 3px;
+  font-size: rem(14px);
   &:hover {
     background-color: rgba(9, 30, 66, 0.116);
     border-color: #bfbfbfd6;
@@ -95,6 +118,10 @@
 
 .ratio-16-9 {
   @include aspect-ratio(100, 56);
+}
+
+.ratio-attachment {
+  @include aspect-ratio(100, 70);
 }
 
 .ratio-square {

@@ -1,29 +1,11 @@
 .checklist-container {
-  .emptyChecklist {
-    margin-block-start: 12px;
-    display: block;
+  .checklist-btn {
     width: 100px;
-    text-align: center;
-    color: $clr1;
-    background-color: rgba(9, 30, 66, 0.048);
-    padding: 8px;
-    border-radius: 3px;
-    font-size: rem(14px);
-    &:hover {
-      background-color: rgba(9, 30, 66, 0.116);
-      border-color: #bfbfbfd6;
-      color: $clr1;
-    }
-    &:focus {
-      background-color: rgba(9, 30, 66, 0.116);
-      border-color: #bfbfbfd6;
-      color: $clr1;
-    }
   }
   form {
     border-radius: 3px;
     padding: 0;
-  
+
     input {
       margin-block-start: rem(12px);
       margin-block-end: rem(12px);
@@ -39,5 +21,3 @@
     }
   }
 }
-
-
