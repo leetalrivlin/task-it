@@ -11,8 +11,9 @@
     </section>
     <section class="details-grid">
 
-      <header class="d-header">
+      <header class="d-header header-container">
         <i class="el-icon-c-scale-to-original d-icon task-details-icon"></i>
+        <!-- <img src="../assets/icons/clock.svg" class="d-icon task-details-icon"> -->
         <div class="d-content task-title-container">
           <h1>{{ task.title }}</h1>
           <p>In list <a href="#" class="task-list-link">List name</a></p>

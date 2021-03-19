@@ -26,7 +26,7 @@
   }
 }
 
- //TASK DETAILS GRID
+//TASK DETAILS GRID
 .details-grid {
   display: grid;
   height: 100%;
@@ -88,14 +88,17 @@
 .details-layout {
   padding: 5px;
 }
-.task-title-container {
-  h1 {
-    font-size: rem(20px);
-    padding: 4px 0;
-  }
-  p {
-    color: #5e6c84;
-    font-size: rem(14px);
+.header-container {
+  margin: rem(14px) 0 rem(14px) 0;
+  .task-title-container {
+    h1 {
+      font-size: rem(20px);
+      padding: 4px 0;
+    }
+    p {
+      color: #5e6c84;
+      font-size: rem(14px);
+    }
   }
 }
 
