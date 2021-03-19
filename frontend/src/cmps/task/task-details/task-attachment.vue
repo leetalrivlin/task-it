@@ -1,6 +1,5 @@
 <template>
   <section class="task-attachment-container d-desc">
-      <!-- <i class="el-icon-paperclip d-icon task-details-icon"></i> -->
       <font-awesome-icon class="d-icon" icon="paperclip" />
       <div class="d-content">
           <h1 class="task-details-header">Attachment</h1>

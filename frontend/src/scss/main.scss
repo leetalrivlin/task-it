@@ -9,6 +9,16 @@
 @import 'basics/base';
 @import 'basics/layout';
 
+// VIEWS
+@import 'views/app';
+@import 'views/board-details';
+@import 'views/board-list';
+@import 'views/board-preview';
+@import 'views/chat';
+@import 'views/home';
+@import 'views/login-signup';
+@import 'views/user-details';
+
 // CMPS
 @import 'cmps/chart';
 @import 'cmps/user-msg';
@@ -23,29 +33,16 @@
 
 // CMPS- TASK
 @import 'cmps/task/task-details';
-@import 'cmps/task/task-description';
-@import 'cmps/task/task-controller';
-@import 'cmps/task/task-checklist';
-@import 'cmps/task/task-attachment';
-@import 'cmps/task/task-cover';
-@import 'cmps/task/cover-controller';
-@import 'cmps/add-task';
-@import 'cmps/task';
+@import 'cmps/task/task-details/task-description';
+@import 'cmps/task/task-details/task-controller';
+@import 'cmps/task/task-details/task-checklist';
+@import 'cmps/task/task-details/task-attachment';
+@import 'cmps/task/task-details/task-cover';
+@import 'cmps/task/task-details/cover-controller';
 
 //CMPS- GROUP
 @import 'cmps/group';
 @import 'cmps/group-menu';
 @import 'cmps/add-group';
-
-// VIEWS
-@import 'views/app';
-@import 'views/board-details';
-@import 'views/board-list';
-@import 'views/board-preview';
-@import 'views/chat';
-@import 'views/home';
-@import 'views/login-signup';
-@import 'views/user-details';
-
-
-
+@import 'cmps/add-task';
+@import 'cmps/task';

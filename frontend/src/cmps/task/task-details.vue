@@ -8,14 +8,15 @@
     ></el-button>
     <task-cover v-if="task.cover" :task="task"/>
     <section class="details-grid">
+
       <header class="d-header header-container">
-        <!-- <i class="el-icon-c-scale-to-original d-icon task-details-icon"></i> -->
         <font-awesome-icon class="d-icon" icon="columns" />
         <div class="d-content task-title-container">
           <h1>{{ task.title }}</h1>
           <p>In list <a class="task-list-link">List name</a></p>
         </div>
       </header>
+      
       <task-controller />
       <section class="flex column task-main">
         <task-description :task="task" @saveDescription="updateTask" />

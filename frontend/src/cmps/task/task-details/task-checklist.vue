@@ -1,6 +1,5 @@
 <template>
   <section class="d-checklist checklist-container">
-    <!-- <i class="el-icon-edit-outline d-icon task-details-icon"></i> -->
     <font-awesome-icon class="d-icon" icon="check-square" />
 
     <div class="d-content">

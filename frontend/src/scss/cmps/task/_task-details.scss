@@ -20,9 +20,7 @@
   padding: 0 rem(20.4px);
   display: grid;
   grid-template-columns: 2fr 0.8fr;
-  // grid-template-columns: rem(20.4px) 2fr 1fr rem(20.4px);
   grid-template-rows: rem(100px) minmax(rem(80px), 1fr);
-  // grid-template-rows: rem(80px) minmax(rem(80px), rem(150px)) 1fr;
   column-gap: rem(20.4px);
 }
 
@@ -88,19 +86,25 @@
     p {
       color: #5e6c84;
       font-size: rem(14px);
+
+      .task-list-link {
+        color: $clr1;
+      }
     }
   }
 }
 
-.task-list-link {
-  color: $clr1;
-}
-
+// TASK DETAILS HELPERS
 .task-details-header {
   font-size: 16px;
   line-height: 20px;
   padding: 8px 0;
   margin: 0 0 4px;
+}
+
+.task-details-btn {
+  padding: rem(6px) rem(12px);
+  font-size: rem(14px);
 }
 
 // .task-details-icon {
@@ -110,8 +114,3 @@
 //   display: flex;
 //   justify-content: flex-start;
 // }
-
-.task-details-btn {
-  padding: rem(6px) rem(12px);
-  font-size: rem(14px);
-}
