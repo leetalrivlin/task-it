@@ -13,7 +13,7 @@
       </p>
       <i
         v-if="taskOnFocus"
-        class="el-icon-close delete-task"
+        class="el-icon-delete delete-task"
         @click.stop="deleteTask"
       >
       </i>
@@ -43,7 +43,6 @@ export default {
   },
   computed: {
     coverColor() {
-      console.log(this.task.cover.backgroundColor);
       return this.task.cover.backgroundColor
         ? { backgroundColor: this.task.cover.backgroundColor }
         : {};
