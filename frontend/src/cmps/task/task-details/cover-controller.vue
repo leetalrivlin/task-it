@@ -2,7 +2,7 @@
   <section class="cover-controller">
     <header class="flex align-center justify-center">
       <p>Cover</p>
-      <i class="el-icon-close close-cntrl" @click="closeController"></i>
+      <i class="el-icon-close close-cntrl" @click.stop="closeController"></i>
     </header>
     <hr class="board-menu-header-divider" />
     <main>

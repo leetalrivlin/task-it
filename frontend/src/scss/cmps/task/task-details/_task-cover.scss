@@ -4,24 +4,20 @@
   flex-direction: row-reverse;
   border-radius: 3px 3px 0 0;
 
-  .cover-btn-cntr {
+  .cover-btn {
     position: absolute;
     right: 8px;
     bottom: 8px;
-    .cover-btn {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      align-self: flex-end;
-      background-color: hsla(0, 0%, 100%, 0.24);
-      &:hover {
-        background-color: rgba(9, 30, 66, 0.08);
-      }
-      &:focus {
-        background-color: rgba(9, 30, 66, 0.08);
-      }
+    align-self: flex-end;
+    background-color: hsla(0, 0%, 100%, 0.24);
+    &:hover {
+      background-color: rgba(9, 30, 66, 0.08);
+    }
+    &:focus {
+      background-color: rgba(9, 30, 66, 0.08);
     }
   }
+
   .cover-img {
     width: 250px;
   }
