@@ -24,7 +24,7 @@
         <el-input
           type="text"
           placeholder="Add an item"
-          v-model="todo"
+          v-model="todo.txt"
         ></el-input>
         <div class="btn-container">
           <el-button
@@ -38,8 +38,8 @@
       </form>
     </div>
 
-    <ul v-if="todos && todos.length > 0" class="clean-list">
-      <checklist-todo v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <ul v-if="checklist.todos" class="clean-list">
+      <checklist-todo v-for="todo in checklist.todos" :key="todo.id" :todo="todo" />
     </ul>
 
   </section>
@@ -49,6 +49,8 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
 import checklistTodo from './checklist-todo.vue';
+import { boardService } from '../../../services/board.service';
+const clone = require('rfdc')({ proto: true });
 
 library.add(faCheckSquare);
 
@@ -62,8 +64,9 @@ export default {
   data() {
     return {
       isAddTodos: false,
-      todos: [],
-      todo: '',
+      // todos: [],
+      todo: null,
+      // checklist: null,
     };
   },
   computed: {
@@ -76,15 +79,21 @@ export default {
       console.log('todo saved');
     },
     saveChecklist() {
-      const copyTodo = this.todo.slice();
-      this.todos.push(copyTodo);
-      this.todo = '';
+      const copyTodo = clone(this.todo);
+      this.checklist.todos.push(copyTodo)
+      this.$emit('addedTodo', this.checklist);
+      this.setTodo();
+    },
+    setTodo() {
+      const emptyTodo = boardService.getEmptyTodo();
+      this.todo = emptyTodo;
     }
   },
   created() {
-    if (this.checklist.todos && this.checklist.todos.length > 0) {
-      this.todos = this.checklist.todos;
-    }
+    // if (this.task.checklist.todos && this.task.checklist.todos.length > 0) {
+    //   this.todos = this.task.checklist.todos;
+    // }
+    this.setTodo();
   },
   mounted() {}
 };

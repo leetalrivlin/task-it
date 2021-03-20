@@ -1,3 +1,15 @@
-* {
-    box-sizing: border-box;
+.checkbox {
+  cursor: pointer;
+  &::after {
+    content: '☐';
+    font-size: 25px;
+  }
+  &.done::after {
+    content: '☑︎';
+    font-size: 25px;
+    width: 25px;
+    height: 25px;
+    background-color: #5aa4cf;
+    color: white;
+  }
 }

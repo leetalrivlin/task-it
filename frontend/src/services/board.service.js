@@ -207,6 +207,7 @@ export const boardService = {
   getEmptyTask,
   updateBoard,
   getEmptyChecklist,
+  getEmptyTodo,
   // getTaskById,
   // getGroupById
 };
@@ -299,5 +300,13 @@ function getEmptyChecklist() {
     id: utilService.makeId(3),
     title: '',
     todos: []
+  };
+}
+
+function getEmptyTodo() {
+  return {
+    id: utilService.makeId(3),
+    txt: '',
+    isDone: false,
   };
 }

@@ -28,14 +28,14 @@
       />
       <section class="flex column task-main">
         <task-description :task="task" @saveDescription="updateTask" />
-        <li v-if="isChecklists" class="clean-list">
+        <ul v-if="task.checklists" class="clean-list">
           <task-checklist
-            v-for="checklist in checklists"
+            v-for="checklist in task.checklists"
             :key="checklist.id"
-            :task="task"
             :checklist="checklist"
+            @addedTodo="updateChecklist"
           />
-        </li>
+        </ul>
         <task-attachment />
       </section>
     </section>
@@ -62,15 +62,16 @@ export default {
     taskController,
     taskChecklist,
     taskAttachment,
-    taskCover,
+    taskCover
   },
   data() {
     return {
-      isChecklists: false,
+      // isShowChecklist: false
     };
   },
   computed: {
     task() {
+      console.log('task',this.$store.getters.task);
       return clone(this.$store.getters.task);
     },
     // group() {
@@ -83,9 +84,12 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    },
+    }
   },
   methods: {
+    setDetails() {
+      this.isChecklist();
+    },
     closeDetails() {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}`);
@@ -93,10 +97,24 @@ export default {
     updateTask(updatedTask) {
       this.$store.dispatch({ type: 'updateTask', task: updatedTask });
     },
+    isChecklist() {
+      console.log('this.task.checklists',this.task.checklists);
+      this.isShowChecklist = (this.task.checklists) ?  true : false;
+    },
     showEmptyChecklist() {
       const emptyCheckList = boardService.getEmptyChecklist();
-      this.checklists.push(emptyCheckList);
-      this.isChecklists = true;
+      if (!this.task.checklists) this.task.checklists = [];
+      this.task.checklists.push(emptyCheckList);
+      this.updateTask(this.task);
+      console.log('this.task',this.task);
+      // this.isShowChecklist = true;
+    },
+    updateChecklist(updatedChecklist) {
+      // this.task.checklists.push(updatedChecklist);
+      const checklistIdx = this.task.checklists.findIndex(({id}) => id === updatedChecklist.id)
+      this.task.checklists[checklistIdx] = updatedChecklist;
+      console.log('this.task', this.task);
+      this.updateTask(this.task);
     },
     setCover(color) {
       this.task.cover = {};
@@ -107,11 +125,14 @@ export default {
       this.task.cover = {};
       this.task.cover.img = imgUrl;
       this.updateTask(this.task);
-    },
+    }
   },
   created() {
     const taskId = this.$route.params.taskId;
     this.$store.commit({ type: 'setTaskById', taskId });
   },
+  mounted() {
+    this.setDetails();
+  }
 };
 </script>
