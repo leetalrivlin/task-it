@@ -68,10 +68,8 @@ export default {
       }
     },
     saveGroup(newGroup) {
-      console.log(newGroup);
       this.board.groups.push(newGroup);
       const cloneBoard = clone(this.board);
-      console.log('cloneBoard', cloneBoard);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
     saveTask(taskTitle, groupId) {
@@ -86,10 +84,8 @@ export default {
       this.updateBoard(group);
     },
     deleteGroup(groupId) {
-      console.log(groupId, 'groupId');
       const group = this.getGroup(groupId);
       const groupIdx = this.board.groups.findIndex(({ id }) => id === groupId);
-      console.log(groupIdx);
       this.board.groups.splice(groupIdx, 1);
       const cloneBoard = clone(this.board);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });

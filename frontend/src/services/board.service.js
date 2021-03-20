@@ -215,7 +215,6 @@ async function getBoards() {
   var boards;
   try {
     boards = await storageService.query(BOARD_URL);
-    console.log(boards);
     if (!boards.length || !boards) {
       boards = gBoards;
       localStorage.setItem(BOARD_URL, JSON.stringify(boards));

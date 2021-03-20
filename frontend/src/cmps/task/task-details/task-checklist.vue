@@ -78,14 +78,10 @@ export default {
     saveChecklist() {
       const copyTodo = this.todo.slice();
       this.todos.push(copyTodo);
-      console.log('copyTodo', copyTodo);
       this.todo = '';
-      console.log('copyTodo', copyTodo);
     }
   },
   created() {
-    console.log('todos in created', this.todos);
-    console.log('empty checkbox in created', this.checklist);
     if (this.checklist.todos && this.checklist.todos.length > 0) {
       this.todos = this.checklist.todos;
     }

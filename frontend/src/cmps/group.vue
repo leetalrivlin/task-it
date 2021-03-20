@@ -71,8 +71,6 @@ export default {
       this.isGroupMenu=!this.isGroupMenu;
     },
     taskClicked(taskId) {
-      console.log('taskId', taskId);
-      console.log(this.$route.params.boardId);
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}/${taskId}`);
     },
@@ -88,7 +86,6 @@ export default {
       this.$emit('saveTask', taskTitle, this.group.id);
     },
     deleteTask(task) {
-      console.log(task, 'task');
       this.$emit('deleteTask', task, this.group.id);
     },
     deleteGroup() {

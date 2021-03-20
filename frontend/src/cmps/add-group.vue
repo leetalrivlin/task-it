@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     saveGroup() {
-      console.log('saving');
       this.$emit('saveGroup', this.emptyGroup);
       this.emptyGroup =  boardService.getEmptyGroup();
     },

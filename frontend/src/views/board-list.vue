@@ -10,7 +10,6 @@
 export default {
   name: "boardList",
   created() {
-    console.log("boardlist was created");
     this.$store.dispatch("loadBoards");
   },
   methods:{

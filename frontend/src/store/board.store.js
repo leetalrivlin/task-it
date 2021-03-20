@@ -61,7 +61,6 @@ export const boardStore = {
       try {
         commit({ type: 'setBoard', board });
         const updatedBoard = await boardService.updateBoard(board);
-        console.log(updatedBoard);
       } catch (err) {
         console.log('cant update board', err);
       }

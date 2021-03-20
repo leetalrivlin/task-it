@@ -80,7 +80,6 @@ export default {
   },
   methods: {
     onOpenChecklist() {
-      console.log('clicked checkbox in controller');
       this.$emit('openChecklist');
     },
     addCover(color) {

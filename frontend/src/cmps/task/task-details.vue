@@ -22,7 +22,7 @@
       />
       <section class="flex column task-main">
         <task-description :task="task" @saveDescription="updateTask" />
-        <li v-if="checklists && checklists.length" class="clean-list">
+        <li v-if="isChecklists" class="clean-list">
           <task-checklist
             v-for="checklist in checklists"
             :key="checklist.id"
@@ -56,11 +56,11 @@ export default {
     taskController,
     taskChecklist,
     taskAttachment,
-    taskCover,
+    taskCover
   },
   data() {
     return {
-      checklists: [],
+      isChecklists: false
     };
   },
   computed: {
@@ -75,6 +75,9 @@ export default {
     cover() {
       return this.task.cover ? true : false;
     },
+    checklists() {
+      return this.task.checklists ? this.task.checklists : [];
+    }
   },
   methods: {
     closeDetails() {
@@ -87,29 +90,17 @@ export default {
     showEmptyChecklist() {
       const emptyCheckList = boardService.getEmptyChecklist();
       this.checklists.push(emptyCheckList);
-      console.log('this.checklists', this.checklists);
-    },
-    showChecklists() {
-      console.log('showing checklist');
-      this.checklists = this.task.checklists;
-      console.log('this.checklists', this.checklists);
+      this.isChecklists = true;
     },
     setCover(color) {
-      console.log('color from task-details', color);
       this.task.cover = {};
       this.task.cover.backgroundColor = color;
       this.updateTask(this.task);
-    },
-  },
-  async created() {
-    try {
-      const taskId = this.$route.params.taskId;
-      await this.$store.commit({ type: 'setTaskById', taskId });
-      if (this.task.checklists && this.task.checklists.length > 0)
-        this.showChecklists();
-    } catch (err) {
-      console.log('error in getting the task', err);
     }
   },
+  created() {
+    const taskId = this.$route.params.taskId;
+    this.$store.commit({ type: 'setTaskById', taskId });
+  }
 };
 </script>

@@ -34,7 +34,6 @@ export default {
     editColor(pickedColor) {
       this.task.cover.backgroundColor = pickedColor;
       this.$emit('saveColor', this.task);
-      console.log(this.task.cover.backgroundColor);
     },
   },
   computed: {
