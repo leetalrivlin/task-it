@@ -120,7 +120,6 @@ export default {
     },
   },
   mounted() {
-    console.log('boardDetails is mounted');
     this.boardId = this.$route.params.boardId;
     this.getBoard();
   },

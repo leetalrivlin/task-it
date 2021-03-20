@@ -67,10 +67,23 @@
   // grid-template-rows: 1fr 1fr;
   .d-icon {
     grid-column: 1;
-    margin: 0;
+    margin: 9px 0;
   }
   .d-content {
     grid-column: 2;
+  }
+  .d-todos {
+    grid-column: 1 / 2;
+    display: grid;
+    // grid-template-columns: rem(30px) 1fr;
+    .d-todo-icon {
+      grid-column: 1;
+      margin: 0;
+    }
+    .d-todo-content {
+      grid-column: 2;
+      display: inline;
+    }
   }
 }
 //////////

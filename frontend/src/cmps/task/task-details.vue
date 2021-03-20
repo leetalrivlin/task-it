@@ -6,9 +6,8 @@
       circle
       @click="closeDetails"
     ></el-button>
-    <task-cover v-if="task.cover" :task="task"/>
+    <task-cover v-if="task.cover" :task="task" />
     <section class="details-grid">
-
       <header class="d-header header-container">
         <font-awesome-icon class="d-icon" icon="columns" />
         <div class="d-content task-title-container">
@@ -17,10 +16,12 @@
         </div>
       </header>
 
-      <task-controller @openChecklist="openChecklistCntrlr"/>
+      <task-controller @openChecklist="showEmptyChecklist" />
       <section class="flex column task-main">
         <task-description :task="task" @saveDescription="updateTask" />
-        <task-checklist :task="task" :checklist="this.checklist"/>
+        <li v-if="checklists && checklists.length" class="clean-list">
+        <task-checklist v-for="checklist in checklists" :key="checklist.id"  :task="task" :checklist="checklist"/>
+        </li>
         <task-attachment />
       </section>
     </section>
@@ -28,14 +29,13 @@
 </template>
 
 <script>
-
 import { boardService } from '../../services/board.service';
 import taskController from '../task/task-details/task-controller.vue';
 import taskDescription from '../task/task-details/task-description.vue';
 import taskChecklist from '../task/task-details/task-checklist.vue';
 import taskAttachment from '../task/task-details/task-attachment.vue';
-import taskCover from '../task/task-details/task-cover.vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import taskCover from '../task/task-details/task-cover.vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
 import { faColumns } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faColumns);
@@ -53,13 +53,13 @@ export default {
   data() {
     return {
       cover: true,
-      checklist: null,
+      checklists: [],
     };
   },
   computed: {
     task() {
       return clone(this.$store.getters.task);
-    },
+    }
   },
   methods: {
     closeDetails() {
@@ -69,14 +69,26 @@ export default {
     updateTask(updatedTask) {
       this.$store.dispatch({ type: 'updateTask', task: updatedTask });
     },
-    openChecklistCntrlr() {
+    showEmptyChecklist() {
       const emptyCheckList = boardService.getEmptyChecklist();
-      this.checklist = emptyCheckList;
+      this.checklists.push(emptyCheckList);
+      console.log('this.checklists',this.checklists);
     },
+    showChecklists() {
+      console.log('showing checklist');
+      this.checklists = this.task.checklists;
+      console.log('this.checklists',this.checklists);
+    }
   },
-  created() {
-    const taskId = this.$route.params.taskId;
-    this.$store.commit({ type: 'setTaskById', taskId });
-  },
+  async created() {
+    try {
+      const taskId = this.$route.params.taskId;
+      await this.$store.commit({ type: 'setTaskById', taskId });
+      if (this.task.checklists && this.task.checklists.length > 0)
+        this.showChecklists();
+    } catch (err) {
+      console.log('error in getting the task', err);
+    }
+  }
 };
 </script>
