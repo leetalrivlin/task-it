@@ -1,8 +1,29 @@
 .attachments {
   margin-block-end: 10px;
   p {
-    margin-block-end: 5px;
+    margin-block-end: 10px;
     text-transform: uppercase;
     text-align: left;
+    font-size: 12px;
+  }
+  input {
+    display: none;
+  }
+  label {
+    text-align: center;
+    display: block;
+    background-color: rgba(9, 30, 66, 0.04);
+    width: 100%;
+    border-radius: 3px;
+    padding: 8px 12px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(9, 30, 66, 0.08);
+    }
+  }
+  .loading {
+    width: 100px;
+    margin: 0 auto;
+    display: block;
   }
 }

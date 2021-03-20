@@ -67,6 +67,11 @@ export default {
     task() {
       return clone(this.$store.getters.task);
     },
+    // group() {
+    //   return boardCopy.groups.find((group) =>
+    //     group.some(({ id }) => id === this.task.id)
+    //   );
+    // },
     cover() {
       return this.task.cover ? true : false;
     },

@@ -12,7 +12,6 @@ const clone = require('rfdc')({ proto: true });
 export const boardStore = {
   state: {
     board: null,
-    group: null,
     task: null
   },
   getters: {
@@ -35,7 +34,6 @@ export const boardStore = {
         group.tasks.forEach(task => {
           if (task.id === taskId) {
             state.task = task;
-            state.group = group;
           }
         });
       });
@@ -69,21 +67,18 @@ export const boardStore = {
       }
     },
 
-    async updateTask({commit, dispatch, state}, { task }) {
+    async updateTask({ commit, dispatch, state }, { task }) {
       try {
         commit({ type: 'setTask', task });
-        // commit('updateTaskInBoard');
         const boardCopy = clone(state.board);
-        const groupCopy = clone(state.group);
-        const taskIdx = groupCopy.tasks.findIndex(
+        const groupIdx = boardCopy.groups.findIndex(group =>
+          group.tasks.some(({ id }) => id === task.id)
+        );
+        const taskIdx = boardCopy.groups[groupIdx].tasks.findIndex(
           ({ id }) => id === task.id
         );
-        const groupIdx = boardCopy.groups.findIndex(
-          ({ id }) => id === groupCopy.id
-        );
-        groupCopy.tasks.splice(taskIdx, 1, task);
-        boardCopy.groups.splice(groupIdx, 1, groupCopy);
-        dispatch({type: 'updateBoard', board: boardCopy})
+        boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1, task);
+        dispatch({ type: 'updateBoard', board: boardCopy });
       } catch (err) {
         console.log('cannot update task', err);
       }
