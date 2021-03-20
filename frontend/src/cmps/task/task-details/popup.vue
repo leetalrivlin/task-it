@@ -1,14 +1,16 @@
 <template>
-  <section class="cover-controller">
-    <header class="flex align-center justify-center">
+  <section class="popup">
+    <section class="header flex align-center justify-center">
+      <!-- <slot name="title"></slot> -->
       <p>Cover</p>
       <i class="el-icon-close close-cntrl" @click.stop="closeController"></i>
-    </header>
+    </section>
     <hr class="board-menu-header-divider" />
-    <main>
+    <section class="main">
+      <!-- <slot></slot> -->
       <cover-color-palettte @colorPicked="changeColor" />
       <cover-attachments @imgUploaded="uploadImg" />
-    </main>
+    </section>
   </section>
 </template>
 
@@ -17,7 +19,7 @@ import coverAttachments from './cover-attachments.vue';
 import coverColorPalettte from './cover-colorPalettte.vue';
 
 export default {
-  name: 'coverControllers',
+  name: 'popup',
   methods: {
     closeController() {
       this.$emit('closeCntrl');

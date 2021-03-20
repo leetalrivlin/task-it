@@ -47,7 +47,7 @@
         icon="el-icon-set-up fa-nav-icon"
         @click="isCoverCntrl = true"
         >Cover
-        <cover-controller
+        <popup
           v-if="isCoverCntrl"
           @closeCntrl="isCoverCntrl = false"
           @changeColor="addCover"
@@ -66,7 +66,7 @@ import {
   faCheckSquare,
   faPaperclip,
 } from '@fortawesome/free-solid-svg-icons';
-import coverController from './cover-controller.vue';
+import popup from './popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
@@ -94,7 +94,7 @@ export default {
     },
   },
   components: {
-    coverController,
+    popup,
   },
 };
 </script>

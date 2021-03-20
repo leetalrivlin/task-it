@@ -5,7 +5,7 @@
       class="el-btn-details fa-nav-icon cover-btn"
       @click="isEditCover = !isEditCover"
       >Cover
-      <cover-controller
+      <popup
         v-if="isEditCover"
         @closeCntrl="isEditCover = false"
         @changeColor="editColor"
@@ -20,11 +20,11 @@
   </section>
 </template>
 <script>
-import coverController from './cover-controller.vue';
+import popup from './popup.vue';
 
 export default {
   name: 'task-cover',
-  components: { coverController },
+  components: { popup },
   props: {
     task: {
       type: Object,
@@ -37,14 +37,16 @@ export default {
   },
   methods: {
     editColor(pickedColor) {
-      this.task.cover = {};
+      delete this.task.cover.img;
       this.task.cover.backgroundColor = pickedColor;
       this.$emit('saveColor', this.task);
     },
     saveImg(imgUrl) {
-      this.task.cover = {};
-
+      delete this.task.cover.backgroundColor;
       this.task.cover.img = imgUrl;
+      if (this.task.attachments){
+        this.task.attachments.push(imgUrl)
+      } 
       this.$emit('saveImg', this.task);
     },
   },

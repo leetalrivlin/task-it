@@ -13,13 +13,13 @@
       @saveImg="updateTask"
     />
     <section class="details-grid">
-      <header class="d-header header-container">
+      <section class="d-header header-container">
         <font-awesome-icon class="d-icon" icon="columns" />
         <div class="d-content task-title-container">
           <h1>{{ task.title }}</h1>
           <p>In list <a class="task-list-link">List name</a></p>
         </div>
-      </header>
+      </section>
       <task-controller
         :cover="cover"
         @openChecklist="showEmptyChecklist"
@@ -36,7 +36,7 @@
             :checklist="checklist"
           />
         </li>
-        <task-attachment />
+        <task-attachment v-if="task.attachments" :task="task" />
       </section>
     </section>
   </section>

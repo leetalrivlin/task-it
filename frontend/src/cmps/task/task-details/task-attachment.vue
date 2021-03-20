@@ -29,5 +29,12 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faPaperclip);
-export default {};
+export default {
+    name:'taskAttachment',
+    props:{
+        task:{
+            type:Object
+        }
+    },
+};
 </script>
