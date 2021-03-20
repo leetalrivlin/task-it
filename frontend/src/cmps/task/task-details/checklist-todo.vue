@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li class="d-todos">
       <el-checkbox
         @click="checked = !checked"
         v-model="checked"
