@@ -75,7 +75,9 @@
   .d-todos {
     grid-column: 1 / 2;
     display: grid;
-    // grid-template-columns: rem(30px) 1fr;
+    grid-template-columns: rem(30px) 1fr;
+    width: 400px;
+
     .d-todo-icon {
       grid-column: 1;
       margin: 0;

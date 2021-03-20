@@ -38,27 +38,22 @@
       </form>
     </div>
 
-    <div v-if="todos" class="d-todos">
-      <el-checkbox
-        @click="checked = !checked"
-        v-model="checked"
-        class="d-todo-icon"
-        name="checkbox-item"
-      ></el-checkbox>
-      <label class="d-todo-content" for="checkbox-item"
-        >Manage service support</label
-      >
-    </div>
+    <ul v-if="todos && todos.length > 0" class="clean-list">
+      <checklist-todo v-for="todo in todos" :key="todo.id" :todo="todo" />
+    </ul>
+
   </section>
 </template>
 
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import checklistTodo from './checklist-todo.vue';
 
 library.add(faCheckSquare);
 
 export default {
+  components: {checklistTodo},
   props: {
     checklist: {
       type: Object
@@ -69,7 +64,6 @@ export default {
       isAddTodos: false,
       todos: [],
       todo: '',
-      checked: false
     };
   },
   computed: {
@@ -82,11 +76,15 @@ export default {
       console.log('todo saved');
     },
     saveChecklist() {
-      console.log('save todo:', this.todo);
+      const copyTodo = this.todo.slice();
+      this.todos.push(copyTodo);
+      console.log('copyTodo', copyTodo);
+      this.todo = '';
+      console.log('copyTodo', copyTodo);
     }
   },
   created() {
-    // console.log('task in created', this.task);
+    console.log('todos in created', this.todos);
     console.log('empty checkbox in created', this.checklist);
     if (this.checklist.todos && this.checklist.todos.length > 0) {
       this.todos = this.checklist.todos;
