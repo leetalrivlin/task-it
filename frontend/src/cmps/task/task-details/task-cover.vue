@@ -9,9 +9,14 @@
         v-if="isEditCover"
         @closeCntrl="isEditCover = false"
         @changeColor="editColor"
+        @uploadImg="saveImg"
       />
     </el-button>
-    <img v-if="task.cover.img" :src="task.cover.img" class="cover-img" />
+    <img
+      v-if="task.cover.img && !task.cover.backgroundColor"
+      :src="task.cover.img"
+      class="cover-img"
+    />
   </section>
 </template>
 <script>
@@ -32,8 +37,15 @@ export default {
   },
   methods: {
     editColor(pickedColor) {
+      this.task.cover = {};
       this.task.cover.backgroundColor = pickedColor;
       this.$emit('saveColor', this.task);
+    },
+    saveImg(imgUrl) {
+      this.task.cover = {};
+
+      this.task.cover.img = imgUrl;
+      this.$emit('saveImg', this.task);
     },
   },
   computed: {

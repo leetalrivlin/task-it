@@ -6,7 +6,12 @@
       circle
       @click="closeDetails"
     ></el-button>
-    <task-cover v-if="task.cover" :task="task" @saveColor="updateTask" />
+    <task-cover
+      v-if="task.cover"
+      :task="task"
+      @saveColor="updateTask"
+      @saveImg="updateTask"
+    />
     <section class="details-grid">
       <header class="d-header header-container">
         <font-awesome-icon class="d-icon" icon="columns" />
@@ -19,6 +24,7 @@
         :cover="cover"
         @openChecklist="showEmptyChecklist"
         @addCover="setCover"
+        @addImg="setImg"
       />
       <section class="flex column task-main">
         <task-description :task="task" @saveDescription="updateTask" />
@@ -56,11 +62,11 @@ export default {
     taskController,
     taskChecklist,
     taskAttachment,
-    taskCover
+    taskCover,
   },
   data() {
     return {
-      isChecklists: false
+      isChecklists: false,
     };
   },
   computed: {
@@ -77,7 +83,7 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    }
+    },
   },
   methods: {
     closeDetails() {
@@ -96,11 +102,16 @@ export default {
       this.task.cover = {};
       this.task.cover.backgroundColor = color;
       this.updateTask(this.task);
-    }
+    },
+    setImg(imgUrl) {
+      this.task.cover = {};
+      this.task.cover.img = imgUrl;
+      this.updateTask(this.task);
+    },
   },
   created() {
     const taskId = this.$route.params.taskId;
     this.$store.commit({ type: 'setTaskById', taskId });
-  }
+  },
 };
 </script>

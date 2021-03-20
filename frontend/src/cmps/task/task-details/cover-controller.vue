@@ -7,7 +7,7 @@
     <hr class="board-menu-header-divider" />
     <main>
       <cover-color-palettte @colorPicked="changeColor" />
-      <cover-attachments @colorPicked="changeColor" />
+      <cover-attachments @imgUploaded="uploadImg" />
     </main>
   </section>
 </template>
@@ -24,6 +24,9 @@ export default {
     },
     changeColor(color) {
       this.$emit('changeColor', color);
+    },
+    uploadImg(imgUrl) {
+      this.$emit('uploadImg', imgUrl);
     },
   },
   components: {

@@ -41,7 +41,8 @@
           icon="paperclip"
         />Attachment</el-button
       >
-      <el-button v-if="!cover"
+      <el-button
+        v-if="!cover"
         class="el-btn-details"
         icon="el-icon-set-up fa-nav-icon"
         @click="isCoverCntrl = true"
@@ -50,6 +51,7 @@
           v-if="isCoverCntrl"
           @closeCntrl="isCoverCntrl = false"
           @changeColor="addCover"
+          @uploadImg="addCoverImg"
         />
       </el-button>
     </section>
@@ -68,10 +70,10 @@ import coverController from './cover-controller.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
-  props:{
-    cover:{
-      type:Boolean
-    }
+  props: {
+    cover: {
+      type: Boolean,
+    },
   },
   data() {
     return {
@@ -84,6 +86,10 @@ export default {
     },
     addCover(color) {
       this.$emit('addCover', color);
+      this.isCoverCntrl = false;
+    },
+    addCoverImg(imgUrl) {
+      this.$emit('addImg', imgUrl);
       this.isCoverCntrl = false;
     },
   },
