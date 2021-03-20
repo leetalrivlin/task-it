@@ -1,0 +1,20 @@
+.color-palette {
+  p {
+    margin-block-end: 5px;
+  }
+  ul {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+    .color-item {
+      display: inline-block;
+      height: 30px;
+      border-radius: 3px;
+      cursor: pointer;
+      &:focus{
+          border-color: blue;
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
       circle
       @click="closeDetails"
     ></el-button>
-    <task-cover v-if="task.cover" :task="task" />
+    <task-cover v-if="task.cover" :task="task" @saveColor="updateTask"/>
     <section class="details-grid">
       <header class="d-header header-container">
         <font-awesome-icon class="d-icon" icon="columns" />

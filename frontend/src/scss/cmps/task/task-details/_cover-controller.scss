@@ -7,6 +7,8 @@
   box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25),
     0 0 0 1px rgba(9, 30, 66, 0.08);
   margin-block-start: 8px;
+  top: 0;
+  left:-80px;
 
   header {
     position: relative;
@@ -16,5 +18,8 @@
       right: 10px;
       cursor: pointer;
     }
+  }
+  main{
+    padding: 8px;
   }
 }

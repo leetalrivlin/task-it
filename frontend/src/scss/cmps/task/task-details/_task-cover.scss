@@ -5,10 +5,13 @@
   border-radius: 3px 3px 0 0;
 
   .cover-btn-cntr {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
     .cover-btn {
       position: absolute;
-      right: 8px;
-      bottom: 8px;
+      right: 0;
+      bottom: 0;
       align-self: flex-end;
       background-color: hsla(0, 0%, 100%, 0.24);
       &:hover {
