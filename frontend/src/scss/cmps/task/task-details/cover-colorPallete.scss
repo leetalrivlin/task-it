@@ -1,6 +1,9 @@
 .color-palette {
+  margin-block-end: 10px;
   p {
     margin-block-end: 5px;
+    text-transform: uppercase;
+    text-align: left;
   }
   ul {
     display: grid;
@@ -12,8 +15,8 @@
       height: 30px;
       border-radius: 3px;
       cursor: pointer;
-      &:focus{
-          border-color: blue;
+      &:focus {
+        border-color: blue;
       }
     }
   }

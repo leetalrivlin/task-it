@@ -7,11 +7,13 @@
     <hr class="board-menu-header-divider" />
     <main>
       <cover-color-palettte @colorPicked="changeColor" />
+      <cover-attachments @colorPicked="changeColor" />
     </main>
   </section>
 </template>
 
 <script>
+import coverAttachments from './cover-attachments.vue';
 import coverColorPalettte from './cover-colorPalettte.vue';
 
 export default {
@@ -26,6 +28,7 @@ export default {
   },
   components: {
     coverColorPalettte,
+    coverAttachments,
   },
 };
 </script>

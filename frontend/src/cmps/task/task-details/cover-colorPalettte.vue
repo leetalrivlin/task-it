@@ -1,6 +1,6 @@
 <template>
   <section class="color-palette">
-    <p>Color</p>
+    <p>Colors</p>
     <ul class="clean-list">
       <li
         v-for="(color, idx) in colors"
