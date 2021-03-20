@@ -5,14 +5,17 @@
         icon="el-icon-set-up"
         class="el-btn-details fa-nav-icon cover-btn"
         @click="isEditCover = !isEditCover"
-      >Cover
+        >Cover
       </el-button>
-      <cover-controller v-if="isEditCover" @closeCntrl="isEditCover = false" />
+      <cover-controller
+        v-if="isEditCover"
+        @closeCntrl="isEditCover = false"
+        @changeColor="editColor"
+      />
     </section>
     <img v-if="task.cover.img" :src="task.cover.img" class="cover-img" />
   </section>
 </template>
-
 <script>
 import coverController from './cover-controller.vue';
 
@@ -28,6 +31,13 @@ export default {
     return {
       isEditCover: false,
     };
+  },
+  methods:{
+    editColor(pickedColor){
+      this.task.cover.backgroundColor = pickedColor;
+      this.$emit('saveColor', this.task);
+      console.log(this.task.cover.backgroundColor);
+    }
   },
   computed: {
     coverColor() {
