@@ -6,7 +6,7 @@
       circle
       @click="closeDetails"
     ></el-button>
-    <task-cover v-if="task.cover" :task="task" @saveColor="updateTask"/>
+    <task-cover v-if="task.cover" :task="task" @saveColor="updateTask" />
     <section class="details-grid">
       <header class="d-header header-container">
         <font-awesome-icon class="d-icon" icon="columns" />
@@ -15,12 +15,20 @@
           <p>In list <a class="task-list-link">List name</a></p>
         </div>
       </header>
-
-      <task-controller @openChecklist="showEmptyChecklist" />
+      <task-controller
+        :cover="cover"
+        @openChecklist="showEmptyChecklist"
+        @addCover="setCover"
+      />
       <section class="flex column task-main">
         <task-description :task="task" @saveDescription="updateTask" />
         <li v-if="checklists && checklists.length" class="clean-list">
-        <task-checklist v-for="checklist in checklists" :key="checklist.id"  :task="task" :checklist="checklist"/>
+          <task-checklist
+            v-for="checklist in checklists"
+            :key="checklist.id"
+            :task="task"
+            :checklist="checklist"
+          />
         </li>
         <task-attachment />
       </section>
@@ -48,18 +56,20 @@ export default {
     taskController,
     taskChecklist,
     taskAttachment,
-    taskCover
+    taskCover,
   },
   data() {
     return {
-      cover: true,
       checklists: [],
     };
   },
   computed: {
     task() {
       return clone(this.$store.getters.task);
-    }
+    },
+    cover() {
+      return this.task.cover ? true : false;
+    },
   },
   methods: {
     closeDetails() {
@@ -72,13 +82,19 @@ export default {
     showEmptyChecklist() {
       const emptyCheckList = boardService.getEmptyChecklist();
       this.checklists.push(emptyCheckList);
-      console.log('this.checklists',this.checklists);
+      console.log('this.checklists', this.checklists);
     },
     showChecklists() {
       console.log('showing checklist');
       this.checklists = this.task.checklists;
-      console.log('this.checklists',this.checklists);
-    }
+      console.log('this.checklists', this.checklists);
+    },
+    setCover(color) {
+      console.log('color from task-details', color);
+      this.task.cover = {};
+      this.task.cover.backgroundColor = color;
+      this.updateTask(this.task);
+    },
   },
   async created() {
     try {
@@ -89,6 +105,6 @@ export default {
     } catch (err) {
       console.log('error in getting the task', err);
     }
-  }
+  },
 };
 </script>

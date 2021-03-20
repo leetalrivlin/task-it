@@ -1,18 +1,16 @@
 <template>
   <section class="task-cover flex justify-center" :style="coverColor">
-    <section class="cover-btn-cntr">
-      <el-button
-        icon="el-icon-set-up"
-        class="el-btn-details fa-nav-icon cover-btn"
-        @click="isEditCover = !isEditCover"
-        >Cover
-      </el-button>
+    <el-button
+      icon="el-icon-set-up"
+      class="el-btn-details fa-nav-icon cover-btn"
+      @click="isEditCover = !isEditCover"
+      >Cover
       <cover-controller
         v-if="isEditCover"
         @closeCntrl="isEditCover = false"
         @changeColor="editColor"
       />
-    </section>
+    </el-button>
     <img v-if="task.cover.img" :src="task.cover.img" class="cover-img" />
   </section>
 </template>
@@ -32,12 +30,12 @@ export default {
       isEditCover: false,
     };
   },
-  methods:{
-    editColor(pickedColor){
+  methods: {
+    editColor(pickedColor) {
       this.task.cover.backgroundColor = pickedColor;
       this.$emit('saveColor', this.task);
       console.log(this.task.cover.backgroundColor);
-    }
+    },
   },
   computed: {
     coverColor() {
