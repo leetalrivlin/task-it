@@ -27,6 +27,7 @@
 @import 'cmps/board/board-menu/menu-about';
 @import 'cmps/board/board-menu/menu-bgc';
 @import 'cmps/board/board-menu/menuBgcPalette';
+@import 'cmps/board/board-menu/menuBgcPhotos';
 
 // CMPS- BOARD
 @import 'cmps/board/board-header';
@@ -35,6 +36,7 @@
 
 // CMPS- TASK
 @import 'cmps/task/task-details';
+@import 'cmps/task/task-details/task-title';
 @import 'cmps/task/task-details/task-description';
 @import 'cmps/task/task-details/task-controller';
 @import 'cmps/task/task-details/task-checklist';

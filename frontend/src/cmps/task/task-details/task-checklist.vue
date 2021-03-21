@@ -24,7 +24,7 @@
         <el-input
           type="text"
           placeholder="Add an item"
-          v-model="todo.txt"
+          v-model="todoToAdd.txt"
         ></el-input>
         <div class="btn-container">
           <el-button
@@ -43,7 +43,7 @@
         v-for="todo in checklist.todos"
         :key="todo.id"
         :todo="todo"
-        @toggleTodo="updateToggleTodo"
+        @updateTodo="updateTodo"
       />
     </ul>
   </section>
@@ -71,7 +71,7 @@ export default {
   data() {
     return {
       isAddTodos: false,
-      todo: null
+      todoToAdd: null
     };
   },
   computed: {
@@ -80,24 +80,20 @@ export default {
     }
   },
   methods: {
-    setTodo() {
-      const emptyTodo = boardService.getEmptyTodo();
-      this.todo = emptyTodo;
+    setEmptyTodo() {
+      this.todoToAdd = boardService.getEmptyTodo();
     },
     saveTodoTxt() {
-      const copyTodo = clone(this.todo);
+      const copyTodo = clone(this.todoToAdd);
       this.checklist.todos.push(copyTodo);
       this.updateChecklist(this.checklist);
-      this.setTodo();
+      this.setEmptyTodo();
     },
-    updateToggleTodo(isChecked) {
-      const copyTodo = clone(this.todo);
-      copyTodo.isDone = isChecked;
+    updateTodo(updatedTodo) {
       const todoIdx = this.checklist.todos.findIndex(
-        ({ id }) => id === copyTodo.id
+        ({ id }) => id === updatedTodo.id
       );
-      this.checklist.todos.splice(todoIdx, 1, copyTodo);
-      console.log('this.checklist after splicing todos',this.checklist);
+      this.checklist.todos.splice(todoIdx, 1, updatedTodo);
       this.updateChecklist(this.checklist);
     },
     updateChecklist(updatedChecklist) {
@@ -105,13 +101,11 @@ export default {
         ({ id }) => id === updatedChecklist.id
       );
       this.task.checklists.splice(checklistIdx, 1, updatedChecklist);
-      // this.task.checklists[checklistIdx] = updatedChecklist;
-      console.log('this.task send to updateTask',this.task);
-      // this.$emit('updateTask',this.task);
-    },
+      this.$emit('updateTask',this.task);
+    }
   },
   created() {
-    this.setTodo();
+    this.setEmptyTodo();
   },
   mounted() {}
 };

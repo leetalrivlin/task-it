@@ -48,7 +48,7 @@ export default {
   methods: {
     changeColor(color) {
       console.log(color , 'color');
-      this.$emit('colorPicked', color);
+      this.$emit('colorPicked', {background:color});
     },
   },
 };

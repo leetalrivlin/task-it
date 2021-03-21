@@ -1,6 +1,6 @@
 <template>
   <div id="app" :style="background" class="flex column main-app">
-    <main-header :style="background" />
+    <main-header  />
     <router-view />
   </div>
 </template>
@@ -16,7 +16,7 @@ export default {
       const style = this.$store.getters.boardStyle;
       if (!style) return;
       return {
-        background: style.background,
+        background: style.background+'center / cover',
       };
     },
   },

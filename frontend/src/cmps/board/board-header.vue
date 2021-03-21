@@ -12,6 +12,7 @@
         v-if="isMenuOpen"
         @closeMenu="isMenuOpen = false"
         @colorPicked="updateBoard"
+        @photoPicked="updateBoard"
       />
     </transition>
   </header>
@@ -35,8 +36,8 @@ export default {
     };
   },
   methods: {
-    updateBoard(color) {
-      this.board.style.background = color;
+    updateBoard(style) {
+      this.board.style = style;
       this.$store.dispatch({ type: 'updateBoard', board: this.board });
     },
   },
