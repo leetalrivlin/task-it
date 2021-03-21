@@ -18,6 +18,12 @@ export const boardStore = {
     board(state) {
       return state.board;
     },
+    group(state) {
+      if (!state.board || !state.task) return;
+      return state.board.groups.find((group) =>
+        group.tasks.some(({ id }) => id === state.task.id)
+      );
+    },
     task(state) {
       return state.task;
     },

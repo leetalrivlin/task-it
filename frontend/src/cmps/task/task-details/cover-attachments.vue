@@ -13,6 +13,7 @@
 
 <script>
 import { uploadImg } from '../../../services/img-upload.service';
+import { boardService } from '../../../services/board.service';
 
 export default {
   name: 'coverAttachments',
@@ -26,7 +27,10 @@ export default {
       this.isLoading = true;
       const res = await uploadImg(ev);
       this.isLoading = false;
-      this.$emit('imgUploaded', res.url);
+      const emptyAttachment = boardService.getEmptyAttachment();
+      emptyAttachment.name = res.original_filename;
+      emptyAttachment.url = res.url;
+      this.$emit('imgUploaded', emptyAttachment);
     },
   },
 };

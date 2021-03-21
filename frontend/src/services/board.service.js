@@ -87,7 +87,7 @@ const gBoards = [
       imgUrl: 'http://some-img'
     },
     style: {
-      backgroundColor: '#91a8c4e3'
+      background: '#91a8c4e3'
     },
     labels: [
       {
@@ -139,8 +139,11 @@ const gBoards = [
             id: 'c108',
             title: 'Implement search bar',
             cover: {
-              img:
-                'https://images.unsplash.com/photo-1586769852836-bc069f19e1b6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80'
+              img: {
+                url:
+                  'https://images.unsplash.com/photo-1586769852836-bc069f19e1b6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80',
+                name: 'search'
+              }
             }
           },
           {
@@ -208,7 +211,7 @@ export const boardService = {
   updateBoard,
   getEmptyChecklist,
   getEmptyTodo,
-  getEmptyAttachment,
+  getEmptyAttachment
   // getTaskById,
   // getGroupById
 };

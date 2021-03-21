@@ -5,7 +5,7 @@
     @mouseleave="taskOnFocus = false"
   >
     <section v-if="task.cover" class="task-cover" :style="coverColor">
-      <img v-if="task.cover.img && !task.cover.backgroundColor" :src="task.cover.img">
+      <img v-if="task.cover.img && !task.cover.backgroundColor" :src="task.cover.img.url">
     </section>
     <section class="task-content flex align-center space-between">
       <p class="task-title">

@@ -5,7 +5,7 @@
       class="el-btn-details fa-nav-icon cover-btn"
       @click="isEditCover = !isEditCover"
       >Cover
-      <popup v-if="isEditCover" @closeCntrl="isEditCover = false">
+      <popup v-if="isEditCover" @closePopup="isEditCover = false">
         <template v-slot:title>
           <p>Cover</p>
         </template>
@@ -14,7 +14,7 @@
     </el-button>
     <img
       v-if="task.cover.img && !task.cover.backgroundColor"
-      :src="task.cover.img"
+      :src="task.cover.img.url"
       class="cover-img"
     />
   </section>
@@ -42,12 +42,12 @@ export default {
       this.task.cover.backgroundColor = pickedColor;
       this.$emit('saveColor', this.task);
     },
-    saveImg(imgUrl) {
+    saveImg(img) {
       delete this.task.cover.backgroundColor;
-      this.task.cover.img = imgUrl;
-      if (this.task.attachments) {
-        this.task.attachments.push(imgUrl);
-      }
+      this.task.cover.img = img;
+      if (!this.task.attachments) this.task.attachments = [];
+      this.task.attachments.push(img);
+      console.log('this.task.attachments');
       this.$emit('saveImg', this.task);
     },
   },
