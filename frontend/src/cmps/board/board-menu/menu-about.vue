@@ -2,7 +2,10 @@
   <div class="about-this-board-section flex column">
     <div class="header flex align-center">
       <!-- <font-awesome-icon icon="user" class="icon" /> -->
-      <i class="el-icon-user icon"></i>
+      <font-awesome-icon
+          class="d-icon fa-nav-icon icon-user"
+          :icon="['far', 'user']"
+        />
       <h4>Made by</h4>
     </div>
     <div class="avatar flex align-center">
@@ -18,7 +21,8 @@
       </div>
     </div>
     <div class="d-content flex">
-      <i class="el-icon-s-unfold d-icon task-details-icon"></i>
+      <!-- <i class="el-icon-s-unfold d-icon task-details-icon"></i> -->
+       <font-awesome-icon class="d-icon icon" icon="stream" />
       <h1 class="details">Description</h1>
     </div>
 
@@ -40,9 +44,12 @@
 
 <script>
 import Avatar from 'vue-avatar';
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faUser } from '@fortawesome/pro-regular-svg-icons';
-// library.add(faUser);
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUser } from '@fortawesome/free-regular-svg-icons';
+import { faStream } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faStream ,faUser );
+
 export default {
   components: {
     Avatar,

@@ -5,7 +5,7 @@
       <span>About this board </span>
     </a>
     <a class="menu-main-item flex align-center" @click="toggleBgc">
-      <font-awesome-icon icon="square" class="icon" />
+      <font-awesome-icon icon="square" class="icon square" />
       <span>Change background </span>
     </a>
     <a class="menu-main-item flex align-center" @click="toggleSearch">
