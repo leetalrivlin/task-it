@@ -1,7 +1,7 @@
 <template>
   <header class="header-layout main-header">
     <span class="flex align-center logo" role="img" aria-label="logo">Task-it</span>
-    <nav class="flex align-center justify-end">
+    <nav class="flex justify-center align-center justify-end">
       <router-link to="/"> </router-link>
       <!-- <router-link to="/chat">Chat</router-link> -->
       <router-link class="el-btn" to="/login">Signin</router-link>
