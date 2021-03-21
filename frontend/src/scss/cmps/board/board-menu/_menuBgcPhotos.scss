@@ -1,5 +1,7 @@
 .photos-container{
     padding: 10px;
+    // overflow-y: auto;
+
     ul {
       width: 300px;
       display: grid;
@@ -15,8 +17,22 @@
         &:hover {
           opacity: .7;
         }
+    
       }
     }
-    
+    // &::-webkit-scrollbar {
+    //   width: 8px;
+    //   height: 8px;
+    // }
+    // &::-webkit-scrollbar-thumb {
+    //   background: rgba(9, 30, 66, 0.08);
+    //   border-radius: 5px;
+    // }
+    // &::-webkit-scrollbar-track {
+    //   background: rgba(255, 255, 255, 0.386);
+    //   border-radius: 5px;
+    //   margin-inline-start: 8px;
+    //   margin-inline-end: 8px;
+    // }
   }
   

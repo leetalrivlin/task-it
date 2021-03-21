@@ -1,6 +1,6 @@
 <template>
   <div id="app" :style="background" class="flex column main-app">
-    <main-header  />
+    <main-header />
     <router-view />
   </div>
 </template>
@@ -15,9 +15,10 @@ export default {
       if (pageName !== 'board') return;
       const style = this.$store.getters.boardStyle;
       if (!style) return;
-      return {
-        background: style.background+'center / cover',
-      };
+      if (!style.background.includes('.jpg')) {
+        console.log('in?');
+        return style;
+      } else return {background: style.background + 'center / cover'} ;
     },
   },
   components: {

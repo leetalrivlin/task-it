@@ -1,5 +1,5 @@
 <template>
-  <section class="flex align-center change-bgc">
+  <section class="flex  change-bgc">
     <div v-if="isBgc">
       <div class="change-container flex">
         <div class="flex column justify-center" @click="showPhotos">
