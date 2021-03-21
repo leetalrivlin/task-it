@@ -92,9 +92,34 @@ const gBoards = [
     labels: [
       {
         id: 'l101',
-        title: 'Favourite',
-        color: '#61bd4f'
-      }
+        title: '',
+        color: '#60BD4F'
+      },
+      {
+        id: 'l102',
+        title: '',
+        color: '#F2D600'
+      },
+      {
+        id: 'l103',
+        title: '',
+        color: '#ff9f1a'
+      },
+      {
+        id: 'l104',
+        title: '',
+        color: '#eb5a46'
+      },
+      {
+        id: 'l105',
+        title: '',
+        color: '#c377e0'
+      },
+      {
+        id: 'l106',
+        title: '',
+        color: '#0079bf'
+      },
     ],
     members: [
       {
@@ -212,7 +237,7 @@ export const boardService = {
   getEmptyChecklist,
   getEmptyTodo,
   getEmptyAttachment,
-  getEmptyLabel
+  // getEmptyLabel
   // getTaskById,
   // getGroupById
 };
@@ -324,10 +349,10 @@ function getEmptyAttachment() {
   };
 }
 
-function getEmptyLabel() {
-  return {
-    name: '',
-    color: ''
-  };
-}
+// function getEmptyLabel() {
+//   return {
+//     name: '',
+//     color: ''
+//   };
+// }
 

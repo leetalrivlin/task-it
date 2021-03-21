@@ -11,8 +11,8 @@
       />
     </section>
     <section class="task-content">
-      <ul v-if="task.labels" class="labels-list clean-list flex">
-        <li v-for="label in task.labels" :key="label.color" class="label">
+      <ul v-if="task.labelIds" class="labels-list clean-list flex">
+        <li v-for="label in boardLabels" :key="label.id" class="label">
           <span :style="{ backgroundColor: label.color }"></span>
         </li>
       </ul>
@@ -22,12 +22,12 @@
         </p>
       </section>
     </section>
-        <i
-          v-if="taskOnFocus"
-          class="el-icon-delete delete-task"
-          @click.stop="deleteTask"
-        >
-        </i>
+    <i
+      v-if="taskOnFocus"
+      class="el-icon-delete delete-task"
+      @click.stop="deleteTask"
+    >
+    </i>
   </section>
 </template>
 
@@ -56,6 +56,10 @@ export default {
       return this.task.cover.backgroundColor
         ? { backgroundColor: this.task.cover.backgroundColor }
         : {};
+    },
+    boardLabels() {
+      const labels = this.$store.getters.boardLabels;
+      return labels.filter((label) => this.task.labelIds.includes(label.id));
     },
   },
 };
