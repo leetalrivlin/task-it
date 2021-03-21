@@ -39,7 +39,7 @@
     </div>
 
     <ul v-if="checklist.todos" class="clean-list">
-      <checklist-todo v-for="todo in checklist.todos" :key="todo.id" :todo="todo" />
+      <checklist-todo v-for="todo in checklist.todos" :key="todo.id" :todo="todo" @toggleTodo="toggleTodo" />
     </ul>
 
   </section>
@@ -64,9 +64,7 @@ export default {
   data() {
     return {
       isAddTodos: false,
-      // todos: [],
       todo: null,
-      // checklist: null,
     };
   },
   computed: {
@@ -87,12 +85,18 @@ export default {
     setTodo() {
       const emptyTodo = boardService.getEmptyTodo();
       this.todo = emptyTodo;
+    },
+    toggleTodo(val) {
+      console.log({val});
+      // this.todo.isDone = val;
+      // const copyTodo = clone(this.todo);
+      // const todoIdx = this.checklist.todos.findIndex(({id}) => id === copyTodo.id);
+      // console.log('copyTodo',copyTodo);
+      // this.checklist.todos.splice(todoIdx, 1, copyTodo);
+      // this.$emit('toggleTodo', this.checklist);
     }
   },
   created() {
-    // if (this.task.checklist.todos && this.task.checklist.todos.length > 0) {
-    //   this.todos = this.task.checklist.todos;
-    // }
     this.setTodo();
   },
   mounted() {}

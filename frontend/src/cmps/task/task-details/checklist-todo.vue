@@ -1,18 +1,17 @@
 <template>
   <li class="d-todos">
       <!-- <span type="checkbox" class="d-todo-icon checkbox" @click="isDone" :class="completed"></span> -->
-    <input
+    <!-- <input
       type="checkbox"
       v-model="checked"
       class="d-todo-icon"
-      @click="isDone"
-    />
-    <!-- <el-checkbox
-      @click="isDone"
+    /> -->
+    <el-checkbox
       v-model="checked"
+      @input="toggleTodo"
       class="d-todo-icon"
-    ></el-checkbox> -->
-    <label class="d-todo-content" for="checkbox-item" :class="isDone">{{ todo.txt }}</label>
+    ></el-checkbox>
+    <label class="d-todo-content" for="checkbox-item">{{ todo.txt }}</label>
   </li>
 </template>
 
@@ -21,23 +20,17 @@ export default {
   props: {
     todo: {
       type: Object
-    }
+    },
   },
   data() {
     return {
-      checked: false
+      checked: this.todo.isDone
     };
   },
-  computed: {
-completed() {
-    return (this.checked) ? 'done' : '';
-}
-  },
+
   methods: {
-    isDone() {
-      this.checked = !this.checked;
-      this.todo.isDone = this.checked;
-      console.log('this.todo.isDone', this.todo.isDone);
+    toggleTodo() {
+      this.$emit('toggleTodo', this.checked)
     }
   }
 };

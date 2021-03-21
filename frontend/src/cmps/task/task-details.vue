@@ -35,6 +35,7 @@
             :key="checklist.id"
             :checklist="checklist"
             @addedTodo="updateChecklist"
+            @toggleTodo="updateToggleTodo"
           />
         </ul>
         <task-attachment
@@ -111,17 +112,17 @@ export default {
       if (!this.task.checklists) this.task.checklists = [];
       this.task.checklists.push(emptyCheckList);
       this.updateTask(this.task);
-      console.log('this.task', this.task);
-      // this.isShowChecklist = true;
     },
     updateChecklist(updatedChecklist) {
-      // this.task.checklists.push(updatedChecklist);
-      const checklistIdx = this.task.checklists.findIndex(
-        ({ id }) => id === updatedChecklist.id
-      );
+      const checklistIdx = this.task.checklists.findIndex(({id}) => id === updatedChecklist.id)
       this.task.checklists[checklistIdx] = updatedChecklist;
-      console.log('this.task', this.task);
       this.updateTask(this.task);
+    },
+    updateToggleTodo(updatedChecklist) {
+      console.log('updatedChecklist',updatedChecklist);
+      // const checklistIdx = this.task.checklists.findIndex(({id}) => id === updatedChecklist.id)
+      // this.task.checklists.splice(checklistIdx, 1, updatedChecklist);
+      // this.updateTask(this.task);
     },
     setCover(color) {
       this.task.cover = {};
