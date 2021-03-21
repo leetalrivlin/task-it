@@ -20,7 +20,7 @@
         >Add an item</a
       >
 
-      <form v-else>
+      <form v-else @submit.prevent="saveTodoTxt">
         <el-input
           type="text"
           placeholder="Add an item"
