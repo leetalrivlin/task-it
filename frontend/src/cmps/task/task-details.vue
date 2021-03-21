@@ -18,7 +18,16 @@
           <font-awesome-icon class="d-icon" icon="columns" />
           <div class="d-content task-title-container">
             <h1>{{ task.title }}</h1>
-            <p>In list <a class="task-list-link">List name</a></p>
+            <!-- <input
+              type="text"
+              class="title flex align-center"
+              v-model="group.title"
+              @change="inputChange"
+              @keyup.enter.exact="inputChange"
+            /> -->
+            <p>
+              In list <a class="task-list-link">{{ groupName }}</a>
+            </p>
           </div>
         </section>
         <task-controller
@@ -35,8 +44,8 @@
               v-for="checklist in task.checklists"
               :key="checklist.id"
               :checklist="checklist"
-              @addedTodo="updateChecklist"
-              @toggleTodo="updateToggleTodo"
+              :task="task"
+              @updateTask="updateTask"
             />
           </ul>
           <task-attachment
@@ -71,21 +80,19 @@ export default {
     taskController,
     taskChecklist,
     taskAttachment,
-    taskCover,
-  },
-  data() {
-    return {
-      // isShowChecklist: false
-    };
+    taskCover
   },
   computed: {
     task() {
-      console.log('task', this.$store.getters.task);
       return clone(this.$store.getters.task);
+    },
+    groupName() {
+      const groupCopy = clone(this.$store.getters.group);
+      return groupCopy.title;
     },
     // group() {
     //   return boardCopy.groups.find((group) =>
-    //     group.some(({ id }) => id === this.task.id)
+    //     group.tasks.some(({ id }) => id === this.task.id)
     //   );
     // },
     cover() {
@@ -93,7 +100,7 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    },
+    }
   },
   methods: {
     setDetails() {
@@ -107,7 +114,6 @@ export default {
       this.$store.dispatch({ type: 'updateTask', task: updatedTask });
     },
     isChecklist() {
-      console.log('this.task.checklists', this.task.checklists);
       this.isShowChecklist = this.task.checklists ? true : false;
     },
     showEmptyChecklist() {
@@ -116,19 +122,19 @@ export default {
       this.task.checklists.push(emptyCheckList);
       this.updateTask(this.task);
     },
-    updateChecklist(updatedChecklist) {
-      const checklistIdx = this.task.checklists.findIndex(
-        ({ id }) => id === updatedChecklist.id
-      );
-      this.task.checklists[checklistIdx] = updatedChecklist;
-      this.updateTask(this.task);
-    },
-    updateToggleTodo(updatedChecklist) {
-      console.log('updatedChecklist', updatedChecklist);
-      // const checklistIdx = this.task.checklists.findIndex(({id}) => id === updatedChecklist.id)
-      // this.task.checklists.splice(checklistIdx, 1, updatedChecklist);
-      // this.updateTask(this.task);
-    },
+    // updateChecklist(updatedChecklist) {
+    //   const checklistIdx = this.task.checklists.findIndex(
+    //     ({ id }) => id === updatedChecklist.id
+    //   );
+    //   this.task.checklists[checklistIdx] = updatedChecklist;
+    //   this.updateTask(this.task);
+    // },
+    // updateToggleTodo(updatedChecklist) {
+    //   console.log('updatedChecklist', updatedChecklist);
+    //   const checklistIdx = this.task.checklists.findIndex(({id}) => id === updatedChecklist.id)
+    //   this.task.checklists.splice(checklistIdx, 1, updatedChecklist);
+    //   this.updateTask(this.task);
+    // },
     setCover(color) {
       this.task.cover = {};
       this.task.cover.backgroundColor = color;
@@ -153,7 +159,7 @@ export default {
       if (this.task.attachments.length === 0) delete this.task.attachments;
       console.log('this.task.attachments', this.task.attachments);
       this.updateTask(this.task);
-    },
+    }
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -161,6 +167,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  },
+  }
 };
 </script>

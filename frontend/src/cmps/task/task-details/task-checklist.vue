@@ -30,7 +30,7 @@
           <el-button
             class="task-details-btn"
             type="info"
-            @click.prevent="saveChecklist"
+            @click.prevent="saveTodoTxt"
             >Add</el-button
           >
           <i class="el-icon-close" @click="isAddTodos = false"></i>
@@ -39,9 +39,13 @@
     </div>
 
     <ul v-if="checklist.todos" class="clean-list">
-      <checklist-todo v-for="todo in checklist.todos" :key="todo.id" :todo="todo" @toggleTodo="toggleTodo" />
+      <checklist-todo
+        v-for="todo in checklist.todos"
+        :key="todo.id"
+        :todo="todo"
+        @toggleTodo="updateToggleTodo"
+      />
     </ul>
-
   </section>
 </template>
 
@@ -55,8 +59,11 @@ const clone = require('rfdc')({ proto: true });
 library.add(faCheckSquare);
 
 export default {
-  components: {checklistTodo},
+  components: { checklistTodo },
   props: {
+    task: {
+      type: Object
+    },
     checklist: {
       type: Object
     }
@@ -64,7 +71,7 @@ export default {
   data() {
     return {
       isAddTodos: false,
-      todo: null,
+      todo: null
     };
   },
   computed: {
@@ -73,28 +80,35 @@ export default {
     }
   },
   methods: {
-    addTodo() {
-      console.log('todo saved');
-    },
-    saveChecklist() {
-      const copyTodo = clone(this.todo);
-      this.checklist.todos.push(copyTodo)
-      this.$emit('addedTodo', this.checklist);
-      this.setTodo();
-    },
     setTodo() {
       const emptyTodo = boardService.getEmptyTodo();
       this.todo = emptyTodo;
     },
-    toggleTodo(val) {
-      console.log({val});
-      // this.todo.isDone = val;
-      // const copyTodo = clone(this.todo);
-      // const todoIdx = this.checklist.todos.findIndex(({id}) => id === copyTodo.id);
-      // console.log('copyTodo',copyTodo);
-      // this.checklist.todos.splice(todoIdx, 1, copyTodo);
-      // this.$emit('toggleTodo', this.checklist);
-    }
+    saveTodoTxt() {
+      const copyTodo = clone(this.todo);
+      this.checklist.todos.push(copyTodo);
+      this.updateChecklist(this.checklist);
+      this.setTodo();
+    },
+    updateToggleTodo(isChecked) {
+      const copyTodo = clone(this.todo);
+      copyTodo.isDone = isChecked;
+      const todoIdx = this.checklist.todos.findIndex(
+        ({ id }) => id === copyTodo.id
+      );
+      this.checklist.todos.splice(todoIdx, 1, copyTodo);
+      console.log('this.checklist after splicing todos',this.checklist);
+      this.updateChecklist(this.checklist);
+    },
+    updateChecklist(updatedChecklist) {
+      const checklistIdx = this.task.checklists.findIndex(
+        ({ id }) => id === updatedChecklist.id
+      );
+      this.task.checklists.splice(checklistIdx, 1, updatedChecklist);
+      // this.task.checklists[checklistIdx] = updatedChecklist;
+      console.log('this.task send to updateTask',this.task);
+      // this.$emit('updateTask',this.task);
+    },
   },
   created() {
     this.setTodo();
