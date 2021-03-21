@@ -40,7 +40,7 @@
         </ul>
         <task-attachment
           :task="task"
-          v-if="task.attachments || task.attachments.length >0"
+          v-if="task.attachments"
           @removeAttach="removeAttach"
         />
       </section>
