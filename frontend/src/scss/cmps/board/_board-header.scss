@@ -19,6 +19,10 @@
     position: relative;
   }
 
+  .icon {
+    margin-inline-end: 5px;
+  }
+
   .slide-enter-active {
     transition: all 0.2s ease;
   }
