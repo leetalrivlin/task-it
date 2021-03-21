@@ -17,11 +17,9 @@
     <div v-else>
       <div v-if="isColors">
         <menu-bgc-palette @colorPicked="colorPicked" />
-     
       </div>
       <div v-if="isPhotos">
-        <h2>photos</h2>
-        <!-- <cover-color-palettte @colorPicked="changeColor" /> -->
+        <menu-bgc-photos @photoPicked="photoPicked" />
       </div>
     </div>
   </section>
@@ -29,6 +27,7 @@
 
 <script>
 import menuBgcPalette from './menuBgcPalette';
+import menuBgcPhotos from './menuBgcPhotos';
 export default {
   data() {
     return {
@@ -46,13 +45,16 @@ export default {
       this.isPhotos = true;
       this.isBgc = false;
     },
-    colorPicked(color) {
-      console.log(color);
-      this.$emit('colorPicked', color);
+    colorPicked(style) {
+      this.$emit('colorPicked', style);
+    },
+    photoPicked(style) {
+      this.$emit('photoPicked', style);
     },
   },
   components: {
     menuBgcPalette,
+    menuBgcPhotos
   },
 };
 </script>

@@ -10,6 +10,9 @@
             height: 96px;
             cursor: pointer;
             width: 150px;
+            &:hover {
+                opacity: .7;
+              }
 
         
             &.color {

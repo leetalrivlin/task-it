@@ -24,7 +24,7 @@
         <menu-about v-if="isAbout" />
       </transition>
       <transition name="slide-in">
-        <menu-bgc v-if="isBgc" @colorPicked="colorPicked"/>
+        <menu-bgc v-if="isBgc" @colorPicked="colorPicked"  @photoPicked="photoPicked"/>
       </transition>
       <transition name="slide-in">
         <menu-search v-if="isSearch" />
@@ -51,7 +51,7 @@ export default {
       isAbout: false,
       isBgc: false,
       isSearch: false,
-      isMain: true
+      isMain: true,
     };
   },
   methods: {
@@ -82,10 +82,14 @@ export default {
       this.isSearch = false;
       this.isMain = true;
     },
-    colorPicked(color){
-      console.log(color);
-       this.$emit('colorPicked', color);
-    }
+    colorPicked(style) {
+      console.log(style);
+      this.$emit('colorPicked', style);
+    },
+    photoPicked(style) {
+      console.log(style);
+      this.$emit('photoPicked', style);
+    },
   },
   computed: {
     title() {
@@ -93,13 +97,13 @@ export default {
       else if (this.isBgc) return 'Change background';
       else if (this.isSearch) return 'Search cards';
       else return 'Menu';
-    }
+    },
   },
   components: {
     menuMain,
     menuBgc,
     menuAbout,
-    menuSearch
-  }
+    menuSearch,
+  },
 };
 </script>
