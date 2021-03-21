@@ -23,7 +23,7 @@
           <template v-slot:title>
             <p>Labels</p>
           </template>
-          <label-popup :labels="labels" @labelPicked="addLabel" />
+          <label-popup :labels="labels" :taskLableIds="taskLableIds" @labelPicked="addLabel" />
         </popup>
       </el-button>
       <el-button class="el-btn-details" @click="onOpenChecklist"
@@ -88,6 +88,9 @@ export default {
       type: Boolean,
     },
     labels: {
+      type: Array,
+    },
+    taskLableIds: {
       type: Array,
     },
   },
