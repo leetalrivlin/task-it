@@ -1,36 +1,36 @@
 .about-this-board-section {
-    z-index: 2;
-    background-color: #ebecf0;
-    position: absolute;
-    top: 0;
-   
-    
-    .header {
-        margin: 12px 0 12px 12px;
-        font-size: 0.875rem;
+  z-index: 2;
+  background-color: #ebecf0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding-inline-start: 12px;
 
-        .icon-user {
-            font-weight: 800;
-            margin-inline-end: 10px;
-        }
+  > * {
+    margin-block-start: 12px;
+  }
+
+  .header {
+    font-size: 0.875rem;
+
+    .icon-user {
+      font-weight: 800;
+      margin-inline-end: 10px;
     }
-    .avatar {
-        margin: 12px 0 12px 12px;
+  }
+  .info {
+    padding: 5px;
+  }
+  .description-container {
+
+    .details {
+      padding: 5px;
     }
-    .info {
-        padding: 5px;
+    .icon {
+      margin-top: 13px;
     }
-    .d-content {
-        margin: 12px 0 12px 12px;
-        .details {
-            padding: 5px;
-        }
-        .icon{
-            margin-top: 13px;
-        }
-    }
-    .discription{
-        margin: 12px 0 12px 12px;
-        max-width: 35ch;
-    }
+  }
+  .discription {
+    max-width: 35ch;
+  }
 }

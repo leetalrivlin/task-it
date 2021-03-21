@@ -1,5 +1,5 @@
 <template>
-  <section class="main-layout main-content">
+  <section class="main-content main-layout">
     <h1>Home Page</h1>
     <h5>
       Powered up Frontend 

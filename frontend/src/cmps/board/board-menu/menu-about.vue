@@ -20,9 +20,9 @@
         <p>@cll</p>
       </div>
     </div>
-    <div class="d-content flex">
+    <div class="description-container flex">
       <!-- <i class="el-icon-s-unfold d-icon task-details-icon"></i> -->
-       <font-awesome-icon class="d-icon icon" icon="stream" />
+       <font-awesome-icon class="icon" icon="stream" />
       <h1 class="details">Description</h1>
     </div>
 

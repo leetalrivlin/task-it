@@ -1,5 +1,5 @@
 <template>
-  <header class="main-layout flex space-between align-center main-header">
+  <header class="header-layout flex space-between align-center main-header">
     <span role="img" aria-label="logo">Task-it</span>
     <nav class="flex">
       <router-link to="/"> </router-link>

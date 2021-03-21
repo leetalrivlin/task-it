@@ -1,5 +1,7 @@
 .board-header {
-  height: rem(50px);
+  height: 8vh;
+  padding-block-start: 8px;
+  padding-block-end: 8px;
   a {
     border-radius: 3px;
     line-height: 32px;

@@ -1,14 +1,16 @@
 <template>
-  <section class="board-menu">
-    <header class="menu-header flex align-center justify-center">
-      <i
-        v-if="isBack"
-        class="el-icon-arrow-left icon-back"
-        @click="backMenu"
-      ></i>
+  <section class="board-menu flex column">
+    <section class="menu-header flex align-center space-between">
+      <div class="back-btn-container">
+        <i
+          v-if="isBack"
+          class="el-icon-arrow-left icon-back"
+          @click="backMenu"
+        ></i>
+      </div>
       <h4>{{ title }}</h4>
       <i class="el-icon-close close-menu" @click="closeMenue"></i>
-    </header>
+    </section>
     <hr class="board-menu-header-divider" />
     <div class="menu-content flex column">
       <menu-main
@@ -48,7 +50,7 @@ export default {
       isAbout: false,
       isBgc: false,
       isSearch: false,
-      isMain: true,
+      isMain: true
     };
   },
   methods: {
@@ -78,7 +80,7 @@ export default {
       this.isBgc = false;
       this.isSearch = false;
       this.isMain = true;
-    },
+    }
   },
   computed: {
     title() {
@@ -86,14 +88,13 @@ export default {
       else if (this.isBgc) return 'Change background';
       else if (this.isSearch) return 'Search cards';
       else return 'Menu';
-    },
+    }
   },
   components: {
     menuMain,
     menuBgc,
     menuAbout,
-    menuSearch,
-  },
+    menuSearch
+  }
 };
 </script>
-

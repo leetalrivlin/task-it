@@ -2,8 +2,9 @@
   .board-content {
     position: relative;
     overflow-x: scroll;
-    overflow-y: hidden;
-    min-height: 150vh; // For Leetal (cant see bottom of modal)
+    // overflow-y: hidden;
+    flex:1;
+    // min-height: 150vh; // For Leetal (cant see bottom of modal)
     // min-height: 90.8vh;
     }
   .group-container {
