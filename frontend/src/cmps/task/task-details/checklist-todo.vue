@@ -1,16 +1,16 @@
 <template>
   <li class="d-todos">
-      <!-- <span type="checkbox" class="d-todo-icon checkbox" @click="isDone" :class="completed"></span> -->
-    <!-- <input
+    <input
       type="checkbox"
       v-model="checked"
+      @change="toggleTodo"
       class="d-todo-icon"
-    /> -->
-    <el-checkbox
+    />
+    <!-- <el-checkbox
       v-model="checked"
       @input="toggleTodo"
       class="d-todo-icon"
-    ></el-checkbox>
+    ></el-checkbox> -->
     <label class="d-todo-content" for="checkbox-item">{{ todo.txt }}</label>
   </li>
 </template>
@@ -30,7 +30,8 @@ export default {
 
   methods: {
     toggleTodo() {
-      this.$emit('toggleTodo', this.checked)
+      this.todo.isDone = this.checked;
+      this.$emit('toggleTodo', this.checked);
     }
   }
 };
