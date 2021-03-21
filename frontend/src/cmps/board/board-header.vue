@@ -36,7 +36,6 @@ export default {
   },
   methods: {
     updateBoard(color) {
-      console.log('color from header ', color);
       this.board.style.background = color;
       this.$store.dispatch({ type: 'updateBoard', board: this.board });
     },

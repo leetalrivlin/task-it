@@ -28,9 +28,7 @@ export const boardStore = {
       return state.task;
     },
     boardStyle(state) {
-
       if (!state.board) return
-      console.log(state.board, 'state.board');
       return state.board.style;
     }
   },
