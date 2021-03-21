@@ -16,24 +16,26 @@
           <span :style="{ backgroundColor: label.color }"></span>
         </li>
       </ul>
-      <section class="flex align-center space-between">
         <p class="task-title">
           {{ task.title }}
         </p>
-      </section>
+       
     </section>
-    <i
-      v-if="taskOnFocus"
-      class="el-icon-delete delete-task"
-      @click.stop="deleteTask"
-    >
-    </i>
+        <i @click.stop="toggleMenu" v-if="taskOnFocus" class="el-icon-edit task-action">
+          <task-menu
+            v-if="isTaskMenu"
+            @deleteTask="deleteTask"
+            @closeMenu="toggleMenu"
+            v-click-outside="toggleMenu"
+          />
+        </i>
   </section>
 </template>
 
 
 
 <script>
+import taskMenu from './task-menu';
 export default {
   name: 'task',
   props: {
@@ -44,9 +46,13 @@ export default {
   data() {
     return {
       taskOnFocus: null,
+      isTaskMenu: false,
     };
   },
   methods: {
+    toggleMenu() {
+      this.isTaskMenu = !this.isTaskMenu;
+    },
     deleteTask() {
       this.$emit('deleteTask', this.task);
     },
@@ -61,6 +67,9 @@ export default {
       const labels = this.$store.getters.boardLabels;
       return labels.filter((label) => this.task.labelIds.includes(label.id));
     },
+  },
+  components: {
+    taskMenu,
   },
 };
 </script>

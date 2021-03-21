@@ -45,4 +45,19 @@
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
   }
+
+  .task-action {
+    position: absolute;
+    font-size: 1em;
+    color: #6b778c;
+    padding: 8px 8px;
+    border-radius: 3px;
+    right: 3px;
+    top: 3px;
+
+    &:hover {
+      color: $clr1;
+      background-color: rgba(9, 30, 66, 0.08);
+    }
+  }
 }
