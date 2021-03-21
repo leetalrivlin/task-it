@@ -3,7 +3,10 @@
     <font-awesome-icon class="d-icon" icon="check-square" />
 
     <div class="d-content">
+      <div class="flex space-between align-center">
       <h1 class="task-details-header">Checklist</h1>
+      <button class="el-btn-details details-item-btn del-checklist-btn" @click="deleteChecklist">Delete</button>
+      </div>
       <el-progress
         :percentage="50"
         color="grey"
@@ -111,6 +114,14 @@ export default {
       );
       this.task.checklists.splice(checklistIdx, 1, updatedChecklist);
       this.$emit('updateTask', this.task);
+    },
+    deleteChecklist() {
+      const checklistIdx = this.task.checklists.findIndex(
+        ({ id }) => id === this.checklist.id
+      );
+      const copyTask = clone(this.task);
+      copyTask.checklists.splice(checklistIdx, 1);
+      this.$emit('updateTask', copyTask);
     }
   },
   created() {

@@ -16,8 +16,12 @@
       class="d-todo-icon"
     ></el-checkbox> -->
     <div class="d-todo-content flex align-center justify-center">
-      <span>{{ todo.txt }}</span>
-      <i v-if="todoOnFocus" class="el-icon-more more-btn" @click="isOpenMenu = !isOpenMenu">
+      <span class="todo" :class="isTodoDone">{{ todo.txt }}</span>
+      <i
+        v-if="todoOnFocus"
+        class="el-icon-more more-btn"
+        @click="isOpenMenu = !isOpenMenu"
+      >
         <popup v-if="isOpenMenu" @closePopup="isOpenMenu = false">
           <template v-slot:title>
             <p>Item Actions</p>
@@ -49,7 +53,11 @@ export default {
       todoOnFocus: false
     };
   },
-
+  computed: {
+    isTodoDone() {
+      return this.isDone ? 'checked' : '';
+    }
+  },
   methods: {
     toggleTodo() {
       this.todo.isDone = this.isDone;
@@ -59,7 +67,7 @@ export default {
       this.$emit('deleteTodo', this.todo.id);
     },
     hideIcon() {
-      this.todoOnFocus = (this.isOpenMenu) ? true : false;
+      this.todoOnFocus = this.isOpenMenu ? true : false;
     }
   }
 };

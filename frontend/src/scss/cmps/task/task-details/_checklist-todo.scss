@@ -6,6 +6,11 @@
     background-color: rgba(9, 30, 66, 0.048);
     border-radius: 3px;
   }
+  .todo {
+    &.checked {
+      text-decoration: line-through;
+    }
+  }
   .more-btn {
     position: absolute;
     padding: 3px;
