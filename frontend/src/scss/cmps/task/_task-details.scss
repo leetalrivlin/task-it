@@ -104,25 +104,6 @@
 }
 //////////
 
-.header-container {
-  margin: rem(14px) 0 rem(14px) 0;
-  .task-title-container {
-    h1 {
-      font-size: rem(20px);
-      padding: 8px 0;
-      line-height: rem(20px);
-    }
-    p {
-      color: #5e6c84;
-      font-size: rem(14px);
-
-      .task-list-link {
-        color: $clr1;
-      }
-    }
-  }
-}
-
 // TASK DETAILS HELPERS
 .task-details-header {
   font-size: 16px;

@@ -14,22 +14,7 @@
         @saveImg="updateTask"
       />
       <section class="details-grid">
-        <section class="d-header header-container">
-          <font-awesome-icon class="d-icon" icon="columns" />
-          <div class="d-content task-title-container">
-            <h1>{{ task.title }}</h1>
-            <!-- <input
-              type="text"
-              class="title flex align-center"
-              v-model="group.title"
-              @change="inputChange"
-              @keyup.enter.exact="inputChange"
-            /> -->
-            <p>
-              In list <a class="task-list-link">{{ groupName }}</a>
-            </p>
-          </div>
-        </section>
+        <task-title :task="task" :group="group" @updateTask="updateTask"/>
         <task-controller
           :cover="cover"
           @openChecklist="showEmptyChecklist"
@@ -67,6 +52,7 @@ import taskDescription from '../task/task-details/task-description.vue';
 import taskChecklist from '../task/task-details/task-checklist.vue';
 import taskAttachment from '../task/task-details/task-attachment.vue';
 import taskCover from '../task/task-details/task-cover.vue';
+import taskTitle from '../task/task-details/task-title.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faColumns } from '@fortawesome/free-solid-svg-icons';
 
@@ -80,15 +66,15 @@ export default {
     taskController,
     taskChecklist,
     taskAttachment,
-    taskCover
+    taskCover,
+    taskTitle
   },
   computed: {
     task() {
       return clone(this.$store.getters.task);
     },
-    groupName() {
-      const groupCopy = clone(this.$store.getters.group);
-      return groupCopy.title;
+    group() {
+      return clone(this.$store.getters.group);
     },
     // group() {
     //   return boardCopy.groups.find((group) =>
@@ -122,19 +108,6 @@ export default {
       this.task.checklists.push(emptyCheckList);
       this.updateTask(this.task);
     },
-    // updateChecklist(updatedChecklist) {
-    //   const checklistIdx = this.task.checklists.findIndex(
-    //     ({ id }) => id === updatedChecklist.id
-    //   );
-    //   this.task.checklists[checklistIdx] = updatedChecklist;
-    //   this.updateTask(this.task);
-    // },
-    // updateToggleTodo(updatedChecklist) {
-    //   console.log('updatedChecklist', updatedChecklist);
-    //   const checklistIdx = this.task.checklists.findIndex(({id}) => id === updatedChecklist.id)
-    //   this.task.checklists.splice(checklistIdx, 1, updatedChecklist);
-    //   this.updateTask(this.task);
-    // },
     setCover(color) {
       this.task.cover = {};
       this.task.cover.backgroundColor = color;
@@ -143,7 +116,7 @@ export default {
     setImg(img) {
       this.task.cover = {};
       this.task.cover.img = img;
-       if (!this.task.attachments) this.task.attachments = [];
+      if (!this.task.attachments) this.task.attachments = [];
       this.task.attachments.push(img);
       this.updateTask(this.task);
     },
