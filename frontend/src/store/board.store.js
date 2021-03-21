@@ -18,6 +18,9 @@ export const boardStore = {
     board(state) {
       return state.board;
     },
+    boardLabels(state){
+      return state.board.labels
+    },
     group(state) {
       if (!state.board || !state.task) return;
       return state.board.groups.find((group) =>

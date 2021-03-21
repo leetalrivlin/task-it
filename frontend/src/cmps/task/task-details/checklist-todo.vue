@@ -1,5 +1,5 @@
 <template>
-  <li class="d-todos">
+  <li class="d-todos todo-item">
     <input
       type="checkbox"
       v-model="isDone"
@@ -11,7 +11,10 @@
       @input="toggleTodo"
       class="d-todo-icon"
     ></el-checkbox> -->
-    <label class="d-todo-content" for="checkbox-item">{{ todo.txt }}</label>
+    <div class="d-todo-content flex align-center justify-center">
+      <span>{{ todo.txt }}</span>
+      <i class="el-icon-more more-btn"></i>
+    </div>
   </li>
 </template>
 
@@ -20,7 +23,7 @@ export default {
   props: {
     todo: {
       type: Object
-    },
+    }
   },
   data() {
     return {
@@ -32,6 +35,9 @@ export default {
     toggleTodo() {
       this.todo.isDone = this.isDone;
       this.$emit('updateTodo', this.todo);
+    },
+    deleteTodo() {
+      this.$emit('deleteTodo', this.todo.id);
     }
   }
 };

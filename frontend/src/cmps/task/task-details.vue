@@ -14,9 +14,10 @@
         @saveImg="updateTask"
       />
       <section class="details-grid">
-        <task-title :task="task" :group="group" @updateTask="updateTask"/>
+        <task-title :task="task" :group="group" @updateTask="updateTask" />
         <task-controller
           :cover="cover"
+          :labels="boardLabels"
           @openChecklist="showEmptyChecklist"
           @addCover="setCover"
           @addImg="setImg"
@@ -24,7 +25,7 @@
           @addLabel="setLabel"
         />
         <section class="flex column task-main">
-          <task-label v-if="task.labels" :task="task" />
+          <task-label v-if="task.labelIds" :labels="boardLabels" :task="task" />
           <task-description :task="task" @saveDescription="updateTask" />
           <ul v-if="task.checklists" class="clean-list">
             <task-checklist
@@ -71,7 +72,7 @@ export default {
     taskChecklist,
     taskAttachment,
     taskCover,
-    taskTitle
+    taskTitle,
   },
   computed: {
     task() {
@@ -79,6 +80,9 @@ export default {
     },
     group() {
       return clone(this.$store.getters.group);
+    },
+    boardLabels() {
+      return clone(this.$store.getters.boardLabels);
     },
     // group() {
     //   return boardCopy.groups.find((group) =>
@@ -139,16 +143,14 @@ export default {
     },
     setLabel(label) {
       console.log('label', label);
-      if (!this.task.labels) this.task.labels = [];
-      const labelIdx = this.task.labels.findIndex( ({ color }) => {
-        console.log('color', color);
-        console.log('labelcolor', label.color);
-        return color === label.color
+      if (!this.task.labelIds) this.task.labelIds = [];
+      const labelIdx = this.task.labelIds.findIndex(( id ) => {
+        return id === label.id;
       });
       if (labelIdx >= 0) {
-        this.task.labels.splice(labelIdx, 1);
+        this.task.labelIds.splice(labelIdx, 1);
       } else {
-        this.task.labels.push(label);
+        this.task.labelIds.push(label.id);
       }
       this.updateTask(this.task);
     },

@@ -44,6 +44,7 @@
         :key="todo.id"
         :todo="todo"
         @updateTodo="updateTodo"
+        @deleteTodo="deleteTodo"
       />
     </ul>
   </section>
@@ -89,6 +90,14 @@ export default {
       this.updateChecklist(this.checklist);
       this.setEmptyTodo();
     },
+    deleteTodo(todoId) {
+      const copyChecklist = clone(this.checklist);
+      const todoIdx = copyChecklist.todos.findIndex(({ id }) => {
+        return id === todoId;
+      });
+      copyChecklist.todos.splice(todoIdx, 1);
+      this.updateChecklist(copyChecklist);
+    },
     updateTodo(updatedTodo) {
       const todoIdx = this.checklist.todos.findIndex(
         ({ id }) => id === updatedTodo.id
@@ -101,7 +110,7 @@ export default {
         ({ id }) => id === updatedChecklist.id
       );
       this.task.checklists.splice(checklistIdx, 1, updatedChecklist);
-      this.$emit('updateTask',this.task);
+      this.$emit('updateTask', this.task);
     }
   },
   created() {

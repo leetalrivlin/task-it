@@ -23,7 +23,7 @@
           <template v-slot:title>
             <p>Labels</p>
           </template>
-          <label-popup @labelPicked="addLabel" />
+          <label-popup :labels="labels" @labelPicked="addLabel" />
         </popup>
       </el-button>
       <el-button class="el-btn-details" @click="onOpenChecklist"
@@ -86,6 +86,9 @@ export default {
   props: {
     cover: {
       type: Boolean,
+    },
+    labels: {
+      type: Array,
     },
   },
   data() {
