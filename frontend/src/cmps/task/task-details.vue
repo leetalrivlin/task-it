@@ -18,6 +18,7 @@
         <task-controller
           :cover="cover"
           :labels="boardLabels"
+          :taskLableIds = "task.labelIds"
           @openChecklist="showEmptyChecklist"
           @addCover="setCover"
           @addImg="setImg"
@@ -25,7 +26,7 @@
           @addLabel="setLabel"
         />
         <section class="flex column task-main">
-          <task-label v-if="task.labelIds" :labels="boardLabels" :task="task" />
+          <task-label v-if="task.labelIds" :labels="boardLabels" :task="task" @addLabel="setLabel" />
           <task-description :task="task" @saveDescription="updateTask" />
           <ul v-if="task.checklists" class="clean-list">
             <task-checklist

@@ -23,6 +23,13 @@
         min-height: 32px;
         transition: padding 85ms, margin 85ms, box-shadow 85ms;
 
+        .label-details {
+          padding: 0 10px;
+          color: white;
+          height: 32px;
+          font-size: 13px;
+        }
+
         &.bclr0 {
           &:hover {
             box-shadow: -8px 0 $bclr0;
@@ -54,6 +61,19 @@
           }
         }
       }
+      // input {
+      //   flex-grow: 1;
+      //   border-radius: 3px;
+      //   margin-inline-end: 5px;
+      //   cursor: pointer;
+      //   font-weight: 700;
+      //   margin: 0 10px 4px 0;
+      //   min-height: 32px;
+      //   transition: padding 85ms, margin 85ms, box-shadow 85ms;
+      //   border: 1px solid blue;
+      //   outline: white;
+      // }
+
       a {
         color: $clr1;
       }
