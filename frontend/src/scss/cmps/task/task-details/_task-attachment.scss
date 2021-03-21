@@ -1,24 +1,30 @@
 .task-attachment-container {
   .task-attachment {
     margin-block-end: 10px;
+
     .attach-item {
       margin-block-end: 15px;
+      &:hover {
+        background-color: #ededf1;
+      }
     }
 
     .img-container {
-      width: 30%;
-      //   height: rem(80px);
-      background-color: $clr2;
+      width: 18%;
+      background-color: #c6c7cc;
       border-radius: 3px;
+
       img {
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        border-radius: 3px;
       }
     }
 
     .img-desc {
-      // margin-inline-start: rem(20px);
+      padding-inline-start: rem(15px);
       font-size: rem(14px);
+
       h1 {
         font-size: rem(14px);
         font-weight: 400;
@@ -29,8 +35,8 @@
         cursor: pointer;
       }
     }
-    .btn-containter{
-      .link-btn{
+    .btn-containter {
+      .link-btn {
         background-color: none;
         border: none;
         text-decoration: underline;
@@ -40,6 +46,8 @@
     }
   }
   .attachment-btn {
+    position: relative;
+    cursor: pointer;
     width: 200px;
   }
 }

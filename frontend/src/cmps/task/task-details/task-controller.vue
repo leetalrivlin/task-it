@@ -35,12 +35,12 @@
           :icon="['far', 'clock']"
         />Due Date</el-button
       >
-      <el-button @click="isAttach = true" class="el-btn-details"
+      <el-button @click="isAttach = !isAttach" class="el-btn-details"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="paperclip"
         />Attachment
-        <popup v-if="isAttach" @closeCntrl="isAttach = false">
+        <popup v-if="isAttach" @closePopup="isAttach = false">
           <template v-slot:title>
             <p>Attachment</p>
           </template>
@@ -53,7 +53,7 @@
         icon="el-icon-set-up fa-nav-icon"
         @click="isCoverPopUp = true"
         >Cover
-        <popup v-if="isCoverPopUp" @closeCntrl="isCoverPopUp = false">
+        <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
           <template v-slot:title>
             <p>Cover</p>
           </template>
@@ -98,19 +98,20 @@ export default {
       this.$emit('addCover', color);
       this.isCoverPopUp = false;
     },
-    addCoverImg(imgUrl) {
-      this.$emit('addImg', imgUrl);
+    addCoverImg(img) {
+      this.$emit('addImg', img);
       this.isCoverPopUp = false;
     },
-    addAttach(attachment){
-      this.$emit('addAttach', attachment)
-    }
+    addAttach(attachment) {
+      this.isAttach = false;
+      this.$emit('addAttach', attachment);
+    },
   },
   components: {
     popup,
     coverPopup,
     coverAttachments,
-    attachmentPopup
+    attachmentPopup,
   },
 };
 </script>

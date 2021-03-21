@@ -43,6 +43,7 @@
             :task="task"
             v-if="task.attachments"
             @removeAttach="removeAttach"
+            @addAttach="setAttach"
           />
         </section>
       </section>
@@ -133,9 +134,11 @@ export default {
       this.task.cover.backgroundColor = color;
       this.updateTask(this.task);
     },
-    setImg(imgUrl) {
+    setImg(img) {
       this.task.cover = {};
-      this.task.cover.img = imgUrl;
+      this.task.cover.img = img;
+       if (!this.task.attachments) this.task.attachments = [];
+      this.task.attachments.push(img);
       this.updateTask(this.task);
     },
     setAttach(attachment) {
@@ -147,6 +150,8 @@ export default {
     removeAttach(attachId) {
       const idx = this.task.attachments.findIndex(({ id }) => id === attachId);
       this.task.attachments.splice(idx, 1);
+      if (this.task.attachments.length === 0) delete this.task.attachments;
+      console.log('this.task.attachments', this.task.attachments);
       this.updateTask(this.task);
     },
   },

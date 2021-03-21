@@ -1,5 +1,5 @@
 <template>
-  <section class="attachment-popup">
+  <section class="attachment-popup" @click.stop>
       <label v-if="!isLoading" for="imgUploader">Upload Attachment</label>
     <img
       v-else
@@ -26,7 +26,6 @@ export default {
       this.isLoading = true;
       const res = await uploadImg(ev);
       this.isLoading = false;
-      console.log(res);
       const emptyAttachment = boardService.getEmptyAttachment();
       emptyAttachment.name = res.original_filename;
       emptyAttachment.url = res.url;

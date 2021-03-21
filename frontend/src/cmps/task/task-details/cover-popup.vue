@@ -19,8 +19,8 @@ export default {
     changeColor(color) {
       this.$emit('changeColor', color);
     },
-    uploadImg(imgUrl) {
-      this.$emit('uploadImg', imgUrl);
+    uploadImg(img) {
+      this.$emit('uploadImg', img);
     },
   },
 };

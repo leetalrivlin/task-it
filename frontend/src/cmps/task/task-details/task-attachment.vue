@@ -3,10 +3,9 @@
     <font-awesome-icon class="d-icon" icon="paperclip" />
     <div class="d-content">
       <h1 class="task-details-header">Attachment</h1>
-      <!-- Should be replaced to one li with a v-for on the images: -->
       <ul class="clean-list task-attachment flex column">
         <li
-          class="attach-item"
+          class="attach-item flex align-center"
           v-for="attach in task.attachments"
           :key="attach.id"
         >
@@ -16,15 +15,24 @@
           <div class="img-desc">
             <h1>{{ attach.name }}</h1>
             <div class="btn-containter">
-              <button class="link-btn" @click="removeAttach(attach.id)">Delete</button> -
-              <a href="">Edit</a>
+              <button class="link-btn" @click="removeAttach(attach.id)">
+                Delete</button
+              >-
+              <button class="link-btn">Edit</button>
             </div>
           </div>
         </li>
       </ul>
-      <a class="el-btn-details details-item-btn attachment-btn"
-        >Add an attachment</a
-      >
+      <a
+        class="el-btn-details details-item-btn attachment-btn"
+        @click="isAttach = !isAttach"
+        >Add an attachment
+        <popup v-if="isAttach" @closePopup="isAttach = false">
+          <template v-slot:title>
+            <p>Attachment</p>
+          </template>
+          <attachment-popup @attachUploaded="addAttach" /> </popup
+      ></a>
     </div>
   </section>
 </template>
@@ -32,6 +40,8 @@
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import popup from './popup.vue';
+import attachmentPopup from './attachment-popup';
 
 library.add(faPaperclip);
 export default {
@@ -41,10 +51,23 @@ export default {
       type: Object,
     },
   },
+  data() {
+    return {
+      isAttach: false,
+    };
+  },
   methods: {
     removeAttach(attachId) {
       this.$emit('removeAttach', attachId);
     },
+    addAttach(attachment) {
+      this.isAttach = false;
+      this.$emit('addAttach', attachment);
+    },
+  },
+  components: {
+    popup,
+    attachmentPopup,
   },
 };
 </script>
