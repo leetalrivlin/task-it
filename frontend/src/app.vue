@@ -16,7 +16,6 @@ export default {
       const style = this.$store.getters.boardStyle;
       if (!style) return;
       if (!style.background.includes('.jpg')) {
-        console.log('in?');
         return style;
       } else return {background: style.background + 'center / cover'} ;
     },

@@ -22,12 +22,21 @@
         </p>
       </section>
     </section>
-        <i
+    <!-- <i
           v-if="taskOnFocus"
           class="el-icon-delete delete-task"
           @click.stop="deleteTask"
         >
-        </i>
+        </i> -->
+    <i @click="toggleMenu" class="el-icon-more group-action">
+      <task-menu
+        class="group-menu"
+        v-if="isGroupMenu"
+        @deleteGroup="deleteGroup"
+        @closeMenu="toggleMenu"
+        v-click-outside="toggleMenu"
+      />
+    </i>
   </section>
 </template>
 
