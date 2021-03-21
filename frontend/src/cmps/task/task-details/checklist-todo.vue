@@ -2,7 +2,7 @@
   <li
     class="d-todos todo-item"
     @mouseover="todoOnFocus = true"
-    @mouseleave="todoOnFocus = false"
+    @mouseleave="hideIcon"
   >
     <input
       type="checkbox"
@@ -17,7 +17,7 @@
     ></el-checkbox> -->
     <div class="d-todo-content flex align-center justify-center">
       <span>{{ todo.txt }}</span>
-      <i v-if="todoOnFocus" class="el-icon-more more-btn" @click="openMenu">
+      <i v-if="todoOnFocus" class="el-icon-more more-btn" @click="isOpenMenu = !isOpenMenu">
         <popup v-if="isOpenMenu" @closePopup="isOpenMenu = false">
           <template v-slot:title>
             <p>Item Actions</p>
@@ -55,12 +55,11 @@ export default {
       this.todo.isDone = this.isDone;
       this.$emit('updateTodo', this.todo);
     },
-    openMenu() {
-      this.isOpenMenu = !this.isOpenMenu;
-      this.todoOnFocus = (this.isOpenMenu) ? true : false;
-    },
     deleteTodo() {
       this.$emit('deleteTodo', this.todo.id);
+    },
+    hideIcon() {
+      this.todoOnFocus = (this.isOpenMenu) ? true : false;
     }
   }
 };
