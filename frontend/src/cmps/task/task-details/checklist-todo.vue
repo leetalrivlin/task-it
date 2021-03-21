@@ -2,12 +2,12 @@
   <li class="d-todos">
     <input
       type="checkbox"
-      v-model="checked"
+      v-model="isDone"
       @change="toggleTodo"
       class="d-todo-icon"
     />
     <!-- <el-checkbox
-      v-model="checked"
+      v-model="isDone"
       @input="toggleTodo"
       class="d-todo-icon"
     ></el-checkbox> -->
@@ -24,14 +24,14 @@ export default {
   },
   data() {
     return {
-      checked: this.todo.isDone
+      isDone: this.todo.isDone
     };
   },
 
   methods: {
     toggleTodo() {
-      this.todo.isDone = this.checked;
-      this.$emit('toggleTodo', this.checked);
+      this.todo.isDone = this.isDone;
+      this.$emit('updateTodo', this.todo);
     }
   }
 };
