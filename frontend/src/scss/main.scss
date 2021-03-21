@@ -42,9 +42,11 @@
 @import 'cmps/task/task-details/task-attachment';
 @import 'cmps/task/task-details/task-cover';
 @import 'cmps/task/task-details/popup';
-@import 'cmps/task/task-details/cover-colorPallete.scss';
-@import 'cmps/task/task-details/cover-attachments.scss';
-@import 'cmps/task/task-details/attachment-popup.scss';
+@import 'cmps/task/task-details/cover-colorPallete';
+@import 'cmps/task/task-details/cover-attachments';
+@import 'cmps/task/task-details/attachment-popup';
+@import 'cmps/task/task-details/label-popup';
+@import 'cmps/task/task-details/task-label';
 
 //CMPS- GROUP
 @import 'cmps/group';

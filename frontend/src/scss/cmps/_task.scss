@@ -1,10 +1,27 @@
 .task {
   background-color: white;
-  box-shadow: 0 1px 0 rgba(9, 30, 66,  0.25);
+  box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
   border-radius: 3px;
   margin-block-end: 10px;
   cursor: pointer;
   position: relative;
+
+  .labels-list {
+    .label {
+      span {
+        float: left;
+        font-size: 12px;
+        font-weight: 700;
+        height: 8px;
+        line-height: 100px;
+        margin: 0 4px 4px 0;
+        max-width: 40px;
+        min-width: 40px;
+        padding: 0;
+        border-radius: 10px;
+      }
+    }
+  }
 
   .task-content {
     padding: 6px 8px;
@@ -15,10 +32,10 @@
     }
   }
 
-  .delete-task{
-      position: absolute;
-      right: 6px;
-      top: 11px;
+  .delete-task {
+    position: absolute;
+    right: 6px;
+    top: 5px;
   }
 
   .task-cover {

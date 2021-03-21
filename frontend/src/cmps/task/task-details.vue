@@ -36,8 +36,10 @@
           @addCover="setCover"
           @addImg="setImg"
           @addAttach="setAttach"
+          @addLabel="setLabel"
         />
         <section class="flex column task-main">
+          <task-label v-if="task.labels" :task="task" />
           <task-description :task="task" @saveDescription="updateTask" />
           <ul v-if="task.checklists" class="clean-list">
             <task-checklist
@@ -64,6 +66,7 @@
 import { boardService } from '../../services/board.service';
 import taskController from '../task/task-details/task-controller.vue';
 import taskDescription from '../task/task-details/task-description.vue';
+import taskLabel from '../task/task-details/task-label.vue';
 import taskChecklist from '../task/task-details/task-checklist.vue';
 import taskAttachment from '../task/task-details/task-attachment.vue';
 import taskCover from '../task/task-details/task-cover.vue';
@@ -77,10 +80,11 @@ export default {
   name: 'taskDetails',
   components: {
     taskDescription,
+    taskLabel,
     taskController,
     taskChecklist,
     taskAttachment,
-    taskCover
+    taskCover,
   },
   computed: {
     task() {
@@ -100,7 +104,7 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    }
+    },
   },
   methods: {
     setDetails() {
@@ -143,7 +147,7 @@ export default {
     setImg(img) {
       this.task.cover = {};
       this.task.cover.img = img;
-       if (!this.task.attachments) this.task.attachments = [];
+      if (!this.task.attachments) this.task.attachments = [];
       this.task.attachments.push(img);
       this.updateTask(this.task);
     },
@@ -159,7 +163,22 @@ export default {
       if (this.task.attachments.length === 0) delete this.task.attachments;
       console.log('this.task.attachments', this.task.attachments);
       this.updateTask(this.task);
-    }
+    },
+    setLabel(label) {
+      console.log('label', label);
+      if (!this.task.labels) this.task.labels = [];
+      const labelIdx = this.task.labels.findIndex( ({ color }) => {
+        console.log('color', color);
+        console.log('labelcolor', label.color);
+        return color === label.color
+      });
+      if (labelIdx >= 0) {
+        this.task.labels.splice(labelIdx, 1);
+      } else {
+        this.task.labels.push(label);
+      }
+      this.updateTask(this.task);
+    },
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -167,6 +186,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  }
+  },
 };
 </script>

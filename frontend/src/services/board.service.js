@@ -211,7 +211,8 @@ export const boardService = {
   updateBoard,
   getEmptyChecklist,
   getEmptyTodo,
-  getEmptyAttachment
+  getEmptyAttachment,
+  getEmptyLabel
   // getTaskById,
   // getGroupById
 };
@@ -322,3 +323,11 @@ function getEmptyAttachment() {
     url: ''
   };
 }
+
+function getEmptyLabel() {
+  return {
+    name: '',
+    color: ''
+  };
+}
+

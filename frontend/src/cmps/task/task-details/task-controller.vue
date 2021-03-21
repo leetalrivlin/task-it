@@ -17,12 +17,15 @@
           :icon="['far', 'user']"
         />Members</el-button
       >
-      <el-button class="el-btn-details"
-        ><font-awesome-icon
-          class="d-icon fa-nav-icon"
-          icon="tag"
-        />Labels</el-button
-      >
+      <el-button @click="isLabel = !isLabel" class="el-btn-details"
+        ><font-awesome-icon class="d-icon fa-nav-icon" icon="tag" />Labels
+        <popup v-if="isLabel" @closePopup="isLabel = false">
+          <template v-slot:title>
+            <p>Labels</p>
+          </template>
+          <label-popup @labelPicked="addLabel" />
+        </popup>
+      </el-button>
       <el-button class="el-btn-details" @click="onOpenChecklist"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
@@ -51,7 +54,7 @@
         v-if="!cover"
         class="el-btn-details"
         icon="el-icon-set-up fa-nav-icon"
-        @click="isCoverPopUp = true"
+        @click="isCoverPopUp = !isCoverPopUp"
         >Cover
         <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
           <template v-slot:title>
@@ -76,6 +79,7 @@ import popup from './popup.vue';
 import coverPopup from './cover-popup.vue';
 import coverAttachments from './cover-attachments.vue';
 import attachmentPopup from './attachment-popup.vue';
+import labelPopup from './label-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
@@ -88,6 +92,7 @@ export default {
     return {
       isCoverPopUp: false,
       isAttach: false,
+      isLabel: false,
     };
   },
   methods: {
@@ -106,12 +111,16 @@ export default {
       this.isAttach = false;
       this.$emit('addAttach', attachment);
     },
+    addLabel(label) {
+      this.$emit('addLabel', label);
+    },
   },
   components: {
     popup,
     coverPopup,
     coverAttachments,
     attachmentPopup,
+    labelPopup,
   },
 };
 </script>
