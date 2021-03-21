@@ -5,11 +5,10 @@
       <i class="el-icon-close close-btn" @click="closeMenu"></i>
     </div>
     <hr class="task-menu-header-divider" />
-    
-      <div class="menu-opt flex space-between" @click="deleteTask">
-        Archive this Task <i class="el-icon-delete icon-del"></i>
-      </div>
-   
+    <div class="menu-opt flex align-center space-between" @click="deleteTask">
+      <p>Archive this Task</p>
+      <i class="el-icon-delete icon-del"></i>
+    </div>
   </section>
 </template>
 

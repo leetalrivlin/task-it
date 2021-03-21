@@ -5,8 +5,9 @@
       <i class="el-icon-close close-btn" @click="closeMenu"></i>
     </div>
     <hr class="group-menu-header-divider" />
-    <div class="menu-opt" @click="deleteGroup">
-      Archive this List <i class="el-icon-delete"></i>
+    <div class="menu-opt flex align-center space-between" @click="deleteGroup">
+      <p>Archive this List</p>
+      <i class="el-icon-delete"></i>
     </div>
   </section>
 </template>

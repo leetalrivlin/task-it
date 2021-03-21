@@ -1,16 +1,24 @@
 .main-header {
   height: 8vh;
-  // filter: brightness(80%);
-  background-color: rgba(0, 0, 0, 0.315);
-  color: $clr1;
+  background-color: rgba(36, 36, 36,  0.32);
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
 
+  .logo{
+    font-size: 26px;
+    font-weight: 600;
+    grid-column: 2;
+  }
   a{
-    color: $clr1;
+    border-radius: 3px;
   }
 
   nav {
+    grid-column: 3;
+
     > * {
-      margin-inline-start: rem(20px);
+      margin-inline-start: rem(10px);
     }
   }
 }

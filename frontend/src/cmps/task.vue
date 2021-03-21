@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      taskOnFocus: null,
+      taskOnFocus: false,
       isTaskMenu: false,
     };
   },

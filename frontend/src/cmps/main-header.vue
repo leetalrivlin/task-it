@@ -1,11 +1,11 @@
 <template>
-  <header class="header-layout flex space-between align-center main-header">
-    <span role="img" aria-label="logo">Task-it</span>
-    <nav class="flex">
+  <header class="header-layout main-header">
+    <span class="flex align-center logo" role="img" aria-label="logo">Task-it</span>
+    <nav class="flex align-center justify-end">
       <router-link to="/"> </router-link>
       <!-- <router-link to="/chat">Chat</router-link> -->
-      <router-link to="/login">Login / Signup</router-link>
-      <router-link to="/board">Boards</router-link>
+      <router-link class="el-btn" to="/login">Signin</router-link>
+      <router-link class="el-btn" to="/board">Boards</router-link>
     </nav>
     <section className="loggedin-user" v-if="loggedInUser">
       <router-link :to="`/user/${loggedInUser._id}`">
