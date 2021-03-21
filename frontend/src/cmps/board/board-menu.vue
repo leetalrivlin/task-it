@@ -6,6 +6,7 @@
           v-if="isBack"
           class="el-icon-arrow-left icon-back"
           @click="backMenu"
+          title="go back"
         ></i>
       </div>
       <h4>{{ title }}</h4>
@@ -23,7 +24,7 @@
         <menu-about v-if="isAbout" />
       </transition>
       <transition name="slide-in">
-        <menu-bgc v-if="isBgc" />
+        <menu-bgc v-if="isBgc" @colorPicked="colorPicked"/>
       </transition>
       <transition name="slide-in">
         <menu-search v-if="isSearch" />
@@ -80,6 +81,10 @@ export default {
       this.isBgc = false;
       this.isSearch = false;
       this.isMain = true;
+    },
+    colorPicked(color){
+      console.log(color);
+       this.$emit('colorPicked', color);
     }
   },
   computed: {

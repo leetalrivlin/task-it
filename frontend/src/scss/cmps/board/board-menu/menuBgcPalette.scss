@@ -1,0 +1,21 @@
+.palette-container{
+    padding: 10px;
+    ul {
+      width: 300px;
+      display: grid;
+      gap: 8px;
+      grid-template-columns: 1fr 1fr;
+  
+      .color-pick {
+        display: inline-block;
+        height: 96px;
+        border-radius: 8px;
+        background-size: cover;
+        cursor: pointer;
+        &:focus {
+          border-color: blue;
+        }
+      }
+    }
+  }
+  

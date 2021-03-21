@@ -12,7 +12,7 @@ const clone = require('rfdc')({ proto: true });
 export const boardStore = {
   state: {
     board: null,
-    task: null
+    task: null,
   },
   getters: {
     board(state) {
@@ -20,6 +20,12 @@ export const boardStore = {
     },
     task(state) {
       return state.task;
+    },
+    boardStyle(state) {
+
+      if (!state.board) return
+      console.log(state.board, 'state.board');
+      return state.board.style;
     }
   },
   mutations: {

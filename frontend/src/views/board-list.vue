@@ -16,7 +16,9 @@ export default {
     // getBoard(){
     //   this.$route.params(boardId)
     // }
-  }
+  },
+ 
+
 };
 </script>
 
