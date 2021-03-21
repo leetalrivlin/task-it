@@ -208,6 +208,7 @@ export const boardService = {
   updateBoard,
   getEmptyChecklist,
   getEmptyTodo,
+  getEmptyAttachment,
   // getTaskById,
   // getGroupById
 };
@@ -307,6 +308,14 @@ function getEmptyTodo() {
   return {
     id: utilService.makeId(3),
     txt: '',
-    isDone: false,
+    isDone: false
+  };
+}
+
+function getEmptyAttachment() {
+  return {
+    id: utilService.makeId(4),
+    name: '',
+    url: ''
   };
 }

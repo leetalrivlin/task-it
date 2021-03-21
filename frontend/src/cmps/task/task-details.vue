@@ -25,6 +25,7 @@
         @openChecklist="showEmptyChecklist"
         @addCover="setCover"
         @addImg="setImg"
+        @addAttach="setAttach"
       />
       <section class="flex column task-main">
         <task-description :task="task" @saveDescription="updateTask" />
@@ -36,7 +37,11 @@
             @addedTodo="updateChecklist"
           />
         </ul>
-        <task-attachment />
+        <task-attachment
+          :task="task"
+          v-if="task.attachments || task.attachments.length >0"
+          @removeAttach="removeAttach"
+        />
       </section>
     </section>
   </section>
@@ -62,7 +67,7 @@ export default {
     taskController,
     taskChecklist,
     taskAttachment,
-    taskCover
+    taskCover,
   },
   data() {
     return {
@@ -71,7 +76,7 @@ export default {
   },
   computed: {
     task() {
-      console.log('task',this.$store.getters.task);
+      console.log('task', this.$store.getters.task);
       return clone(this.$store.getters.task);
     },
     // group() {
@@ -84,7 +89,7 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    }
+    },
   },
   methods: {
     setDetails() {
@@ -98,20 +103,22 @@ export default {
       this.$store.dispatch({ type: 'updateTask', task: updatedTask });
     },
     isChecklist() {
-      console.log('this.task.checklists',this.task.checklists);
-      this.isShowChecklist = (this.task.checklists) ?  true : false;
+      console.log('this.task.checklists', this.task.checklists);
+      this.isShowChecklist = this.task.checklists ? true : false;
     },
     showEmptyChecklist() {
       const emptyCheckList = boardService.getEmptyChecklist();
       if (!this.task.checklists) this.task.checklists = [];
       this.task.checklists.push(emptyCheckList);
       this.updateTask(this.task);
-      console.log('this.task',this.task);
+      console.log('this.task', this.task);
       // this.isShowChecklist = true;
     },
     updateChecklist(updatedChecklist) {
       // this.task.checklists.push(updatedChecklist);
-      const checklistIdx = this.task.checklists.findIndex(({id}) => id === updatedChecklist.id)
+      const checklistIdx = this.task.checklists.findIndex(
+        ({ id }) => id === updatedChecklist.id
+      );
       this.task.checklists[checklistIdx] = updatedChecklist;
       console.log('this.task', this.task);
       this.updateTask(this.task);
@@ -125,7 +132,18 @@ export default {
       this.task.cover = {};
       this.task.cover.img = imgUrl;
       this.updateTask(this.task);
-    }
+    },
+    setAttach(attachment) {
+      console.log(attachment);
+      if (!this.task.attachments) this.task.attachments = [];
+      this.task.attachments.push(attachment);
+      this.updateTask(this.task);
+    },
+    removeAttach(attachId) {
+      const idx = this.task.attachments.findIndex(({ id }) => id === attachId);
+      this.task.attachments.splice(idx, 1);
+      this.updateTask(this.task);
+    },
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -133,6 +151,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  }
+  },
 };
 </script>

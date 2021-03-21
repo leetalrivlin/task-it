@@ -35,24 +35,30 @@
           :icon="['far', 'clock']"
         />Due Date</el-button
       >
-      <el-button class="el-btn-details"
+      <el-button @click="isAttach = true" class="el-btn-details"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="paperclip"
-        />Attachment</el-button
-      >
+        />Attachment
+        <popup v-if="isAttach" @closeCntrl="isAttach = false">
+          <template v-slot:title>
+            <p>Attachment</p>
+          </template>
+          <attachment-popup @attachUploaded="addAttach" />
+        </popup>
+      </el-button>
       <el-button
         v-if="!cover"
         class="el-btn-details"
         icon="el-icon-set-up fa-nav-icon"
-        @click="isCoverCntrl = true"
+        @click="isCoverPopUp = true"
         >Cover
-        <popup
-          v-if="isCoverCntrl"
-          @closeCntrl="isCoverCntrl = false"
-          @changeColor="addCover"
-          @uploadImg="addCoverImg"
-        />
+        <popup v-if="isCoverPopUp" @closeCntrl="isCoverPopUp = false">
+          <template v-slot:title>
+            <p>Cover</p>
+          </template>
+          <cover-popup @changeColor="addCover" @uploadImg="addCoverImg" />
+        </popup>
       </el-button>
     </section>
   </nav>
@@ -67,6 +73,9 @@ import {
   faPaperclip,
 } from '@fortawesome/free-solid-svg-icons';
 import popup from './popup.vue';
+import coverPopup from './cover-popup.vue';
+import coverAttachments from './cover-attachments.vue';
+import attachmentPopup from './attachment-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
@@ -77,7 +86,8 @@ export default {
   },
   data() {
     return {
-      isCoverCntrl: false,
+      isCoverPopUp: false,
+      isAttach: false,
     };
   },
   methods: {
@@ -86,15 +96,21 @@ export default {
     },
     addCover(color) {
       this.$emit('addCover', color);
-      this.isCoverCntrl = false;
+      this.isCoverPopUp = false;
     },
     addCoverImg(imgUrl) {
       this.$emit('addImg', imgUrl);
-      this.isCoverCntrl = false;
+      this.isCoverPopUp = false;
     },
+    addAttach(attachment){
+      this.$emit('addAttach', attachment)
+    }
   },
   components: {
     popup,
+    coverPopup,
+    coverAttachments,
+    attachmentPopup
   },
 };
 </script>

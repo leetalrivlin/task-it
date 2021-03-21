@@ -1,6 +1,9 @@
 .task-attachment-container {
   .task-attachment {
     margin-block-end: 10px;
+    .attach-item {
+      margin-block-end: 15px;
+    }
 
     .img-container {
       width: 30%;
@@ -14,7 +17,7 @@
     }
 
     .img-desc {
-      margin-inline-start: rem(20px);
+      // margin-inline-start: rem(20px);
       font-size: rem(14px);
       h1 {
         font-size: rem(14px);
@@ -24,6 +27,15 @@
         color: $clr1;
         text-decoration: underline;
         cursor: pointer;
+      }
+    }
+    .btn-containter{
+      .link-btn{
+        background-color: none;
+        border: none;
+        text-decoration: underline;
+        color: $clr1;
+        font-family: 'Segoe';
       }
     }
   }

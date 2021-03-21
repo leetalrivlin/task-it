@@ -1,8 +1,5 @@
 <template>
   <section class="cover-popup">
-    <!-- <template v-slot="name">
-      <p>Cover</p>
-    </template> -->
     <cover-color-palettte @colorPicked="changeColor" />
     <cover-attachments @imgUploaded="uploadImg" />
   </section>

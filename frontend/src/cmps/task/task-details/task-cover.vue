@@ -5,12 +5,12 @@
       class="el-btn-details fa-nav-icon cover-btn"
       @click="isEditCover = !isEditCover"
       >Cover
-      <popup
-        v-if="isEditCover"
-        @closeCntrl="isEditCover = false"
-        @changeColor="editColor"
-        @uploadImg="saveImg"
-      />
+      <popup v-if="isEditCover" @closeCntrl="isEditCover = false">
+        <template v-slot:title>
+          <p>Cover</p>
+        </template>
+        <cover-popup @changeColor="editColor" @uploadImg="saveImg" />
+      </popup>
     </el-button>
     <img
       v-if="task.cover.img && !task.cover.backgroundColor"
@@ -20,11 +20,12 @@
   </section>
 </template>
 <script>
+import CoverPopup from './cover-popup.vue';
 import popup from './popup.vue';
 
 export default {
   name: 'task-cover',
-  components: { popup },
+  components: { popup, CoverPopup },
   props: {
     task: {
       type: Object,
@@ -44,9 +45,9 @@ export default {
     saveImg(imgUrl) {
       delete this.task.cover.backgroundColor;
       this.task.cover.img = imgUrl;
-      if (this.task.attachments){
-        this.task.attachments.push(imgUrl)
-      } 
+      if (this.task.attachments) {
+        this.task.attachments.push(imgUrl);
+      }
       this.$emit('saveImg', this.task);
     },
   },
