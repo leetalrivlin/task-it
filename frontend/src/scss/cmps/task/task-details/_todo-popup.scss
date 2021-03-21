@@ -1,0 +1,10 @@
+.todo-popup {
+  font-family: Segoe;
+  .delete-btn {
+    width: 100%;
+    padding: 8px;
+    &:hover {
+      background-color: rgba(9, 30, 66, 0.048);
+    }
+  }
+}
