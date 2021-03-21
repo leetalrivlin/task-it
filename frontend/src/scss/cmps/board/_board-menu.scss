@@ -28,7 +28,22 @@
     flex: 1;
     padding: 12px 6px 12px 12px;
     position: relative;
-    overflow-y: scroll;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.386);
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(9, 30, 66, 0.08);
+      border-radius: 5px;
+      margin-inline-start: 8px;
+      margin-inline-end: 8px;
+    }
   }
 
   .slide-in-enter-active {

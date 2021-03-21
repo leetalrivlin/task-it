@@ -1,48 +1,50 @@
 <template>
-  <section v-if="task" class="task-details" v-click-outside="closeDetails">
-    <el-button
-      class="el-close"
-      icon="el-icon-close"
-      circle
-      @click="closeDetails"
-    ></el-button>
-    <task-cover
-      v-if="task.cover"
-      :task="task"
-      @saveColor="updateTask"
-      @saveImg="updateTask"
-    />
-    <section class="details-grid">
-      <section class="d-header header-container">
-        <font-awesome-icon class="d-icon" icon="columns" />
-        <div class="d-content task-title-container">
-          <h1>{{ task.title }}</h1>
-          <p>In list <a class="task-list-link">List name</a></p>
-        </div>
-      </section>
-      <task-controller
-        :cover="cover"
-        @openChecklist="showEmptyChecklist"
-        @addCover="setCover"
-        @addImg="setImg"
-        @addAttach="setAttach"
+  <section class="window-overlay">
+    <section v-if="task" class="task-details" v-click-outside="closeDetails">
+      <el-button
+        class="el-close"
+        icon="el-icon-close"
+        circle
+        @click="closeDetails"
+      ></el-button>
+      <task-cover
+        v-if="task.cover"
+        :task="task"
+        @saveColor="updateTask"
+        @saveImg="updateTask"
       />
-      <section class="flex column task-main">
-        <task-description :task="task" @saveDescription="updateTask" />
-        <ul v-if="task.checklists" class="clean-list">
-          <task-checklist
-            v-for="checklist in task.checklists"
-            :key="checklist.id"
-            :checklist="checklist"
-            @addedTodo="updateChecklist"
-            @toggleTodo="updateToggleTodo"
-          />
-        </ul>
-        <task-attachment
-          :task="task"
-          v-if="task.attachments"
-          @removeAttach="removeAttach"
+      <section class="details-grid">
+        <section class="d-header header-container">
+          <font-awesome-icon class="d-icon" icon="columns" />
+          <div class="d-content task-title-container">
+            <h1>{{ task.title }}</h1>
+            <p>In list <a class="task-list-link">List name</a></p>
+          </div>
+        </section>
+        <task-controller
+          :cover="cover"
+          @openChecklist="showEmptyChecklist"
+          @addCover="setCover"
+          @addImg="setImg"
+          @addAttach="setAttach"
         />
+        <section class="flex column task-main">
+          <task-description :task="task" @saveDescription="updateTask" />
+          <ul v-if="task.checklists" class="clean-list">
+            <task-checklist
+              v-for="checklist in task.checklists"
+              :key="checklist.id"
+              :checklist="checklist"
+              @addedTodo="updateChecklist"
+              @toggleTodo="updateToggleTodo"
+            />
+          </ul>
+          <task-attachment
+            :task="task"
+            v-if="task.attachments"
+            @removeAttach="removeAttach"
+          />
+        </section>
       </section>
     </section>
   </section>
@@ -114,12 +116,14 @@ export default {
       this.updateTask(this.task);
     },
     updateChecklist(updatedChecklist) {
-      const checklistIdx = this.task.checklists.findIndex(({id}) => id === updatedChecklist.id)
+      const checklistIdx = this.task.checklists.findIndex(
+        ({ id }) => id === updatedChecklist.id
+      );
       this.task.checklists[checklistIdx] = updatedChecklist;
       this.updateTask(this.task);
     },
     updateToggleTodo(updatedChecklist) {
-      console.log('updatedChecklist',updatedChecklist);
+      console.log('updatedChecklist', updatedChecklist);
       // const checklistIdx = this.task.checklists.findIndex(({id}) => id === updatedChecklist.id)
       // this.task.checklists.splice(checklistIdx, 1, updatedChecklist);
       // this.updateTask(this.task);

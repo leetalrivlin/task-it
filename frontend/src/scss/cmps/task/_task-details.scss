@@ -1,16 +1,29 @@
-.task-details {
-  position: absolute;
+.window-overlay{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: rgba(0,0,0,.64);
+  height: 100%;
+  left: 0;
+  overflow-y: auto;
+  position: fixed;
   top: 0;
-  left: 50%;
-  transform: translate(-50%);
-  background-color: $clr3;
-  width: 70%;
-  min-height: 85%;
-  border-radius: 3px;
+  width: 100%;
+  z-index: 10;
+  padding: 48px 0;
 
-  .task-main {
-    > * {
-      margin-block-end: 20px;
+  .task-details {
+    position: relative;
+    background-color: $clr3;
+    width: 70%;
+    min-height: 85%;
+    border-radius: 3px;
+    z-index: 11;
+
+    .task-main {
+      > * {
+        margin-block-end: 20px;
+      }
     }
   }
 }
