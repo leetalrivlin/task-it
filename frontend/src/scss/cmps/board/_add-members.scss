@@ -1,6 +1,6 @@
 .add-members-container {
     position: absolute;
-    top: 70px;
+    top: 13px;
     background-color: #ffffff;
     width: 304px;
     border-radius: 3px;
@@ -8,7 +8,8 @@
     font-family: Segoe, serif;
     color: #5e6c84;
     line-height: 40px;
-    right: 76px;
+    /* right: -19px; */
+    left: -11px;
 
     .close-btn {
         margin: 12px;

@@ -31,6 +31,9 @@
       overflow-wrap: anywhere;
       width: 93%;
     }
+    &:hover .task-action {
+      opacity: 1;
+    }
   }
 
   .delete-task {
@@ -54,10 +57,12 @@
     border-radius: 3px;
     right: 3px;
     top: 3px;
+    opacity: 0;
 
     &:hover {
       color: $clr1;
       background-color: rgba(9, 30, 66, 0.08);
+     
     }
   }
 }

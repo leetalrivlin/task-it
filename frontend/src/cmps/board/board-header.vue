@@ -22,16 +22,15 @@
 
       <span>
         <el-button class="el-btn invite-button" @click.stop="addMembers"
-          >Invite</el-button
-        >
+          >Invite
+          <add-members
+            @click.stop
+            v-if="isAddMembers"
+            :boardMembers="this.board.members"
+            :allMembers="membersToAdd"
+            @closeMenu="closeMenu"
+        /></el-button>
       </span>
-      <add-members
-      @click.stop
-      v-if="isAddMembers"
-      :boardMembers="this.board.members"
-      :allMembers="membersToAdd"
-      @closeMenu ="closeMenu"
-      />
     </div>
 
     <el-button
@@ -61,7 +60,7 @@ export default {
     boardMenu,
     Avatar,
     AddGroup,
-    addMembers
+    addMembers,
   },
   name: 'boardHeader',
   props: {
@@ -69,8 +68,8 @@ export default {
       type: Object,
     },
     users: {
-      type : Array,
-    }
+      type: Array,
+    },
   },
   data() {
     return {
@@ -88,15 +87,15 @@ export default {
     },
     closeMenu() {
       this.isAddMembers = !this.isAddMembers;
-    }
+    },
   },
   computed: {
     membersBoard() {
       return this.board.members;
     },
-    membersToAdd(){
+    membersToAdd() {
       console.log(this.users);
-    }
+    },
   },
 };
 </script>

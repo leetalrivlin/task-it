@@ -1,8 +1,7 @@
 <template>
   <section
     class="task"
-    @mouseover="taskOnFocus = true"
-    @mouseleave="taskOnFocus = false"
+    
   >
     <section v-if="task.cover" class="task-cover" :style="coverColor">
       <img
@@ -20,15 +19,15 @@
           {{ task.title }}
         </p>
        
+        <i @click.stop="toggleMenu" class="el-icon-edit task-action">
+        </i>
     </section>
-        <i @click.stop="toggleMenu" v-if="taskOnFocus" class="el-icon-edit task-action">
           <task-menu
             v-if="isTaskMenu"
             @deleteTask="deleteTask"
             @closeMenu="toggleMenu"
             v-click-outside="toggleMenu"
           />
-        </i>
   </section>
 </template>
 
