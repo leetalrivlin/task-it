@@ -20,7 +20,11 @@
           <template v-slot:title>
             <p>Members</p>
           </template>
-          <members-popup :members="members" @addMemberToTask="addMemberToTask"/>
+          <members-popup
+            :members="members"
+            :taskMembers="taskMembers"
+            @addMemberToTask="addMemberToTask"
+          />
         </popup>
       </el-button>
       <el-button
@@ -108,7 +112,7 @@ import { faUser, faClock } from '@fortawesome/free-regular-svg-icons';
 import {
   faTag,
   faCheckSquare,
-  faPaperclip,
+  faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import popup from './popup.vue';
 import coverPopup from './cover-popup.vue';
@@ -123,17 +127,20 @@ library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
   props: {
     cover: {
-      type: Boolean,
+      type: Boolean
     },
     labels: {
-      type: Array,
+      type: Array
     },
     taskLableIds: {
-      type: Array,
+      type: Array
     },
     members: {
-      type: Array,
+      type: Array
     },
+    taskMembers: {
+      type: Array
+    }
   },
   data() {
     return {
@@ -143,7 +150,7 @@ export default {
       isChecklist: false,
       isDate: false,
       isMembers: false,
-      dueDate: '',
+      dueDate: ''
     };
   },
   methods: {
@@ -181,7 +188,7 @@ export default {
     setDueDate() {
       console.log(this.dueDate);
       this.$emit('setDueDate', this.dueDate);
-    },
+    }
   },
   components: {
     popup,
@@ -191,7 +198,7 @@ export default {
     labelPopup,
     checklistPopup,
     datePopup,
-    membersPopup,
-  },
+    membersPopup
+  }
 };
 </script>

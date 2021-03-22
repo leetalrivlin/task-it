@@ -17,6 +17,7 @@
         <task-title :task="task" :group="group" @updateTask="updateTask" />
         <task-controller
           :members="members"
+          :taskMembers="task.members"
           :cover="cover"
           :labels="boardLabels"
           :taskLableIds="task.labelIds"
@@ -46,7 +47,11 @@
                 @addLabel="setLabel"
                 @updateLabel="updateBoardLabel"
               />
-              <task-date v-if="task.dueDate" :dueDate="task.dueDate" />
+              <task-date
+                v-if="task.dueDate"
+                :dueDate="task.dueDate"
+                @setDueDate="setDueDate"
+              />
             </div>
           </div>
           <task-description :task="task" @saveDescription="updateTask" />
@@ -99,7 +104,7 @@ export default {
     taskCover,
     taskTitle,
     taskDate,
-    taskMember
+    taskMember,
   },
   computed: {
     task() {
@@ -114,12 +119,15 @@ export default {
     members() {
       return clone(this.$store.getters.board).members;
     },
+    // taskMembers() {
+    //   return clone(this.task.members);
+    // },
     cover() {
       return this.task.cover ? true : false;
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    }
+    },
     // group() {
     //   return boardCopy.groups.find((group) =>
     //     group.tasks.some(({ id }) => id === this.task.id)
@@ -174,7 +182,7 @@ export default {
     setLabel(label) {
       console.log('label', label);
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex(id => {
+      const labelIdx = this.task.labelIds.findIndex((id) => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
@@ -209,7 +217,7 @@ export default {
     setDueDate(dueDate) {
       this.task.dueDate = dueDate;
       this.updateTask(this.task);
-    }
+    },
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -217,6 +225,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  }
+  },
 };
 </script>

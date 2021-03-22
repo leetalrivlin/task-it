@@ -7,9 +7,9 @@
   }
   .member-avatars {
     > * {
-      width: rem(30px);
-      height: rem(30px);
-      margin-inline-end: rem(5px);
+      width: rem(33px);
+      height: rem(33px);
+      margin-inline-end: rem(3px);
     }
     .avatar-item {
       object-fit: cover;
@@ -19,10 +19,8 @@
       background-color: rgba(9, 30, 66, 0.048);
       color: $clr1;
       border: none;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      outline: none;
+      border-radius: 50%;
     }
   }
 }

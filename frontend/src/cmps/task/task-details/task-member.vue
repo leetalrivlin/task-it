@@ -13,27 +13,22 @@
             :username="taskMember.fullname"
             :src="taskMember.imgUrl"
             color="white"
-            :size="30"
+            :size="33"
           ></avatar>
         </li>
       </ul>
-      <el-button
-        type="info"
-        icon="el-icon-plus"
-        class="add-member-btn"
-        circle
-        @click="isMembers = true"
-      >
+      <button class="add-member-btn" @click="isMembers = true"><i class="el-icon-plus"></i>
         <popup v-if="isMembers" @closePopup="isMembers = false">
           <template v-slot:title>
             <p>Members</p>
           </template>
           <members-popup
             :members="members"
+            :taskMembers="taskMembers"
             @addMemberToTask="addMemberToTask"
           />
         </popup>
-      </el-button>
+      </button>
     </div>
   </section>
 </template>

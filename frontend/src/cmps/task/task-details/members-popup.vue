@@ -1,6 +1,7 @@
 <template>
   <section class="members-popup-container">
     <el-input
+      @keyup.stop
       type="text"
       placeholder="Search members"
       v-model="searchedMember"
@@ -21,9 +22,11 @@
             color="white"
             :size="30"
           ></avatar>
-          <span class="member-name">{{ member.fullname }} ({{ member.username }})</span>
+          <span class="member-name"
+            >{{ member.fullname }} ({{ member.username }})</span
+          >
         </div>
-        <i class="el-icon-check"></i>
+        <i v-if="isMemberOnTask(member)" class="el-icon-check"></i>
       </li>
     </ul>
   </section>
@@ -40,14 +43,28 @@ export default {
     members: {
       type: Array
     },
+    taskMembers: {
+      type: Array
+    }
   },
   data() {
     return {
       searchedMember: ''
     };
   },
+  computed: {
+    isMemberOnTask() {
+      return member => {
+        return (
+          this.taskMembers &&
+          this.taskMembers.some(({ id }) => id === member.id)
+        );
+      };
+    }
+  },
   methods: {
     addMemberToTask(member) {
+      console.log('this.taskMembers', this.taskMembers);
       this.$emit('addMemberToTask', member);
     }
   }

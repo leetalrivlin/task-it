@@ -1,28 +1,44 @@
 .due-date {
-  .title {
-    text-transform: uppercase;
-    color: #5e6c84;
-    font-size: 14px;
-    margin: 0 8px 4px 0;
-  }
   .date-container {
-    margin-inline-start: 5px;
-    border-radius: 3px;
-    background-color: rgba(9, 30, 66, 0.048);
-    border: none;
-    padding: 4px 10px;
-
-    p {
-      color: #4d5a76;
-    }
-
-    .overdue {
-      text-transform: uppercase;
-      color: white;
-      padding: 0 4px;
-      border-radius: 3px;
+    position: relative;
+    .open {
+      cursor: pointer;
       margin-inline-start: 5px;
-      font-size: 12px;
+    }
+    .title {
+      text-transform: uppercase;
+      color: #5e6c84;
+      font-size: 14px;
+      margin: 0 8px 4px 0;
+    }
+    .date-txt-container {
+      margin-inline-start: 5px;
+      border-radius: 3px;
+      background-color: rgba(9, 30, 66, 0.048);
+      border: none;
+      padding: 4px 10px;
+
+      p {
+        color: #4d5a76;
+      }
+
+      .tag {
+        text-transform: uppercase;
+        color: white;
+        padding: 0 4px;
+        border-radius: 3px;
+        margin-inline-start: 5px;
+        font-size: 12px;
+      }
+    }
+    .date-picker-btn {
+      z-index: -1;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
   }
 }
