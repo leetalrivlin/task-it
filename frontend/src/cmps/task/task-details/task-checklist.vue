@@ -4,7 +4,7 @@
 
     <div class="d-content">
       <div class="flex space-between align-center">
-      <h1 class="task-details-header">Checklist</h1>
+      <h1 class="task-details-header">{{checklist.title}}</h1>
       <button class="el-btn-details details-item-btn del-checklist-btn" @click="deleteChecklist">Delete</button>
       </div>
     </div>
@@ -95,7 +95,7 @@ export default {
       this.checklist.todos.forEach(todo => {
         if (todo.isDone) isDoneCounter++
       })
-      return ((100 * isDoneCounter) / todos);
+      return Math.round((100 * isDoneCounter) / todos);
     }
   },
   methods: {
