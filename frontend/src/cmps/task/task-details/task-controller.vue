@@ -20,7 +20,7 @@
           <template v-slot:title>
             <p>Members</p>
           </template>
-          <members-popup @addMember="addMember" :members="members" />
+          <members-popup @addMember="addMember" :members="members" :taskMembers="taskMembers"/>
         </popup>
       </el-button>
       <el-button
@@ -134,6 +134,9 @@ export default {
     members: {
       type: Array,
     },
+    taskMembers: {
+      type: Array,
+    }
   },
   data() {
     return {

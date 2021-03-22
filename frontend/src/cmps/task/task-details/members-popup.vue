@@ -11,6 +11,7 @@
         v-for="member in members"
         :key="member.id"
         class="flex space-between align-center"
+        @click="addMemberToTask(member)"
       >
         <div class="flex align-center">
           <avatar
@@ -38,12 +39,20 @@ export default {
   props: {
     members: {
       type: Array
+    },
+    taskMembers: {
+      type: Array
     }
   },
   data() {
     return {
       searchedMember: ''
     };
+  },
+  methods: {
+    addMemberToTask(member) {
+      console.log('sending member through emit',member);
+    }
   }
 };
 </script>
