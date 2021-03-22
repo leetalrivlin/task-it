@@ -24,11 +24,11 @@
         <el-button class="el-btn invite-button" @click.stop="addMembers"
           >Invite
           <add-members
-            @click.stop
             v-if="isAddMembers"
             :boardMembers="this.board.members"
             :allMembers="membersToAdd"
-            @closeMenu="closeMenu"
+            @closeMenu="closeMembersPopup"
+            v-click-outside="closeMembersPopup"
         /></el-button>
       </span>
     </div>
@@ -85,7 +85,7 @@ export default {
     addMembers() {
       this.isAddMembers = true;
     },
-    closeMenu() {
+    closeMembersPopup() {
       this.isAddMembers = !this.isAddMembers;
     },
   },

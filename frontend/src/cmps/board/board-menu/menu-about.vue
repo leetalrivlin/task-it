@@ -1,7 +1,6 @@
 <template>
   <div class="about-this-board-section flex column">
     <div class="header flex align-center">
-      <!-- <font-awesome-icon icon="user" class="icon" /> -->
       <font-awesome-icon
           class="d-icon fa-nav-icon icon-user"
           :icon="['far', 'user']"
