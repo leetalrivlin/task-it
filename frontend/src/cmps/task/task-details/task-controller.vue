@@ -20,7 +20,7 @@
           <template v-slot:title>
             <p>Members</p>
           </template>
-          <members-popup @addMember="addMember" :members="members"/>
+          <members-popup @addMember="addMember" :members="members" />
         </popup>
       </el-button>
       <el-button
@@ -35,6 +35,7 @@
             :labels="labels"
             :taskLableIds="taskLableIds"
             @labelPicked="addLabel"
+            @boardLabelupdated="updateLabel"
           />
         </popup>
       </el-button>
@@ -66,8 +67,10 @@
           <date-popup />
         </popup>
       </el-button>
-      
-      <el-button @click="isAttach = !isAttach" class="el-btn-details open-popup-btn"
+
+      <el-button
+        @click="isAttach = !isAttach"
+        class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="paperclip"
@@ -127,7 +130,7 @@ export default {
     },
     members: {
       type: Array,
-    }
+    },
   },
   data() {
     return {
@@ -136,7 +139,7 @@ export default {
       isLabel: false,
       isChecklist: false,
       isDate: false,
-      isMembers: false
+      isMembers: false,
     };
   },
   methods: {
@@ -145,7 +148,7 @@ export default {
       this.isChecklist = false;
     },
     addMember(member) {
-      console.log('adding member...',member);
+      console.log('adding member...', member);
     },
     addCover(color) {
       this.$emit('addCover', color);
@@ -162,6 +165,10 @@ export default {
     addLabel(label) {
       this.$emit('addLabel', label);
     },
+    updateLabel(updatedLabel) {
+      console.log('updatedLabel', updatedLabel);
+      this.$emit('updateLabel', updatedLabel);
+    },
   },
   components: {
     popup,
@@ -171,7 +178,7 @@ export default {
     labelPopup,
     checklistPopup,
     datePopup,
-    membersPopup
+    membersPopup,
   },
 };
 </script>
