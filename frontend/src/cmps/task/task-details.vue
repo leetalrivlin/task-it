@@ -26,6 +26,7 @@
           @addAttach="setAttach"
           @addLabel="setLabel"
           @updateLabel="updateBoardLabel"
+          @setDueDate="setDueDate"
         />
         <section class="flex column task-main">
           <task-label
@@ -34,6 +35,7 @@
             :task="task"
             @addLabel="setLabel"
           />
+          <task-date v-if="task.dueDate" :dueDate="task.dueDate"/>
           <task-description :task="task" @saveDescription="updateTask" />
           <task-attachment
             :task="task"
@@ -67,6 +69,7 @@ import taskCover from '../task/task-details/task-cover.vue';
 import taskTitle from '../task/task-details/task-title.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faColumns } from '@fortawesome/free-solid-svg-icons';
+import taskDate from './task-details/task-date.vue';
 
 library.add(faColumns);
 const clone = require('rfdc')({ proto: true });
@@ -80,10 +83,11 @@ export default {
     taskChecklist,
     taskAttachment,
     taskCover,
-    taskTitle
+    taskTitle,
+    taskDate
   },
   computed: {
-    task() {
+   task() {
       return clone(this.$store.getters.task);
     },
     group() {
@@ -172,6 +176,10 @@ export default {
       const copyBoard = clone(this.$store.getters.board);
       copyBoard.labels = this.boardLabels;
       this.$store.dispatch({type:'updateBoard', board:copyBoard});
+    },
+    setDueDate(dueDate){
+      this.task.dueDate = dueDate;
+      this.updateTask(this.task)
     }
   },
   created() {

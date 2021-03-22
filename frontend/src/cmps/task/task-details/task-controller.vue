@@ -65,13 +65,10 @@
           class="date-picker-btn"
           type="date"
           placeholder="Pick a day"
+          v-model="dueDate"
+          @change="setDueDate"
+          value-format="timestamp"
         ></el-date-picker>
-        <!-- <popup v-if="isDate" @closePopup="isDate = false">
-          <template v-slot:title>
-            <p>Change due date</p>
-          </template>
-          <date-popup />
-        </popup> -->
       </el-button>
 
       <el-button
@@ -146,6 +143,7 @@ export default {
       isChecklist: false,
       isDate: false,
       isMembers: false,
+      dueDate: '',
     };
   },
   methods: {
@@ -177,6 +175,10 @@ export default {
     },
     openDatePopup() {
       this.$refs.datePickerInput.focus();
+    },
+    setDueDate() {
+      console.log(this.dueDate);
+      this.$emit('setDueDate', this.dueDate);
     },
   },
   components: {
