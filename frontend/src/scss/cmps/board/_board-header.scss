@@ -33,12 +33,15 @@
   .slide-leave-to {
     transform: translateX(350px);
   }
-  .members{
-    span{
-      margin-inline-start: 5px ;
+  .members {
+    .member {
+      text-align: center;
+     
+    }
+    span {
+      margin-inline-start: 5px;
     }
   }
-  
 }
 
 @include for-wide-layout {

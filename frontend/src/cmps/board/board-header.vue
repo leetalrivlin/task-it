@@ -21,7 +21,9 @@
       </div>
 
       <span>
-        <el-button class="el-btn invite-button">Invite</el-button>
+        <el-button class="el-btn invite-button" @click.stop="addMembers"
+          >Invite</el-button
+        >
       </span>
     </div>
 
@@ -59,12 +61,16 @@ export default {
   data() {
     return {
       isMenuOpen: false,
+      isAddMembers: false,
     };
   },
   methods: {
     updateBoard(style) {
       this.board.style = style;
       this.$store.dispatch({ type: 'updateBoard', board: this.board });
+    },
+    addMembers() {
+      this.isAddMembers = true;
     },
   },
   computed: {
