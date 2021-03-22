@@ -16,6 +16,7 @@
       <section class="details-grid">
         <task-title :task="task" :group="group" @updateTask="updateTask" />
         <task-controller
+          :members="members"
           :cover="cover"
           :labels="boardLabels"
           :taskLableIds="task.labelIds"
@@ -78,7 +79,7 @@ export default {
     taskChecklist,
     taskAttachment,
     taskCover,
-    taskTitle,
+    taskTitle
   },
   computed: {
     task() {
@@ -90,6 +91,10 @@ export default {
     boardLabels() {
       return clone(this.$store.getters.boardLabels);
     },
+    members() {
+      console.log(this.$store.getters.board.members);
+      return clone(this.$store.getters.board).members;
+    },
     // group() {
     //   return boardCopy.groups.find((group) =>
     //     group.tasks.some(({ id }) => id === this.task.id)
@@ -100,7 +105,7 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    },
+    }
   },
   methods: {
     setDetails() {
@@ -150,7 +155,7 @@ export default {
     setLabel(label) {
       console.log('label', label);
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex((id) => {
+      const labelIdx = this.task.labelIds.findIndex(id => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
@@ -159,7 +164,7 @@ export default {
         this.task.labelIds.push(label.id);
       }
       this.updateTask(this.task);
-    },
+    }
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -167,6 +172,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  },
+  }
 };
 </script>
