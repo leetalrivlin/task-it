@@ -23,4 +23,28 @@
         padding: 0;
         width: 100%;
     }
-}
+
+    ul {
+        flex-wrap: wrap;
+        .list-item {
+            padding: 8px 4px 4px 3px;
+        }
+            span {
+                border-radius: 4px;
+                box-sizing: border-box;
+                display: block;
+                float: left;
+                font-weight: 600;
+                line-height: 32px;
+                height: 30px;
+                width: 30px;
+                padding: 0;
+                margin: 0;
+                cursor: pointer;
+                position: relative;
+                max-width: 100%;
+                overflow: hidden;
+            }
+        }
+    }
+
