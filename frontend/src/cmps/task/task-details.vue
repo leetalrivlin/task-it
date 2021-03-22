@@ -19,7 +19,7 @@
           :cover="cover"
           :labels="boardLabels"
           :taskLableIds = "task.labelIds"
-          @openChecklist="showEmptyChecklist"
+          @addChecklist="setEmptyChecklist"
           @addCover="setCover"
           @addImg="setImg"
           @addAttach="setAttach"
@@ -111,10 +111,10 @@ export default {
     isChecklist() {
       this.isShowChecklist = this.task.checklists ? true : false;
     },
-    showEmptyChecklist() {
-      const emptyCheckList = boardService.getEmptyChecklist();
+    setEmptyChecklist(emptyChecklist) {
+      // const emptyCheckList = boardService.getEmptyChecklist();
       if (!this.task.checklists) this.task.checklists = [];
-      this.task.checklists.push(emptyCheckList);
+      this.task.checklists.push(emptyChecklist);
       this.updateTask(this.task);
     },
     setCover(color) {

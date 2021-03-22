@@ -30,22 +30,20 @@
           />
         </popup>
       </el-button>
-      <el-button class="el-btn-details" @click="onOpenChecklist"
+
+      <el-button @click.stop="isChecklist = !isChecklist" class="el-btn-details" 
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="check-square"
         />Checklist
-        <!-- <popup v-if="isLabel" @closePopup="isLabel = false">
+        <popup v-if="isChecklist" @closePopup="isChecklist = false">
           <template v-slot:title>
-            <p>Labels</p>
+            <p>Add Checklist</p>
           </template>
-          <label-popup
-            :labels="labels"
-            :taskLableIds="taskLableIds"
-            @labelPicked="addLabel"
-          />
-        </popup> -->
+          <checklist-popup @addChecklist="addChecklist" />
+        </popup>
       </el-button>
+
       <el-button class="el-btn-details"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
@@ -94,6 +92,7 @@ import coverPopup from './cover-popup.vue';
 import coverAttachments from './cover-attachments.vue';
 import attachmentPopup from './attachment-popup.vue';
 import labelPopup from './label-popup.vue';
+import checklistPopup from './checklist-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
@@ -112,12 +111,14 @@ export default {
     return {
       isCoverPopUp: false,
       isAttach: false,
-      isLabel: false
+      isLabel: false,
+      isChecklist: false,
     };
   },
   methods: {
-    onOpenChecklist() {
-      this.$emit('openChecklist');
+    addChecklist(emptyChecklist) {
+      this.$emit('addChecklist', emptyChecklist);
+      this.isChecklist = false;
     },
     addCover(color) {
       this.$emit('addCover', color);
@@ -140,7 +141,8 @@ export default {
     coverPopup,
     coverAttachments,
     attachmentPopup,
-    labelPopup
+    labelPopup,
+    checklistPopup
   }
 };
 </script>

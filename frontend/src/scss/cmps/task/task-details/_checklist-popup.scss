@@ -1,0 +1,18 @@
+.checklist-popup-container {
+  label {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    display: block;
+  }
+  input {
+    margin-block-end: 20px;
+  }
+  .add-btn {
+    margin-block-start: 10px;
+    width: 120px;
+    text-align: center;
+  }
+}
