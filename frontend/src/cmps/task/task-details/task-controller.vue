@@ -63,7 +63,7 @@
         <el-date-picker
           ref="datePickerInput"
           class="date-picker-btn"
-          type="date"
+           type="datetime"
           placeholder="Pick a day"
           v-model="dueDate"
           @change="setDueDate"

@@ -1,7 +1,7 @@
 <template>
   <section class="due-date">
-    <p>Due Date</p>
-    <p>{{dueDate}}</p>
+    <p class="title">Due Date</p>
+    <p class="date-container">{{ date }}</p>
   </section>
 </template>
 
@@ -11,6 +11,15 @@ export default {
   props: {
     dueDate: {
       type: Number,
+    },
+  },
+  computed: {
+    date() {
+      const date = new Date(this.dueDate);
+      const dateStr = date.toString();
+      const dateDetails = dateStr.split(' ');
+      const formatDate = `${dateDetails[1]} ${dateDetails[2]} at ${dateDetails[4]}`;
+      return formatDate;
     },
   },
 };

@@ -30,14 +30,19 @@
           @setDueDate="setDueDate"
         />
         <section class="flex column task-main">
-          <task-member v-if="task.members" :taskMembers="taskMembers"/>
-          <task-label
-            v-if="task.labelIds"
-            :labels="boardLabels"
-            :task="task"
-            @addLabel="setLabel"
-          />
-          <task-date v-if="task.dueDate" :dueDate="task.dueDate"/>
+          <div class="d-desc">
+            <div class="d-icon"></div>
+            <div class="d-content flex task-data-container">
+              <task-member v-if="task.members" :taskMembers="taskMembers" />
+              <task-label
+                v-if="task.labelIds"
+                :labels="boardLabels"
+                :task="task"
+                @addLabel="setLabel"
+              />
+              <task-date v-if="task.dueDate" :dueDate="task.dueDate" />
+            </div>
+          </div>
           <task-description :task="task" @saveDescription="updateTask" />
           <task-attachment
             :task="task"
@@ -88,10 +93,10 @@ export default {
     taskCover,
     taskTitle,
     taskDate,
-    taskMember
+    taskMember,
   },
   computed: {
-   task() {
+    task() {
       return clone(this.$store.getters.task);
     },
     group() {
@@ -104,7 +109,7 @@ export default {
       return clone(this.$store.getters.board).members;
     },
     taskMembers() {
-      return (this.task.members) ? this.task.members : [];
+      return this.task.members ? this.task.members : [];
     },
     cover() {
       return this.task.cover ? true : false;
@@ -112,11 +117,11 @@ export default {
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
     },
-      // group() {
-      //   return boardCopy.groups.find((group) =>
-      //     group.tasks.some(({ id }) => id === this.task.id)
-      //   );
-      // },
+    // group() {
+    //   return boardCopy.groups.find((group) =>
+    //     group.tasks.some(({ id }) => id === this.task.id)
+    //   );
+    // },
   },
   methods: {
     setDetails() {
@@ -166,7 +171,7 @@ export default {
     setLabel(label) {
       console.log('label', label);
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex(id => {
+      const labelIdx = this.task.labelIds.findIndex((id) => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
@@ -176,18 +181,20 @@ export default {
       }
       this.updateTask(this.task);
     },
-    updateBoardLabel(updatedLabel){
+    updateBoardLabel(updatedLabel) {
       console.log('updatedLabel', updatedLabel);
-      const labelIdx = this.boardLabels.findIndex(({id})=> id === updatedLabel.id);
+      const labelIdx = this.boardLabels.findIndex(
+        ({ id }) => id === updatedLabel.id
+      );
       this.boardLabels.splice(labelIdx, 1, updatedLabel);
       const copyBoard = clone(this.$store.getters.board);
       copyBoard.labels = this.boardLabels;
-      this.$store.dispatch({type:'updateBoard', board:copyBoard});
+      this.$store.dispatch({ type: 'updateBoard', board: copyBoard });
     },
-    setDueDate(dueDate){
+    setDueDate(dueDate) {
       this.task.dueDate = dueDate;
-      this.updateTask(this.task)
-    }
+      this.updateTask(this.task);
+    },
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -195,6 +202,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  }
+  },
 };
 </script>

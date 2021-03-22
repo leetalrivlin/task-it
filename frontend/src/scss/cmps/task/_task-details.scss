@@ -25,6 +25,12 @@
         margin-block-end: 20px;
       }
     }
+    .task-data-container{
+      flex-wrap: wrap;
+      >*{
+        margin-inline-end: 20px;
+      }
+    }
   }
 }
 
