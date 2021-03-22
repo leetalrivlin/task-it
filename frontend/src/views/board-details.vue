@@ -1,6 +1,6 @@
 <template>
   <section v-if="board" class="main-content flex column board-details">
-    <board-header :board="board" />
+    <board-header :board="board" :users="users" />
     <section class="flex align-start main-content main-layout board-content">
       <draggable
         class="flex group-container"
@@ -113,6 +113,10 @@ export default {
   computed: {
     board() {
       return clone(this.$store.getters.board);
+    },
+    users() {
+      console.log(this.$store.getters.users);
+      return clone(this.$store.getters.users);
     },
   },
   mounted() {

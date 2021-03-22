@@ -25,6 +25,13 @@
           >Invite</el-button
         >
       </span>
+      <add-members
+      @click.stop
+      v-if="isAddMembers"
+      :boardMembers="this.board.members"
+      :allMembers="membersToAdd"
+      @closeMenu ="closeMenu"
+      />
     </div>
 
     <el-button
@@ -45,18 +52,25 @@
 </template>
 
 <script>
+import addMembers from './add-members';
 import boardMenu from './board-menu.vue';
 import Avatar from 'vue-avatar';
+import AddGroup from '../add-group.vue';
 export default {
   components: {
     boardMenu,
     Avatar,
+    AddGroup,
+    addMembers
   },
   name: 'boardHeader',
   props: {
     board: {
       type: Object,
     },
+    users: {
+      type : Array,
+    }
   },
   data() {
     return {
@@ -72,11 +86,17 @@ export default {
     addMembers() {
       this.isAddMembers = true;
     },
+    closeMenu() {
+      this.isAddMembers = !this.isAddMembers;
+    }
   },
   computed: {
     membersBoard() {
       return this.board.members;
     },
+    membersToAdd(){
+      console.log(this.users);
+    }
   },
 };
 </script>

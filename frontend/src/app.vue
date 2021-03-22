@@ -12,13 +12,16 @@ export default {
   computed: {
     background() {
       const pageName = this.$route.name;
-      if (pageName !== 'board') return;
+      if (pageName !== 'board' && pageName !== 'taskDetails') return;
       const style = this.$store.getters.boardStyle;
       if (!style) return;
       if (!style.background.includes('.jpg')) {
         return style;
-      } else return {background: style.background + 'center / cover'} ;
+      } else return { background: style.background + 'center / cover' };
     },
+  },
+  created() {
+    this.$store.dispatch('loadUsers');
   },
   components: {
     mainHeader,

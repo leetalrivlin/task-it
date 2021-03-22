@@ -13,12 +13,17 @@ export const boardStore = {
   state: {
     board: null,
     task: null,
+    users: null,
   },
   getters: {
     board(state) {
       return state.board;
     },
-    boardLabels(state){
+    users(state) {
+      console.log(state.users);
+      return state.users;
+    },
+    boardLabels(state) {
       return state.board.labels
     },
     group(state) {
@@ -42,6 +47,9 @@ export const boardStore = {
     setTask(state, { task }) {
       state.task = task;
     },
+    setUsers(state, { users }) {
+      state.users = users;
+  },
     setTaskById(state, { taskId }) {
       state.board.groups.forEach(group => {
         group.tasks.forEach(task => {
@@ -70,6 +78,17 @@ export const boardStore = {
         throw err;
       }
     },
+    async loadUsers({ commit }) {
+      // TODO: loading
+      try {
+          const users = await boardService.getUsers();
+          console.log(users ,'users from store');
+          commit({ type: 'setUsers', users })
+      } catch (err) {
+          console.log('userStore: Error in loadUsers', err)
+          throw err
+      }
+  }, 
     async updateBoard({ commit }, { board }) {
       try {
         commit({ type: 'setBoard', board });
