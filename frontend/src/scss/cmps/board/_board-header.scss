@@ -1,5 +1,5 @@
 .board-header {
-  height: 4vh;
+  height: 50px;
   font-family: Segoe, serif;
 
   a {
@@ -45,8 +45,8 @@
   }
 }
 
-@include for-wide-layout {
-  .board-header {
-    height: 6vh;
-  }
-}
+// @include for-wide-layout {
+//   .board-header {
+//     height: 6vh;
+//   }
+// }

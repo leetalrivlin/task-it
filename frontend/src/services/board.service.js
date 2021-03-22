@@ -10,7 +10,7 @@ const gBoards = [
     title: 'Robot dev proj',
     createdAt: 1589983468418,
     createdBy: {
-      _id: 'u101',
+      id: 'u101',
       fullname: 'Abi Abambi',
       imgUrl: 'http://some-img'
     },
@@ -24,19 +24,19 @@ const gBoards = [
     ],
     members: [
       {
-        _id: 'u101',
+        id: 'u101',
         username: 'Tal',
         fullname: 'Tal Tarablus',
         imgUrl: 'https://www.google.com'
       },
       {
-        _id: 'u102',
+        id: 'u102',
         username: 'Dan',
         fullname: 'Dan Cohen',
         imgUrl: 'https://www.google.com'
       },
       {
-        _id: 'u103',
+        id: 'u103',
         username: 'Shani',
         fullname: 'Shani Ofer',
         imgUrl: 'https://www.google.com'
@@ -80,7 +80,7 @@ const gBoards = [
         txt: 'Changed Color',
         createdAt: 154514,
         byMember: {
-          _id: 'u101',
+          id: 'u101',
           fullname: 'Abi Abambi',
           imgUrl: 'http://some-img'
         },
@@ -96,7 +96,7 @@ const gBoards = [
     title: 'Web Development',
     createdAt: 1589563468418,
     createdBy: {
-      _id: 'u101',
+      id: 'u101',
       fullname: 'Chen Sella',
       imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
     },
@@ -137,19 +137,19 @@ const gBoards = [
     ],
     members: [
       {
-        _id: 'u110',
+        id: 'u110',
         username: 'leetal',
         fullname: 'Leetal Rivlin-Tal',
         imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512'
       },
       {
-        _id: 'u111',
+        id: 'u111',
         username: 'liz',
         fullname: 'Liz Amir',
         imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512'
       },
       {
-        _id: 'u112',
+        id: 'u112',
         username: 'chen',
         fullname: 'Chen Sella',
         imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'

@@ -1,28 +1,29 @@
 <template>
   <section class="task-label flex column">
-      <p>Labels</p>
-      <ul class="clean-list flex">
-        <li class="list-item" v-for="label in taskLabels" :key="label.id">
-          <span :style="{ backgroundColor: label.color }">
-            {{ label.title }}
-          </span>
-        </li>
-        <li class="list-item" @click="isLabel = !isLabel">
-          <span :style="{ backgroundColor: '#E5E6EA' }"
-            ><i class="el-icon-plus">
-              <popup v-if="isLabel" @closePopup="isLabel = false">
-                <template v-slot:title>
-                  <p>Labels</p>
-                </template>
-                <label-popup
-                  :labels="labels"
-                  :taskLableIds="task.labelIds"
-                  @labelPicked="addLabel"
-                />
-              </popup> </i
-          ></span>
-        </li>
-      </ul>
+    <p>Labels</p>
+    <ul class="clean-list flex">
+      <li class="list-item" v-for="label in taskLabels" :key="label.id">
+        <span :style="{ backgroundColor: label.color }">
+          {{ label.title }}
+        </span>
+      </li>
+      <li class="list-item" @click="isLabel = !isLabel">
+        <span :style="{ backgroundColor: '#E5E6EA' }"
+          ><i class="el-icon-plus">
+            <popup v-if="isLabel" @closePopup="isLabel = false">
+              <template v-slot:title>
+                <p>Labels</p>
+              </template>
+              <label-popup
+                :labels="labels"
+                :taskLableIds="task.labelIds"
+                @labelPicked="addLabel"
+                @boardLabelupdated="updateLabel"
+              />
+            </popup> </i
+        ></span>
+      </li>
+    </ul>
   </section>
 </template>
 
@@ -48,6 +49,9 @@ export default {
   methods: {
     addLabel(label) {
       this.$emit('addLabel', label);
+    },
+    updateLabel(updatedLabel) {
+      this.$emit('updateLabel', updatedLabel);
     },
   },
   computed: {

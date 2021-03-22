@@ -63,7 +63,7 @@
         <el-date-picker
           ref="datePickerInput"
           class="date-picker-btn"
-           type="datetime"
+          type="datetime"
           placeholder="Pick a day"
           v-model="dueDate"
           @change="setDueDate"
@@ -170,7 +170,6 @@ export default {
       this.$emit('addLabel', label);
     },
     updateLabel(updatedLabel) {
-      console.log('updatedLabel', updatedLabel);
       this.$emit('updateLabel', updatedLabel);
     },
     addMemberToTask(chosenMember) {

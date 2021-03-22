@@ -1,21 +1,20 @@
 .main-header {
-  height: 4vh;
+  height: 50px;
   background-color: rgba(36, 36, 36, 0.32);
   color: white;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
 
   .logo {
     font-size: 26px;
     font-weight: 600;
-    grid-column: 2;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
   }
   a {
     border-radius: 3px;
   }
 
   nav {
-    grid-column: 3;
 
     > * {
       margin-inline-start: rem(10px);
@@ -23,8 +22,8 @@
   }
 }
 
-@include for-wide-layout {
-  .main-header {
-    height: 6vh;
-  }
-}
+// @include for-wide-layout {
+//   .main-header {
+//     height: 50px;
+//   }
+// }
