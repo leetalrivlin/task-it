@@ -8,9 +8,10 @@ import { boardStore } from './board.store.js';
 import { boardService } from '../services/board.service.js';
 
 Vue.use(Vuex);
+const debug = process.env.NODE_ENV !== 'production';
 
 export const store = new Vuex.Store({
-  strict: true,
+  strict: debug,
   modules: {
     // userStore,
     socketStore,
@@ -23,7 +24,7 @@ export const store = new Vuex.Store({
   mutations: {
     setBoards(state, { boards }) {
       state.boards = boards;
-    },
+    }
   },
   actions: {
     async loadBoards({ commit }) {
@@ -33,6 +34,6 @@ export const store = new Vuex.Store({
       } catch (err) {
         console.log('cannot load boards', err);
       }
-    },
+    }
   }
 });
