@@ -97,7 +97,7 @@ const gBoards = [
     createdBy: {
       _id: 'u101',
       fullname: 'Chen Sella',
-      imgUrl: 'http://some-img'
+      imgUrl: '~@assets/imgs/chen.png'
     },
     style: {
       background: '#91a8c4e3'
@@ -137,13 +137,13 @@ const gBoards = [
     members: [
       {
         _id: 'u101',
-        fullname: 'Chen Sella',
-        imgUrl: 'https://www.google.com'
+        fullname: 'Lital Rivlin',
+        imgUrl: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fvectors%2Favatar-people-person-business-user-3637425%2F&psig=AOvVaw12ANfkdxljDq3Aq2Rk_3F-&ust=1616497993719000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPi0srjiw-8CFQAAAAAdAAAAABAD'
       },
       {
         _id: 'u102',
         fullname: 'Liz Amir',
-        imgUrl: 'https://www.google.com'
+        imgUrl: '(../assets/imgs/liz.png)'
       }
     ],
     groups: [

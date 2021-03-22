@@ -1,7 +1,7 @@
 .board-header {
   height: 4vh;
   font-family: Segoe, serif;
- 
+
   a {
     border-radius: 3px;
     line-height: 32px;
@@ -32,6 +32,9 @@
   .slide-enter,
   .slide-leave-to {
     transform: translateX(350px);
+  }
+  .members {
+   
   }
 }
 
