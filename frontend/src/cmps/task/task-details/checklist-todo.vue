@@ -4,17 +4,17 @@
     @mouseover="todoOnFocus = true"
     @mouseleave="hideIcon"
   >
-    <input
+    <!-- <input
       type="checkbox"
       v-model="isDone"
       @change="toggleTodo"
       class="d-todo-icon"
-    />
-    <!-- <el-checkbox
+    /> -->
+    <el-checkbox
       v-model="isDone"
       @input="toggleTodo"
       class="d-todo-icon"
-    ></el-checkbox> -->
+    ></el-checkbox>
     <div class="d-todo-content flex align-center">
       <span class="todo" :class="isTodoDone">{{ todo.txt }}</span>
       <i
