@@ -71,10 +71,10 @@
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="paperclip"
-        />Attachment
+        />Attachments
         <popup v-if="isAttach" @closePopup="isAttach = false">
           <template v-slot:title>
-            <p>Attachment</p>
+            <p>Attachments</p>
           </template>
           <attachment-popup @attachUploaded="addAttach" />
         </popup>
