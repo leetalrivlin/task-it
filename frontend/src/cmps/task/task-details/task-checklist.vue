@@ -64,7 +64,6 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
 import checklistTodo from './checklist-todo.vue';
 import { boardService } from '../../../services/board.service';
-const clone = require('rfdc')({ proto: true });
 
 library.add(faCheckSquare);
 
@@ -103,13 +102,13 @@ export default {
       this.todoToAdd = boardService.getEmptyTodo();
     },
     saveTodoTxt() {
-      const copyTodo = clone(this.todoToAdd);
+      const copyTodo = this.$clone(this.todoToAdd);
       this.checklist.todos.push(copyTodo);
       this.updateChecklist(this.checklist);
       this.setEmptyTodo();
     },
     deleteTodo(todoId) {
-      const copyChecklist = clone(this.checklist);
+      const copyChecklist = this.$clone(this.checklist);
       const todoIdx = copyChecklist.todos.findIndex(({ id }) => {
         return id === todoId;
       });
@@ -134,7 +133,7 @@ export default {
       const checklistIdx = this.task.checklists.findIndex(
         ({ id }) => id === this.checklist.id
       );
-      const copyTask = clone(this.task);
+      const copyTask = this.$clone(this.task);
       copyTask.checklists.splice(checklistIdx, 1);
       this.$emit('updateTask', copyTask);
     }

@@ -17,6 +17,7 @@
         <task-title :task="task" :group="group" @updateTask="updateTask" />
         <task-controller
           :members="members"
+          :taskMembers="task.members"
           :cover="cover"
           :labels="boardLabels"
           :taskLableIds="task.labelIds"
@@ -33,7 +34,12 @@
           <div class="d-desc">
             <div class="d-icon"></div>
             <div class="d-content flex task-data-container">
-              <task-member v-if="task.members" :taskMembers="task.members" />
+              <task-member
+                v-if="task.members"
+                :taskMembers="task.members"
+                :members="members"
+                @addMemberToTask="setMember"
+              />
               <task-label
                 v-if="task.labelIds"
                 :labels="boardLabels"
@@ -45,6 +51,7 @@
                 v-if="task.dueDate"
                 :dueDate="task.dueDate"
                 @setDueDate="setDueDate"
+                @removeDueDate="removeDate"
               />
             </div>
           </div>
@@ -85,7 +92,6 @@ import { faColumns } from '@fortawesome/free-solid-svg-icons';
 import taskDate from './task-details/task-date.vue';
 
 library.add(faColumns);
-const clone = require('rfdc')({ proto: true });
 
 export default {
   name: 'taskDetails',
@@ -102,17 +108,20 @@ export default {
   },
   computed: {
     task() {
-      return clone(this.$store.getters.task);
+      return this.$clone(this.$store.getters.task);
     },
     group() {
-      return clone(this.$store.getters.group);
+      return this.$clone(this.$store.getters.group);
     },
     boardLabels() {
-      return clone(this.$store.getters.boardLabels);
+      return this.$clone(this.$store.getters.boardLabels);
     },
     members() {
-      return clone(this.$store.getters.board).members;
+      return this.$clone(this.$store.getters.board).members;
     },
+    // taskMembers() {
+    //   return clone(this.task.members);
+    // },
     cover() {
       return this.task.cover ? true : false;
     },
@@ -184,11 +193,8 @@ export default {
       this.updateTask(this.task);
     },
     setMember(chosenMember) {
-      console.log('chosenMember', chosenMember);
       if (!this.task.members) this.task.members = [];
       const memberIdx = this.task.members.findIndex(({ id }) => {
-        console.log('chosenMember.id', chosenMember.id);
-        console.log('id', id);
         return id === chosenMember.id;
       });
       if (memberIdx >= 0) {
@@ -196,7 +202,6 @@ export default {
       } else {
         this.task.members.push(chosenMember);
       }
-      console.log('this.task', this.task);
       this.updateTask(this.task);
     },
     updateBoardLabel(updatedLabel) {
@@ -205,12 +210,16 @@ export default {
         ({ id }) => id === updatedLabel.id
       );
       this.boardLabels.splice(labelIdx, 1, updatedLabel);
-      const copyBoard = clone(this.$store.getters.board);
+      const copyBoard = this.$clone(this.$store.getters.board);
       copyBoard.labels = this.boardLabels;
       this.$store.dispatch({ type: 'updateBoard', board: copyBoard });
     },
     setDueDate(dueDate) {
       this.task.dueDate = dueDate;
+      this.updateTask(this.task);
+    },
+    removeDate() {
+      delete this.task.dueDate;
       this.updateTask(this.task);
     },
   },

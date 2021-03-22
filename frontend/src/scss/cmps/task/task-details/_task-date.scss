@@ -1,4 +1,13 @@
 .due-date {
+  .delete{
+    cursor: pointer;
+    margin-inline-start: 5px;
+    border-radius: 3px;
+    padding: 8px;
+    &:hover{
+      background-color: rgba(9, 30, 66, 0.048);
+    }
+  }
   .date-container {
     position: relative;
     .open {

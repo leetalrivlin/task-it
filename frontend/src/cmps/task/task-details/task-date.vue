@@ -17,12 +17,12 @@
           @change="setDueDate"
         ></el-date-picker>
       </div>
+      <i @click="removeDueDate" class="delete el-icon-delete"></i>
     </div>
   </section>
 </template>
 
 <script>
-var dayjs = require('dayjs')
 
 export default {
   name: 'dueDate',
@@ -45,14 +45,17 @@ export default {
       console.log(this.newDueDate);
       this.$emit('setDueDate', this.newDueDate);
     },
+    removeDueDate() {
+      this.$emit('removeDueDate');
+    },
   },
   computed: {
     date() {
       const date = new Date(this.dueDate);
-      const dateStr = date.toString();
-      const dateDetails = dateStr.split(' ');
-      const formatDate = `${dateDetails[1]} ${dateDetails[2]} at ${dayjs(date).format("h:mm a")}`;
-      return formatDate;
+      const dateStr = `${this.$dayjs(date).format('MMM DD')} at ${this.$dayjs(date).format(
+        'h:mm A'
+      )}`;
+      return dateStr;
     },
     tag() {
       if (Date.now() > this.dueDate || this.checked) return true;

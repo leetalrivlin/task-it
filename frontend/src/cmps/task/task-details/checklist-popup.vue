@@ -17,7 +17,6 @@
 
 <script>
 import { boardService } from '../../../services/board.service.js';
-const clone = require('rfdc')({ proto: true });
 export default {
   name: 'checklistPopup',
   data() {
@@ -30,7 +29,7 @@ export default {
       const emptyCheckList = boardService.getEmptyChecklist();
       emptyCheckList.title = this.title;
       console.log('emptyCheckList', emptyCheckList);
-      this.$emit('addChecklist', clone(emptyCheckList));
+      this.$emit('addChecklist', this.$clone(emptyCheckList));
       this.title = '';
     }
   }

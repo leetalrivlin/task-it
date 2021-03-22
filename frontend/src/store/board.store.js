@@ -20,7 +20,6 @@ export const boardStore = {
       return state.board;
     },
     users(state) {
-      console.log(state.users);
       return state.users;
     },
     boardLabels(state) {
@@ -82,7 +81,6 @@ export const boardStore = {
       // TODO: loading
       try {
           const users = await boardService.getUsers();
-          console.log(users ,'users from store');
           commit({ type: 'setUsers', users })
       } catch (err) {
           console.log('userStore: Error in loadUsers', err)
