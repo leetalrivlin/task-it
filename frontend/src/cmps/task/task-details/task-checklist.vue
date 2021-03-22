@@ -7,18 +7,33 @@
       <h1 class="task-details-header">Checklist</h1>
       <button class="el-btn-details details-item-btn del-checklist-btn" @click="deleteChecklist">Delete</button>
       </div>
+    </div>
+   
+      <p class="d-icon percent">50%</p>
       <el-progress
         :percentage="50"
         color="grey"
         type="line"
         :show-text="showTxt"
+        class="d-content flex align-center"
       ></el-progress>
-    </div>
 
-    <div class="d-content">
+
+    <ul v-if="checklist.todos" class="clean-list">
+      <checklist-todo
+        v-for="todo in checklist.todos"
+        :key="todo.id"
+        :todo="todo"
+        @updateTodo="updateTodo"
+        @deleteTodo="deleteTodo"
+      />
+    </ul>
+
+    <!-- <div class="d-container"> -->
+      <div class="d-icon"></div>
       <a
         v-if="!isAddTodos"
-        class="el-btn-details details-item-btn checklist-btn"
+        class="el-btn-details details-item-btn checklist-btn d-content"
         @click="isAddTodos = true"
         >Add an item</a
       >
@@ -39,17 +54,8 @@
           <i class="el-icon-close" @click="isAddTodos = false"></i>
         </div>
       </form>
-    </div>
+    <!-- </div> -->
 
-    <ul v-if="checklist.todos" class="clean-list">
-      <checklist-todo
-        v-for="todo in checklist.todos"
-        :key="todo.id"
-        :todo="todo"
-        @updateTodo="updateTodo"
-        @deleteTodo="deleteTodo"
-      />
-    </ul>
   </section>
 </template>
 
@@ -127,6 +133,5 @@ export default {
   created() {
     this.setEmptyTodo();
   },
-  mounted() {}
 };
 </script>

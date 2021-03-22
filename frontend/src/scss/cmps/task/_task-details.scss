@@ -77,7 +77,9 @@
   grid-row: 2;
   display: grid;
   grid-template-columns: rem(30px) 1fr;
-  // grid-template-rows: 1fr 1fr;
+  .d-container {
+    grid-column: 1 / -1;
+  }
   .d-icon {
     grid-column: 1;
     margin: 9px 0;
@@ -98,7 +100,6 @@
     }
     .d-todo-content {
       grid-column: 2;
-      display: inline;
     }
   }
 }

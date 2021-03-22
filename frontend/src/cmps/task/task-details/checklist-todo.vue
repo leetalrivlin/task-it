@@ -15,7 +15,7 @@
       @input="toggleTodo"
       class="d-todo-icon"
     ></el-checkbox> -->
-    <div class="d-todo-content flex align-center justify-center">
+    <div class="d-todo-content flex align-center">
       <span class="todo" :class="isTodoDone">{{ todo.txt }}</span>
       <i
         v-if="todoOnFocus"
