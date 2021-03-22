@@ -2,7 +2,7 @@
   <section>
     <p>Members</p>
     <div class="flex justify-center align-center">
-      <ul v-for="taskMember in taskMembers" :key="taskMember.id">
+      <ul v-for="taskMember in taskMembers" :key="taskMember.id" class="clean-list">
         <li>
           <avatar
             class="member-avatar"
