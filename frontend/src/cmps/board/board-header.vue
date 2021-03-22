@@ -19,6 +19,10 @@
           :size="30"
         ></avatar>
       </div>
+
+      <span>
+        <el-button class="el-btn invite-button">Invite</el-button>
+      </span>
     </div>
 
     <el-button

@@ -97,7 +97,7 @@ const gBoards = [
     createdBy: {
       _id: 'u101',
       fullname: 'Chen Sella',
-      imgUrl: '~@assets/imgs/chen.png'
+      imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
     },
     style: {
       background: '#91a8c4e3'
@@ -139,19 +139,19 @@ const gBoards = [
         _id: 'u110',
         username: 'leetal',
         fullname: 'Leetal Rivlin-Tal',
-        imgUrl: '../assets/imgs/lital.png'
+        imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512'
       },
       {
         _id: 'u111',
         username: 'liz',
         fullname: 'Liz Amir',
-        imgUrl: '../assets/imgs/liz.png'
+        imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512'
       },
       {
         _id: 'u112',
         username: 'chen',
         fullname: 'Chen Sella',
-        imgUrl: '../assets/imgs/chen.png'
+        imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
       }
     ],
     groups: [

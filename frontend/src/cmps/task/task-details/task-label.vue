@@ -4,9 +4,9 @@
       <p>Labels</p>
       <ul class="clean-list">
         <li class="list-item" v-for="label in taskLabels" :key="label.id">
-          <span :style="{ backgroundColor: label.color }">{{
-            label.name
-          }}</span>
+          <span :style="{ backgroundColor: label.color }">
+            {{ label.title }}
+          </span>
         </li>
         <li class="list-item" @click="isLabel = !isLabel">
           <span :style="{ backgroundColor: '#E5E6EA' }"

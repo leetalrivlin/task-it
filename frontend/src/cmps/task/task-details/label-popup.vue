@@ -20,7 +20,7 @@
               type="text"
               @click.stop
               @blur="editTitle(null)"
-              @keyup.enter.stop="title"
+              @keyup.enter.stop="title(label)"
               v-model="labelTitle"
             />
             <i
@@ -56,8 +56,11 @@ export default {
     labelPicked(label) {
       this.$emit('labelPicked', label);
     },
-    title() {
-      console.log(this.labelTitle);
+    title(label) {
+      label.title = this.labelTitle.slice();
+      this.$emit('boardLabelupdated', label);
+      this.labelTitle = '';
+      this.$refs.labelTitleInput[0].blur();
     },
     editTitle(idx) {
       if (this.labelIdxToEdit === idx) idx = null;
