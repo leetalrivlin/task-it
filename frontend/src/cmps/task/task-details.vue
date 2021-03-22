@@ -28,6 +28,7 @@
           @addLabel="setLabel"
           @updateLabel="updateBoardLabel"
           @setDueDate="setDueDate"
+          @addMemberToTask="setMember"
         />
         <section class="flex column task-main">
           <div class="d-desc">
@@ -94,7 +95,7 @@ export default {
     taskCover,
     taskTitle,
     taskDate,
-    taskMember,
+    taskMember
   },
   computed: {
     task() {
@@ -117,7 +118,7 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    },
+    }
     // group() {
     //   return boardCopy.groups.find((group) =>
     //     group.tasks.some(({ id }) => id === this.task.id)
@@ -172,7 +173,7 @@ export default {
     setLabel(label) {
       console.log('label', label);
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex((id) => {
+      const labelIdx = this.task.labelIds.findIndex(id => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
@@ -180,6 +181,19 @@ export default {
       } else {
         this.task.labelIds.push(label.id);
       }
+      this.updateTask(this.task);
+    },
+    setMember(chosenMember) {
+      if (!this.task.taskMembers) this.task.taskMembers = [];
+      const memberIdx = this.task.taskMembers.findIndex(({ id }) => {
+        return (id = chosenMember.id);
+      });
+      if (memberIdx >= 0) {
+        this.task.taskMembers.splice(memberIdx, 1);
+      } else {
+        this.task.taskMembers.push(chosenMember);
+      }
+      console.log('this.task', this.task);
       this.updateTask(this.task);
     },
     updateBoardLabel(updatedLabel) {
@@ -195,7 +209,7 @@ export default {
     setDueDate(dueDate) {
       this.task.dueDate = dueDate;
       this.updateTask(this.task);
-    },
+    }
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -203,6 +217,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  },
+  }
 };
 </script>

@@ -3,6 +3,7 @@ import { httpService } from './http.service';
 import { utilService } from './util.service';
 
 const BOARD_URL = 'boardDb';
+const USERS_URL = 'usersDb';
 const gBoards = [
   {
     _id: 'b101',
@@ -248,6 +249,16 @@ const gBoards = [
     ]
   }
 ];
+const gUsers = [
+  { fullname: 'Puki Norma', username: 'user1', password: '123',  isAdmin: false },
+  {fullname: 'loca noni', username: 'loca', password:'123', isAdmin: false},
+  {fullname: 'sasi romi', username: 'sasi', password:'123', isAdmin: false},
+  {fullname: 'kuku sanguko', username: 'kuku', password:'123', isAdmin: false},
+  {fullname: 'Chen Sella', username: 'chen', password:'123', isAdmin: false},
+  {fullname: 'Leetal Rivlin-Tal', username: 'leetal', password:'123', isAdmin: false},
+  {fullname: 'Liz Amir', username: 'liz', password:'123', isAdmin: false},
+
+];
 
 export const boardService = {
   getBoards,
@@ -258,6 +269,7 @@ export const boardService = {
   getEmptyChecklist,
   getEmptyTodo,
   getEmptyAttachment,
+  getUsers,
   // getEmptyLabel
   // getTaskById,
   // getGroupById
@@ -277,6 +289,22 @@ async function getBoards() {
     console.log('cant load boards', err);
   }
 }
+async function getUsers() {
+  var users;
+  try {
+    users = await storageService.query(USERS_URL);
+    if (!users.length || !users) {
+      users = gUsers;
+      localStorage.setItem(USERS_URL, JSON.stringify(users));
+    }
+    return users;
+    // return httpService.get(`user`)
+  } catch (err) {
+    console.log('cant load users', err);
+  }
+}
+
+
 
 async function updateBoard(board) {
   try {
