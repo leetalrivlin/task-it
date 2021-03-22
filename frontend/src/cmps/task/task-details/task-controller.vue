@@ -31,7 +31,7 @@
         </popup>
       </el-button>
 
-      <el-button @click.stop="isChecklist = !isChecklist" class="el-btn-details" 
+      <el-button @click.stop="isChecklist = !isChecklist" class="el-btn-details"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="check-square"
@@ -44,12 +44,18 @@
         </popup>
       </el-button>
 
-      <el-button class="el-btn-details"
+      <el-button class="el-btn-details" @click="isDate = !isDate"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'clock']"
-        />Due Date</el-button
-      >
+        />Due Date
+        <popup v-if="isDate" @closePopup="isDate = false">
+          <template v-slot:title>
+            <p>Change due date</p>
+          </template>
+          <date-popup />
+        </popup>
+      </el-button>
       <el-button @click="isAttach = !isAttach" class="el-btn-details"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
@@ -85,7 +91,7 @@ import { faUser, faClock } from '@fortawesome/free-regular-svg-icons';
 import {
   faTag,
   faCheckSquare,
-  faPaperclip
+  faPaperclip,
 } from '@fortawesome/free-solid-svg-icons';
 import popup from './popup.vue';
 import coverPopup from './cover-popup.vue';
@@ -93,19 +99,20 @@ import coverAttachments from './cover-attachments.vue';
 import attachmentPopup from './attachment-popup.vue';
 import labelPopup from './label-popup.vue';
 import checklistPopup from './checklist-popup.vue';
+import datePopup from './date-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
   props: {
     cover: {
-      type: Boolean
+      type: Boolean,
     },
     labels: {
-      type: Array
+      type: Array,
     },
     taskLableIds: {
-      type: Array
-    }
+      type: Array,
+    },
   },
   data() {
     return {
@@ -113,6 +120,7 @@ export default {
       isAttach: false,
       isLabel: false,
       isChecklist: false,
+      isDate: false,
     };
   },
   methods: {
@@ -134,7 +142,7 @@ export default {
     },
     addLabel(label) {
       this.$emit('addLabel', label);
-    }
+    },
   },
   components: {
     popup,
@@ -142,7 +150,8 @@ export default {
     coverAttachments,
     attachmentPopup,
     labelPopup,
-    checklistPopup
-  }
+    checklistPopup,
+    datePopup,
+  },
 };
 </script>
