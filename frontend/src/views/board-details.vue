@@ -39,8 +39,6 @@ import group from '../cmps/group.vue';
 import addGroup from '../cmps/add-group.vue';
 import draggable from 'vuedraggable';
 
-const clone = require('rfdc')({ proto: true });
-
 export default {
   name: 'boardDetails',
   components: {
@@ -69,7 +67,7 @@ export default {
     },
     saveGroup(newGroup) {
       this.board.groups.push(newGroup);
-      const cloneBoard = clone(this.board);
+      const cloneBoard = this.$clone(this.board);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
     saveTask(taskTitle, groupId) {
@@ -87,7 +85,7 @@ export default {
       const group = this.getGroup(groupId);
       const groupIdx = this.board.groups.findIndex(({ id }) => id === groupId);
       this.board.groups.splice(groupIdx, 1);
-      const cloneBoard = clone(this.board);
+      const cloneBoard = this.$clone(this.board);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
     updateBoard(updatedGroup) {
@@ -95,7 +93,7 @@ export default {
         ({ id }) => id === updatedGroup.id
       );
       this.board.groups.splice(idx, 1, updatedGroup);
-      const cloneBoard = clone(this.board);
+      const cloneBoard = this.$clone(this.board);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
     changeTitle(group) {
@@ -112,11 +110,11 @@ export default {
   },
   computed: {
     board() {
-      return clone(this.$store.getters.board);
+      return this.$clone(this.$store.getters.board);
     },
     users() {
       console.log(this.$store.getters.users);
-      return clone(this.$store.getters.users);
+      return this.$clone(this.$store.getters.users);
     },
   },
   mounted() {
