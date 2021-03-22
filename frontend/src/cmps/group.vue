@@ -45,7 +45,6 @@ import task from '../cmps/task.vue';
 import groupMenu from '../cmps/group-menu.vue';
 import addTask from '../cmps/add-task.vue';
 import draggable from 'vuedraggable';
-const clone = require('rfdc')({ proto: true });
 
 export default {
   components: {
@@ -79,7 +78,7 @@ export default {
     },
 
     moveTask() {
-      this.$emit('updateGroup', clone(this.group));
+      this.$emit('updateGroup', this.$clone(this.group));
     },
 
     saveTask(taskTitle) {

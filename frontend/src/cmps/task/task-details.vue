@@ -41,7 +41,11 @@
                 @addLabel="setLabel"
                 @updateLabel="updateBoardLabel"
               />
-              <task-date v-if="task.dueDate" :dueDate="task.dueDate" />
+              <task-date
+                v-if="task.dueDate"
+                :dueDate="task.dueDate"
+                @setDueDate="setDueDate"
+              />
             </div>
           </div>
           <task-description :task="task" @saveDescription="updateTask" />
@@ -94,7 +98,7 @@ export default {
     taskCover,
     taskTitle,
     taskDate,
-    taskMember
+    taskMember,
   },
   computed: {
     task() {
@@ -114,7 +118,7 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    }
+    },
     // group() {
     //   return boardCopy.groups.find((group) =>
     //     group.tasks.some(({ id }) => id === this.task.id)
@@ -169,7 +173,7 @@ export default {
     setLabel(label) {
       console.log('label', label);
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex(id => {
+      const labelIdx = this.task.labelIds.findIndex((id) => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
@@ -180,13 +184,13 @@ export default {
       this.updateTask(this.task);
     },
     setMember(chosenMember) {
-      console.log('chosenMember',chosenMember);
+      console.log('chosenMember', chosenMember);
       if (!this.task.members) this.task.members = [];
       const memberIdx = this.task.members.findIndex(({ id }) => {
-        console.log('chosenMember.id',chosenMember.id);
-        console.log('id',id);
-        return id === chosenMember.id
-        });
+        console.log('chosenMember.id', chosenMember.id);
+        console.log('id', id);
+        return id === chosenMember.id;
+      });
       if (memberIdx >= 0) {
         this.task.members.splice(memberIdx, 1);
       } else {
@@ -208,7 +212,7 @@ export default {
     setDueDate(dueDate) {
       this.task.dueDate = dueDate;
       this.updateTask(this.task);
-    }
+    },
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -216,6 +220,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  }
+  },
 };
 </script>
