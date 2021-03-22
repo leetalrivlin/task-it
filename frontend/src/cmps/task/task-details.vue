@@ -20,6 +20,7 @@
           :cover="cover"
           :labels="boardLabels"
           :taskLableIds="task.labelIds"
+          :taskMembers="taskMembers"
           @addChecklist="setEmptyChecklist"
           @addCover="setCover"
           @addImg="setImg"
@@ -28,6 +29,7 @@
           @updateLabel="updateBoardLabel"
         />
         <section class="flex column task-main">
+          <task-member v-if="task.members" :taskMembers="taskMembers"/>
           <task-label
             v-if="task.labelIds"
             :labels="boardLabels"
@@ -61,6 +63,7 @@ import { boardService } from '../../services/board.service';
 import taskController from '../task/task-details/task-controller.vue';
 import taskDescription from '../task/task-details/task-description.vue';
 import taskLabel from '../task/task-details/task-label.vue';
+import taskMember from '../task/task-details/task-member.vue';
 import taskChecklist from '../task/task-details/task-checklist.vue';
 import taskAttachment from '../task/task-details/task-attachment.vue';
 import taskCover from '../task/task-details/task-cover.vue';
@@ -80,7 +83,8 @@ export default {
     taskChecklist,
     taskAttachment,
     taskCover,
-    taskTitle
+    taskTitle,
+    taskMember
   },
   computed: {
     task() {
@@ -95,17 +99,20 @@ export default {
     members() {
       return clone(this.$store.getters.board).members;
     },
-    // group() {
-    //   return boardCopy.groups.find((group) =>
-    //     group.tasks.some(({ id }) => id === this.task.id)
-    //   );
-    // },
+    taskMembers() {
+      return (this.task.members) ? this.task.members : [];
+    },
     cover() {
       return this.task.cover ? true : false;
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    }
+    },
+      // group() {
+      //   return boardCopy.groups.find((group) =>
+      //     group.tasks.some(({ id }) => id === this.task.id)
+      //   );
+      // },
   },
   methods: {
     setDetails() {
