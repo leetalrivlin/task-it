@@ -136,13 +136,21 @@ const gBoards = [
     ],
     members: [
       {
-        _id: 'u101',
+        _id: 'u110',
+        username: 'Chen',
         fullname: 'Chen Sella',
         imgUrl: 'https://www.google.com'
       },
       {
-        _id: 'u102',
+        _id: 'u111',
+        username: 'Liz',
         fullname: 'Liz Amir',
+        imgUrl: 'https://www.google.com'
+      },
+      {
+        _id: 'u112',
+        username: 'Leetal',
+        fullname: 'Leetal Rivlin-Tal',
         imgUrl: 'https://www.google.com'
       }
     ],

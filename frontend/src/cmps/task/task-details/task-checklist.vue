@@ -19,7 +19,7 @@
       ></el-progress>
 
 
-    <ul v-if="checklist.todos" class="clean-list">
+    <ul v-if="checklist.todos" class="clean-list d-container">
       <checklist-todo
         v-for="todo in checklist.todos"
         :key="todo.id"
