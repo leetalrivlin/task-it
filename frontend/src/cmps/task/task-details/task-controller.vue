@@ -11,13 +11,21 @@
     </section>
     <section class="flex column align-center nav-container">
       <h2 class="btns-title">ADD TO CARD</h2>
-      <el-button class="el-btn-details open-popup-btn"
+      <el-button class="el-btn-details open-popup-btn" @click="isMembers = true"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'user']"
-        />Members</el-button
-      >
-      <el-button @click="isLabel = !isLabel" class="el-btn-details open-popup-btn"
+        />Members
+        <popup v-if="isMembers" @closePopup="isMembers = false">
+          <template v-slot:title>
+            <p>Members</p>
+          </template>
+          <members-popup @addMember="addMember" />
+        </popup>
+      </el-button>
+      <el-button
+        @click="isLabel = !isLabel"
+        class="el-btn-details open-popup-btn"
         ><font-awesome-icon class="d-icon fa-nav-icon" icon="tag" />Labels
         <popup v-if="isLabel" @closePopup="isLabel = false">
           <template v-slot:title>
@@ -31,7 +39,9 @@
         </popup>
       </el-button>
 
-      <el-button @click="isChecklist = true" class="el-btn-details open-popup-btn" 
+      <el-button
+        @click="isChecklist = true"
+        class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="check-square"
@@ -56,6 +66,7 @@
           <date-popup />
         </popup>
       </el-button>
+      
       <el-button @click="isAttach = !isAttach" class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
@@ -100,6 +111,7 @@ import attachmentPopup from './attachment-popup.vue';
 import labelPopup from './label-popup.vue';
 import checklistPopup from './checklist-popup.vue';
 import datePopup from './date-popup.vue';
+import membersPopup from './members-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
@@ -121,12 +133,16 @@ export default {
       isLabel: false,
       isChecklist: false,
       isDate: false,
+      isMembers: false
     };
   },
   methods: {
     addChecklist(emptyChecklist) {
       this.$emit('addChecklist', emptyChecklist);
       this.isChecklist = false;
+    },
+    addMember(member) {
+      console.log('adding member...',member);
     },
     addCover(color) {
       this.$emit('addCover', color);
@@ -152,6 +168,7 @@ export default {
     labelPopup,
     checklistPopup,
     datePopup,
+    membersPopup
   },
 };
 </script>

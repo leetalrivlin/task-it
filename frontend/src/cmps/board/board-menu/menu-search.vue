@@ -1,18 +1,40 @@
 <template>
-  <div class="about-this-board-section">
-    <div class="header flex align-center">
-      <!-- <font-awesome-icon icon="user" class="icon" /> -->
-      <i class="el-icon-user icon"></i>
-       <h4>Made by</h4> 
+  <section class="search-section">
+    <div class="filter-text">
+      <el-input prefix-icon="el-icon-search" v-model="filterBy.txt"> </el-input>
+      <p class="desc-filter">Search by term, label, member, or due time.</p>
+      <hr />
     </div>
-  </div>
+    <div class="filter-lables">
+      <ul class="clean-list flex column">
+        <li v-for="label in labels" :key="label.id" class="list-item">
+          <span :style="{ backgroundColor: label.color }">{{
+            label.title
+          }}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
 </template>
 
 <script>
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faUser } from '@fortawesome/pro-regular-svg-icons';
-// library.add(faUser);
-export default {};
+export default {
+  data() {
+    return {
+      filterBy: {
+        txt: '',
+        labels: [],
+        members: [],
+      },
+    };
+  },
+  computed: {
+    labels() {
+      console.log(this.$store.getters.boardLabels);
+      return this.$store.getters.boardLabels;
+    },
+  },
+};
 </script>
 
 <style>

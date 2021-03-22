@@ -11,7 +11,7 @@
       v-model="title"
       name="title"
     ></el-input>
-    <el-button class="add-btn" type="info">Add</el-button>
+    <el-button @click.prevent="addChecklist" class="add-btn" type="info">Add</el-button>
   </form>
 </template>
 
