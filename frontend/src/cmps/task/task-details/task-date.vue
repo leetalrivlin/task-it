@@ -1,7 +1,13 @@
 <template>
   <section class="due-date">
     <p class="title">Due Date</p>
-    <p class="date-container">{{ date }}</p>
+    <div class="flex align-center">
+      <el-checkbox v-model="checked"></el-checkbox>
+      <div class="flex align-center date-container">
+        <p>{{ date }}</p>
+        <span v-if="overdue" :style="theme" class="overdue">{{ txt }}</span>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -13,6 +19,11 @@ export default {
       type: Number,
     },
   },
+  data() {
+    return {
+      checked: false,
+    };
+  },
   computed: {
     date() {
       const date = new Date(this.dueDate);
@@ -20,6 +31,16 @@ export default {
       const dateDetails = dateStr.split(' ');
       const formatDate = `${dateDetails[1]} ${dateDetails[2]} at ${dateDetails[4]}`;
       return formatDate;
+    },
+    txt() {
+      return this.checked ? 'completed' : 'overdue';
+    },
+    theme() {
+      return this.checked ? {backgroundColor: '#60BD4F'} : {backgroundColor: '#ec9488'};
+    },
+    overdue() {
+      if(Date.now() > this.dueDate || this.checked) return true
+      else return false
     },
   },
 };
