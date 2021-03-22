@@ -17,8 +17,8 @@
             <div class="btn-containter">
               <button class="link-btn" @click="removeAttach(attach.id)">
                 Delete</button
-              >-
-              <button class="link-btn">Edit</button>
+              >
+              <!-- -<button class="link-btn">Edit</button> -->
             </div>
           </div>
         </li>

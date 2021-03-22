@@ -44,7 +44,7 @@
         </popup>
       </el-button>
 
-      <el-button class="el-btn-details" @click="isDate = !isDate"
+      <el-button class="el-btn-details open-popup-btn" @click="isDate = !isDate"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'clock']"
@@ -56,7 +56,7 @@
           <date-popup />
         </popup>
       </el-button>
-      <el-button @click="isAttach = !isAttach" class="el-btn-details"
+      <el-button @click="isAttach = !isAttach" class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="paperclip"

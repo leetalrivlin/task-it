@@ -12,14 +12,19 @@
           :class="'bclr' + idx"
           :style="{ backgroundColor: label.color }"
         >
-          <div v-if="taskLables.includes(label.id)" class="flex align-center space-between label-details">
-            <div>{{ label.title }}</div>
-            <i class="el-icon-check"></i>
+          <div class="flex align-center space-between label-details">
+            <div v-if="!isEdit">{{ label.title }}</div>
+            <input
+              ref="input"
+              v-else
+              type="text"
+              @keyup.enter.stop="title"
+              v-model="labelTitle"
+            />
+            <i class="el-icon-check" v-if="taskLables.includes(label.id)"></i>
           </div>
         </span>
-        <!-- <input v-else type="text" :class="'bclr' + idx"
-          :style="{ backgroundColor: label.color }" /> -->
-        <a @click="isEdit = !isEdit"><i class="el-icon-edit"></i></a>
+        <a @click="editTitle"><i class="el-icon-edit"></i></a>
       </li>
     </ul>
   </section>
@@ -38,18 +43,26 @@ export default {
   },
   data() {
     return {
-      // isEdit : false,
+      isEdit: false,
+      labelTitle: '',
     };
   },
   methods: {
     labelPicked(label) {
       this.$emit('labelPicked', label);
     },
+    title() {
+      console.log(this.labelTitle);
+    },
+    editTitle() {
+      this.isEdit = !this.isEdit;
+      // this.$refs.input.focus();
+    },
   },
-  computed:{
-    taskLables(){
+  computed: {
+    taskLables() {
       return this.taskLableIds ? this.taskLableIds : [];
-    }
-  }
+    },
+  },
 };
 </script>

@@ -18,7 +18,7 @@
         <task-controller
           :cover="cover"
           :labels="boardLabels"
-          :taskLableIds = "task.labelIds"
+          :taskLableIds="task.labelIds"
           @addChecklist="setEmptyChecklist"
           @addCover="setCover"
           @addImg="setImg"
@@ -26,8 +26,19 @@
           @addLabel="setLabel"
         />
         <section class="flex column task-main">
-          <task-label v-if="task.labelIds" :labels="boardLabels" :task="task" @addLabel="setLabel" />
+          <task-label
+            v-if="task.labelIds"
+            :labels="boardLabels"
+            :task="task"
+            @addLabel="setLabel"
+          />
           <task-description :task="task" @saveDescription="updateTask" />
+          <task-attachment
+            :task="task"
+            v-if="task.attachments"
+            @removeAttach="removeAttach"
+            @addAttach="setAttach"
+          />
           <ul v-if="task.checklists" class="clean-list">
             <task-checklist
               v-for="checklist in task.checklists"
@@ -37,12 +48,6 @@
               @updateTask="updateTask"
             />
           </ul>
-          <task-attachment
-            :task="task"
-            v-if="task.attachments"
-            @removeAttach="removeAttach"
-            @addAttach="setAttach"
-          />
         </section>
       </section>
     </section>
@@ -145,7 +150,7 @@ export default {
     setLabel(label) {
       console.log('label', label);
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex(( id ) => {
+      const labelIdx = this.task.labelIds.findIndex((id) => {
         return id === label.id;
       });
       if (labelIdx >= 0) {

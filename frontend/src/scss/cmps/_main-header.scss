@@ -1,16 +1,16 @@
 .main-header {
-  height: 8vh;
-  background-color: rgba(36, 36, 36,  0.32);
+  height: 4vh;
+  background-color: rgba(36, 36, 36, 0.32);
   color: white;
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
 
-  .logo{
+  .logo {
     font-size: 26px;
     font-weight: 600;
     grid-column: 2;
   }
-  a{
+  a {
     border-radius: 3px;
   }
 
@@ -20,5 +20,11 @@
     > * {
       margin-inline-start: rem(10px);
     }
+  }
+}
+
+@include for-wide-layout {
+  .main-header {
+    height: 6vh;
   }
 }
