@@ -42,6 +42,7 @@ export const router = new Router({
       children: [
         {
           path: ':taskId',
+          name: 'taskDetails',
           component: taskDetails,
         }
       ]

@@ -1,0 +1,19 @@
+.add-members-container {
+    position: absolute;
+    top: 70px;
+    background-color: #ffffff;
+    width: 304px;
+    border-radius: 3px;
+    z-index: 1;
+    font-family: Segoe, serif;
+    color: #5e6c84;
+    line-height: 40px;
+    right: 76px;
+
+    .close-btn {
+        margin: 12px;
+        position: absolute;
+        right: 0;
+        top: 1px;
+    }
+}

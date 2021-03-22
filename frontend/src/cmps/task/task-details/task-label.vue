@@ -1,8 +1,7 @@
 <template>
-  <section class="d-desc task-label">
-    <div class="d-content">
+  <section class="task-label flex column">
       <p>Labels</p>
-      <ul class="clean-list">
+      <ul class="clean-list flex">
         <li class="list-item" v-for="label in taskLabels" :key="label.id">
           <span :style="{ backgroundColor: label.color }">
             {{ label.title }}
@@ -24,7 +23,6 @@
           ></span>
         </li>
       </ul>
-    </div>
   </section>
 </template>
 
