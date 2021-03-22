@@ -15,11 +15,14 @@ import Avatar from 'vue-avatar';
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.use(vClickOutside)
 Vue.use(ElementUI, { locale });
+// Vue.use(require('vue-moment'));
 Vue.config.productionTip = false;
 
+const clone = require('rfdc')({ proto: true });
 new Vue({
   router,
   store,
   Avatar,
+  clone,
   render: h => h(app)
 }).$mount('#app');
