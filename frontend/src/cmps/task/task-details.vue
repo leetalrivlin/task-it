@@ -25,6 +25,7 @@
           @addImg="setImg"
           @addAttach="setAttach"
           @addLabel="setLabel"
+          @updateLabel="updateBoardLabel"
         />
         <section class="flex column task-main">
           <task-label
@@ -92,7 +93,6 @@ export default {
       return clone(this.$store.getters.boardLabels);
     },
     members() {
-      console.log(this.$store.getters.board.members);
       return clone(this.$store.getters.board).members;
     },
     // group() {
@@ -164,6 +164,14 @@ export default {
         this.task.labelIds.push(label.id);
       }
       this.updateTask(this.task);
+    },
+    updateBoardLabel(updatedLabel){
+      console.log('updatedLabel', updatedLabel);
+      const labelIdx = this.boardLabels.findIndex(({id})=> id === updatedLabel.id);
+      this.boardLabels.splice(labelIdx, 1, updatedLabel);
+      const copyBoard = clone(this.$store.getters.board);
+      copyBoard.labels = this.boardLabels;
+      this.$store.dispatch({type:'updateBoard', board:copyBoard});
     }
   },
   created() {
