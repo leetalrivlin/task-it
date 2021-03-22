@@ -55,17 +55,23 @@
         </popup>
       </el-button>
 
-      <el-button class="el-btn-details open-popup-btn" @click="isDate = !isDate"
+      <el-button class="el-btn-details open-popup-btn" @click="openDatePopup"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'clock']"
         />Due Date
-        <popup v-if="isDate" @closePopup="isDate = false">
+        <el-date-picker
+          ref="datePickerInput"
+          class="date-picker-btn"
+          type="date"
+          placeholder="Pick a day"
+        ></el-date-picker>
+        <!-- <popup v-if="isDate" @closePopup="isDate = false">
           <template v-slot:title>
             <p>Change due date</p>
           </template>
           <date-popup />
-        </popup>
+        </popup> -->
       </el-button>
 
       <el-button
@@ -168,6 +174,9 @@ export default {
     updateLabel(updatedLabel) {
       console.log('updatedLabel', updatedLabel);
       this.$emit('updateLabel', updatedLabel);
+    },
+    openDatePopup() {
+      this.$refs.datePickerInput.focus();
     },
   },
   components: {
