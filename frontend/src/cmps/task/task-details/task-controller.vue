@@ -20,7 +20,7 @@
           <template v-slot:title>
             <p>Members</p>
           </template>
-          <members-popup @addMember="addMember" :members="members" @addMemberToTask="addMemberToTask"/>
+          <members-popup :members="members" @addMemberToTask="addMemberToTask"/>
         </popup>
       </el-button>
       <el-button
@@ -151,9 +151,9 @@ export default {
       this.$emit('addChecklist', emptyChecklist);
       this.isChecklist = false;
     },
-    addMember(member) {
-      console.log('adding member...', member);
-    },
+    // addMember(member) {
+    //   console.log('adding member...', member);
+    // },
     addCover(color) {
       this.$emit('addCover', color);
       this.isCoverPopUp = false;

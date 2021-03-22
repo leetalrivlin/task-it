@@ -1,0 +1,28 @@
+.members-container {
+  p {
+    text-transform: uppercase;
+    color: #5e6c84;
+    font-size: 14px;
+    margin: 0 8px 4px 0;
+  }
+  .member-avatars {
+    > * {
+      width: rem(30px);
+      height: rem(30px);
+      margin-inline-end: rem(5px);
+    }
+    .avatar-item {
+      object-fit: cover;
+    }
+    .add-member-btn {
+      position: relative;
+      background-color: rgba(9, 30, 66, 0.048);
+      color: $clr1;
+      border: none;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

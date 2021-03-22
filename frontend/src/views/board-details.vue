@@ -115,7 +115,6 @@ export default {
       return clone(this.$store.getters.board);
     },
     users() {
-      console.log(this.$store.getters.users);
       return clone(this.$store.getters.users);
     },
   },
