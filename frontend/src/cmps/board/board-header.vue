@@ -26,7 +26,7 @@
           <add-members
             v-if="isAddMembers"
             :boardMembers="this.board.members"
-            :allMembers="membersToAdd"
+            :allMembers="this.users"
             @closeMenu="closeMembersPopup"
             v-click-outside="closeMembersPopup"
         /></el-button>
@@ -93,9 +93,7 @@ export default {
     membersBoard() {
       return this.board.members;
     },
-    membersToAdd() {
-      console.log(this.users);
-    },
+   
   },
 };
 </script>
