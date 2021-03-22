@@ -1,15 +1,17 @@
 <template>
   <form
+    @click.stop
     @submit.prevent="addChecklist"
     class="flex column checklist-popup-container"
   >
     <label for="title">Title</label>
-    <el-input type="text" placeholder="Checklist" v-model="title" name="title"></el-input>
-    <el-button
-      @click.stop="addChecklist"
-      class="add-btn"
-      type="info"
-      >Add</el-button>
+    <el-input
+      type="text"
+      placeholder="Checklist"
+      v-model="title"
+      name="title"
+    ></el-input>
+    <el-button class="add-btn" type="info">Add</el-button>
   </form>
 </template>
 
