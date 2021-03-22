@@ -2,7 +2,7 @@
   <nav class="d-cntrlr flex column align-center cntrlr-container">
     <section class="flex column align-center nav-container">
       <h2 class="btns-title">SUGGESTED</h2>
-      <el-button class="el-btn-details"
+      <el-button class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'user']"
@@ -11,13 +11,13 @@
     </section>
     <section class="flex column align-center nav-container">
       <h2 class="btns-title">ADD TO CARD</h2>
-      <el-button class="el-btn-details"
+      <el-button class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'user']"
         />Members</el-button
       >
-      <el-button @click="isLabel = !isLabel" class="el-btn-details"
+      <el-button @click="isLabel = !isLabel" class="el-btn-details open-popup-btn"
         ><font-awesome-icon class="d-icon fa-nav-icon" icon="tag" />Labels
         <popup v-if="isLabel" @closePopup="isLabel = false">
           <template v-slot:title>
@@ -31,7 +31,7 @@
         </popup>
       </el-button>
 
-      <el-button @click.stop="isChecklist = !isChecklist" class="el-btn-details" 
+      <el-button @click="isChecklist = true" class="el-btn-details open-popup-btn" 
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="check-square"
@@ -44,13 +44,13 @@
         </popup>
       </el-button>
 
-      <el-button class="el-btn-details"
+      <el-button class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'clock']"
         />Due Date</el-button
       >
-      <el-button @click="isAttach = !isAttach" class="el-btn-details"
+      <el-button @click="isAttach = !isAttach" class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="paperclip"
@@ -64,7 +64,7 @@
       </el-button>
       <el-button
         v-if="!cover"
-        class="el-btn-details"
+        class="el-btn-details open-popup-btn"
         icon="el-icon-set-up fa-nav-icon"
         @click="isCoverPopUp = !isCoverPopUp"
         >Cover
