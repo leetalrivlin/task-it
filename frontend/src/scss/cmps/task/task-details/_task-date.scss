@@ -6,10 +6,23 @@
     margin: 0 8px 4px 0;
   }
   .date-container {
+    margin-inline-start: 5px;
     border-radius: 3px;
     background-color: rgba(9, 30, 66, 0.048);
     border: none;
-    color: #4d5a76;
     padding: 4px 10px;
+
+    p {
+      color: #4d5a76;
+    }
+
+    .overdue {
+      text-transform: uppercase;
+      color: white;
+      padding: 0 4px;
+      border-radius: 3px;
+      margin-inline-start: 5px;
+      font-size: 12px;
+    }
   }
 }
