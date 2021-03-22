@@ -28,6 +28,7 @@
           @addLabel="setLabel"
           @updateLabel="updateBoardLabel"
           @setDueDate="setDueDate"
+          @addMemberToTask="setMember"
         />
         <section class="flex column task-main">
           <task-member v-if="task.members" :taskMembers="taskMembers"/>
@@ -174,6 +175,19 @@ export default {
       } else {
         this.task.labelIds.push(label.id);
       }
+      this.updateTask(this.task);
+    },
+    setMember(chosenMember) {
+      if (!this.task.taskMembers) this.task.taskMembers = [];
+      const memberIdx = this.task.taskMembers.findIndex(({id}) => {
+        return id = chosenMember.id;
+      });
+      if (memberIdx >= 0) {
+        this.task.taskMembers.splice(memberIdx, 1);
+      } else {
+        this.task.taskMembers.push(chosenMember);
+      }
+      console.log('this.task',this.task);
       this.updateTask(this.task);
     },
     updateBoardLabel(updatedLabel){

@@ -20,7 +20,7 @@
           <template v-slot:title>
             <p>Members</p>
           </template>
-          <members-popup @addMember="addMember" :members="members" :taskMembers="taskMembers"/>
+          <members-popup @addMember="addMember" :members="members" @addMemberToTask="addMemberToTask"/>
         </popup>
       </el-button>
       <el-button
@@ -134,9 +134,6 @@ export default {
     members: {
       type: Array,
     },
-    taskMembers: {
-      type: Array,
-    }
   },
   data() {
     return {
@@ -175,6 +172,9 @@ export default {
     updateLabel(updatedLabel) {
       console.log('updatedLabel', updatedLabel);
       this.$emit('updateLabel', updatedLabel);
+    },
+    addMemberToTask(chosenMember) {
+      this.$emit('addMemberToTask', chosenMember);
     },
     openDatePopup() {
       this.$refs.datePickerInput.focus();

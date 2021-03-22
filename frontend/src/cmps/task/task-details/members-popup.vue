@@ -40,9 +40,6 @@ export default {
     members: {
       type: Array
     },
-    taskMembers: {
-      type: Array
-    }
   },
   data() {
     return {
@@ -51,7 +48,7 @@ export default {
   },
   methods: {
     addMemberToTask(member) {
-      console.log('sending member through emit',member);
+      this.$emit('addMemberToTask', member);
     }
   }
 };
