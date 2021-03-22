@@ -21,8 +21,12 @@
         padding: 0 12px;
         width: auto;
         cursor: pointer;
-        position:relative;
+        position: relative;
         color: white;
+
+        &:hover {
+          background-color: rgba(9, 30, 66, 0.08);
+        }
       }
     }
   }

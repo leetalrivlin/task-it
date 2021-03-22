@@ -20,20 +20,29 @@
           :cover="cover"
           :labels="boardLabels"
           :taskLableIds="task.labelIds"
+          :taskMembers="taskMembers"
           @addChecklist="setEmptyChecklist"
           @addCover="setCover"
           @addImg="setImg"
           @addAttach="setAttach"
           @addLabel="setLabel"
           @updateLabel="updateBoardLabel"
+          @setDueDate="setDueDate"
         />
         <section class="flex column task-main">
-          <task-label
-            v-if="task.labelIds"
-            :labels="boardLabels"
-            :task="task"
-            @addLabel="setLabel"
-          />
+          <div class="d-desc">
+            <div class="d-icon"></div>
+            <div class="d-content flex task-data-container">
+              <task-member v-if="task.members" :taskMembers="taskMembers" />
+              <task-label
+                v-if="task.labelIds"
+                :labels="boardLabels"
+                :task="task"
+                @addLabel="setLabel"
+              />
+              <task-date v-if="task.dueDate" :dueDate="task.dueDate" />
+            </div>
+          </div>
           <task-description :task="task" @saveDescription="updateTask" />
           <task-attachment
             :task="task"
@@ -61,12 +70,14 @@ import { boardService } from '../../services/board.service';
 import taskController from '../task/task-details/task-controller.vue';
 import taskDescription from '../task/task-details/task-description.vue';
 import taskLabel from '../task/task-details/task-label.vue';
+import taskMember from '../task/task-details/task-member.vue';
 import taskChecklist from '../task/task-details/task-checklist.vue';
 import taskAttachment from '../task/task-details/task-attachment.vue';
 import taskCover from '../task/task-details/task-cover.vue';
 import taskTitle from '../task/task-details/task-title.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faColumns } from '@fortawesome/free-solid-svg-icons';
+import taskDate from './task-details/task-date.vue';
 
 library.add(faColumns);
 const clone = require('rfdc')({ proto: true });
@@ -80,7 +91,9 @@ export default {
     taskChecklist,
     taskAttachment,
     taskCover,
-    taskTitle
+    taskTitle,
+    taskDate,
+    taskMember,
   },
   computed: {
     task() {
@@ -95,17 +108,20 @@ export default {
     members() {
       return clone(this.$store.getters.board).members;
     },
-    // group() {
-    //   return boardCopy.groups.find((group) =>
-    //     group.tasks.some(({ id }) => id === this.task.id)
-    //   );
-    // },
+    taskMembers() {
+      return this.task.members ? this.task.members : [];
+    },
     cover() {
       return this.task.cover ? true : false;
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    }
+    },
+    // group() {
+    //   return boardCopy.groups.find((group) =>
+    //     group.tasks.some(({ id }) => id === this.task.id)
+    //   );
+    // },
   },
   methods: {
     setDetails() {
@@ -155,7 +171,7 @@ export default {
     setLabel(label) {
       console.log('label', label);
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex(id => {
+      const labelIdx = this.task.labelIds.findIndex((id) => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
@@ -165,14 +181,20 @@ export default {
       }
       this.updateTask(this.task);
     },
-    updateBoardLabel(updatedLabel){
+    updateBoardLabel(updatedLabel) {
       console.log('updatedLabel', updatedLabel);
-      const labelIdx = this.boardLabels.findIndex(({id})=> id === updatedLabel.id);
+      const labelIdx = this.boardLabels.findIndex(
+        ({ id }) => id === updatedLabel.id
+      );
       this.boardLabels.splice(labelIdx, 1, updatedLabel);
       const copyBoard = clone(this.$store.getters.board);
       copyBoard.labels = this.boardLabels;
-      this.$store.dispatch({type:'updateBoard', board:copyBoard});
-    }
+      this.$store.dispatch({ type: 'updateBoard', board: copyBoard });
+    },
+    setDueDate(dueDate) {
+      this.task.dueDate = dueDate;
+      this.updateTask(this.task);
+    },
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -180,6 +202,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  }
+  },
 };
 </script>
