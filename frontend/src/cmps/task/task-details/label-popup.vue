@@ -1,5 +1,5 @@
 <template>
-  <section class="label-popup" @click.stop>
+  <section class="label-popup">
     <p>Labels</p>
     <ul class="clean-list flex column labels-container">
       <li
@@ -13,18 +13,23 @@
           :style="{ backgroundColor: label.color }"
         >
           <div class="flex align-center space-between label-details">
-            <div v-if="!isEdit">{{ label.title }}</div>
+            <div v-if="idx !== labelIdxToEdit">{{ label.title }}</div>
             <input
-              ref="input"
               v-else
+              ref="labelTitleInput"
               type="text"
+              @click.stop
+              @blur="editTitle(null)"
               @keyup.enter.stop="title"
               v-model="labelTitle"
             />
-            <i class="el-icon-check" v-if="taskLables.includes(label.id)"></i>
+            <i
+              class="el-icon-check"
+              v-if="taskLableIds && taskLableIds.includes(label.id)"
+            ></i>
           </div>
         </span>
-        <a @click="editTitle"><i class="el-icon-edit"></i></a>
+        <a @click="editTitle(idx)"><i class="el-icon-edit"></i></a>
       </li>
     </ul>
   </section>
@@ -43,7 +48,7 @@ export default {
   },
   data() {
     return {
-      isEdit: false,
+      labelIdxToEdit: null,
       labelTitle: '',
     };
   },
@@ -54,15 +59,13 @@ export default {
     title() {
       console.log(this.labelTitle);
     },
-    editTitle() {
-      this.isEdit = !this.isEdit;
-      // this.$refs.input.focus();
+    editTitle(idx) {
+      if (this.labelIdxToEdit === idx) idx = null;
+      this.labelIdxToEdit = idx;
+      if (idx === null) return;
+      this.$nextTick(() => this.$refs.labelTitleInput[0].focus());
     },
   },
-  computed: {
-    taskLables() {
-      return this.taskLableIds ? this.taskLableIds : [];
-    },
-  },
+  computed: {},
 };
 </script>
