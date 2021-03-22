@@ -39,6 +39,7 @@
                 :labels="boardLabels"
                 :task="task"
                 @addLabel="setLabel"
+                @updateLabel="updateBoardLabel"
               />
               <task-date v-if="task.dueDate" :dueDate="task.dueDate" />
             </div>

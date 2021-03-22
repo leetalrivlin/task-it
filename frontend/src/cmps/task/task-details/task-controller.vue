@@ -20,7 +20,11 @@
           <template v-slot:title>
             <p>Members</p>
           </template>
-          <members-popup @addMember="addMember" :members="members" :taskMembers="taskMembers"/>
+          <members-popup
+            @addMember="addMember"
+            :members="members"
+            :taskMembers="taskMembers"
+          />
         </popup>
       </el-button>
       <el-button
@@ -63,7 +67,7 @@
         <el-date-picker
           ref="datePickerInput"
           class="date-picker-btn"
-           type="datetime"
+          type="datetime"
           placeholder="Pick a day"
           v-model="dueDate"
           @change="setDueDate"
@@ -136,7 +140,7 @@ export default {
     },
     taskMembers: {
       type: Array,
-    }
+    },
   },
   data() {
     return {
@@ -173,7 +177,6 @@ export default {
       this.$emit('addLabel', label);
     },
     updateLabel(updatedLabel) {
-      console.log('updatedLabel', updatedLabel);
       this.$emit('updateLabel', updatedLabel);
     },
     openDatePopup() {
