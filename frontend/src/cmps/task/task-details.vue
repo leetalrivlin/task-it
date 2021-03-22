@@ -20,7 +20,6 @@
           :cover="cover"
           :labels="boardLabels"
           :taskLableIds="task.labelIds"
-          :taskMembers="taskMembers"
           @addChecklist="setEmptyChecklist"
           @addCover="setCover"
           @addImg="setImg"
@@ -34,7 +33,7 @@
           <div class="d-desc">
             <div class="d-icon"></div>
             <div class="d-content flex task-data-container">
-              <task-member v-if="task.members" :taskMembers="taskMembers" />
+              <task-member v-if="task.members" :taskMembers="task.members" />
               <task-label
                 v-if="task.labelIds"
                 :labels="boardLabels"
@@ -110,9 +109,6 @@ export default {
     members() {
       return clone(this.$store.getters.board).members;
     },
-    taskMembers() {
-      return this.task.members ? this.task.members : [];
-    },
     cover() {
       return this.task.cover ? true : false;
     },
@@ -184,14 +180,17 @@ export default {
       this.updateTask(this.task);
     },
     setMember(chosenMember) {
-      if (!this.task.taskMembers) this.task.taskMembers = [];
-      const memberIdx = this.task.taskMembers.findIndex(({ id }) => {
-        return (id = chosenMember.id);
-      });
+      console.log('chosenMember',chosenMember);
+      if (!this.task.members) this.task.members = [];
+      const memberIdx = this.task.members.findIndex(({ id }) => {
+        console.log('chosenMember.id',chosenMember.id);
+        console.log('id',id);
+        return id === chosenMember.id
+        });
       if (memberIdx >= 0) {
-        this.task.taskMembers.splice(memberIdx, 1);
+        this.task.members.splice(memberIdx, 1);
       } else {
-        this.task.taskMembers.push(chosenMember);
+        this.task.members.push(chosenMember);
       }
       console.log('this.task', this.task);
       this.updateTask(this.task);
