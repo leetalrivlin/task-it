@@ -9,9 +9,9 @@
       </div>
     </div>
    
-      <p class="d-icon percent">50%</p>
+      <p class="d-icon percent">{{percentage}}%</p>
       <el-progress
-        :percentage="50"
+        :percentage="percentage"
         color="grey"
         type="line"
         :show-text="showTxt"
@@ -87,6 +87,15 @@ export default {
   computed: {
     showTxt() {
       return false;
+    },
+    percentage() {
+      if (!this.checklist.todos || !this.checklist.todos.length) return 0;
+      var isDoneCounter = 0;
+      const todos = this.checklist.todos.length;
+      this.checklist.todos.forEach(todo => {
+        if (todo.isDone) isDoneCounter++
+      })
+      return ((100 * isDoneCounter) / todos);
     }
   },
   methods: {

@@ -23,15 +23,29 @@
           <template v-slot:title>
             <p>Labels</p>
           </template>
-          <label-popup :labels="labels" :taskLableIds="taskLableIds" @labelPicked="addLabel" />
+          <label-popup
+            :labels="labels"
+            :taskLableIds="taskLableIds"
+            @labelPicked="addLabel"
+          />
         </popup>
       </el-button>
       <el-button class="el-btn-details" @click="onOpenChecklist"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="check-square"
-        />Checklist</el-button
-      >
+        />Checklist
+        <!-- <popup v-if="isLabel" @closePopup="isLabel = false">
+          <template v-slot:title>
+            <p>Labels</p>
+          </template>
+          <label-popup
+            :labels="labels"
+            :taskLableIds="taskLableIds"
+            @labelPicked="addLabel"
+          />
+        </popup> -->
+      </el-button>
       <el-button class="el-btn-details"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
@@ -73,7 +87,7 @@ import { faUser, faClock } from '@fortawesome/free-regular-svg-icons';
 import {
   faTag,
   faCheckSquare,
-  faPaperclip,
+  faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import popup from './popup.vue';
 import coverPopup from './cover-popup.vue';
@@ -85,20 +99,20 @@ library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
   props: {
     cover: {
-      type: Boolean,
+      type: Boolean
     },
     labels: {
-      type: Array,
+      type: Array
     },
     taskLableIds: {
-      type: Array,
-    },
+      type: Array
+    }
   },
   data() {
     return {
       isCoverPopUp: false,
       isAttach: false,
-      isLabel: false,
+      isLabel: false
     };
   },
   methods: {
@@ -119,14 +133,14 @@ export default {
     },
     addLabel(label) {
       this.$emit('addLabel', label);
-    },
+    }
   },
   components: {
     popup,
     coverPopup,
     coverAttachments,
     attachmentPopup,
-    labelPopup,
-  },
+    labelPopup
+  }
 };
 </script>
