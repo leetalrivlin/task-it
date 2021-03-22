@@ -24,7 +24,20 @@ const gBoards = [
     members: [
       {
         _id: 'u101',
+        username: 'Tal',
         fullname: 'Tal Tarablus',
+        imgUrl: 'https://www.google.com'
+      },
+      {
+        _id: 'u102',
+        username: 'Dan',
+        fullname: 'Dan Cohen',
+        imgUrl: 'https://www.google.com'
+      },
+      {
+        _id: 'u103',
+        username: 'Shani',
+        fullname: 'Shani Ofer',
         imgUrl: 'https://www.google.com'
       }
     ],
