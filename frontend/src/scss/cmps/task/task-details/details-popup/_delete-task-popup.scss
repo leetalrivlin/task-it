@@ -1,5 +1,24 @@
 .delete-task-container {
-  .warning-container {
+  p {
+    width: 100%;
     white-space: normal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .delete-btn {
+    width: 100%;
+    cursor: pointer;
+    padding: 6px 12px;
+    background-color: #EB5A46;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: rgb(250, 249, 249);
   }
 }

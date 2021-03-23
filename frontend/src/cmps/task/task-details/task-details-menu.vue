@@ -105,7 +105,7 @@
           <template v-slot:title>
             <p>Delete card?</p>
           </template>
-          <delete-task-popup />
+          <delete-task-popup :taskId="taskId" @deleteTask="deleteTask"/>
         </popup>
       </el-button>
     </section>
@@ -147,6 +147,9 @@ export default {
     },
     taskMembers: {
       type: Array
+    },
+    taskId: {
+      type: String
     }
   },
   data() {
@@ -193,6 +196,9 @@ export default {
     setDueDate() {
       console.log(this.dueDate);
       this.$emit('setDueDate', this.dueDate);
+    },
+    deleteTask(taskId) {
+      this.$emit('deleteTask', taskId)
     }
   },
   components: {
