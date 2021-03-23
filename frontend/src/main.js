@@ -10,6 +10,7 @@ import './scss/main.scss';
 import vClickOutside from 'v-click-outside';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Avatar from 'vue-avatar';
+// import VueCharts from 'vue-chartjs'
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(vClickOutside);
@@ -29,5 +30,6 @@ new Vue({
   router,
   store,
   Avatar,
+  // VueCharts,
   render: h => h(app)
 }).$mount('#app');
