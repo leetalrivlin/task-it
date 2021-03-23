@@ -63,7 +63,6 @@ export default {
       this.$emit('closeMenu');
     },
     updateBoardMembers(user) {
-      console.log(user);
       const userIdx = this.boardMembers.findIndex(({ id }) => id === user.id);
       if (userIdx >= 0) {
         this.boardMembers.splice(userIdx, 1);
@@ -74,17 +73,18 @@ export default {
     },
     filterMembers() {
       var membersToShow;
-      if (!this.searchedMember || this.searchedMember === '')
-        membersToShow = this.membersToShow;
-      membersToShow = this.membersToShow.filter((member) => {
+      if (!this.searchedMember || this.searchedMember === '') {
+        membersToShow = this.systemUsers;
+      }
+      membersToShow = this.systemUsers.filter((member) => {
         return member.fullname
           .toLowerCase()
           .includes(this.searchedMember.toLowerCase());
       });
-      console.log(membersToShow);
       this.membersToShow = membersToShow;
     },
   },
+
   computed: {
     isUserOnBoard() {
       return (user) => {
