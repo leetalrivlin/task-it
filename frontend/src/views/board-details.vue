@@ -5,6 +5,7 @@
       :users="users"
       @updateBoardMembers="updatEntireBoard"
       @updateBoardStyle="updatEntireBoard"
+      @tasksToShow="tasksToShow"
     />
     <section class="flex align-start main-content main-layout board-content">
       <draggable
@@ -27,6 +28,7 @@
           @updateGroup="updateBoard"
           @deleteGroup="deleteGroup"
           :group="group"
+          :taskToShow="taskToShow"
         />
 
         <!-- </transition-group> -->
@@ -100,6 +102,10 @@ export default {
       this.board.groups.splice(idx, 1, updatedGroup);
       const cloneBoard = this.$clone(this.board);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
+    },
+    tasksToShow(tasks) {
+      
+        console.log(tasks , 'tasks');
     },
    
     moveGroup() {
