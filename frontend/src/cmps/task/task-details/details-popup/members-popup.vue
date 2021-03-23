@@ -66,18 +66,14 @@ export default {
   },
   methods: {
     addMemberToTask(member) {
-      console.log('this.taskMembers', this.taskMembers);
       this.$emit('addMemberToTask', member);
     },
     filterMembers() {
-      console.log(this.searchedMember);
-      // console.log('this.members',this.members);
       var membersToShow;
       if (!this.searchedMember || this.searchedMember === '') membersToShow = this.members;
       membersToShow = this.members.filter(member => {
         return member.fullname.toLowerCase().includes(this.searchedMember.toLowerCase())
       });
-      console.log(membersToShow);
       this.membersToShow = membersToShow;
     }
   }

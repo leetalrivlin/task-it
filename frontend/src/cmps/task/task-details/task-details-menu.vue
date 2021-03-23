@@ -2,7 +2,7 @@
   <nav class="d-cntrlr flex column align-center cntrlr-container">
     <section class="flex column align-center nav-container">
       <p class="task-details-title btns-title">Add To Cart</p>
-      <el-button class="el-btn-details open-popup-btn" @click="isMembers = true"
+      <el-button class="el-btn-details open-popup-btn" @click.stop="isMembers = true"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'user']"
@@ -36,7 +36,7 @@
       </el-button>
 
       <el-button
-        @click="isChecklist = true"
+        @click.stop="isChecklist = true"
         class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
@@ -99,14 +99,14 @@
       <el-button class="el-btn-details open-popup-btn"
         ><i class="el-icon-right fa-nav-icon"></i>Move</el-button
       >
-      <el-button class="el-btn-details open-popup-btn"
+      <el-button class="el-btn-details open-popup-btn" @click="isDeleteTask = true"
         ><i class="el-icon-delete fa-nav-icon"></i>Delete
-        <!-- <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
+        <popup v-if="isDeleteTask" @closePopup="isDeleteTask = false">
           <template v-slot:title>
             <p>Delete card?</p>
           </template>
-          <cover-popup @changeColor="addCover" @uploadImg="addCoverImg" />
-        </popup> -->
+          <delete-task-popup :taskId="taskId" @deleteTask="deleteTask"/>
+        </popup>
       </el-button>
     </section>
   </nav>
@@ -128,6 +128,7 @@ import labelPopup from '../task-details/details-popup/label-popup.vue';
 import checklistPopup from '../task-details/details-popup/checklist-popup.vue';
 import datePopup from '../task-details/details-popup/date-popup.vue';
 import membersPopup from '../task-details/details-popup/members-popup.vue';
+import deleteTaskPopup from '../task-details/details-popup/delete-task-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
@@ -146,6 +147,9 @@ export default {
     },
     taskMembers: {
       type: Array
+    },
+    taskId: {
+      type: String
     }
   },
   data() {
@@ -156,6 +160,7 @@ export default {
       isChecklist: false,
       isDate: false,
       isMembers: false,
+      isDeleteTask: false,
       dueDate: ''
     };
   },
@@ -164,9 +169,6 @@ export default {
       this.$emit('addChecklist', emptyChecklist);
       this.isChecklist = false;
     },
-    // addMember(member) {
-    //   console.log('adding member...', member);
-    // },
     addCover(color) {
       this.$emit('addCover', color);
       this.isCoverPopUp = false;
@@ -194,6 +196,9 @@ export default {
     setDueDate() {
       console.log(this.dueDate);
       this.$emit('setDueDate', this.dueDate);
+    },
+    deleteTask(taskId) {
+      this.$emit('deleteTask', taskId)
     }
   },
   components: {
@@ -204,7 +209,8 @@ export default {
     labelPopup,
     checklistPopup,
     datePopup,
-    membersPopup
+    membersPopup,
+    deleteTaskPopup
   }
 };
 </script>
