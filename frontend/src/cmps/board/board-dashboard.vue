@@ -8,14 +8,13 @@
       <p class="dashboard-header">
         <i class="el-icon-s-data dashboard-icon" /> Dashboard
       </p>
-
-      <dashboard-tasks-users class="tasks-users" :board="board" />
+      <tasks-in-group class="tasks-users" :board="board" />
     </div>
   </section>
 </template>
 
 <script>
-import dashboardTasksUsers from '';
+import tasksInGroup from './tasks-in-group.vue';
 export default {
   props: {
     board: {
@@ -28,7 +27,7 @@ export default {
     },
   },
   components: {
-    dashboardTasksUsers,
+    tasksInGroup,
   },
 };
 </script>
