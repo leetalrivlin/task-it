@@ -1,16 +1,7 @@
 <template>
   <nav class="d-cntrlr flex column align-center cntrlr-container">
     <section class="flex column align-center nav-container">
-      <h2 class="btns-title">SUGGESTED</h2>
-      <el-button class="el-btn-details open-popup-btn"
-        ><font-awesome-icon
-          class="d-icon fa-nav-icon"
-          :icon="['far', 'user']"
-        />Join</el-button
-      >
-    </section>
-    <section class="flex column align-center nav-container">
-      <h2 class="btns-title">ADD TO CARD</h2>
+      <p class="task-details-title btns-title">Add To Cart</p>
       <el-button class="el-btn-details open-popup-btn" @click="isMembers = true"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
@@ -102,6 +93,15 @@
           <cover-popup @changeColor="addCover" @uploadImg="addCoverImg" />
         </popup>
       </el-button>
+    </section>
+        <section class="flex column align-center nav-container">
+      <p class="task-details-title btns-title">Actions</p>
+      <el-button class="el-btn-details open-popup-btn"
+        ><i class="el-icon-right fa-nav-icon"></i>Move</el-button
+      >
+      <el-button class="el-btn-details open-popup-btn"
+        ><i class="el-icon-delete fa-nav-icon"></i>Archive</el-button
+      >
     </section>
   </nav>
 </template>

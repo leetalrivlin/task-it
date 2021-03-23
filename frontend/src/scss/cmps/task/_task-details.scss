@@ -1,8 +1,8 @@
-.window-overlay{
+.window-overlay {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background-color: rgba(0,0,0,.64);
+  background-color: rgba(0, 0, 0, 0.64);
   height: 100%;
   left: 0;
   overflow-y: auto;
@@ -25,15 +25,14 @@
         margin-block-end: 20px;
       }
     }
-    .task-data-container{
+    .task-data-container {
       flex-wrap: wrap;
-      >*{
+      > * {
         margin-inline-end: 20px;
       }
     }
   }
 }
-
 
 //TASK DETAILS GRID
 .details-grid {
@@ -125,10 +124,9 @@
   font-size: rem(14px);
 }
 
-// .task-details-icon {
-//   line-height: 20px;
-//   padding: 8px 0;
-//   margin: 0 0 4px;
-//   display: flex;
-//   justify-content: flex-start;
-// }
+.task-details-title {
+  text-transform: uppercase;
+  color: #5e6c84;
+  font-size: 12px;
+  margin: 0 8px 4px 0;
+}

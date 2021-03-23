@@ -1,6 +1,6 @@
 <template>
   <section class="task-label flex column">
-    <p>Labels</p>
+    <p class="task-details-title">Labels</p>
     <ul class="clean-list flex">
       <li class="list-item" v-for="label in taskLabels" :key="label.id">
         <span :style="{ backgroundColor: label.color }">
