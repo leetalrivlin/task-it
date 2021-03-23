@@ -52,23 +52,11 @@ export default {
           )
             tasksToShow.push(task);
         });
-        if (tasksToShow.length)
-         this.$emit('tasksToShow', tasksToShow);
       });
-
-      //  var taskToShow;
-      // var tasksToShow = [];
-      // this.board.groups.map((group) => {
-      //   group.tasks.map((task) => {
-      //     if (
-      //       task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase())
-      //     )
-      //       return task;
-      //   });
-      //   if (tasksToShow.length) tasksToShow.push(task);
-
-      //   this.$emit('tasksToShow', tasksToShow);
-      // });
+      if (tasksToShow.length) {
+        console.log(tasksToShow, 'tasksToShow');
+        this.$emit('tasksToShow', tasksToShow);
+      }
     },
   },
   computed: {

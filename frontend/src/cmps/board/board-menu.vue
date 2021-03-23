@@ -92,15 +92,12 @@ export default {
       this.isMain = true;
     },
     colorPicked(style) {
-      console.log(style);
       this.$emit('colorPicked', style);
     },
     photoPicked(style) {
-      console.log(style);
       this.$emit('photoPicked', style);
     },
     tasksToShow(tasks){
-      console.log(tasks ,'menu');
        this.$emit('tasksToShow', tasks);
     }
   },

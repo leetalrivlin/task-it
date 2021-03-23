@@ -1,0 +1,43 @@
+.window-overlay {
+    display: flex;
+    position: absolute;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.64);
+    height: 100%;
+    left: 0;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 48px 0;
+
+    .board-dashboard-container {
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 800px;
+        height: 500px;
+        overflow-y: auto;
+        background-color: rgba(34, 34, 39, 0.95);
+        z-index: 7;
+        padding: 25px;
+        border-radius: 5px;
+        color: #fff;
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .dashboard-header {
+            font-size: 30px;
+            font-family: Segoe-Bold, serif;
+        }
+    }
+}

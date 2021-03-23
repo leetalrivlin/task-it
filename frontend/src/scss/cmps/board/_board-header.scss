@@ -1,6 +1,7 @@
 .board-header {
   height: 50px;
   font-family: Segoe, serif;
+  position: relative;
 
   a {
     border-radius: 3px;
@@ -36,15 +37,20 @@
   .members {
     .member {
       text-align: center;
-      
     }
     span {
-     
       position: relative;
     }
   }
-  .invite-button{
+  .invite-button {
     margin-inline-start: 5px;
+  }
+
+  .dashboard-btn {
+    margin-inline-end: 5px;
+    .dashboard-icon {
+      margin-inline-end: 5px;
+    }
   }
 }
 
