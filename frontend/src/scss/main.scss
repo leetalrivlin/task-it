@@ -46,16 +46,18 @@
 @import 'cmps/task/task-details/checklist-todo';
 @import 'cmps/task/task-details/task-attachment';
 @import 'cmps/task/task-details/task-cover';
-@import 'cmps/task/task-details/cover-colorPallete';
-@import 'cmps/task/task-details/cover-attachments';
+@import 'cmps/task/task-details/task-date';
 @import 'cmps/task/task-details/task-label';
 @import 'cmps/task/task-details/task-member';
-@import 'cmps/task/task-details/attachment-popup';
-@import 'cmps/task/task-details/checklist-popup';
-@import 'cmps/task/task-details/todo-popup';
-@import 'cmps/task/task-details/label-popup';
-@import 'cmps/task/task-details/members-popup';
-@import 'cmps/task/task-details/task-date';
+
+// CMPS-TASK-POPUP
+@import 'cmps/task/task-details/details-popup/cover-colorPallete';
+@import 'cmps/task/task-details/details-popup/cover-attachments';
+@import 'cmps/task/task-details/details-popup/attachment-popup';
+@import 'cmps/task/task-details/details-popup/checklist-popup';
+@import 'cmps/task/task-details/details-popup/todo-popup';
+@import 'cmps/task/task-details/details-popup/label-popup';
+@import 'cmps/task/task-details/details-popup/members-popup';
 
 //CMPS- GROUP
 @import 'cmps/group';
