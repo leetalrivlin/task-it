@@ -53,6 +53,7 @@
         @closeMenu="isMenuOpen = false"
         @colorPicked="updateBoard"
         @photoPicked="updateBoard"
+        :board="board"
       />
     </transition>
   </header>
