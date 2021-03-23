@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import popup from './popup.vue';
+import popup from '../../popup.vue';
 import Avatar from 'vue-avatar';
 import membersPopup from './members-popup.vue';
 export default {

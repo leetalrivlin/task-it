@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import popup from './popup.vue';
+import popup from '../../popup.vue';
 import labelPopup from './label-popup.vue';
 
 export default {

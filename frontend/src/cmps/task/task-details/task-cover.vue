@@ -21,7 +21,7 @@
 </template>
 <script>
 import CoverPopup from './cover-popup.vue';
-import popup from './popup.vue';
+import popup from '../../popup.vue';
 
 export default {
   name: 'task-cover',

@@ -114,7 +114,7 @@ import {
   faCheckSquare,
   faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
-import popup from './popup.vue';
+import popup from '../../popup.vue';
 import coverPopup from './cover-popup.vue';
 import coverAttachments from './cover-attachments.vue';
 import attachmentPopup from './attachment-popup.vue';

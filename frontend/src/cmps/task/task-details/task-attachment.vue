@@ -40,7 +40,7 @@
 <script>
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
-import popup from './popup.vue';
+import popup from '../../popup.vue';
 import attachmentPopup from './attachment-popup';
 
 library.add(faPaperclip);
