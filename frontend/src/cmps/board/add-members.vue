@@ -1,25 +1,59 @@
 <template>
   <section>
-    <div class="flex column align-center justify-center add-members-container">
-      <p>Invite to board</p>
-      <i class="el-icon-close close-btn" @click.stop="closeMenu"></i>
-      <hr class="divider" />
-      <el-input prefix-icon="el-icon-search" > </el-input>
-    </div>
+    <div class="add-members-container">
+      <input type="text" class="filter-members" placeholder="Enter name" />
 
-    <!-- <el-input prefix-icon="el-icon-search" > </el-input> -->
+      <ul class="clean-list">
+        <li
+          v-for="member in members"
+          :key="member.id"
+          class="member flex align-center space-between"
+        >
+          <div class="flex space-between align-center">
+            <avatar
+              class="avatar-mem"
+              :username="member.fullname"
+              :src="member.imgUrl"
+              color="white"
+              :size="30"
+            ></avatar>
+            <p>{{ member.fullname }}</p>
+          </div>
+          <i class="el-icon-check check"> </i>
+        </li>
+      </ul>
+
+      
+    </div>
   </section>
 </template>
 
 
 
 <script>
+import Avatar from 'vue-avatar';
 export default {
+  components: {
+    Avatar,
+  },
+  props: {
+    systemUsers: {
+      type: Array,
+    },
+    boardMembers: {
+      type: Array,
+    },
+  },
   methods: {
     closeMenu() {
-      console.log('click');
       this.$emit('closeMenu');
     },
+  },
+  computed: {
+    members() {
+      return this.systemUsers;
+    },
+   
   },
 };
 </script>

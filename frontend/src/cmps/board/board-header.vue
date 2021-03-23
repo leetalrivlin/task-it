@@ -23,13 +23,27 @@
       <span>
         <el-button class="el-btn invite-button" @click.stop="addMembers"
           >Invite
-          <add-members
+          <!-- <add-members
             v-if="isAddMembers"
             :boardMembers="this.board.members"
-            :allMembers="membersToAdd"
+            :allMembers="this.users"
             @closeMenu="closeMembersPopup"
             v-click-outside="closeMembersPopup"
-        /></el-button>
+        /> -->
+          <popup
+            v-if="isAddMembers"
+            @closeMenu="closeMembersPopup"
+            v-click-outside="closeMembersPopup"
+          >
+            <template v-slot:title>
+              <p>Invite to board</p>
+            </template>
+            <add-members
+              :boardMembers="this.board.members"
+              :systemUsers="this.users"
+            />
+          </popup>
+        </el-button>
       </span>
     </div>
 
@@ -55,12 +69,14 @@ import addMembers from './add-members';
 import boardMenu from './board-menu.vue';
 import Avatar from 'vue-avatar';
 import AddGroup from '../add-group.vue';
+import popup from '../task/task-details/popup.vue'
 export default {
   components: {
     boardMenu,
     Avatar,
     AddGroup,
     addMembers,
+    popup
   },
   name: 'boardHeader',
   props: {
@@ -92,9 +108,6 @@ export default {
   computed: {
     membersBoard() {
       return this.board.members;
-    },
-    membersToAdd() {
-      console.log(this.users);
     },
   },
 };
