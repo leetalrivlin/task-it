@@ -32,8 +32,29 @@
       overflow-wrap: anywhere;
       width: 93%;
     }
-    &:hover .task-action {
-      opacity: 1;
+
+    .popup-container {
+      position: absolute;
+      &:hover{
+        opacity: 1;
+      }
+
+      .task-action {
+        position: absolute;
+        font-size: 1em;
+        color: #6b778c;
+        padding: 8px 8px;
+        border-radius: 3px;
+        right: 3px;
+        top: 3px;
+        opacity: 0;
+
+        &:hover {
+          color: $clr1;
+          background-color: rgba(9, 30, 66, 0.08);
+          opacity: 1;
+        }
+      }
     }
 
     .task-details-icons {
@@ -51,7 +72,7 @@
 
       .members-icon {
         ul {
-          > *:not(:last-child){
+          > *:not(:last-child) {
             margin-inline-end: 5px;
           }
         }
@@ -70,21 +91,5 @@
     min-height: 37px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-  }
-
-  .task-action {
-    position: absolute;
-    font-size: 1em;
-    color: #6b778c;
-    padding: 8px 8px;
-    border-radius: 3px;
-    right: 3px;
-    top: 3px;
-    opacity: 0;
-
-    &:hover {
-      color: $clr1;
-      background-color: rgba(9, 30, 66, 0.08);
-    }
   }
 }
