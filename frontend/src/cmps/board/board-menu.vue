@@ -24,10 +24,14 @@
         <menu-about v-if="isAbout" />
       </transition>
       <transition name="slide-in">
-        <menu-bgc v-if="isBgc" @colorPicked="colorPicked"  @photoPicked="photoPicked"/>
+        <menu-bgc
+          v-if="isBgc"
+          @colorPicked="colorPicked"
+          @photoPicked="photoPicked"
+        />
       </transition>
       <transition name="slide-in">
-        <menu-search v-if="isSearch" />
+        <menu-search v-if="isSearch" :board="board"/>
       </transition>
     </div>
   </section>
@@ -45,6 +49,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 library.add(faSquare);
 
 export default {
+  props: {
+    board: {
+      type: Object,
+    },
+  },
   data() {
     return {
       isBack: false,
