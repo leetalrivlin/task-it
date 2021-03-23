@@ -22,6 +22,7 @@ export default {
   },
   created() {
     this.$store.dispatch('loadUsers');
+    this.$store.dispatch('loadBoards');
   },
   components: {
     mainHeader,

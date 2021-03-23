@@ -1,3 +1,35 @@
-* {
-    box-sizing: border-box;
+.board-list {
+  h1 {
+    margin: 10px 0;
+    text-align: center;
+    color: white;
+  }
+  ul {
+    li {
+      a {
+        display: block;
+        font-family: Segoe-Bold;
+        width: 200px;
+        height: 100px;
+        border-radius: 3px;
+        color: white;
+        margin: 0 15px 15px 0;
+        padding: 10px;
+        background-color: $clr2;
+      }
+      .add-board {
+        width: 200px;
+        height: 100px;
+        border-radius: 3px;
+        color: $clr1;
+        margin: 0 15px 15px 0;
+        padding: 10px;
+        background-color: $clr2;
+        line-height: 80px;
+        text-align: center;
+        font-size: 30px;
+        cursor: pointer;
+      }
+    }
+  }
 }

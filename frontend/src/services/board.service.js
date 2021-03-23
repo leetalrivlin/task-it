@@ -2,7 +2,8 @@ import { storageService } from './async-storage.service';
 import { httpService } from './http.service';
 import { utilService } from './util.service';
 
-const BOARD_URL = 'boardDb';
+// const BOARD_URL = 'boardDb';
+const BOARD_URL = 'board/';
 const USERS_URL = 'usersDb';
 const gBoards = [
   {
@@ -98,7 +99,8 @@ const gBoards = [
     createdBy: {
       _id: 'u101',
       fullname: 'Chen Sella',
-      imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
+      imgUrl:
+        'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
     },
     style: {
       background: '#91a8c4e3'
@@ -133,26 +135,29 @@ const gBoards = [
         id: 'l106',
         title: '',
         color: '#0079bf'
-      },
+      }
     ],
     members: [
       {
         _id: 'u110',
         username: 'leetal',
         fullname: 'Leetal Rivlin-Tal',
-        imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512'
+        imgUrl:
+          'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512'
       },
       {
         _id: 'u111',
         username: 'liz',
         fullname: 'Liz Amir',
-        imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512'
+        imgUrl:
+          'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512'
       },
       {
         _id: 'u112',
         username: 'chen',
         fullname: 'Chen Sella',
-        imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
+        imgUrl:
+          'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
       }
     ],
     groups: [
@@ -250,45 +255,124 @@ const gBoards = [
   }
 ];
 const gUsers = [
-  { _id: 'u1001', fullname: 'Puki Norma', username: 'user1', password: '123', isAdmin: false },
-  { _id: 'u1002', fullname: 'loca noni', username: 'loca', password: '123', isAdmin: false },
-  { _id: 'u1003', fullname: 'sasi romi', username: 'sasi', password: '123', isAdmin: false },
-  { _id: 'u1004', fullname: 'kuku sanguko', username: 'kuku', password: '123', isAdmin: false },
-  { _id: 'u112', fullname: 'Chen Sella', username: 'chen', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512' },
-  { _id: 'u110', fullname: 'Leetal Rivlin-Tal', username: 'leetal', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512' },
-  { _id: 'u111', fullname: 'Liz Amir', username: 'liz', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512' },
-
+  {
+    _id: 'u1001',
+    fullname: 'Puki Norma',
+    username: 'user1',
+    password: '123',
+    isAdmin: false
+  },
+  {
+    _id: 'u1002',
+    fullname: 'loca noni',
+    username: 'loca',
+    password: '123',
+    isAdmin: false
+  },
+  {
+    _id: 'u1003',
+    fullname: 'sasi romi',
+    username: 'sasi',
+    password: '123',
+    isAdmin: false
+  },
+  {
+    _id: 'u1004',
+    fullname: 'kuku sanguko',
+    username: 'kuku',
+    password: '123',
+    isAdmin: false
+  },
+  {
+    _id: 'u112',
+    fullname: 'Chen Sella',
+    username: 'chen',
+    password: '123',
+    isAdmin: false,
+    imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512'
+  },
+  {
+    _id: 'u110',
+    fullname: 'Leetal Rivlin-Tal',
+    username: 'leetal',
+    password: '123',
+    isAdmin: false,
+    imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
+  },
+  {
+    _id: 'u111',
+    fullname: 'Liz Amir',
+    username: 'liz',
+    password: '123',
+    isAdmin: false,
+    imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512'
+  }
 ];
 
 export const boardService = {
-  getBoards,
+  query,
+  // getBoards,
   getById,
+  save,
   getEmptyGroup,
   getEmptyTask,
-  updateBoard,
+
+  // updateBoard,
   getEmptyChecklist,
   getEmptyTodo,
   getEmptyAttachment,
-  getUsers,
-  // getEmptyLabel
-  // getTaskById,
-  // getGroupById
+  getUsers
 };
 
-async function getBoards() {
-  var boards;
+async function query() {
   try {
-    boards = await storageService.query(BOARD_URL);
-    if (!boards.length || !boards) {
-      boards = gBoards;
-      localStorage.setItem(BOARD_URL, JSON.stringify(boards));
-    }
-    return boards;
-    // return httpService.get(`user`)
+    const boards = await httpService.get(BOARD_URL);
+    return boards
   } catch (err) {
     console.log('cant load boards', err);
   }
 }
+
+async function getById(id) {
+  try {
+    // const board = await storageService.get(BOARD_URL, boardId);
+    const board = await httpService.get(BOARD_URL + id);
+    return board;
+  } catch (err) {
+    console.log(`cnat load board ${boardId}`, err);
+  }
+}
+
+// async function getBoards() {
+//   var boards;
+//   try {
+//     boards = await storageService.query(BOARD_URL);
+//     if (!boards.length || !boards) {
+//       boards = gBoards;
+//       localStorage.setItem(BOARD_URL, JSON.stringify(boards));
+//     }
+//     return boards;
+//     // return httpService.get(`user`)
+//   } catch (err) {
+//     console.log('cant load boards', err);
+//   }
+// }
+
+async function save(board) {
+  var newBoard;
+  try {
+    if (board._id) {
+      newBoard = await httpService.put(BOARD_URL + board._id, board);
+    } else {
+      newBoard = await httpService.post(BOARD_URL, board);
+    }
+    // const updatedBoard = await storageService.put(BOARD_URL, board);
+    return newBoard;
+  } catch (err) {
+    console.log('cant save board', err);
+  }
+}
+
 async function getUsers() {
   var users;
   try {
@@ -302,27 +386,6 @@ async function getUsers() {
   } catch (err) {
     console.log('cant load users', err);
   }
-}
-
-
-
-async function updateBoard(board) {
-  try {
-    const updatedBoard = await storageService.put(BOARD_URL, board);
-    return updateBoard;
-  } catch (err) {
-    console.log('cant update board', err);
-  }
-}
-
-async function getById(boardId) {
-  try {
-    const board = await storageService.get(BOARD_URL, boardId);
-    return board;
-  } catch (err) {
-    console.log(`cnat load board ${boardId}`, err);
-  }
-  // return httpService.get(`user/${userId}`)
 }
 
 function remove(userId) {
@@ -397,4 +460,3 @@ function getEmptyAttachment() {
     url: ''
   };
 }
-

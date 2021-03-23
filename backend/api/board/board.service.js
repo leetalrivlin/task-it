@@ -27,20 +27,21 @@ async function getById(boardId) {
 
 async function update(board) {
   try {
-    const boardToSave = {
-      _id: ObjectId(board._id),
-      title: board.title,
-      createdAt: board.createdAt,
-      createdBy: board.createdBy,
-      style: board.style,
-      labels: board.labels,
-      members: board.members,
-      groups: board.groups,
-      activities: board.activities,
-    };
+    board._id = ObjectId(board._id);
+    // const boardToSave = {
+    //   _id: ObjectId(board._id),
+    //   title: board.title,
+    //   createdAt: board.createdAt,
+    //   createdBy: board.createdBy,
+    //   style: board.style,
+    //   labels: board.labels,
+    //   members: board.members,
+    //   groups: board.groups,
+    //   activities: board.activities,
+    // };
     const collection = await dbService.getCollection('board');
-    await collection.updateOne({ _id: boardToSave._id }, { $set: boardToSave });
-    return boardToSave;
+    await collection.updateOne({ _id: board._id }, { $set: board });
+    return board;
   } catch (err) {
     logger.error(`cannot update board ${board._id}`, err);
     throw err;
