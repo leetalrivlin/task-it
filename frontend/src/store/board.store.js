@@ -51,7 +51,7 @@ export const boardStore = {
           }
         });
       });
-    }
+    },
   },
   actions: {
     async loadBoard({ commit }, { boardId }) {
@@ -94,6 +94,6 @@ export const boardStore = {
       } catch (err) {
         console.log('cannot update task', err);
       }
-    }
+    },
   }
 };

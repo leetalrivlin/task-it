@@ -1,6 +1,6 @@
 <template>
   <div id="app" :style="background" class="flex column main-app">
-    <main-header />
+    <main-header @logout="doLogout" />
     <router-view />
   </div>
 </template>
@@ -18,6 +18,11 @@ export default {
       if (!style.background.includes('.jpg')) {
         return style;
       } else return { background: style.background + 'center / cover' };
+    },
+  },
+  methods: {
+    doLogout() {
+      this.$store.dispatch({ type: 'logout' });
     },
   },
   created() {

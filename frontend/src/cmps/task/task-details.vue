@@ -21,6 +21,7 @@
           :cover="cover"
           :labels="boardLabels"
           :taskLableIds="task.labelIds"
+          :taskId="task.id"
           @addChecklist="setEmptyChecklist"
           @addCover="setCover"
           @addImg="setImg"
@@ -29,6 +30,7 @@
           @updateLabel="updateBoardLabel"
           @setDueDate="setDueDate"
           @addMemberToTask="setMember"
+          @deleteTask="deleteTask"
         />
         <section class="flex column task-main">
           <div class="d-desc">
@@ -220,6 +222,21 @@ export default {
     removeDate() {
       delete this.task.dueDate;
       this.updateTask(this.task);
+    },
+    deleteTask(taskId) {
+      console.log('taskId', taskId);
+      const taskIdx = this.group.tasks.findIndex(({ id }) => id === taskId);
+      this.group.tasks.splice(taskIdx, 1);
+      this.updateBoard(this.group);
+    },
+    updateBoard(updatedGroup) {
+      const cloneBoard = this.$clone(this.$store.getters.board);
+      const idx = cloneBoard.groups.findIndex(
+        ({ id }) => id === updatedGroup.id
+      );
+      cloneBoard.groups.splice(idx, 1, updatedGroup);
+      this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
+      this.closeDetails();
     },
   },
   created() {

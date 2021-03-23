@@ -9,10 +9,10 @@
       </div>
     </div>
    
-      <p class="d-icon percent">{{percentage}}%</p>
+      <p class="percent">{{percentage}}%</p>
       <el-progress
         :percentage="percentage"
-        color="grey"
+        color="#409EFF"
         type="line"
         :show-text="showTxt"
         class="d-content flex align-center"

@@ -1,0 +1,59 @@
+.user-popup {
+  font-family: Segoe;
+  position: absolute;
+  top: 46px;
+  right: 4px;
+  z-index: 1;
+  background-color: white;
+  width: 300px;
+  border-radius: 3px;
+  box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25),
+    0 0 0 1px rgba(9, 30, 66, 0.08);
+  margin-block-start: 8px;
+  color: #5e6c84;
+
+  .header {
+    position: relative;
+    padding: 10px;
+
+    .close-cntrl {
+      position: absolute;
+      right: 10px;
+      cursor: pointer;
+      &:hover {
+        color: $clr1;
+        font-weight: 600;
+      }
+    }
+  }
+  .main {
+    .user-info {
+      padding: 10px 0;
+    }
+
+    .member {
+      margin: 0 8px;
+    }
+    .btn-container {
+      padding: 10px 0;
+      a{
+        display: block;
+      }
+      >* {
+        font-size: 14px;
+        border-radius: 3px;
+        border: none;
+        width: 100%;
+        padding: 6px 12px;
+        text-align: left;
+        background-color: white;
+        color: $clr1;
+        font-family: Segoe;
+
+        &:hover {
+          background: rgba(9, 30, 66, 0.04);
+        }
+      }
+    }
+  }
+}
