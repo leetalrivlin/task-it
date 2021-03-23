@@ -28,7 +28,6 @@
           @updateGroup="updateBoard"
           @deleteGroup="deleteGroup"
           :group="group"
-          :taskToShow="taskToShow"
         />
 
         <!-- </transition-group> -->
