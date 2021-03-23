@@ -47,12 +47,12 @@
           </ul>
         </span>
       </div>
-      <i @click.stop="toggleMenu"  class="el-icon-edit task-action">
+      <i @click.stop="toggleMenu" ref="taskEditBtn" class="el-icon-edit task-action">
         <task-menu
           v-if="isTaskMenu"
           @deleteTask="deleteTask"
           @closeMenu="toggleMenu"
-          v-click-outside="closeMenu"
+          v-click-outside="toggleMenu"
       /></i>
     </section>
   </section>
@@ -85,13 +85,14 @@ export default {
   methods: {
     toggleMenu() {
       this.isTaskMenu = !this.isTaskMenu;
+      this.$refs.taskEditBtn.style.opacity = this.isTaskMenu ? 1 : 0;
     },
     deleteTask() {
       this.$emit('deleteTask', this.task);
     },
-    closeMenu(){
-      this.isTaskMenu=false;
-    }
+    // closeMenu(){
+    //   this.isTaskMenu=false;
+    // }
   },
   computed: {
     coverColor() {

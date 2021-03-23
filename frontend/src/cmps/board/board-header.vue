@@ -49,6 +49,7 @@
     >
     <transition name="slide">
       <board-menu
+        @tasksToShow="tasksToShow"
         v-if="isMenuOpen"
         @closeMenu="isMenuOpen = false"
         @colorPicked="updateBoard"
@@ -102,6 +103,9 @@ export default {
     updateBoardMembers(updatedBoardMembers) {
       this.board.members = updatedBoardMembers;
       this.$emit('updateBoardMembers', this.board);
+    },
+    tasksToShow(tasks) {
+      this.$emit('tasksToShow', tasks);
     },
   },
   computed: {
