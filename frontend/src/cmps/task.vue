@@ -15,19 +15,24 @@
       <p class="task-title">
         {{ task.title }}
       </p>
-      <div class="flex align-center task-details-icons">
-        <span v-if="task.dueDate" class="date-icon">
-          <i class="el-icon-time"></i>
-          {{ $dayjs(task.dueDate).format('MMM DD') }}
-        </span>
-        <span v-if="task.attachments" class="attachments-icon">
-          <i class="el-icon-paperclip"></i>
-          {{ task.attachments.length }}
-        </span>
-        <span v-if="task.checklists" class="checklists-icon">
-          <font-awesome-icon class="fa-nav-icon" icon="check-square" />
-          {{ task.checklists.length }}
-        </span>
+      <div class="flex align-center space-between task-details-icons">
+        <div class="icons-inner-container">
+          <span v-if="task.dueDate">
+            <i class="el-icon-time"></i>
+            {{ $dayjs(task.dueDate).format('MMM DD') }}
+          </span>
+          <span v-if="task.description" class="description-icon">
+            <font-awesome-icon class="d-icon" icon="stream" />
+          </span>
+          <span v-if="task.attachments" class="attachments-icon">
+            <i class="el-icon-paperclip"></i>
+            {{ task.attachments.length }}
+          </span>
+          <span v-if="task.checklists" class="checklists-icon">
+            <font-awesome-icon class="fa-nav-icon" icon="check-square" />
+            {{ task.checklists.length }}
+          </span>
+        </div>
         <span v-if="task.members" class="members-icon">
           <ul class="flex align-center clean-list">
             <li v-for="member in task.members" :key="member.id">
@@ -59,8 +64,10 @@
 import taskMenu from './task-menu';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import { faStream } from '@fortawesome/free-solid-svg-icons';
+
 import Avatar from 'vue-avatar';
-library.add(faCheckSquare);
+library.add(faCheckSquare, faStream);
 
 export default {
   name: 'task',
