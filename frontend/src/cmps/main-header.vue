@@ -9,20 +9,49 @@
       <router-link to="/">Task-it</router-link></span
     >
     <nav class="flex align-center justify-end">
-      <!-- <router-link to="/chat">Chat</router-link> -->
       <router-link class="el-btn" to="/login">Signin</router-link>
       <router-link class="el-btn" to="/board">Boards</router-link>
+      <section
+        @click="userPopup = !userPopup"
+        className="loggedin-user"
+        v-if="loggedInUser"
+      >
+        <avatar
+          class="member"
+          :username="loggedInUser.fullname"
+          :src="loggedInUser.imgUrl"
+          color="white"
+          :size="30"
+        >
+        </avatar>
+        <user-popup
+          :loggedInUser="loggedInUser"
+          v-if="userPopup"
+          @closePopup="userPopup = false"
+          @logout="doLogout"
+        />
+      </section>
     </nav>
-    <section className="loggedin-user" v-if="loggedInUser">
-      <router-link :to="`/user/${loggedInUser._id}`">
-        {{ loggedInUser.fullname }}
-      </router-link>
-      <span>{{ loggedInUser.score }}</span>
-    </section>
   </header>
 </template>
 <script>
+import Avatar from 'vue-avatar';
+import userPopup from './user-popup.vue';
 export default {
+  components: {
+    Avatar,
+    userPopup,
+  },
+  data() {
+    return {
+      userPopup: false,
+    };
+  },
+  methods: {
+    doLogout() {
+      this.$emit('logout');
+    },
+  },
   computed: {
     loggedInUser() {
       console.log(this.$store.getters.loggedinUser);

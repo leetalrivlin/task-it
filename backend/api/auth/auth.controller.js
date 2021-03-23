@@ -2,11 +2,12 @@ const authService = require('./auth.service');
 const logger = require('../../services/logger.service');
 
 async function login(req, res) {
-  const { username, password } = req.body;
+  const user = req.body;
+  console.log(user);
   try {
-    const user = await authService.login(username, password);
-    req.session.user = user;
-    res.json(user);
+    const loggedInuser = await authService.login(user.username, user.password);
+    req.session.user = loggedInuser;
+    res.json(loggedInuser);
   } catch (err) {
     logger.error('Failed to Login ' + err);
     res.status(401).send({ err: 'Failed to Login' });

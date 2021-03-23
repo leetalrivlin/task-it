@@ -81,7 +81,7 @@ export default {
     return {
       signUp: true,
       msg: '',
-      loginCred: { username: 'user1', password: '123' },
+      loginCred: { username: 'chen', password: '0000' },
       signupCred: { username: '', password: '', fullname: '' },
     };
   },
@@ -98,6 +98,7 @@ export default {
   },
   methods: {
     async doLogin() {
+      console.log(this.loginCred);
       if (!this.loginCred.username) {
         this.msg = 'Please enter username/password';
         return;

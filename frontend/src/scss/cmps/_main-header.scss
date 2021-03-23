@@ -15,6 +15,9 @@
   }
 
   nav {
+    .member {
+      cursor: pointer;
+    }
 
     > * {
       margin-inline-start: rem(10px);
