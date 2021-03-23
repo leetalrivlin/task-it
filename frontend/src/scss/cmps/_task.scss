@@ -27,6 +27,7 @@
   .task-content {
     padding: 6px 8px;
     position: relative;
+
     .task-title {
       overflow-wrap: anywhere;
       width: 93%;
@@ -36,19 +37,21 @@
     }
 
     .task-details-icons {
-      font-size: 14px;
       flex-wrap: wrap;
 
-      > * {
-        margin-inline-end: 8px;
-        border-radius: 3px;
-        color: $clr1;
-        padding: 0 3px;
+      .icons-inner-container {
+        > * {
+          font-size: 12px;
+          margin-inline-end: 3px;
+          border-radius: 3px;
+          color: #6b778c;
+          padding: 0 3px;
+        }
       }
 
       .members-icon {
         ul {
-          > * {
+          > *:not(:last-child){
             margin-inline-end: 5px;
           }
         }
