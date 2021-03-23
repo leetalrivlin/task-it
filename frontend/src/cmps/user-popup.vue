@@ -17,7 +17,7 @@
         </avatar>
         <section class="flex column">
           <p>{{ loggedInUser.fullname }}</p>
-          <p>{{ loggedInUser.username }}</p>
+          <p class="username">{{ loggedInUser.username }}</p>
         </section>
       </section>
       <hr />
