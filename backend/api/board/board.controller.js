@@ -24,12 +24,18 @@ async function updateBoard(req, res) {
     }
 }
 
-async function getUsers(req, res) {
+async function getBoards(req, res) {
     try {
-        const users = await userService.query(filterBy)
-        res.send(users)
+        const boards = await boardService.query()
+        res.send(boards)
     } catch (err) {
-        logger.error('Failed to get users', err)
-        res.status(500).send({ err: 'Failed to get users' })
+        logger.error('Failed to get boards', err)
+        res.status(500).send({ err: 'Failed to get boards' })
     }
+}
+
+module.exports = {
+    getBoard,
+    getBoards,
+    updateBoard
 }
