@@ -1,33 +1,25 @@
 <template>
-  <div class="main-layout main-content">
+  <div class="main-layout main-content flex column align-center signup">
     <p>{{ msg }}</p>
-
-    <div v-if="loggedinUser">
+    <!-- <div v-if="loggedinUser">
       <h3>
         Loggedin User:
         {{ loggedinUser.username }}
         <button @click="doLogout">Logout</button>
       </h3>
-    </div>
-    <div v-else>
-      <h2>Login</h2>
-      <form @submit.prevent="doLogin">
-        <select v-model="loginCred.username">
-          <option value="">Select User</option>
-          <option v-for="user in users" :key="user._id" :value="user.username">{{user.fullname}}</option>
-        </select>
-        <!-- <input type="text" v-model="loginCred.username" placeholder="User name" />
+    </div> -->
+    <div>
+      <form
+        v-if="signUp"
+        class="flex column align-center"
+        @submit.prevent="doSignup"
+      >
+        <h2>Signup for your account</h2>
         <input
           type="text"
-          v-model="loginCred.password"
-          placeholder="Password"
-        /> -->
-        <button>Login</button>
-      </form>
-      <p class="mute">user1 or admin, pass:123 </p>
-      <form @submit.prevent="doSignup">
-        <h2>Signup</h2>
-        <input type="text" v-model="signupCred.fullname" placeholder="Your full name" />
+          v-model="signupCred.fullname"
+          placeholder="Full name"
+        />
         <input
           type="text"
           v-model="signupCred.password"
@@ -39,13 +31,38 @@
           placeholder="Username"
         />
         <button>Signup</button>
+        <hr />
+        <a
+          >Already have an account?
+          <span @click="signUp = false">Log in</span></a
+        >
       </form>
+      <form v-else class="flex column align-center" @submit.prevent="doLogin">
+        <h2>Login to Task-it</h2>
+        <select v-model="loginCred.username">
+          <option value="">Select User</option>
+          <option v-for="user in users" :key="user._id" :value="user.username">
+            {{ user.fullname }}
+          </option>
+        </select>
+        <!-- <input type="text" v-model="loginCred.username" placeholder="User name" />
+        <input
+          type="text"
+          v-model="loginCred.password"
+          placeholder="Password"
+        /> -->
+        <button>Login</button>
+        <hr />
+        <a
+          >Can't log in? <span @click="signUp = true">Sign up</span> for an
+          account</a
+        >
+      </form>
+      <!-- <p class="mute">user1 or admin, pass:123 </p> -->
     </div>
     <hr />
     <details>
-      <summary>
-        Admin Section
-      </summary>
+      <summary>Admin Section</summary>
       <ul>
         <li v-for="user in users" :key="user._id">
           <pre>{{ user }}</pre>
@@ -53,17 +70,19 @@
         </li>
       </ul>
     </details>
+    <!-- <img src="../assets/vectors/shutterstock_1135607204.jpg"> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: "test",
+  name: 'test',
   data() {
     return {
-      msg: "",
-      loginCred: {username: 'user1', password: '123'},
-      signupCred: {username: '', password: '', fullname: ''},
+      signUp: true,
+      msg: '',
+      loginCred: { username: 'user1', password: '123' },
+      signupCred: { username: '', password: '', fullname: '' },
     };
   },
   computed: {
@@ -75,45 +94,48 @@ export default {
     },
   },
   created() {
-    this.loadUsers()
+    this.loadUsers();
   },
   methods: {
     async doLogin() {
       if (!this.loginCred.username) {
-        this.msg = "Please enter username/password"
+        this.msg = 'Please enter username/password';
         return;
       }
       try {
-        await this.$store.dispatch({ type: "login", userCred: this.loginCred });
-        this.$router.push('/')
-      } catch(err) {
-          console.log(err)
-          this.msg = "Failed to login"
+        await this.$store.dispatch({ type: 'login', userCred: this.loginCred });
+        this.$router.push('/');
+      } catch (err) {
+        console.log(err);
+        this.msg = 'Failed to login';
       }
     },
     doLogout() {
-      this.$store.dispatch({ type: "logout" });
+      this.$store.dispatch({ type: 'logout' });
     },
     async doSignup() {
-      if (!this.signupCred.fullname || !this.signupCred.password || !this.signupCred.username) {
-        this.msg = "Please fill up the form"
-        return
+      if (
+        !this.signupCred.fullname ||
+        !this.signupCred.password ||
+        !this.signupCred.username
+      ) {
+        this.msg = 'Please fill up the form';
+        return;
       }
-      await this.$store.dispatch({ type: "signup", userCred: this.signupCred });
-      this.$router.push('/')
-      
+      await this.$store.dispatch({ type: 'signup', userCred: this.signupCred });
+      this.$router.push('/');
     },
     loadUsers() {
-      this.$store.dispatch({ type: "loadUsers" });
+      this.$store.dispatch({ type: 'loadUsers' });
     },
     async removeUser(userId) {
       try {
-        await this.$store.dispatch({ type: "removeUser", userId })
-        this.msg = 'User removed'
-      } catch(err) {
-        this.msg = 'Failed to remove user'
+        await this.$store.dispatch({ type: 'removeUser', userId });
+        this.msg = 'User removed';
+      } catch (err) {
+        this.msg = 'Failed to remove user';
       }
-    }
-  }
+    },
+  },
 };
 </script>

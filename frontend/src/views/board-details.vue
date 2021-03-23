@@ -28,6 +28,7 @@
           @updateGroup="updateBoard"
           @deleteGroup="deleteGroup"
           :group="group"
+          
         />
 
         <!-- </transition-group> -->
@@ -104,7 +105,7 @@ export default {
     },
     tasksToShow(tasks) {
       
-        console.log(tasks , 'tasks');
+        console.log('tasks');
     },
    
     moveGroup() {
