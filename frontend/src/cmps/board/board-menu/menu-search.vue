@@ -44,18 +44,31 @@ export default {
   },
   methods: {
     filterBoard() {
-      console.log(this.board.groups);
-      //  var tasksToShow;
-      // if (!this.filterBy.txt || this.filterBy.txt === '') {
-      //   tasksToShow = this.board;
-      // }
-      // tasksToShow = this.board.filter((member) => {
-      //   return member.fullname
-      //     .toLowerCase()
-      //     .includes(this.filterBy.txt.toLowerCase());
+      var tasksToShow = [];
+      this.board.groups.forEach((group) => {
+        group.tasks.forEach((task) => {
+          if (
+            task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase())
+          )
+            tasksToShow.push(task);
+        });
+        if (tasksToShow.length)
+         this.$emit('tasksToShow', tasksToShow);
+      });
+
+      //  var taskToShow;
+      // var tasksToShow = [];
+      // this.board.groups.map((group) => {
+      //   group.tasks.map((task) => {
+      //     if (
+      //       task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase())
+      //     )
+      //       return task;
+      //   });
+      //   if (tasksToShow.length) tasksToShow.push(task);
+
+      //   this.$emit('tasksToShow', tasksToShow);
       // });
-      // this.membersToShow = tasksToShow;
-      
     },
   },
   computed: {

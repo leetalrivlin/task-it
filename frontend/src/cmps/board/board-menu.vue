@@ -31,7 +31,7 @@
         />
       </transition>
       <transition name="slide-in">
-        <menu-search v-if="isSearch" :board="board"/>
+        <menu-search v-if="isSearch" :board="board" @tasksToShow="tasksToShow"/>
       </transition>
     </div>
   </section>
@@ -99,6 +99,10 @@ export default {
       console.log(style);
       this.$emit('photoPicked', style);
     },
+    tasksToShow(tasks){
+      console.log(tasks ,'menu');
+       this.$emit('tasksToShow', tasks);
+    }
   },
   computed: {
     title() {
