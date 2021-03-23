@@ -14,5 +14,7 @@
     .el-icon-close:before {
         font-size: rem(16px);
     }
-   
+    ::placeholder {
+        color: $clr1;
+    }
 }

@@ -250,13 +250,13 @@ const gBoards = [
   }
 ];
 const gUsers = [
-  { fullname: 'Puki Norma', username: 'user1', password: '123',  isAdmin: false  },
-  {fullname: 'loca noni', username: 'loca', password:'123', isAdmin: false},
-  {fullname: 'sasi romi', username: 'sasi', password:'123', isAdmin: false},
-  {fullname: 'kuku sanguko', username: 'kuku', password:'123', isAdmin: false},
-  {fullname: 'Chen Sella', username: 'chen', password:'123', isAdmin: false , imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512'},
-  {fullname: 'Leetal Rivlin-Tal', username: 'leetal', password:'123', isAdmin: false , imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'},
-  {fullname: 'Liz Amir', username: 'liz', password:'123', isAdmin: false , imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512'},
+  { id: 'u1001', fullname: 'Puki Norma', username: 'user1', password: '123', isAdmin: false },
+  { id: 'u1002', fullname: 'loca noni', username: 'loca', password: '123', isAdmin: false },
+  { id: 'u1003', fullname: 'sasi romi', username: 'sasi', password: '123', isAdmin: false },
+  { id: 'u1004', fullname: 'kuku sanguko', username: 'kuku', password: '123', isAdmin: false },
+  { id: 'u112', fullname: 'Chen Sella', username: 'chen', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512' },
+  { id: 'u110', fullname: 'Leetal Rivlin-Tal', username: 'leetal', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512' },
+  { id: 'u111', fullname: 'Liz Amir', username: 'liz', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512' },
 
 ];
 

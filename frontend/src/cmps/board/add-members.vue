@@ -5,25 +5,26 @@
 
       <ul class="clean-list">
         <li
-          v-for="member in members"
-          :key="member.id"
+          v-for="user in systemUsers"
+          :key="user.id"
           class="member flex align-center space-between"
         >
-          <div class="flex space-between align-center">
+          <div
+            class="flex space-between align-center"
+            @click="updateBoardMembers(user)"
+          >
             <avatar
               class="avatar-mem"
-              :username="member.fullname"
-              :src="member.imgUrl"
+              :username="user.fullname"
+              :src="user.imgUrl"
               color="white"
               :size="30"
             ></avatar>
-            <p>{{ member.fullname }}</p>
+            <p>{{ user.fullname }}</p>
           </div>
-          <i class="el-icon-check check"> </i>
+          <i v-if="isUserOnBoard(user)" class="el-icon-check check"> </i>
         </li>
       </ul>
-
-      
     </div>
   </section>
 </template>
@@ -48,12 +49,26 @@ export default {
     closeMenu() {
       this.$emit('closeMenu');
     },
+    updateBoardMembers(user) {
+      console.log(user);
+      const userIdx = this.boardMembers.findIndex(({ id }) => id === user.id);
+      if (userIdx >= 0) {
+        this.boardMembers.splice(userIdx, 1);
+      } else {
+        this.boardMembers.push(user);
+      }
+      this.$emit('updateBoardMembers', this.boardMembers);
+    },
   },
   computed: {
-    members() {
-      return this.systemUsers;
+    isUserOnBoard() {
+      return (user) => {
+        return (
+          this.boardMembers &&
+          this.boardMembers.some(({ id }) => id === user.id)
+        );
+      };
     },
-   
   },
 };
 </script>

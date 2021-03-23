@@ -1,6 +1,11 @@
 <template>
   <section v-if="board" class="main-content flex column board-details">
-    <board-header :board="board" :users="users" />
+    <board-header
+      :board="board"
+      :users="users"
+      @updateBoardMembers="updatEntireBoard"
+      @updateBoardStyle="updatEntireBoard"
+    />
     <section class="flex align-start main-content main-layout board-content">
       <draggable
         class="flex group-container"
@@ -96,9 +101,7 @@ export default {
       const cloneBoard = this.$clone(this.board);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
-    changeTitle(group) {
-      console.log(group);
-    },
+   
     moveGroup() {
       this.$store.dispatch({ type: 'updateBoard', board: this.board });
     },
@@ -106,6 +109,9 @@ export default {
       return this.board.groups.find((group) => {
         return group.id === groupId;
       });
+    },
+    updatEntireBoard(updatedBoard) {
+      this.$store.dispatch({ type: 'updateBoard', board: updatedBoard });
     },
   },
   computed: {

@@ -41,6 +41,7 @@
             <add-members
               :boardMembers="this.board.members"
               :systemUsers="this.users"
+              @updateBoardMembers="updateBoardMembers"
             />
           </popup>
         </el-button>
@@ -69,14 +70,14 @@ import addMembers from './add-members';
 import boardMenu from './board-menu.vue';
 import Avatar from 'vue-avatar';
 import AddGroup from '../add-group.vue';
-import popup from '../task/task-details/popup.vue'
+import popup from '../task/task-details/popup.vue';
 export default {
   components: {
     boardMenu,
     Avatar,
     AddGroup,
     addMembers,
-    popup
+    popup,
   },
   name: 'boardHeader',
   props: {
@@ -96,13 +97,17 @@ export default {
   methods: {
     updateBoard(style) {
       this.board.style = style;
-      this.$store.dispatch({ type: 'updateBoard', board: this.board });
+      this.$emit('updateBoardStyle', this.board);
     },
     addMembers() {
       this.isAddMembers = true;
     },
     closeMembersPopup() {
       this.isAddMembers = !this.isAddMembers;
+    },
+    updateBoardMembers(updatedBoardMembers) {
+      this.board.members = updatedBoardMembers;
+      this.$emit('updateBoardMembers', this.board);
     },
   },
   computed: {
