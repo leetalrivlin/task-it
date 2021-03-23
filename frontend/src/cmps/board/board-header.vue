@@ -20,8 +20,8 @@
         ></avatar>
       </div>
 
-      <span @click.stop="addMembers">
-        <el-button class="el-btn invite-button" 
+      <span>
+        <el-button class="el-btn invite-button" @click.stop="addMembers"
           >Invite
           <popup
             v-if="isAddMembers"

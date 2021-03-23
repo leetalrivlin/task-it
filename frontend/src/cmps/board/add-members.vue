@@ -15,11 +15,9 @@
           v-for="user in membersToShow"
           :key="user._id"
           class="member flex align-center space-between"
+          @click="updateBoardMembers(user)"
         >
-          <div
-            class="flex space-between align-center"
-            @click="updateBoardMembers(user)"
-          >
+          <div class="flex space-between align-center">
             <avatar
               class="avatar-mem"
               :username="user.fullname"
@@ -63,7 +61,9 @@ export default {
       this.$emit('closeMenu');
     },
     updateBoardMembers(user) {
-      const userIdx = this.boardMembers.findIndex(({ _id }) => _id === user._id);
+      const userIdx = this.boardMembers.findIndex(
+        ({ _id }) => _id === user._id
+      );
       if (userIdx >= 0) {
         this.boardMembers.splice(userIdx, 1);
       } else {
