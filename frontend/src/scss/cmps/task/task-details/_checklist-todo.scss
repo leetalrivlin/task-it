@@ -1,10 +1,14 @@
 .todo-item {
   position: relative;
-  padding: 3px 6px 3px 0;
+  // padding: 3px 6px 3px 0;
+  height: 32px;
   cursor: pointer;
   &:hover {
     background-color: rgba(9, 30, 66, 0.048);
     border-radius: 3px;
+  }
+  .todo-checkbox-icon {
+    padding: 0 0 0 4px;
   }
   .todo {
     &.checked {
@@ -22,22 +26,3 @@
     }
   }
 }
-
-
-
-// .checkbox {
-//   cursor: pointer;
-//   &::after {
-//     content: '☐';
-//     font-size: 25px;
-//   }
-//   &.done::after {
-//     content: '☑︎';
-//     font-size: 25px;
-//     width: 25px;
-//     height: 25px;
-//     background-color: #5aa4cf;
-//     color: white;
-//   }
-// }
-

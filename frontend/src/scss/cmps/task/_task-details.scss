@@ -42,74 +42,63 @@
   grid-template-columns: 2fr 0.8fr;
   grid-template-rows: rem(100px) minmax(rem(80px), 1fr);
   column-gap: rem(20.4px);
-}
-
-.d-cntrlr {
-  grid-column: 2;
-  grid-row: 2;
-}
-
-.d-header {
-  grid-column: 1 / -1;
-  grid-row: 1;
-  display: grid;
-  grid-template-columns: rem(30px) 1fr;
-
-  .d-icon {
-    grid-column: 1;
-    margin: 9px 0;
-  }
-  .d-content {
+  .d-cntrlr {
     grid-column: 2;
+    grid-row: 2;
   }
-}
-
-.d-desc {
-  grid-column: 1 / 2;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: rem(30px) 1fr;
-
-  .d-icon {
-    grid-column: 1;
-    margin: 9px 0;
-  }
-  .d-content {
-    grid-column: 2;
-  }
-}
-
-.d-checklist {
-  grid-column: 1 / 2;
-  grid-row: 2;
-  display: grid;
-  grid-template-columns: rem(30px) 1fr;
-  .d-container {
+  .d-header {
     grid-column: 1 / -1;
-  }
-  .d-icon {
-    grid-column: 1;
-    margin: 9px 0;
-  }
-  .d-content {
-    grid-column: 2;
-  }
-  .d-todos {
-    // grid-column: 1 / 2;
+    grid-row: 1;
     display: grid;
     grid-template-columns: rem(30px) 1fr;
-    // width: 400px;
-
-    .d-todo-icon {
+  
+    .d-icon {
       grid-column: 1;
-      // margin: 0;
-      margin: 9px 0;
+      margin: 9px 0 0 4px;
     }
-    .d-todo-content {
+    .d-content {
       grid-column: 2;
+      // padding: 0 0 0 4px;
+    }
+  }
+  .d-desc {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: rem(30px) 1fr;
+  
+    .d-icon {
+      grid-column: 1;
+      margin: 9px 0 0 4px;
+    }
+    .d-content {
+      grid-column: 2;
+      // padding: 0 0 0 4px;
+    }
+  }
+  .d-checklist {
+    grid-column: 1 / 2;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: rem(30px) 1fr;
+    .d-container {
+      grid-column: 1 / -1;
+    }
+    .d-todos {
+      display: grid;
+      grid-template-columns: rem(30px) 1fr;
+    }
+    .d-icon {
+      grid-column: 1;
+      margin: 9px 0 0 4px;
+    }
+    .d-content {
+      grid-column: 2;
+      // padding: 0 0 0 4px;
     }
   }
 }
+
 //////////
 
 // TASK DETAILS HELPERS

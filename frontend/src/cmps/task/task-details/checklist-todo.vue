@@ -1,6 +1,6 @@
 <template>
   <li
-    class="d-todos todo-item"
+    class="d-todos todo-item flex align-center"
     @mouseover="todoOnFocus = true"
     @mouseleave="hideIcon"
   >
@@ -13,9 +13,9 @@
     <el-checkbox
       v-model="isDone"
       @input="toggleTodo"
-      class="d-todo-icon"
+      class="todo-checkbox-icon"
     ></el-checkbox>
-    <div class="d-todo-content flex align-center">
+    <div>
       <span class="todo" :class="isTodoDone">{{ todo.txt }}</span>
       <i
         v-if="todoOnFocus"
