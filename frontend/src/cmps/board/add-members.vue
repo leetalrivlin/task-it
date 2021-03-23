@@ -13,7 +13,7 @@
       <ul class="clean-list">
         <li
           v-for="user in membersToShow"
-          :key="user.id"
+          :key="user._id"
           class="member flex align-center space-between"
         >
           <div
@@ -63,7 +63,7 @@ export default {
       this.$emit('closeMenu');
     },
     updateBoardMembers(user) {
-      const userIdx = this.boardMembers.findIndex(({ id }) => id === user.id);
+      const userIdx = this.boardMembers.findIndex(({ _id }) => _id === user._id);
       if (userIdx >= 0) {
         this.boardMembers.splice(userIdx, 1);
       } else {
@@ -90,7 +90,7 @@ export default {
       return (user) => {
         return (
           this.boardMembers &&
-          this.boardMembers.some(({ id }) => id === user.id)
+          this.boardMembers.some(({ _id }) => _id === user._id)
         );
       };
     },

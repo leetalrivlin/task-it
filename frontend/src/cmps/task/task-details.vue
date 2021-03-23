@@ -193,8 +193,8 @@ export default {
     },
     setMember(chosenMember) {
       if (!this.task.members) this.task.members = [];
-      const memberIdx = this.task.members.findIndex(({ id }) => {
-        return id === chosenMember.id;
+      const memberIdx = this.task.members.findIndex(({ _id }) => {
+        return _id === chosenMember._id;
       });
       if (memberIdx >= 0) {
         this.task.members.splice(memberIdx, 1);

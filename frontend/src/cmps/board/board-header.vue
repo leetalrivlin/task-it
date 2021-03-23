@@ -23,13 +23,6 @@
       <span>
         <el-button class="el-btn invite-button" @click.stop="addMembers"
           >Invite
-          <!-- <add-members
-            v-if="isAddMembers"
-            :boardMembers="this.board.members"
-            :allMembers="this.users"
-            @closeMenu="closeMembersPopup"
-            v-click-outside="closeMembersPopup"
-        /> -->
           <popup
             v-if="isAddMembers"
             @closeMenu="closeMembersPopup"

@@ -4,7 +4,7 @@
     <div class="flex justify-center align-center member-avatars">
       <ul
         v-for="taskMember in taskMembers"
-        :key="taskMember.id"
+        :key="taskMember._id"
         class="clean-list"
       >
         <li>
