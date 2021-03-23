@@ -5,11 +5,12 @@
       type="text"
       placeholder="Search members"
       v-model="searchedMember"
+      @input="filterMembers"
     ></el-input>
     <p>Board Members</p>
     <ul class="clean-list">
       <li
-        v-for="member in members"
+        v-for="member in membersToShow"
         :key="member.id"
         class="flex space-between align-center"
         @click="addMemberToTask(member)"
@@ -49,7 +50,8 @@ export default {
   },
   data() {
     return {
-      searchedMember: ''
+      searchedMember: '',
+      membersToShow: this.members
     };
   },
   computed: {
@@ -66,6 +68,17 @@ export default {
     addMemberToTask(member) {
       console.log('this.taskMembers', this.taskMembers);
       this.$emit('addMemberToTask', member);
+    },
+    filterMembers() {
+      console.log(this.searchedMember);
+      // console.log('this.members',this.members);
+      var membersToShow;
+      if (!this.searchedMember || this.searchedMember === '') membersToShow = this.members;
+      membersToShow = this.members.filter(member => {
+        return member.fullname.toLowerCase().includes(this.searchedMember.toLowerCase())
+      });
+      console.log(membersToShow);
+      this.membersToShow = membersToShow;
     }
   }
 };
