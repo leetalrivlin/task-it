@@ -23,3 +23,13 @@ async function updateBoard(req, res) {
         res.status(500).send({ err: 'Failed to update board' })
     }
 }
+
+async function getUsers(req, res) {
+    try {
+        const users = await userService.query(filterBy)
+        res.send(users)
+    } catch (err) {
+        logger.error('Failed to get users', err)
+        res.status(500).send({ err: 'Failed to get users' })
+    }
+}
