@@ -119,7 +119,6 @@ export default {
       return this.$clone(this.$store.getters.board);
     },
     users() {
-      console.log(this.$store.getters.users);
       return this.$clone(this.$store.getters.users);
     },
   },
