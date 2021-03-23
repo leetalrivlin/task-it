@@ -17,7 +17,6 @@ export default {
   },
   methods: {
     deleteTask() {
-      console.log('deleting task');
       this.$emit('deleteTask', this.taskId);
     }
   }

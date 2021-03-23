@@ -2,7 +2,7 @@
   <nav class="d-cntrlr flex column align-center cntrlr-container">
     <section class="flex column align-center nav-container">
       <p class="task-details-title btns-title">Add To Cart</p>
-      <el-button class="el-btn-details open-popup-btn" @click="isMembers = true"
+      <el-button class="el-btn-details open-popup-btn" @click.stop="isMembers = true"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'user']"
@@ -36,7 +36,7 @@
       </el-button>
 
       <el-button
-        @click="isChecklist = true"
+        @click.stop="isChecklist = true"
         class="el-btn-details open-popup-btn"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
