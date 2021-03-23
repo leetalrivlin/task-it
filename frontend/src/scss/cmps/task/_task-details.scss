@@ -40,7 +40,7 @@
   padding: 0 rem(20.4px);
   display: grid;
   grid-template-columns: 2fr 0.8fr;
-  grid-template-rows: rem(100px) minmax(rem(80px), 1fr);
+  grid-template-rows: rem(100px) minmax(1px, 1fr) minmax(1px, 1fr);
   column-gap: rem(20.4px);
   .d-cntrlr {
     grid-column: 2;
@@ -50,51 +50,48 @@
     grid-column: 1 / -1;
     grid-row: 1;
     display: grid;
-    grid-template-columns: rem(30px) 1fr;
+    grid-template-columns: rem(34px) 1fr;
   
     .d-icon {
       grid-column: 1;
-      margin: 9px 0 0 4px;
+      margin: 10px 0 0 4px;
     }
     .d-content {
       grid-column: 2;
-      // padding: 0 0 0 4px;
     }
   }
   .d-desc {
     grid-column: 1 / 2;
     grid-row: 2;
     display: grid;
-    grid-template-columns: rem(30px) 1fr;
+    grid-template-columns: rem(34px) 1fr;
   
     .d-icon {
       grid-column: 1;
-      margin: 9px 0 0 4px;
+      margin: 10px 0 0 4px;
     }
     .d-content {
       grid-column: 2;
-      // padding: 0 0 0 4px;
     }
   }
   .d-checklist {
     grid-column: 1 / 2;
     grid-row: 2;
     display: grid;
-    grid-template-columns: rem(30px) 1fr;
+    grid-template-columns: rem(34px) 1fr;
     .d-container {
       grid-column: 1 / -1;
     }
     .d-todos {
       display: grid;
-      grid-template-columns: rem(30px) 1fr;
+      grid-template-columns: rem(34px) 1fr;
     }
     .d-icon {
       grid-column: 1;
-      margin: 9px 0 0 4px;
+      margin: 10px 0 0 4px;
     }
     .d-content {
       grid-column: 2;
-      // padding: 0 0 0 4px;
     }
   }
 }

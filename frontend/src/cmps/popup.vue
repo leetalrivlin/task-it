@@ -1,5 +1,5 @@
 <template>
-  <section class="popup" @click.stop>
+  <section class="popup" @click.stop v-click-outside="closePopup">
     <section class="header flex align-center justify-center">
       <slot name="title"></slot>
       <i class="el-icon-close close-cntrl" @click.stop="closePopup"></i>
