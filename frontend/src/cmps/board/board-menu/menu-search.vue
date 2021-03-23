@@ -7,10 +7,9 @@
     </div>
     <div class="filter-lables">
       <ul class="clean-list flex column">
-        <li v-for="label in labels" :key="label.id" class="list-item">
-          <span :style="{ backgroundColor: label.color }">{{
-            label.title
-          }}</span>
+        <li v-for="label in labels" :key="label.id" class="flex align-center list-item">
+          <span :style="{ backgroundColor: label.color }"> </span>
+          <p>{{ label.title }}</p>
         </li>
       </ul>
     </div>
