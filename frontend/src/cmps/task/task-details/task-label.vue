@@ -29,7 +29,7 @@
 
 <script>
 import popup from '../../popup.vue';
-import labelPopup from './label-popup.vue';
+import labelPopup from '../task-details/details-popup/label-popup.vue';
 
 export default {
   name: 'task-label',

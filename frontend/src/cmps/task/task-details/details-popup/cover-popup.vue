@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import coverAttachments from '../task-details/details-popup/cover-attachments.vue';
-import coverColorPalettte from '../task-details/details-popup/cover-colorPalettte.vue';
+import coverAttachments from '../details-popup/cover-attachments.vue';
+import coverColorPalettte from '../details-popup/cover-colorPalettte.vue';
 
 export default {
   name: 'cover-popup',

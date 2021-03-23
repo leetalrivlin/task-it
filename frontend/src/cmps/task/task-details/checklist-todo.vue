@@ -35,7 +35,7 @@
 
 <script>
 import popup from '../../popup.vue';
-import todoPopup from './todo-popup.vue';
+import todoPopup from './details-popup/todo-popup.vue';
 export default {
   props: {
     todo: {

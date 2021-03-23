@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { boardService } from '../../../services/board.service.js';
+import { boardService } from '../../../../services/board.service';
 export default {
   name: 'checklistPopup',
   data() {

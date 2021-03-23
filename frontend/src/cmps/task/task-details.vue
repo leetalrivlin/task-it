@@ -78,7 +78,6 @@
 </template>
 
 <script>
-import { boardService } from '../../services/board.service';
 import taskDetailsMenu from './task-details/task-details-menu.vue';
 import taskDescription from '../task/task-details/task-description.vue';
 import taskLabel from '../task/task-details/task-label.vue';
