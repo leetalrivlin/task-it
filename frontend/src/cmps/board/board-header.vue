@@ -20,12 +20,12 @@
         ></avatar>
       </div>
 
-      <span>
-        <el-button class="el-btn invite-button" @click.stop="addMembers"
+      <span @click.stop="addMembers">
+        <el-button class="el-btn invite-button" 
           >Invite
           <popup
             v-if="isAddMembers"
-            @closeMenu="closeMembersPopup"
+            @closePopup="closeMembersPopup"
             v-click-outside="closeMembersPopup"
           >
             <template v-slot:title>
