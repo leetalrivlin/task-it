@@ -1,7 +1,5 @@
 .home-container {
   .hero {
-    justify-content: flex-start;
-    align-items: flex-start;
     height: 600px;
     padding: 40px;
 
@@ -13,25 +11,31 @@
     // background-position: bottom;
     background-position-x: right;
 
-    h1 {
-      font-size: 40px;
-      max-width: 30ch;
-      line-height: 2;
-    }
-    a {
-      border: none;
-      color: white;
-      background-color: #4b56d1;
-      font-size: 30px;
-      padding: 10px 20px;
-      border-radius: 3px;
-      cursor: pointer;
+    .hero-content {
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-top: 10%;
+      margin-left: 10% h1 {
+        font-size: 40px;
+        max-width: 30ch;
+        line-height: 1.5;
+      }
+      a {
+        margin-block-start: 40px;
+        border: none;
+        color: white;
+        background-color: #4b56d1;
+        font-size: 30px;
+        padding: 10px 20px;
+        border-radius: 3px;
+        cursor: pointer;
 
-      &:hover {
-        background-color: transparent;
-        border: 1px solid #4b56d1;
-        color: #4b56d1;
-        transition: 1s;
+        &:hover {
+          background-color: transparent;
+          border: 1px solid #4b56d1;
+          color: #4b56d1;
+          transition: 1s;
+        }
       }
     }
   }
