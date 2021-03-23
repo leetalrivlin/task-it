@@ -3,10 +3,12 @@
     height: 600px;
     padding: 40px;
 
-    background-image: url('~@/assets/vectors/shutterstock_1699190707-min.jpg');
+    background-image: url('~@/assets/vectors/shutterstock_1109658998.png');
     mix-blend-mode: multiply;
+    width: 80%;
+    margin: 0 auto;
     margin-top: 50px;
-    background-size: 500px;
+    background-size: 600px;
     background-repeat: no-repeat;
     // background-position: bottom;
     background-position-x: right;
@@ -14,17 +16,17 @@
     .hero-content {
       justify-content: flex-start;
       align-items: flex-start;
-      margin-top: 10%;
-      margin-left: 10% h1 {
+      margin-top: 4%;
+      h1 {
         font-size: 40px;
         max-width: 30ch;
         line-height: 1.5;
       }
       a {
-        margin-block-start: 40px;
+        margin-block-start: 30px;
         border: none;
         color: white;
-        background-color: #4b56d1;
+        background-color: #745ed8;
         font-size: 30px;
         padding: 10px 20px;
         border-radius: 3px;
@@ -32,8 +34,8 @@
 
         &:hover {
           background-color: transparent;
-          border: 1px solid #4b56d1;
-          color: #4b56d1;
+          border: 1px solid #745ed8;
+          color: #745ed8;
           transition: 1s;
         }
       }

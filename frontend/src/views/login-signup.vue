@@ -58,10 +58,9 @@
           account</a
         >
       </form>
-      <!-- <p class="mute">user1 or admin, pass:123 </p> -->
     </div>
     <hr />
-    <details>
+    <!-- <details>
       <summary>Admin Section</summary>
       <ul>
         <li v-for="user in users" :key="user._id">
@@ -69,8 +68,7 @@
           <button @click="removeUser(user._id)">x</button>
         </li>
       </ul>
-    </details>
-    <!-- <img src="../assets/vectors/shutterstock_1135607204.jpg"> -->
+    </details> -->
   </div>
 </template>
 
