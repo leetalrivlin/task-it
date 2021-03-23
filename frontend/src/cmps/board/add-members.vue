@@ -1,11 +1,18 @@
 <template>
   <section>
     <div class="add-members-container">
-      <input type="text" class="filter-members" placeholder="Enter name" />
+      <input
+        @keyup.stop
+        type="text"
+        class="filter-members"
+        placeholder="Enter name"
+        v-model="searchedMember"
+        @input="filterMembers"
+      />
 
       <ul class="clean-list">
         <li
-          v-for="user in systemUsers"
+          v-for="user in membersToShow"
           :key="user.id"
           class="member flex align-center space-between"
         >
@@ -37,6 +44,12 @@ export default {
   components: {
     Avatar,
   },
+  data() {
+    return {
+      searchedMember: '',
+      membersToShow: this.systemUsers,
+    };
+  },
   props: {
     systemUsers: {
       type: Array,
@@ -58,6 +71,18 @@ export default {
         this.boardMembers.push(user);
       }
       this.$emit('updateBoardMembers', this.boardMembers);
+    },
+    filterMembers() {
+      var membersToShow;
+      if (!this.searchedMember || this.searchedMember === '')
+        membersToShow = this.membersToShow;
+      membersToShow = this.membersToShow.filter((member) => {
+        return member.fullname
+          .toLowerCase()
+          .includes(this.searchedMember.toLowerCase());
+      });
+      console.log(membersToShow);
+      this.membersToShow = membersToShow;
     },
   },
   computed: {

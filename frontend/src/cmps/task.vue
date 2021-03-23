@@ -42,14 +42,14 @@
           </ul>
         </span>
       </div>
-      <i @click.stop="toggleMenu" class="el-icon-edit task-action"> </i>
+      <i @click.stop="toggleMenu"  class="el-icon-edit task-action">
+        <task-menu
+          v-if="isTaskMenu"
+          @deleteTask="deleteTask"
+          @closeMenu="toggleMenu"
+          v-click-outside="toggleMenu"
+      /></i>
     </section>
-    <task-menu
-      v-if="isTaskMenu"
-      @deleteTask="deleteTask"
-      @closeMenu="toggleMenu"
-      v-click-outside="toggleMenu"
-    />
   </section>
 </template>
 
