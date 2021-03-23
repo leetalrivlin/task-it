@@ -100,8 +100,14 @@
         ><i class="el-icon-right fa-nav-icon"></i>Move</el-button
       >
       <el-button class="el-btn-details open-popup-btn"
-        ><i class="el-icon-delete fa-nav-icon"></i>Archive</el-button
-      >
+        ><i class="el-icon-delete fa-nav-icon"></i>Delete
+        <!-- <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
+          <template v-slot:title>
+            <p>Delete card?</p>
+          </template>
+          <cover-popup @changeColor="addCover" @uploadImg="addCoverImg" />
+        </popup> -->
+      </el-button>
     </section>
   </nav>
 </template>
