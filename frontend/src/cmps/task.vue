@@ -47,15 +47,13 @@
           </ul>
         </span>
       </div>
-      <div class="popup-container">
-        <i @click.stop="toggleMenu" class="el-icon-edit task-action"> </i>
+      <i @click.stop="toggleMenu"  class="el-icon-edit task-action">
         <task-menu
           v-if="isTaskMenu"
           @deleteTask="deleteTask"
           @closeMenu="toggleMenu"
           v-click-outside="closeMenu"
-        />
-      </div>
+      /></i>
     </section>
   </section>
 </template>
@@ -91,9 +89,9 @@ export default {
     deleteTask() {
       this.$emit('deleteTask', this.task);
     },
-    closeMenu() {
-      this.isTaskMenu = false;
-    },
+    closeMenu(){
+      this.isTaskMenu=false;
+    }
   },
   computed: {
     coverColor() {
