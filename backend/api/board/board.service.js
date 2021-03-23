@@ -1,5 +1,5 @@
 const dbService = require('../../services/db.service');
-// const logger = require('../../services/logger.service')
+const logger = require('../../services/logger.service');
 // const reviewService = require('../review/review.service')
 const ObjectId = require('mongodb').ObjectId;
 
@@ -27,9 +27,20 @@ async function getById(boardId) {
 
 async function update(board) {
   try {
+    const boardToSave = {
+      _id: ObjectId(board._id),
+      title: board.title,
+      createdAt: board.createdAt,
+      createdBy: board.createdBy,
+      style: board.style,
+      labels: board.labels,
+      members: board.members,
+      groups: board.groups,
+      activities: board.activities,
+    };
     const collection = await dbService.getCollection('board');
-    await collection.updateOne({ _id: ObjectId(board._id) }, { $set: board });
-    return board;
+    await collection.updateOne({ _id: boardToSave._id }, { $set: boardToSave });
+    return boardToSave;
   } catch (err) {
     logger.error(`cannot update board ${board._id}`, err);
     throw err;
