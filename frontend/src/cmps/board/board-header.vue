@@ -42,10 +42,15 @@
     </div>
 
     <div>
-      <el-button class="el-btn dashboard-btn" @click="isDashboardOpen=true">
+      <el-button class="el-btn dashboard-btn" @click="isDashboardOpen = true">
         <i class="el-icon-s-data dashboard-icon" />Dashboard</el-button
       >
-      <board-dashboard v-if="isDashboardOpen" @closeDashboard="closeDashboard"  v-click-outside="closeDashboard"/>
+      <board-dashboard
+        :board="board"
+        v-if="isDashboardOpen"
+        @closeDashboard="closeDashboard"
+        v-click-outside="closeDashboard"
+      />
 
       <el-button
         class="el-btn board-menu-btn"
@@ -97,7 +102,7 @@ export default {
     return {
       isMenuOpen: false,
       isAddMembers: false,
-      isDashboardOpen:false,
+      isDashboardOpen: false,
     };
   },
   methods: {
@@ -119,8 +124,8 @@ export default {
       this.$emit('tasksToShow', tasks);
     },
     closeDashboard() {
-       this.isDashboardOpen = !this.isDashboardOpen;
-    }
+      this.isDashboardOpen = !this.isDashboardOpen;
+    },
   },
   computed: {
     membersBoard() {
