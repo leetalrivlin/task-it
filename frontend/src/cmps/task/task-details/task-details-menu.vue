@@ -99,14 +99,14 @@
       <el-button class="el-btn-details open-popup-btn"
         ><i class="el-icon-right fa-nav-icon"></i>Move</el-button
       >
-      <el-button class="el-btn-details open-popup-btn"
+      <el-button class="el-btn-details open-popup-btn" @click="isDeleteTask = true"
         ><i class="el-icon-delete fa-nav-icon"></i>Delete
-        <!-- <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
+        <popup v-if="isDeleteTask" @closePopup="isDeleteTask = false">
           <template v-slot:title>
             <p>Delete card?</p>
           </template>
-          <cover-popup @changeColor="addCover" @uploadImg="addCoverImg" />
-        </popup> -->
+          <delete-task-popup />
+        </popup>
       </el-button>
     </section>
   </nav>
@@ -128,6 +128,7 @@ import labelPopup from '../task-details/details-popup/label-popup.vue';
 import checklistPopup from '../task-details/details-popup/checklist-popup.vue';
 import datePopup from '../task-details/details-popup/date-popup.vue';
 import membersPopup from '../task-details/details-popup/members-popup.vue';
+import deleteTaskPopup from '../task-details/details-popup/delete-task-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
@@ -156,6 +157,7 @@ export default {
       isChecklist: false,
       isDate: false,
       isMembers: false,
+      isDeleteTask: false,
       dueDate: ''
     };
   },
@@ -164,9 +166,6 @@ export default {
       this.$emit('addChecklist', emptyChecklist);
       this.isChecklist = false;
     },
-    // addMember(member) {
-    //   console.log('adding member...', member);
-    // },
     addCover(color) {
       this.$emit('addCover', color);
       this.isCoverPopUp = false;
@@ -204,7 +203,8 @@ export default {
     labelPopup,
     checklistPopup,
     datePopup,
-    membersPopup
+    membersPopup,
+    deleteTaskPopup
   }
 };
 </script>
