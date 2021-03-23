@@ -1,6 +1,6 @@
 <template>
   <section class="task-label flex column">
-    <p>Labels</p>
+    <p class="task-details-title">Labels</p>
     <ul class="clean-list flex">
       <li class="list-item" v-for="label in taskLabels" :key="label.id">
         <span :style="{ backgroundColor: label.color }">
@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import popup from './popup.vue';
-import labelPopup from './label-popup.vue';
+import popup from '../../popup.vue';
+import labelPopup from '../task-details/details-popup/label-popup.vue';
 
 export default {
   name: 'task-label',

@@ -70,7 +70,7 @@ import addMembers from './add-members';
 import boardMenu from './board-menu.vue';
 import Avatar from 'vue-avatar';
 import AddGroup from '../add-group.vue';
-import popup from '../task/task-details/popup.vue';
+import popup from '../popup.vue';
 export default {
   components: {
     boardMenu,
