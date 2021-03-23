@@ -1,6 +1,6 @@
 <template>
   <section class="members-container">
-    <p>Members</p>
+    <p class="task-details-title">Members</p>
     <div class="flex justify-center align-center member-avatars">
       <ul
         v-for="taskMember in taskMembers"
@@ -34,9 +34,9 @@
 </template>
 
 <script>
-import popup from './popup.vue';
+import popup from '../../popup.vue';
 import Avatar from 'vue-avatar';
-import membersPopup from './members-popup.vue';
+import membersPopup from '../task-details/details-popup/members-popup.vue';
 export default {
   name: 'taskMember',
   components: {

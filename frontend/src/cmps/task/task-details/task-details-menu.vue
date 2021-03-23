@@ -1,16 +1,7 @@
 <template>
   <nav class="d-cntrlr flex column align-center cntrlr-container">
     <section class="flex column align-center nav-container">
-      <h2 class="btns-title">SUGGESTED</h2>
-      <el-button class="el-btn-details open-popup-btn"
-        ><font-awesome-icon
-          class="d-icon fa-nav-icon"
-          :icon="['far', 'user']"
-        />Join</el-button
-      >
-    </section>
-    <section class="flex column align-center nav-container">
-      <h2 class="btns-title">ADD TO CARD</h2>
+      <p class="task-details-title btns-title">Add To Cart</p>
       <el-button class="el-btn-details open-popup-btn" @click="isMembers = true"
         ><font-awesome-icon
           class="d-icon fa-nav-icon"
@@ -103,6 +94,15 @@
         </popup>
       </el-button>
     </section>
+        <section class="flex column align-center nav-container">
+      <p class="task-details-title btns-title">Actions</p>
+      <el-button class="el-btn-details open-popup-btn"
+        ><i class="el-icon-right fa-nav-icon"></i>Move</el-button
+      >
+      <el-button class="el-btn-details open-popup-btn"
+        ><i class="el-icon-delete fa-nav-icon"></i>Archive</el-button
+      >
+    </section>
   </nav>
 </template>
 
@@ -114,14 +114,14 @@ import {
   faCheckSquare,
   faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
-import popup from './popup.vue';
-import coverPopup from './cover-popup.vue';
-import coverAttachments from './cover-attachments.vue';
-import attachmentPopup from './attachment-popup.vue';
-import labelPopup from './label-popup.vue';
-import checklistPopup from './checklist-popup.vue';
-import datePopup from './date-popup.vue';
-import membersPopup from './members-popup.vue';
+import popup from '../../popup.vue';
+import coverAttachments from '../task-details/details-popup/cover-attachments.vue';
+import coverPopup from '../task-details/details-popup/cover-popup.vue';
+import attachmentPopup from '../task-details/details-popup/attachment-popup.vue';
+import labelPopup from '../task-details/details-popup/label-popup.vue';
+import checklistPopup from '../task-details/details-popup/checklist-popup.vue';
+import datePopup from '../task-details/details-popup/date-popup.vue';
+import membersPopup from '../task-details/details-popup/members-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {

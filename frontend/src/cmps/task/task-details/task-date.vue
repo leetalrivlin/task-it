@@ -1,6 +1,6 @@
 <template>
   <section class="due-date">
-    <p class="title">Due Date</p>
+    <p class="task-details-title">Due Date</p>
     <div class="flex align-center date-container">
       <el-checkbox v-model="checked"></el-checkbox>
       <div class="flex align-center date-txt-container">

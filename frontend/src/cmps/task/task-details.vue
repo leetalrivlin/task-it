@@ -15,7 +15,7 @@
       />
       <section class="details-grid">
         <task-title :task="task" :group="group" @updateTask="updateTask" />
-        <task-controller
+        <task-details-menu
           :members="members"
           :taskMembers="task.members"
           :cover="cover"
@@ -78,8 +78,7 @@
 </template>
 
 <script>
-import { boardService } from '../../services/board.service';
-import taskController from '../task/task-details/task-controller.vue';
+import taskDetailsMenu from './task-details/task-details-menu.vue';
 import taskDescription from '../task/task-details/task-description.vue';
 import taskLabel from '../task/task-details/task-label.vue';
 import taskMember from '../task/task-details/task-member.vue';
@@ -98,7 +97,7 @@ export default {
   components: {
     taskDescription,
     taskLabel,
-    taskController,
+    taskDetailsMenu,
     taskChecklist,
     taskAttachment,
     taskCover,

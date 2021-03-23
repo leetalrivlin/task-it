@@ -1,6 +1,7 @@
 <template>
-  <section class="attachment-popup" @click.stop>
-      <label v-if="!isLoading" for="imgUploader">Upload Attachment</label>
+  <section class="attachments" @click.stop>
+    <p>ATTACHMENTS</p>
+    <label v-if="!isLoading" for="imgUploader">Upload a cover image</label>
     <img
       v-else
       class="loading"
@@ -11,11 +12,11 @@
 </template>
 
 <script>
-import { uploadImg } from '../../../services/img-upload.service';
-import {boardService} from '../../../services/board.service';
+import { uploadImg } from '../../../../services/img-upload.service';
+import { boardService } from '../../../../services/board.service';
 
 export default {
-     name: 'attachmentsPopup',
+  name: 'coverAttachments',
   data() {
     return {
       isLoading: false,
@@ -29,9 +30,8 @@ export default {
       const emptyAttachment = boardService.getEmptyAttachment();
       emptyAttachment.name = res.original_filename;
       emptyAttachment.url = res.url;
-      this.$emit('attachUploaded', emptyAttachment);
+      this.$emit('imgUploaded', emptyAttachment);
     },
   },
-
-}
+};
 </script>
