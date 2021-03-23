@@ -41,22 +41,29 @@
       </span>
     </div>
 
-    <el-button
-      class="el-btn board-menu-btn"
-      icon="el-icon-more icon"
-      @click="isMenuOpen = true"
-      >Show Menu</el-button
-    >
-    <transition name="slide">
-      <board-menu
-        @tasksToShow="tasksToShow"
-        v-if="isMenuOpen"
-        @closeMenu="isMenuOpen = false"
-        @colorPicked="updateBoard"
-        @photoPicked="updateBoard"
-        :board="board"
-      />
-    </transition>
+    <div>
+      <el-button class="el-btn dashboard-btn" @click="isDashboardOpen=true">
+        <i class="el-icon-s-data dashboard-icon" />Dashboard</el-button
+      >
+      <board-dashboard v-if="isDashboardOpen" @closeDashboard="closeDashboard"  v-click-outside="closeDashboard"/>
+
+      <el-button
+        class="el-btn board-menu-btn"
+        icon="el-icon-more icon"
+        @click="isMenuOpen = true"
+        >Show Menu</el-button
+      >
+      <transition name="slide">
+        <board-menu
+          @tasksToShow="tasksToShow"
+          v-if="isMenuOpen"
+          @closeMenu="isMenuOpen = false"
+          @colorPicked="updateBoard"
+          @photoPicked="updateBoard"
+          :board="board"
+        />
+      </transition>
+    </div>
   </header>
 </template>
 
@@ -66,6 +73,8 @@ import boardMenu from './board-menu.vue';
 import Avatar from 'vue-avatar';
 import AddGroup from '../add-group.vue';
 import popup from '../popup.vue';
+import boardDashboard from './board-dashboard.vue';
+
 export default {
   components: {
     boardMenu,
@@ -73,6 +82,7 @@ export default {
     AddGroup,
     addMembers,
     popup,
+    boardDashboard,
   },
   name: 'boardHeader',
   props: {
@@ -87,6 +97,7 @@ export default {
     return {
       isMenuOpen: false,
       isAddMembers: false,
+      isDashboardOpen:false,
     };
   },
   methods: {
@@ -107,6 +118,9 @@ export default {
     tasksToShow(tasks) {
       this.$emit('tasksToShow', tasks);
     },
+    closeDashboard() {
+       this.isDashboardOpen = !this.isDashboardOpen;
+    }
   },
   computed: {
     membersBoard() {
