@@ -28,7 +28,8 @@
     .task-data-container {
       flex-wrap: wrap;
       > * {
-        margin-inline-end: 20px;
+        margin-inline-end: 10px;
+        margin-block-end: 10px;
       }
     }
   }

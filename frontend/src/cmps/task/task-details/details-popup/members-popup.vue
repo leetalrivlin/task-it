@@ -11,7 +11,7 @@
     <ul class="clean-list">
       <li
         v-for="member in membersToShow"
-        :key="member.id"
+        :key="member._id"
         class="flex space-between align-center"
         @click="addMemberToTask(member)"
       >
@@ -59,7 +59,7 @@ export default {
       return member => {
         return (
           this.taskMembers &&
-          this.taskMembers.some(({ id }) => id === member.id)
+          this.taskMembers.some(({ _id }) => _id === member._id)
         );
       };
     }

@@ -10,7 +10,7 @@ const gBoards = [
     title: 'Robot dev proj',
     createdAt: 1589983468418,
     createdBy: {
-      id: 'u101',
+      _id: 'u101',
       fullname: 'Abi Abambi',
       imgUrl: 'http://some-img'
     },
@@ -24,19 +24,19 @@ const gBoards = [
     ],
     members: [
       {
-        id: 'u101',
+        _id: 'u101',
         username: 'Tal',
         fullname: 'Tal Tarablus',
         imgUrl: 'https://www.google.com'
       },
       {
-        id: 'u102',
+        _id: 'u102',
         username: 'Dan',
         fullname: 'Dan Cohen',
         imgUrl: 'https://www.google.com'
       },
       {
-        id: 'u103',
+        _id: 'u103',
         username: 'Shani',
         fullname: 'Shani Ofer',
         imgUrl: 'https://www.google.com'
@@ -80,7 +80,7 @@ const gBoards = [
         txt: 'Changed Color',
         createdAt: 154514,
         byMember: {
-          id: 'u101',
+          _id: 'u101',
           fullname: 'Abi Abambi',
           imgUrl: 'http://some-img'
         },
@@ -96,7 +96,7 @@ const gBoards = [
     title: 'Web Development',
     createdAt: 1589563468418,
     createdBy: {
-      id: 'u101',
+      _id: 'u101',
       fullname: 'Chen Sella',
       imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
     },
@@ -137,19 +137,19 @@ const gBoards = [
     ],
     members: [
       {
-        id: 'u110',
+        _id: 'u110',
         username: 'leetal',
         fullname: 'Leetal Rivlin-Tal',
         imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512'
       },
       {
-        id: 'u111',
+        _id: 'u111',
         username: 'liz',
         fullname: 'Liz Amir',
         imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512'
       },
       {
-        id: 'u112',
+        _id: 'u112',
         username: 'chen',
         fullname: 'Chen Sella',
         imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512'
@@ -250,13 +250,13 @@ const gBoards = [
   }
 ];
 const gUsers = [
-  { id: 'u1001', fullname: 'Puki Norma', username: 'user1', password: '123', isAdmin: false },
-  { id: 'u1002', fullname: 'loca noni', username: 'loca', password: '123', isAdmin: false },
-  { id: 'u1003', fullname: 'sasi romi', username: 'sasi', password: '123', isAdmin: false },
-  { id: 'u1004', fullname: 'kuku sanguko', username: 'kuku', password: '123', isAdmin: false },
-  { id: 'u112', fullname: 'Chen Sella', username: 'chen', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512' },
-  { id: 'u110', fullname: 'Leetal Rivlin-Tal', username: 'leetal', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512' },
-  { id: 'u111', fullname: 'Liz Amir', username: 'liz', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512' },
+  { _id: 'u1001', fullname: 'Puki Norma', username: 'user1', password: '123', isAdmin: false },
+  { _id: 'u1002', fullname: 'loca noni', username: 'loca', password: '123', isAdmin: false },
+  { _id: 'u1003', fullname: 'sasi romi', username: 'sasi', password: '123', isAdmin: false },
+  { _id: 'u1004', fullname: 'kuku sanguko', username: 'kuku', password: '123', isAdmin: false },
+  { _id: 'u112', fullname: 'Chen Sella', username: 'chen', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FM468LKC-60df056b28da-512' },
+  { _id: 'u110', fullname: 'Leetal Rivlin-Tal', username: 'leetal', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01FMA939AP-f330f75ce89a-512' },
+  { _id: 'u111', fullname: 'Liz Amir', username: 'liz', password: '123', isAdmin: false, imgUrl: 'https://ca.slack-edge.com/T01FLU17LTC-U01H921LE8N-e2e268e6b1b7-512' },
 
 ];
 
@@ -397,11 +397,4 @@ function getEmptyAttachment() {
     url: ''
   };
 }
-
-// function getEmptyLabel() {
-//   return {
-//     name: '',
-//     color: ''
-//   };
-// }
 
