@@ -11,7 +11,7 @@
             class="d-icon fa-nav-icon"
             :icon="['far', 'user']"
           />
-          <p>Members</p>
+          <p class="popup-btn-title">Members</p>
           <popup v-if="isMembers" @closePopup="isMembers = false">
             <template v-slot:title>
               <p>Members</p>
@@ -28,7 +28,7 @@
           class="flex el-btn-details open-popup-btn"
         >
           <font-awesome-icon class="d-icon fa-nav-icon" icon="tag" />
-          <p>Labels</p>
+          <p class="popup-btn-title">Labels</p>
           <popup v-if="isLabel" @closePopup="isLabel = false">
             <template v-slot:title>
               <p>Labels</p>
@@ -47,7 +47,7 @@
           class="flex el-btn-details open-popup-btn"
         >
           <font-awesome-icon class="d-icon fa-nav-icon" icon="check-square" />
-          <p>Checklist</p>
+          <p class="popup-btn-title">Checklist</p>
           <popup v-if="isChecklist" @closePopup="isChecklist = false">
             <template v-slot:title>
               <p>Add Checklist</p>
@@ -64,7 +64,7 @@
             class="d-icon fa-nav-icon"
             :icon="['far', 'clock']"
           />
-          <p>Due Date</p>
+          <p class="popup-btn-title">Due Date</p>
           <el-date-picker
             ref="datePickerInput"
             class="date-picker-btn"
@@ -81,7 +81,7 @@
           class="flex el-btn-details open-popup-btn"
         >
           <font-awesome-icon class="d-icon fa-nav-icon" icon="paperclip" />
-          <p>Attachments</p>
+          <p class="popup-btn-title">Attachments</p>
           <popup v-if="isAttach" @closePopup="isAttach = false">
             <template v-slot:title>
               <p>Attachments</p>
@@ -96,7 +96,7 @@
           @click="isCoverPopUp = !isCoverPopUp"
         >
           <i class="el-icon-set-up"></i>
-          <p>Cover</p>
+          <p class="popup-btn-title">Cover</p>
           <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
             <template v-slot:title>
               <p>Cover</p>
@@ -114,7 +114,7 @@
           @click="isMoveTask = true"
         >
           <i class="el-icon-right fa-nav-icon"></i>
-          <p>Move</p>
+          <p class="popup-btn-title">Move</p>
           <popup v-if="isMoveTask" @closePopup="isMoveTask = false">
             <template v-slot:title>
               <p>Move card</p>
@@ -133,7 +133,7 @@
           @click="isDeleteTask = true"
         >
           <i class="el-icon-delete fa-nav-icon"></i>
-          <p>Delete</p>
+          <p class="popup-btn-title">Delete</p>
           <popup v-if="isDeleteTask" @closePopup="isDeleteTask = false">
             <template v-slot:title>
               <p>Delete card?</p>

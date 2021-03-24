@@ -14,7 +14,7 @@
         @saveImg="updateTask"
       />
       <section class="details-grid">
-        <task-title :groups="groups" :task="task" :group="group" @updateTask="updateTask"/>
+        <task-title :groups="groups" :task="task" :group="group" @updateTaskPos="updateBoard"/>
         <task-details-menu
           :members="members"
           :taskMembers="task.members"
