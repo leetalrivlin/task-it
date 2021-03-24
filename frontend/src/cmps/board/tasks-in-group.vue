@@ -39,10 +39,12 @@ export default {
   },
   created() {
     var groupToShow = {};
-   groupToShow= this.board.groups.map((group) => {
-     return  group.title;
-      groupToShow[groupTitle] = group.tasks.length;
+    this.board.groups.forEach((group) => {
+      groupToShow.title = group.title;
+      groupToShow.len = group.tasks.length;
     });
+    this.chartData = groupToShow;
+	
   },
   components: {
     tasksInGroupChart,
