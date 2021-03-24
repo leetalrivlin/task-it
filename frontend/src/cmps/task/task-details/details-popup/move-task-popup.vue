@@ -16,11 +16,11 @@
       </div>
       <div>
         <p>Position</p>
-        <!-- <el-select v-model="value">
+        <!-- <el-select v-model="taskIdx">
         <el-option
-          v-for="group in groups"
-          :key="group.id"
-          :value="group.title"
+          v-for="idx in tasksLength"
+          :key="idx"
+          :value="idx"
         >
         </el-option>
       </el-select> -->
@@ -44,7 +44,8 @@ export default {
   },
   data() {
     return {
-      chosenGroup: ''
+      chosenGroup: '',
+      taskIdx: null,
     };
   },
   computed: {
