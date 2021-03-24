@@ -16,7 +16,6 @@
         @click="closeNav"
         v-if="ismobile"
       ></section>
-
       <nav class="flex align-center" ref="navMenu">
         <router-link class="el-btn" to="/login">Signin</router-link>
         <router-link class="el-btn" to="/board">Boards</router-link>
@@ -25,14 +24,16 @@
           className="loggedin-user"
           v-if="loggedInUser"
         >
-          <avatar
-            class="member"
-            :username="loggedInUser.fullname"
-            :src="loggedInUser.imgUrl"
-            color="white"
-            :size="30"
-          >
-          </avatar>
+          <div class="avatar-container">
+            <avatar
+              class="member"
+              :username="loggedInUser.fullname"
+              :src="loggedInUser.imgUrl"
+              color="white"
+              :size="30"
+            >
+            </avatar>
+          </div>
           <user-popup
             :loggedInUser="loggedInUser"
             v-if="userPopup"

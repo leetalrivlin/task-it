@@ -1,6 +1,8 @@
 <template>
-  <header class="header-layout flex align-center space-between main-header">
-   
+  <header class="header-layout main-header">
+    <section
+      class="flex align-center space-between main-header-container"
+    >
       <div class="container"></div>
       <span
         class="flex justify-center align-center logo"
@@ -9,7 +11,12 @@
       >
         <router-link to="/">Task-it</router-link></span
       >
-      <nav class="flex align-center justify-end">
+      <section
+        class="window-overlay"
+        @click="closeNav"
+        v-if="ismobile"
+      ></section>
+      <nav ref="navMenu" class="flex align-center">
         <router-link class="" to="/login">Signin</router-link>
         <router-link class="" to="/board">Boards</router-link>
         <section
@@ -33,8 +40,8 @@
           />
         </section>
       </nav>
-   
-   
+    </section>
+    <button class="menu-btn el-btn" @click="openNav">☰</button>
   </header>
 </template>
 <script>
@@ -49,12 +56,20 @@ export default {
   data() {
     return {
       userPopup: false,
-     
+      ismobile: false,
     };
   },
   methods: {
     doLogout() {
       this.$emit('logout');
+    },
+    closeNav() {
+      this.$refs.navMenu.style.transform = 'translateX(100%)';
+      this.ismobile = false;
+    },
+    openNav() {
+      this.$refs.navMenu.style.transform = 'translateX(0)';
+      this.ismobile = true;
     },
   },
   computed: {

@@ -16,7 +16,7 @@
         margin-block-start: 30px;
         border: none;
         color: white;
-        background-color: #5658F7;
+        background-color: #5658f7;
         font-size: 30px;
         padding: 10px 20px;
         border-radius: 3px;
@@ -24,14 +24,38 @@
 
         &:hover {
           background-color: transparent;
-          border: 1px solid #5658F7;
-          color: #5658F7;
+          border: 1px solid #5658f7;
+          color: #5658f7;
           transition: 1s;
         }
       }
     }
-    img{
+    img {
       width: 600px;
+    }
+  }
+}
+
+@include for-mobile-layout {
+  .home-container {
+    .hero {
+      padding: 40px 30px;
+      flex-direction: column;
+      height: 540px;
+      img {
+        width: 250px;
+      }
+      .hero-content {
+        h1 {
+          display: block;
+          font-size: 28px;
+          max-width: 12ch;
+          line-height: 1.4;
+        }
+        a{
+          font-size: 24px;
+        }
+      }
     }
   }
 }
