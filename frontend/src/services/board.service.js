@@ -343,21 +343,6 @@ async function getById(id) {
   }
 }
 
-// async function getBoards() {
-//   var boards;
-//   try {
-//     boards = await storageService.query(BOARD_URL);
-//     if (!boards.length || !boards) {
-//       boards = gBoards;
-//       localStorage.setItem(BOARD_URL, JSON.stringify(boards));
-//     }
-//     return boards;
-//     // return httpService.get(`user`)
-//   } catch (err) {
-//     console.log('cant load boards', err);
-//   }
-// }
-
 async function save(board) {
   var newBoard;
   try {
