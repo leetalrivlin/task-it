@@ -59,7 +59,7 @@
         >
       </form>
     </div>
-    <hr />
+    <!-- <hr /> -->
     <!-- <details>
       <summary>Admin Section</summary>
       <ul>
