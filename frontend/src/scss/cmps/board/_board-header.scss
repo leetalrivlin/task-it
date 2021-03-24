@@ -42,11 +42,11 @@
     }
   }
   .invite-button {
-    margin-inline-start: 5px;
+    margin-inline-start:rem(10px);
   }
 
   .dashboard-btn {
-    margin-inline-end: 5px;
+    margin-inline-end: rem(10px);
     .dashboard-icon {
       margin-inline-end: 5px;
     }

@@ -55,3 +55,9 @@
     transform: translateX(350px);
   }
 }
+
+@include for-mobile-layout {
+  .board-menu {
+    width: 100%;
+  }
+}
