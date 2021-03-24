@@ -24,7 +24,7 @@ export default {
         labels: this.chartData.title,
         datasets: [
           {
-            backgroundColor: ['#8790b9', '#7c4d7a', 'f9b9bb', '#f5d993'],
+            backgroundColor: ['#8790b9', '#7c4d7a', 'f9b9bb', '#f5d993' , ],
             data: this.chartData.lengthGroup,
           },
         ],
