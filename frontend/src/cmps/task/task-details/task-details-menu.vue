@@ -101,8 +101,14 @@
     </section>
     <section class="flex column align-center nav-container">
       <p class="task-details-title btns-title">Actions</p>
-      <button class="el-btn-details open-popup-btn">
+      <button class="el-btn-details open-popup-btn" @click="isMoveTask = true">
         <i class="el-icon-right fa-nav-icon"></i>Move
+        <popup v-if="isMoveTask" @closePopup="isMoveTask = false">
+          <template v-slot:title>
+            <p>Move card</p>
+          </template>
+          <move-task-popup />
+        </popup>
       </button>
       <button
         class="el-btn-details open-popup-btn"
@@ -170,6 +176,7 @@ export default {
       isDate: false,
       isMembers: false,
       isDeleteTask: false,
+      isMoveTask: false,
       dueDate: '',
     };
   },
