@@ -14,6 +14,15 @@
       border-radius: 3px;
     }
 
+    .window-overlay {
+      background-color: rgba(0, 0, 0, 0.64);
+      height: 100%;
+      left: 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
     nav {
       justify-content: flex-end;
       .member {
@@ -38,21 +47,20 @@
         position: fixed;
         right: 0;
         top: 0;
-        flex-direction: column;
+        flex-direction: column-reverse;
+        align-items: flex-start;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.8);
-        width: 200px;
+        width: 75%;
+        background-color: #f4f4f4f7;
         transform: translateX(100%);
         box-shadow: none;
-        justify-content: flex-start;
-        z-index: 4;
+        z-index: 20;
         transition: transform 0.8s, box-shadow 0.8s;
         font-size: 22px;
         padding: 40px 0;
 
         a {
-          text-align: center;
-          color: #fff;
+          color: $clr1;
           padding: 18px 10px;
           width: 100%;
           margin-block-end: 12px;
