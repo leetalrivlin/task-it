@@ -97,7 +97,14 @@
         <section class="flex column align-center nav-container">
       <p class="task-details-title btns-title">Actions</p>
       <el-button class="el-btn-details open-popup-btn"
-        ><i class="el-icon-right fa-nav-icon"></i>Move</el-button
+        ><i class="el-icon-right fa-nav-icon"></i>Move
+        <popup v-if="isDeleteTask" @closePopup="isDeleteTask = false">
+          <template v-slot:title>
+            <p>Move Card</p>
+          </template>
+          <move-task-popup />
+        </popup>
+        </el-button
       >
       <el-button class="el-btn-details open-popup-btn" @click="isDeleteTask = true"
         ><i class="el-icon-delete fa-nav-icon"></i>Delete
@@ -129,6 +136,7 @@ import checklistPopup from '../task-details/details-popup/checklist-popup.vue';
 import datePopup from '../task-details/details-popup/date-popup.vue';
 import membersPopup from '../task-details/details-popup/members-popup.vue';
 import deleteTaskPopup from '../task-details/details-popup/delete-task-popup.vue';
+import moveTaskPopup from '../task-details/details-popup/move-task-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
@@ -210,7 +218,8 @@ export default {
     checklistPopup,
     datePopup,
     membersPopup,
-    deleteTaskPopup
+    deleteTaskPopup,
+    moveTaskPopup
   }
 };
 </script>
