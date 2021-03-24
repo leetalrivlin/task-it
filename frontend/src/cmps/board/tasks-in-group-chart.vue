@@ -15,13 +15,26 @@ export default {
       type: Object,
     },
   },
+
+  computed:{
+    title(){
+       return this.chartData.map((group) => {
+      return group.title
+      });
+    },
+      length(){
+        return this.chartData.map((group) => {
+      return group.length
+      });
+    }
+  },
   mounted() {
     this.renderChart({
-      labels: Object.keys(this.chartData.group.title),
+      label: this.title,
       datasets: [
         {
           backgroundColor: ['#8790b9', '#7c4d7a', 'f9b9bb', '#f5d993'],
-          data: Object.values(this.chartData.group.len),
+          data: this.length,
         },
       ],
     });
