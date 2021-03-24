@@ -3,14 +3,16 @@
     <h1>Pick a Borad</h1>
     <!-- <button @click='getBoard'>board</button> -->
     <ul class="flex justify-center clean-list">
-      <li class="">
+      <li>
         <i class="el-icon-plus add-board"></i>
       </li>
       <li v-for="board in boards" :key="board._id">
-        <router-link :style="{background:board.style.background, backgroundSize: 'cover'}" :to="`/board/${board._id}`">{{
-          board.title
-        }}</router-link>
+        <router-link :style="{background:board.style.background, backgroundSize: 'cover'}" :to="`/board/${board._id}`"
+          ><p>{{ board.title }}</p>
+          
+        </router-link>
       </li>
+
     </ul>
   </section>
 </template>

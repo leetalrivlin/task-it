@@ -5,18 +5,19 @@
     color: $clr1;
   }
   ul {
+    flex-wrap: wrap;
     li {
       a {
         display: block;
         font-family: Segoe-Bold;
-        width: 200px;
-        height: 100px;
-        border-radius: 3px;
+        width: 300px;
+        height: 200px;
+        border-radius: 8px;
         color: white;
         margin: 0 15px 15px 0;
         padding: 10px;
         background-color: $clr2;
-        
+
       }
       .add-board {
         width: 200px;
@@ -25,15 +26,14 @@
         color: $clr1;
         margin: 0 15px 15px 0;
         padding: 10px;
-        background-color: #d6d3e5e3;
+        background-color:#d6d3e5e3;
         line-height: 80px;
         text-align: center;
         font-size: 30px;
-        background-size: cover;
         cursor: pointer;
 
         &:hover {
-          background-color: rgba(223, 220, 220, 0.46);
+          background-color: rgba(223, 220, 220, 0.46);        
         }
       }
     }
