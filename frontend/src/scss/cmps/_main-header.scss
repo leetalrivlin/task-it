@@ -7,12 +7,10 @@
   .main-header-container {
     height: 70px;
     .logo {
-      font-size: 26px;
-      font-weight: 600;
+      width: 155px;
       position: absolute;
       left: 50%;
       transform: translate(-50%);
-      color: $clr1;
     }
     a {
       color: $clr1;
