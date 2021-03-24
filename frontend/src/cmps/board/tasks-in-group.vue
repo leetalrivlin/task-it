@@ -43,13 +43,12 @@ export default {
       var title = group.title;
       groupToShow[title] = group.tasks.length;
     });
-	this.chartData.lengthGroup = Object.values(groupToShow)
-	this.chartData.title = Object.keys(groupToShow)
-	console.log(this.chartData);
-	
+    this.chartData.lengthGroup = Object.values(groupToShow);
+    this.chartData.title = Object.keys(groupToShow);
+    console.log(this.chartData);
   },
   components: {
-	  tasksInGroupChart,
+    tasksInGroupChart,
   },
 };
 </script>

@@ -49,16 +49,14 @@
   border: none;
   color: #fff;
   padding: 6px 10px;
+  border-radius: 3px;
+  outline: none;
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.32);
     border-color: #bfbfbfd6;
     color: #fff;
   }
-  &:focus {
-    background-color: hsla(0, 0%, 100%, 0.32);
-    border-color: #bfbfbfd6;
-    color: #fff;
-  }
+
 }
 
 .el-btn-details {
