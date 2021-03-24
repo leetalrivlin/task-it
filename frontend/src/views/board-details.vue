@@ -15,6 +15,10 @@
         @change="moveGroup"
         @start="isDragging = true"
         @end="isDragging = false"
+        :animation="200"
+        ghostClass="ghost"
+        chosenClass="chosen"
+        dragClass="drag"
         group="groups"
       >
         <!-- <transition-group name="drag-drop"> -->
@@ -28,7 +32,6 @@
           @updateGroup="updateBoard"
           @deleteGroup="deleteGroup"
           :group="group"
-          
         />
 
         <!-- </transition-group> -->
@@ -104,10 +107,9 @@ export default {
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
     tasksToShow(tasks) {
-      
-        console.log('tasks');
+      console.log('tasks');
     },
-   
+
     moveGroup() {
       this.$store.dispatch({ type: 'updateBoard', board: this.board });
     },

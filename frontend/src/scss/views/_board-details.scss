@@ -30,6 +30,17 @@
     width: 100%;
     z-index: 20;
   }
+
+  .flip-list-move {
+    transition: transform 0.5s;
+  }
+  .no-move {
+    transition: transform 0s;
+  }
+  .ghost {
+    opacity: 0.5;
+    background: #c8ebfb;
+  }
 }
 
 @include for-mobile-layout {
