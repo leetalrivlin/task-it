@@ -9,6 +9,7 @@
       <li v-for="board in boards" :key="board._id">
         <router-link :style="board.style" :to="`/board/${board._id}`"
           ><p>{{ board.title }}</p>
+          
         </router-link>
       </li>
     </ul>
