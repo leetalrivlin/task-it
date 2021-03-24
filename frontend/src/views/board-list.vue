@@ -7,7 +7,7 @@
         <i class="el-icon-plus add-board"></i>
       </li>
       <li v-for="board in boards" :key="board._id">
-        <router-link :style="board.style" :to="`/board/${board._id}`">{{
+        <router-link :style="{background:board.style.background, backgroundSize: 'cover'}" :to="`/board/${board._id}`">{{
           board.title
         }}</router-link>
       </li>

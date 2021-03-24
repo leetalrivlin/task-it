@@ -1,8 +1,6 @@
 <template>
   <header class="header-layout main-header">
-    <section
-      class="flex align-center space-between main-header-container"
-    >
+    <section class="flex align-center space-between main-header-container">
       <div class="container"></div>
       <span
         class="flex justify-center align-center logo"
@@ -21,7 +19,7 @@
         <router-link class="" to="/board">Boards</router-link>
         <section
           @click="userPopup = !userPopup"
-          className="loggedin-user"
+          class="loggedin-user"
           v-if="loggedInUser"
         >
           <avatar
@@ -38,7 +36,7 @@
             @closePopup="userPopup = false"
             @logout="doLogout"
           />
-        </section>
+        </section> 
       </nav>
     </section>
     <button class="menu-btn el-btn" @click="openNav">☰</button>

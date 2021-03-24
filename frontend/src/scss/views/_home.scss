@@ -36,6 +36,50 @@
   }
 }
 
+@include for-normal-layout {
+  .home-container {
+    .hero {
+      .hero-content {
+        h1 {
+          font-size: 40px;
+          max-width: 20ch;
+        }
+        a {
+          font-size: 20px;
+        }
+      }
+      img {
+        width: 500px;
+      }
+    }
+  }
+}
+
+@include for-medium-layout {
+  .home-container {
+    .hero {
+      .hero-content {
+        h1 {
+          font-size: 35px;
+        }
+        a {
+          font-size: 18px;
+        }
+      }
+      img {
+        width: 400px;
+      }
+    }
+  }
+}
+
+@include for-narrow-layout {
+  .home-container {
+    .hero {
+      flex-direction: column;
+    }
+  }
+}
 @include for-mobile-layout {
   .home-container {
     .hero {
@@ -52,7 +96,7 @@
           max-width: 12ch;
           line-height: 1.4;
         }
-        a{
+        a {
           font-size: 24px;
         }
       }
