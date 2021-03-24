@@ -1,12 +1,15 @@
 <template>
-  <section class="tasks-users ">
+  <section class="tasks-users">
     <tasks-in-group-chart
       v-if="chartData"
       :chartData="chartData"
-      class="chart"
+      label=" tasks per group"
+      :optains="options"
     />
   </section>
 </template>
+
+ 
 
 <script>
 import tasksInGroupChart from './tasks-in-group-chart.vue';
@@ -19,14 +22,29 @@ export default {
   data() {
     return {
       chartData: null,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scaleFontColor: '#FFFFFF',
+
+        legend: {
+          fontColor: '#fff',
+          labels: {
+            fontColor: 'white',
+            fontSize: 20,
+          },
+        },
+      },
     };
   },
   created() {
-    const tasksAmount = this.board.groups.map((group) => {
-     return group.tasks.length;
+    var groupToShow = {};
+    this.board.groups.forEach((group) => {
+      groupToShow.title = group.title;
+      groupToShow.len = group.tasks.length;
     });
-    console.log(tasksAmount);
-    this.chartData = tasksAmount;
+    this.chartData = groupToShow;
+	
   },
   components: {
     tasksInGroupChart,
