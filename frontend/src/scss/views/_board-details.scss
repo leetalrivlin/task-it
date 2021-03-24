@@ -31,3 +31,25 @@
     z-index: 20;
   }
 }
+
+@include for-mobile-layout {
+  .board-details {
+    .board-content {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .add-group {
+      order: 1;
+      margin-block-end: 10px;
+    }
+    .group-container {
+      order: 2;
+      flex-direction: column;
+    }
+    .group {
+      margin-inline-end: 0;
+      margin-block-end: 10px;
+    }
+  }
+}
