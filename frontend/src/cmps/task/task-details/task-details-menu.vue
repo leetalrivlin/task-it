@@ -2,8 +2,11 @@
   <nav class="d-cntrlr flex column align-center cntrlr-container">
     <section class="flex column align-center nav-container">
       <p class="task-details-title btns-title">Add To Cart</p>
-      <el-button class="el-btn-details open-popup-btn" @click.stop="isMembers = true"
-        ><font-awesome-icon
+      <button
+        class="el-btn-details open-popup-btn"
+        @click.stop="isMembers = true"
+      >
+        <font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'user']"
         />Members
@@ -17,11 +20,9 @@
             @addMemberToTask="addMemberToTask"
           />
         </popup>
-      </el-button>
-      <el-button
-        @click="isLabel = !isLabel"
-        class="el-btn-details open-popup-btn"
-        ><font-awesome-icon class="d-icon fa-nav-icon" icon="tag" />Labels
+      </button>
+      <button @click="isLabel = !isLabel" class="el-btn-details open-popup-btn">
+        <font-awesome-icon class="d-icon fa-nav-icon" icon="tag" />Labels
         <popup v-if="isLabel" @closePopup="isLabel = false">
           <template v-slot:title>
             <p>Labels</p>
@@ -33,12 +34,13 @@
             @boardLabelupdated="updateLabel"
           />
         </popup>
-      </el-button>
+      </button>
 
-      <el-button
+      <button
         @click.stop="isChecklist = true"
         class="el-btn-details open-popup-btn"
-        ><font-awesome-icon
+      >
+        <font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="check-square"
         />Checklist
@@ -48,10 +50,10 @@
           </template>
           <checklist-popup @addChecklist="addChecklist" />
         </popup>
-      </el-button>
+      </button>
 
-      <el-button class="el-btn-details open-popup-btn" @click="openDatePopup"
-        ><font-awesome-icon
+      <button class="el-btn-details open-popup-btn" @click="openDatePopup">
+        <font-awesome-icon
           class="d-icon fa-nav-icon"
           :icon="['far', 'clock']"
         />Due Date
@@ -64,12 +66,13 @@
           @change="setDueDate"
           value-format="timestamp"
         ></el-date-picker>
-      </el-button>
+      </button>
 
-      <el-button
+      <button
         @click="isAttach = !isAttach"
         class="el-btn-details open-popup-btn"
-        ><font-awesome-icon
+      >
+        <font-awesome-icon
           class="d-icon fa-nav-icon"
           icon="paperclip"
         />Attachments
@@ -79,35 +82,40 @@
           </template>
           <attachment-popup @attachUploaded="addAttach" />
         </popup>
-      </el-button>
-      <el-button
+      </button>
+      <button
         v-if="!cover"
         class="el-btn-details open-popup-btn"
         icon="el-icon-set-up fa-nav-icon"
         @click="isCoverPopUp = !isCoverPopUp"
-        >Cover
+      >
+        <i class="el-icon-set-up"></i>
+        Cover
         <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
           <template v-slot:title>
             <p>Cover</p>
           </template>
           <cover-popup @changeColor="addCover" @uploadImg="addCoverImg" />
         </popup>
-      </el-button>
+      </button>
     </section>
-        <section class="flex column align-center nav-container">
+    <section class="flex column align-center nav-container">
       <p class="task-details-title btns-title">Actions</p>
-      <el-button class="el-btn-details open-popup-btn"
-        ><i class="el-icon-right fa-nav-icon"></i>Move</el-button
+      <button class="el-btn-details open-popup-btn">
+        <i class="el-icon-right fa-nav-icon"></i>Move
+      </button>
+      <button
+        class="el-btn-details open-popup-btn"
+        @click="isDeleteTask = true"
       >
-      <el-button class="el-btn-details open-popup-btn" @click="isDeleteTask = true"
-        ><i class="el-icon-delete fa-nav-icon"></i>Delete
+        <i class="el-icon-delete fa-nav-icon"></i>Delete
         <popup v-if="isDeleteTask" @closePopup="isDeleteTask = false">
           <template v-slot:title>
             <p>Delete card?</p>
           </template>
-          <delete-task-popup :taskId="taskId" @deleteTask="deleteTask"/>
+          <delete-task-popup :taskId="taskId" @deleteTask="deleteTask" />
         </popup>
-      </el-button>
+      </button>
     </section>
   </nav>
 </template>
@@ -118,7 +126,7 @@ import { faUser, faClock } from '@fortawesome/free-regular-svg-icons';
 import {
   faTag,
   faCheckSquare,
-  faPaperclip
+  faPaperclip,
 } from '@fortawesome/free-solid-svg-icons';
 import popup from '../../popup.vue';
 import coverAttachments from '../task-details/details-popup/cover-attachments.vue';
@@ -129,28 +137,29 @@ import checklistPopup from '../task-details/details-popup/checklist-popup.vue';
 import datePopup from '../task-details/details-popup/date-popup.vue';
 import membersPopup from '../task-details/details-popup/members-popup.vue';
 import deleteTaskPopup from '../task-details/details-popup/delete-task-popup.vue';
+import moveTaskPopup from '../task-details/details-popup/move-task-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
   props: {
     cover: {
-      type: Boolean
+      type: Boolean,
     },
     labels: {
-      type: Array
+      type: Array,
     },
     taskLableIds: {
-      type: Array
+      type: Array,
     },
     members: {
-      type: Array
+      type: Array,
     },
     taskMembers: {
-      type: Array
+      type: Array,
     },
     taskId: {
-      type: String
-    }
+      type: String,
+    },
   },
   data() {
     return {
@@ -161,7 +170,7 @@ export default {
       isDate: false,
       isMembers: false,
       isDeleteTask: false,
-      dueDate: ''
+      dueDate: '',
     };
   },
   methods: {
@@ -198,8 +207,8 @@ export default {
       this.$emit('setDueDate', this.dueDate);
     },
     deleteTask(taskId) {
-      this.$emit('deleteTask', taskId)
-    }
+      this.$emit('deleteTask', taskId);
+    },
   },
   components: {
     popup,
@@ -210,7 +219,8 @@ export default {
     checklistPopup,
     datePopup,
     membersPopup,
-    deleteTaskPopup
+    deleteTaskPopup,
+    moveTaskPopup
   }
 };
 </script>

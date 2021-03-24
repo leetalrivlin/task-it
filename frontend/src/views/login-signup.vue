@@ -8,7 +8,7 @@
         <button @click="doLogout">Logout</button>
       </h3>
     </div> -->
-    <div>
+    <div >
       <form
         v-if="signUp"
         class="flex column align-center"
@@ -59,7 +59,7 @@
         >
       </form>
     </div>
-    <hr />
+    <!-- <hr /> -->
     <!-- <details>
       <summary>Admin Section</summary>
       <ul>
@@ -69,6 +69,7 @@
         </li>
       </ul>
     </details> -->
+    <img src="../assets/vectors/login-img.png">
   </div>
 </template>
 

@@ -1,17 +1,18 @@
 <template>
   <section class="task-cover flex justify-center" :style="coverColor">
-    <el-button
-      icon="el-icon-set-up"
+    <button
       class="el-btn-details fa-nav-icon cover-btn"
       @click="isEditCover = !isEditCover"
-      >Cover
+      >
+      <i class="el-icon-set-up"></i>
+      Cover
       <popup v-if="isEditCover" @closePopup="isEditCover = false">
         <template v-slot:title>
           <p>Cover</p>
         </template>
         <cover-popup @changeColor="editColor" @uploadImg="saveImg" />
       </popup>
-    </el-button>
+    </button>
     <img
       v-if="task.cover.img && !task.cover.backgroundColor"
       :src="task.cover.img.url"
