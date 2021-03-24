@@ -1,7 +1,7 @@
 .header-container {
     margin: rem(14px) 0 rem(14px) 0;
     .task-title-container {
-      input {
+      .title-input {
         border-radius: 3px;
         width: 90%;
         outline: none;
@@ -12,13 +12,12 @@
         border: none;
         background-color: transparent;
         padding: 8px 0;
-        // padding: 6px 8px;
         &:focus {
             background-color: #fff;
             box-shadow: inset 0 0 0 2px #464646;
         }
     }
-      p {
+      p:first-of-type{
         color: #5e6c84;
         font-size: rem(14px);
   
@@ -28,5 +27,27 @@
           cursor: pointer;
         }
       }
+    }
+    p.move-title {
+      margin: 16px 0 4px 0;
+      font-size: 12px;
+    }
+    .selects-container {
+      .group-select {
+        flex: 1;
+        .el-select {
+          margin-block-start: 5px;
+        }
+      }
+      .pos-select {
+        width: 30%;
+        margin-inline-start: 5px;
+        .el-select {
+          margin-block-start: 5px;
+        }
+      }
+    }
+    button {
+      margin-block-start: 10px;
     }
   }
