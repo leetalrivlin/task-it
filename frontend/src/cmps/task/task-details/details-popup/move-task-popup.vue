@@ -26,7 +26,7 @@
       </el-select>
       </div>
     </section>
-    <el-button type="info" class="task-details-btn">Move</el-button>
+    <el-button type="info" class="task-details-btn" @click="changeTaskPos">Move</el-button>
   </section>
 </template>
 
@@ -54,16 +54,27 @@ export default {
     openedTaskGroup() {
       return this.groups.find(({ id }) => id === this.groupId);
     },
-    tasks() {
-      return this.currGroup.tasks;
-    },
+    // tasks() {
+    //   return this.currGroup.tasks;
+    // },
   },
   methods: {
     showGroupTasks() {
-       var chosenGroup;
+      var chosenGroup;
       if (this.chosenGroupId === this.openedTaskGroup.id) chosenGroup = this.openedTaskGroup;
       chosenGroup = this.groups.find(({ id }) => id === this.chosenGroupId);
       this.tasksLen = chosenGroup.tasks.length;
+    },
+    changeTaskPos() {
+      const newGroupIdx = this.groups.findIndex(({id}) => id === this.chosenGroupId);
+      const newTaskIdx = (this.chosenTaskPos - 1);
+      const currGroupIdx = this.groups.findIndex(({id}) => id === this.groupId);
+      const currTaskIdx = this.groups[currGroupIdx].tasks.findIndex(({id}) => id === this.taskId);
+      const currTask = this.groups[currGroupIdx].tasks.find(({id}) => id === this.taskId);
+      this.groups[newGroupIdx].tasks.splice(newTaskIdx, 0, currTask);
+      this.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
+      console.log('this.groups[newGroupIdx].tasks',this.groups[newGroupIdx].tasks);
+      // this.$emit('changeTaskPos', this.group);
     }
   }
 };
