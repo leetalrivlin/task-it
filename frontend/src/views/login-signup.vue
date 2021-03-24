@@ -69,7 +69,6 @@
         </li>
       </ul>
     </details> -->
-    <img src="../assets/vectors/login-img.png">
   </div>
 </template>
 

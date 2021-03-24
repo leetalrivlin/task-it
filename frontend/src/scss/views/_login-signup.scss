@@ -1,12 +1,10 @@
 .signup {
   margin-top: 50px;
-
-  img {
-    width: 500px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
+  background: url('~@/assets/vectors/login-img.png');
+  background-size: 500px;
+  background-repeat: no-repeat;
+  background-position-y: bottom;
+  background-position-x: left;
 
   form {
     background-color: white !important;
@@ -15,7 +13,6 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0 0 10px;
     width: 400px;
     text-align: center;
-    // margin-bottom: 50px;
 
     > * {
       width: 320px;
@@ -23,7 +20,7 @@
     }
 
     a {
-      color: #44489F;
+      color: #44489f;
       span {
         text-decoration: underline;
         cursor: pointer;
