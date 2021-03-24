@@ -6,7 +6,7 @@ export default {
   extends: Doughnut,
   props: {
     chartData: {
-      type: Object,
+      type: Array,
     },
     label: {
       type: String,
@@ -17,11 +17,11 @@ export default {
   },
   mounted() {
     this.renderChart({
-      labels: Object.keys(this.chartData.title),
+      labels: Object.keys(this.chartData.group.title),
       datasets: [
         {
           backgroundColor: ['#8790b9', '#7c4d7a', 'f9b9bb', '#f5d993'],
-          data: Object.values(this.chartData.len),
+          data: Object.values(this.chartData.group.len),
         },
       ],
     });

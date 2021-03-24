@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      chartData: null,
+      chartData: [],
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -38,13 +38,12 @@ export default {
     };
   },
   created() {
-    var groupToShow = {};
-    this.board.groups.forEach((group) => {
-      groupToShow.title = group.title;
-      groupToShow.len = group.tasks.length;
+    var groupToShow = [];
+    groupToShow = this.board.groups.map((group) => {
+      return { title: group.title, len: group.tasks.length };
     });
     this.chartData = groupToShow;
-	
+    console.log(this.chartData);
   },
   components: {
     tasksInGroupChart,
