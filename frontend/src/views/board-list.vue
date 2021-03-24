@@ -1,15 +1,15 @@
 <template>
   <section class="main-content main-layout board-list">
-    <h1>Pick a Borad </h1>
+    <h1>Pick a Borad</h1>
     <!-- <button @click='getBoard'>board</button> -->
     <ul class="flex justify-center clean-list">
+      <li class="">
+        <i class="el-icon-plus add-board"></i>
+      </li>
       <li v-for="board in boards" :key="board._id">
         <router-link :style="board.style" :to="`/board/${board._id}`">{{
           board.title
         }}</router-link>
-      </li>
-      <li class="">
-        <i class="el-icon-plus add-board"></i>
       </li>
     </ul>
   </section>

@@ -132,5 +132,8 @@ export default {
     this.boardId = this.$route.params.boardId;
     this.getBoard();
   },
+  // destroyed() {
+  //   this.$store.commit({ type: 'setBoard', task: null });
+  // },
 };
 </script>
