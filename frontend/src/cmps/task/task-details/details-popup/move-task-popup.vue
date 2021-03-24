@@ -71,9 +71,10 @@ export default {
       const currGroupIdx = this.groups.findIndex(({id}) => id === this.groupId);
       const currTaskIdx = this.groups[currGroupIdx].tasks.findIndex(({id}) => id === this.taskId);
       const currTask = this.groups[currGroupIdx].tasks.find(({id}) => id === this.taskId);
+      console.log('tasks before:',this.groups[newGroupIdx].tasks);
       this.groups[newGroupIdx].tasks.splice(newTaskIdx, 0, currTask);
       this.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
-      console.log('this.groups[newGroupIdx].tasks',this.groups[newGroupIdx].tasks);
+      console.log('task after:',this.groups[newGroupIdx].tasks);
       // this.$emit('changeTaskPos', this.group);
     }
   }
