@@ -1,9 +1,5 @@
 import { boardService } from '../services/board.service';
-import {
-  socketService,
-  SOCKET_EMIT_USER_WATCH,
-  SOCKET_EVENT_USER_UPDATED
-} from '../services/socket.service';
+import { socketService } from '../services/socket.service';
 const clone = require('rfdc')({ proto: true });
 
 // var localLoggedinUser = null;
@@ -13,18 +9,18 @@ export const boardStore = {
   state: {
     board: null,
     task: null,
-    users: null,
+    users: null
   },
   getters: {
     board(state) {
       return state.board;
     },
     boardLabels(state) {
-      return state.board.labels
+      return state.board.labels;
     },
     group(state) {
       if (!state.board || !state.task) return;
-      return state.board.groups.find((group) =>
+      return state.board.groups.find(group =>
         group.tasks.some(({ id }) => id === state.task.id)
       );
     },
@@ -32,7 +28,7 @@ export const boardStore = {
       return state.task;
     },
     boardStyle(state) {
-      if (!state.board) return
+      if (!state.board) return;
       return state.board.style;
     }
   },
@@ -42,34 +38,46 @@ export const boardStore = {
     },
     setTask(state, { task }) {
       state.task = task;
-    },
-    setTaskById(state, { taskId }) {
-      state.board.groups.forEach(group => {
-        group.tasks.forEach(task => {
-          if (task.id === taskId) {
-            state.task = task;
-          }
-        });
-      });
-    },
+    }
+    // setTaskById(state, { taskId }) {
+    //   state.board.groups.forEach(group => {
+    //     group.tasks.forEach(task => {
+    //       if (task.id === taskId) {
+    //         state.task = task;
+    //       }
+    //     });
+    //   });
+    // }
   },
   actions: {
     async loadBoard({ commit }, { boardId }) {
       try {
         const board = await boardService.getById(boardId);
         commit({ type: 'setBoard', board });
-        // socketService.emit('watch-board', boardId) // join('u101')
-        // socketService.off('board-updated')
-        // socketService.on('board-updated', board => {
-        //     commit({ type: 'setBoard', board })
-        // })
-        // socketService.on('task-updated', task => {
-        //     commit({ type: 'saveTask', task })
-        // })
+        socketService.emit('board-watch', boardId);
+        socketService.off('board-updated');
+        socketService.on('board-updated', board => {
+          commit({ type: 'setBoard', board });
+        });
       } catch (err) {
         console.log('boardStore: Error in loadBoard', err);
         throw err;
       }
+    },
+
+    async setTaskById({ commit, state }, { taskId }) {
+      state.board.groups.forEach(group => {
+        group.tasks.forEach(task => {
+          if (task.id === taskId) {
+            commit({ type: 'setTask', task });
+            socketService.emit('task-watch', taskId);
+            socketService.off('task-updated');
+            socketService.on('task-updated', task => {
+              commit({ type: 'setTask', task });
+            });
+          }
+        });
+      });
     },
     async updateBoard({ commit }, { board }) {
       try {
@@ -90,10 +98,11 @@ export const boardStore = {
           ({ id }) => id === task.id
         );
         boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1, task);
+        socketService.emit('task-updated', task);
         dispatch({ type: 'updateBoard', board: boardCopy });
       } catch (err) {
         console.log('cannot update task', err);
       }
-    },
+    }
   }
 };

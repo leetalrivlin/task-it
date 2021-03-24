@@ -25,14 +25,14 @@
         color: $clr1;
         margin: 0 15px 15px 0;
         padding: 10px;
-        background-color: rgba(235, 236, 240, 0.24);
+        background-color:#d6d3e5e3;
         line-height: 80px;
         text-align: center;
         font-size: 30px;
         cursor: pointer;
 
         &:hover {
-          background-color: rgba(235, 236, 240, 0.54);
+          background-color: rgba(223, 220, 220, 0.46);        
         }
       }
     }
