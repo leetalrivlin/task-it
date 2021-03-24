@@ -66,13 +66,10 @@
   border: none;
   color: $clr1;
   padding: 10px 12px;
+  border-radius: 3px;
+  outline: none;
 
   &:hover {
-    background-color: rgba(9, 30, 66, 0.116);
-    border-color: #bfbfbfd6;
-    color: $clr1;
-  }
-  &:focus {
     background-color: rgba(9, 30, 66, 0.116);
     border-color: #bfbfbfd6;
     color: $clr1;

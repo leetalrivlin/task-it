@@ -4,20 +4,24 @@
 
     <div class="d-content">
       <div class="flex space-between align-center">
-      <h1 class="task-details-header">{{checklist.title}}</h1>
-      <button class="el-btn-details details-item-btn del-checklist-btn" @click="deleteChecklist">Delete</button>
+        <h1 class="task-details-header">{{ checklist.title }}</h1>
+        <button
+          class="el-btn-details details-item-btn del-checklist-btn"
+          @click="deleteChecklist"
+        >
+          Delete
+        </button>
       </div>
     </div>
-   
-      <p class="percent">{{percentage}}%</p>
-      <el-progress
-        :percentage="percentage"
-        color="#409EFF"
-        type="line"
-        :show-text="showTxt"
-        class="d-content flex align-center"
-      ></el-progress>
 
+    <p class="percent">{{ percentage }}%</p>
+    <el-progress
+      :percentage="percentage"
+      color="#409EFF"
+      type="line"
+      :show-text="showTxt"
+      class="d-content flex align-center"
+    ></el-progress>
 
     <ul v-if="checklist.todos" class="clean-list d-container">
       <checklist-todo
@@ -30,32 +34,32 @@
     </ul>
 
     <!-- <div class="d-container"> -->
-      <div class="d-icon"></div>
-      <a
-        v-if="!isAddTodos"
-        class="el-btn-details details-item-btn checklist-btn d-content"
-        @click="isAddTodos = true"
-        >Add an item</a
-      >
+    <div class="d-icon"></div>
+    <button
+      v-if="!isAddTodos"
+      class="el-btn-details details-item-btn checklist-btn d-content"
+      @click="isAddTodos = true"
+    >
+      Add an item
+    </button>
 
-      <form v-else @submit.prevent="saveTodoTxt">
-        <el-input
-          type="text"
-          placeholder="Add an item"
-          v-model="todoToAdd.txt"
-        ></el-input>
-        <div class="btn-container">
-          <el-button
-            class="task-details-btn"
-            type="info"
-            @click.prevent="saveTodoTxt"
-            >Add</el-button
-          >
-          <i class="el-icon-close" @click="isAddTodos = false"></i>
-        </div>
-      </form>
+    <form v-else @submit.prevent="saveTodoTxt">
+      <el-input
+        type="text"
+        placeholder="Add an item"
+        v-model="todoToAdd.txt"
+      ></el-input>
+      <div class="btn-container">
+        <el-button
+          class="task-details-btn"
+          type="info"
+          @click.prevent="saveTodoTxt"
+          >Add</el-button
+        >
+        <i class="el-icon-close" @click="isAddTodos = false"></i>
+      </div>
+    </form>
     <!-- </div> -->
-
   </section>
 </template>
 
@@ -71,16 +75,16 @@ export default {
   components: { checklistTodo },
   props: {
     task: {
-      type: Object
+      type: Object,
     },
     checklist: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   data() {
     return {
       isAddTodos: false,
-      todoToAdd: null
+      todoToAdd: null,
     };
   },
   computed: {
@@ -91,11 +95,11 @@ export default {
       if (!this.checklist.todos || !this.checklist.todos.length) return 0;
       var isDoneCounter = 0;
       const todos = this.checklist.todos.length;
-      this.checklist.todos.forEach(todo => {
-        if (todo.isDone) isDoneCounter++
-      })
+      this.checklist.todos.forEach((todo) => {
+        if (todo.isDone) isDoneCounter++;
+      });
       return Math.round((100 * isDoneCounter) / todos);
-    }
+    },
   },
   methods: {
     setEmptyTodo() {
@@ -136,7 +140,7 @@ export default {
       const copyTask = this.$clone(this.task);
       copyTask.checklists.splice(checklistIdx, 1);
       this.$emit('updateTask', copyTask);
-    }
+    },
   },
   created() {
     this.setEmptyTodo();

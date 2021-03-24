@@ -8,7 +8,7 @@
         </span>
       </li>
       <li class="list-item" @click="isLabel = !isLabel">
-        <span :style="{ backgroundColor: '#E5E6EA' }"
+        <span class="flex align-center justify-center" :style="{ backgroundColor: '#E5E6EA' }"
           ><i class="el-icon-plus">
             <popup v-if="isLabel" @closePopup="isLabel = false">
               <template v-slot:title>
