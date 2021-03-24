@@ -137,6 +137,7 @@ import checklistPopup from '../task-details/details-popup/checklist-popup.vue';
 import datePopup from '../task-details/details-popup/date-popup.vue';
 import membersPopup from '../task-details/details-popup/members-popup.vue';
 import deleteTaskPopup from '../task-details/details-popup/delete-task-popup.vue';
+import moveTaskPopup from '../task-details/details-popup/move-task-popup.vue';
 
 library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
@@ -219,6 +220,7 @@ export default {
     datePopup,
     membersPopup,
     deleteTaskPopup,
-  },
+    moveTaskPopup
+  }
 };
 </script>

@@ -8,7 +8,7 @@
         <button @click="doLogout">Logout</button>
       </h3>
     </div> -->
-    <div>
+    <div >
       <form
         v-if="signUp"
         class="flex column align-center"
