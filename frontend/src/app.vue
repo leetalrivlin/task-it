@@ -24,10 +24,8 @@ export default {
     selectedHeader() {
       const pageName = this.$route.name;
       if (pageName === 'board' || pageName === 'taskDetails') {
-        console.log('mainHeaderBoard');
         return 'mainHeaderBoard';
       } else {
-        console.log('mainHeader');
         return 'mainHeader';
       }
     },

@@ -13,23 +13,28 @@
     color: $clr1;
   }
   a {
-    border-radius: 3px;
     color: $clr1;
-
-    &:hover {
-      color: $clr1;
-    }
   }
 
   nav {
     color: $clr1;
+    > * {
+      margin-inline-start: rem(10px);
+    }
 
     .member {
       cursor: pointer;
     }
 
-    > * {
-      margin-inline-start: rem(10px);
+    a {
+      border: 1px solid white;
+      background-color: white;
+      padding: 6px 8px;
+      border-radius: 3px;
+      &:hover {
+        background-color: transparent;
+        transition: 1s;
+      }
     }
   }
 }

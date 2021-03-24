@@ -9,8 +9,8 @@
       <router-link to="/">Task-it</router-link></span
     >
     <nav class="flex align-center justify-end">
-      <router-link class="el-btn" to="/login">Signin</router-link>
-      <router-link class="el-btn" to="/board">Boards</router-link>
+      <router-link class="" to="/login">Signin</router-link>
+      <router-link class="" to="/board">Boards</router-link>
       <section
         @click="userPopup = !userPopup"
         className="loggedin-user"
