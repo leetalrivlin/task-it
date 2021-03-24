@@ -53,7 +53,7 @@
   }
 }
 
-@include for-mobile-layout {
+@include for-narrow-layout {
   .board-header {
     .members {
       display: none;
