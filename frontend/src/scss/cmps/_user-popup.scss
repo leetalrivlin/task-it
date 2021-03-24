@@ -31,15 +31,19 @@
       padding: 10px 0;
     }
 
+    .username {
+      font-size: 12px;
+    }
+
     .member {
       margin: 0 8px;
     }
     .btn-container {
       padding: 10px 0;
-      a{
+      a {
         display: block;
       }
-      >* {
+      > * {
         font-size: 14px;
         border-radius: 3px;
         border: none;

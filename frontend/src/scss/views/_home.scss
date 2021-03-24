@@ -3,7 +3,7 @@
     height: 600px;
     padding: 40px;
 
-    background-image: url('~@/assets/vectors/shutterstock_1109658998.png');
+    background-image: url('~@/assets/vectors/shutterstock_1248065062.jpg');
     mix-blend-mode: multiply;
     width: 80%;
     margin: 0 auto;
@@ -26,7 +26,7 @@
         margin-block-start: 30px;
         border: none;
         color: white;
-        background-color: #745ed8;
+        background-color: #5658F7;
         font-size: 30px;
         padding: 10px 20px;
         border-radius: 3px;
@@ -34,8 +34,8 @@
 
         &:hover {
           background-color: transparent;
-          border: 1px solid #745ed8;
-          color: #745ed8;
+          border: 1px solid #5658F7;
+          color: #5658F7;
           transition: 1s;
         }
       }
