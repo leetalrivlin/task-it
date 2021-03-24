@@ -22,6 +22,8 @@
           :labels="boardLabels"
           :taskLableIds="task.labelIds"
           :taskId="task.id"
+          :groups="groups"
+          :groupId="group.id"
           @addChecklist="setEmptyChecklist"
           @addCover="setCover"
           @addImg="setImg"
@@ -105,7 +107,7 @@ export default {
     taskCover,
     taskTitle,
     taskDate,
-    taskMember,
+    taskMember
   },
   computed: {
     task() {
@@ -114,21 +116,21 @@ export default {
     group() {
       return this.$clone(this.$store.getters.group);
     },
+    groups() {
+      return this.$clone(this.$store.getters.board).groups;
+    },
     boardLabels() {
       return this.$clone(this.$store.getters.boardLabels);
     },
     members() {
       return this.$clone(this.$store.getters.board).members;
     },
-    // taskMembers() {
-    //   return clone(this.task.members);
-    // },
     cover() {
       return this.task.cover ? true : false;
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    },
+    }
     // group() {
     //   return boardCopy.groups.find((group) =>
     //     group.tasks.some(({ id }) => id === this.task.id)
@@ -183,7 +185,7 @@ export default {
     setLabel(label) {
       console.log('label', label);
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex((id) => {
+      const labelIdx = this.task.labelIds.findIndex(id => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
@@ -237,7 +239,7 @@ export default {
       cloneBoard.groups.splice(idx, 1, updatedGroup);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
       this.closeDetails();
-    },
+    }
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -245,6 +247,6 @@ export default {
   },
   mounted() {
     this.setDetails();
-  },
+  }
 };
 </script>

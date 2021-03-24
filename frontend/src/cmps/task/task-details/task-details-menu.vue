@@ -107,7 +107,7 @@
           <template v-slot:title>
             <p>Move card</p>
           </template>
-          <move-task-popup />
+          <move-task-popup :groups="groups" :groupId="groupId" :taskId="taskId"/>
         </popup>
       </button>
       <button
@@ -132,7 +132,7 @@ import { faUser, faClock } from '@fortawesome/free-regular-svg-icons';
 import {
   faTag,
   faCheckSquare,
-  faPaperclip,
+  faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import popup from '../../popup.vue';
 import coverAttachments from '../task-details/details-popup/cover-attachments.vue';
@@ -149,23 +149,29 @@ library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
   props: {
     cover: {
-      type: Boolean,
+      type: Boolean
     },
     labels: {
-      type: Array,
+      type: Array
     },
     taskLableIds: {
-      type: Array,
+      type: Array
     },
     members: {
-      type: Array,
+      type: Array
     },
     taskMembers: {
-      type: Array,
+      type: Array
     },
     taskId: {
-      type: String,
+      type: String
     },
+    groupId: {
+      type: String
+    },
+    groups: {
+      type: Array
+    }
   },
   data() {
     return {
@@ -177,7 +183,7 @@ export default {
       isMembers: false,
       isDeleteTask: false,
       isMoveTask: false,
-      dueDate: '',
+      dueDate: ''
     };
   },
   methods: {
@@ -215,7 +221,7 @@ export default {
     },
     deleteTask(taskId) {
       this.$emit('deleteTask', taskId);
-    },
+    }
   },
   components: {
     popup,
