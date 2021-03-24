@@ -1,15 +1,23 @@
 
 <script>
-import { Doughnut } from 'vue-chartjs';
+import { bar } from 'vue-chartjs';
 
 export default {
-  extends: Doughnut,
+  extends: 'bar',
   props: {
     chartData: {
       type: Array,
     },
+    // label:{
+    //   type: String,
+    // }, 
+    // Option:{
+    //   type:Array, 
+    // }
   },
   mounted() {
+
+     
     this.renderChart({
       labels: Object.keys(this.chartData),
       datasets: [
