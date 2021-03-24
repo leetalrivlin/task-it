@@ -6,7 +6,7 @@ export default {
   extends: Doughnut,
   props: {
     chartData: {
-      type: Array,
+      type: Object,
     },
     label: {
       type: String,
@@ -16,28 +16,21 @@ export default {
     },
   },
 
-  computed:{
-    title(){
-       return this.chartData.map((group) => {
-      return group.title
-      });
-    },
-      length(){
-        return this.chartData.map((group) => {
-      return group.length
-      });
-    }
-  },
+
+
   mounted() {
-    this.renderChart({
-      label: this.title,
-      datasets: [
-        {
-          backgroundColor: ['#8790b9', '#7c4d7a', 'f9b9bb', '#f5d993'],
-          data: this.length,
-        },
-      ],
-    });
+    this.renderChart(
+      {
+        labels: this.chartData.title,
+        datasets: [
+          {
+            backgroundColor: ['#8790b9', '#7c4d7a', 'f9b9bb', '#f5d993'],
+            data: this.chartData.lengthGroup,
+          },
+        ],
+      },
+      this.options
+    );
   },
 };
 </script>
