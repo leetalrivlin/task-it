@@ -9,7 +9,7 @@
         role="img"
         aria-label="logo"
       >
-        <router-link to="/">Task-it</router-link></span
+        <router-link to="/"><img src="~@/assets/imgs/task-it-logo-white.png" class="task-it-logo"></router-link></span
       >
       <section
         class="window-overlay"
