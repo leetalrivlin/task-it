@@ -1,14 +1,12 @@
 <template>
-  <section class="tasks-users ">
+  <section class="tasks-users">
     <tasks-in-group-chart
       v-if="chartData"
       :chartData="chartData"
-	  
-    
+      label=" tasks per group"
+      :optains="options"
     />
   </section>
-  <!-- label=" tasks per group"
-  :optains="options" -->
 </template>
 
  
@@ -24,13 +22,29 @@ export default {
   data() {
     return {
       chartData: null,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scaleFontColor: '#FFFFFF',
+
+        legend: {
+          fontColor: '#fff',
+          labels: {
+            fontColor: 'white',
+            fontSize: 20,
+          },
+        },
+      },
     };
   },
   created() {
-    const tasksAmount = this.board.groups.map((group) => {
-     return group.tasks.length;
+	  var groupToShow={}
+     this.board.groups.foreach((group) => {
+		 var groupTitle = group.title
+      groupToShow.groupTitle= group.tasks.length;
     });
     this.chartData = tasksAmount;
+
   },
   components: {
     tasksInGroupChart,
