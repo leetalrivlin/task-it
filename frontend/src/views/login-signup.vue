@@ -21,7 +21,7 @@
           placeholder="Full name"
         />
         <input
-          type="text"
+          type="password"
           v-model="signupCred.password"
           placeholder="Password"
         />

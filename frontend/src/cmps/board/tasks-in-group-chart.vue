@@ -6,17 +6,22 @@ export default {
   extends: Doughnut,
   props: {
     chartData: {
-      type: Array,
+      type: Object,
+    },
+    label: {
+      type: String,
+    },
+    Option: {
+      type: Object,
     },
   },
   mounted() {
     this.renderChart({
-      labels: Object.keys(this.chartData),
+      labels: Object.keys(this.chartData.title),
       datasets: [
         {
-          label: ['title' , 'group1' , 'group3' , 'group4'],
-          backgroundColor: ['#8790b9', '#7c4d7a','f9b9bb' , '#f5d993'],
-          data: Object.values(this.chartData),
+          backgroundColor: ['#8790b9', '#7c4d7a', 'f9b9bb', '#f5d993'],
+          data: Object.values(this.chartData.len),
         },
       ],
     });
