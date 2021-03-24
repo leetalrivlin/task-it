@@ -38,13 +38,11 @@ export default {
     };
   },
   created() {
-	  var groupToShow={}
-     this.board.groups.foreach((group) => {
-		 var groupTitle = group.title
-      groupToShow.groupTitle= group.tasks.length;
+    var groupToShow = {};
+   groupToShow= this.board.groups.map((group) => {
+     return  group.title;
+      groupToShow[groupTitle] = group.tasks.length;
     });
-    this.chartData = tasksAmount;
-
   },
   components: {
     tasksInGroupChart,
