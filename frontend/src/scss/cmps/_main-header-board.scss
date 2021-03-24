@@ -1,8 +1,7 @@
-.main-header {
-  height: 70px;
-  background-color: transparent;
-  color: $clr1;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.main-header-board {
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
 
   .logo {
     font-size: 26px;
@@ -10,20 +9,12 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%);
-    color: $clr1;
   }
   a {
     border-radius: 3px;
-    color: $clr1;
-
-    &:hover {
-      color: $clr1;
-    }
   }
 
   nav {
-    color: $clr1;
-
     .member {
       cursor: pointer;
     }
@@ -33,3 +24,4 @@
     }
   }
 }
+
