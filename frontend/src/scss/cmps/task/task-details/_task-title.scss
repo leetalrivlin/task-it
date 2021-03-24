@@ -25,10 +25,12 @@
           color: $clr1;
           text-decoration: underline;
           cursor: pointer;
+          display: inline-block;
+          position: relative;
         }
       }
     }
-    p.move-title {
+    #move-title {
       margin: 16px 0 4px 0;
       font-size: 12px;
     }
