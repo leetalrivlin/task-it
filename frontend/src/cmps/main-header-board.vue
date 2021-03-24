@@ -1,5 +1,7 @@
 <template>
-  <header class="header-layout flex align-center space-between main-header">
+  <header
+    class="header-layout flex align-center space-between main-header-board"
+  >
     <div class="container"></div>
     <span
       class="flex justify-center align-center logo"
@@ -38,7 +40,7 @@
 import Avatar from 'vue-avatar';
 import userPopup from './user-popup.vue';
 export default {
-    name:'mainHeader',
+  name: 'mainHeaderBoard',
   components: {
     Avatar,
     userPopup,
