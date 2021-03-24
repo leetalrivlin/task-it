@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      chartData: null,
+      chartData: {},
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -40,14 +40,24 @@ export default {
   created() {
     var groupToShow = {};
     this.board.groups.forEach((group) => {
-      groupToShow.title = group.title;
-      groupToShow.len = group.tasks.length;
+      var title = group.title;
+      groupToShow[title] = group.tasks.length;
     });
-    this.chartData = groupToShow;
+	this.chartData.lengthGroup = Object.values(groupToShow)
+	this.chartData.title = Object.keys(groupToShow)
+	console.log(this.chartData);
 	
   },
   components: {
-    tasksInGroupChart,
+	  tasksInGroupChart,
   },
 };
 </script>
+
+  let groupMap = {};
+            this.board.groups.forEach(group => {
+                let groupTitle = group.title
+                groupMap[groupTitle] = group.tickets.length
+            });
+            this.chartData.groupTitle = Object.keys(groupMap)
+            this.chartData.ticketCount = Object.values(groupMap)
