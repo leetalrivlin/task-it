@@ -11,6 +11,7 @@
           board.title
         }}</router-link>
       </li>
+      
     </ul>
   </section>
 </template>
