@@ -1,0 +1,23 @@
+.move-task-container {
+  .move-title {
+    margin: 16px 0 4px 0;
+  }
+  .selects-container {
+    .group-select {
+      flex: 1;
+      .el-select {
+        margin-block-start: 5px;
+      }
+    }
+    .pos-select {
+      width: 30%;
+      margin-inline-start: 5px;
+      .el-select {
+        margin-block-start: 5px;
+      }
+    }
+  }
+  button {
+    margin-block-start: 10px;
+  }
+}

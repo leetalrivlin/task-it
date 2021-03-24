@@ -1,10 +1,10 @@
 <template>
   <section class="move-task-container">
-    <p>Select Destination</p>
-    <section class="flex space-between">
-      <div>
-        <p>List</p>
-        <el-select v-model="chosenGroup" @change="showGroupTasks">
+    <p class="task-details-title move-title">Select Destination</p>
+    <section class="flex space-between selects-container">
+      <div class="group-select">
+        <label>List</label>
+        <el-select v-model="chosenGroupId" @change="showGroupTasks">
           <el-option
             v-for="group in groups"
             :key="group.id"
@@ -14,18 +14,19 @@
           </el-option>
         </el-select>
       </div>
-      <div>
-        <p>Position</p>
-        <!-- <el-select v-model="taskIdx">
+      <div class="pos-select">
+        <label>Position</label>
+        <el-select v-model="chosenTaskPos">
         <el-option
-          v-for="idx in tasksLength"
-          :key="idx"
-          :value="idx"
+          v-for="pos in tasksLen"
+          :key="pos"
+          :value="pos"
         >
         </el-option>
-      </el-select> -->
+      </el-select>
       </div>
     </section>
+    <el-button type="info" class="task-details-btn">Move</el-button>
   </section>
 </template>
 
@@ -44,27 +45,25 @@ export default {
   },
   data() {
     return {
-      chosenGroup: '',
-      taskIdx: null,
+      chosenGroupId: '',
+      tasksLen: null,
+      chosenTaskPos: null,
     };
   },
   computed: {
-    currGroup() {
+    openedTaskGroup() {
       return this.groups.find(({ id }) => id === this.groupId);
     },
     tasks() {
-      return this.currGroup;
+      return this.currGroup.tasks;
     },
-    tasksLength() {
-      var chosenGroup;
-      if (this.currGroup) chosenGroup = this.currGroup;
-      chosenGroup = this.groups.find(({ id }) => id === this.chosenGroup.id);
-      return chosenGroup.tasks.length;
-    }
   },
   methods: {
     showGroupTasks() {
-      console.log('this.chosenGroup', this.chosenGroup);
+       var chosenGroup;
+      if (this.chosenGroupId === this.openedTaskGroup.id) chosenGroup = this.openedTaskGroup;
+      chosenGroup = this.groups.find(({ id }) => id === this.chosenGroupId);
+      this.tasksLen = chosenGroup.tasks.length;
     }
   }
 };
