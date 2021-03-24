@@ -18,10 +18,9 @@
   }
   .board-menu-btn {
     position: relative;
-  }
-
-  .icon {
-    margin-inline-end: 5px;
+    .icon {
+      margin-inline-end: 5px;
+    }
   }
 
   .slide-enter-active {
@@ -54,8 +53,33 @@
   }
 }
 
-// @include for-wide-layout {
-//   .board-header {
-//     height: 6vh;
-//   }
-// }
+@include for-mobile-layout {
+  .board-header {
+    .members {
+      display: none;
+    }
+    .dashboard-btn {
+      font-size: rem(18px);
+      p {
+        display: none;
+      }
+    }
+    .board-menu-btn {
+      align-items: center;
+      justify-content: center;
+      font-size: rem(18px);
+      p {
+        display: none;
+      }
+      .icon {
+        margin: 0;
+      }
+    }
+
+    // flex-direction: column;
+    // height: unset;
+    // > * {
+    //   margin-block-end: 10ox;
+    // }
+  }
+}

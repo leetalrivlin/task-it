@@ -2,14 +2,6 @@
   <header class="flex align-center space-between header-layout board-header">
     <el-button class="el-btn board-title">{{ board.title }}</el-button>
     <div class="members flex">
-      <avatar
-        class="member"
-        :username="board.createdBy.fullname"
-        :src="board.createdBy.imgUrl"
-        color="white"
-        :size="30"
-      ></avatar>
-
       <div v-for="member in membersBoard" :key="member._id">
         <avatar
           class="member"
@@ -41,10 +33,11 @@
       </span>
     </div>
 
-    <div>
-      <el-button class="el-btn dashboard-btn" @click="isDashboardOpen = true">
-        <i class="el-icon-s-data dashboard-icon" />Dashboard</el-button
-      >
+    <div class="flex">
+      <button class="flex el-btn dashboard-btn" @click="isDashboardOpen = true">
+        <i class="el-icon-s-data dashboard-icon" />
+        <p>Dashboard</p>
+      </button>
       <board-dashboard
         :board="board"
         v-if="isDashboardOpen"
@@ -52,12 +45,10 @@
         v-click-outside="closeDashboard"
       />
 
-      <el-button
-        class="el-btn board-menu-btn"
-        icon="el-icon-more icon"
-        @click="isMenuOpen = true"
-        >Show Menu</el-button
-      >
+      <button class="flex align-center el-btn board-menu-btn" @click="isMenuOpen = true">
+        <i class="el-icon-more icon"></i>
+        <p>Show Menu</p>
+      </button>
       <transition name="slide">
         <board-menu
           @tasksToShow="tasksToShow"

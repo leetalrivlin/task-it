@@ -8,13 +8,16 @@
     align-self: flex-start;
   }
   .nav-container {
-    .open-popup-btn {
+    .open-popup-btn-container {
       width: 100%;
-      margin: 0 0 10px 0;
-      text-align: left;
-      position: relative;
-      .fa-nav-icon {
-        margin-inline-end: 10px;
+      .open-popup-btn {
+        width: 100%;
+        margin: 0 0 10px 0;
+        text-align: left;
+        position: relative;
+        .fa-nav-icon {
+          margin-inline-end: 10px;
+        }
       }
     }
   }
@@ -26,5 +29,30 @@
     bottom: 0;
     left: 0;
     right: 0;
+  }
+}
+
+@include for-mobile-layout {
+  .cntrlr-container {
+    .nav-container {
+      .open-popup-btn-container {
+        display: flex;
+      
+        .open-popup-btn {
+          margin-inline-end: 10px;
+          width: 40px;
+          display: flex;
+          align-content: center;
+          justify-content: center;
+          align-items: center;
+          p {
+            display: none;
+          }
+          .fa-nav-icon {
+            margin: 0;
+          }
+        }
+      }
+    }
   }
 }
