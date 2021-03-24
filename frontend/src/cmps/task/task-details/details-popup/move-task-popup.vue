@@ -1,6 +1,6 @@
 <template>
   <section class="move-task-container">
-    <p class="task-details-title move-title">Select Destination</p>
+    <p class="task-details-title move-title" id="move-title">Select Destination</p>
     <section class="flex space-between selects-container">
       <div class="group-select">
         <label>List</label>
