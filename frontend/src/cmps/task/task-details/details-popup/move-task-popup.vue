@@ -54,9 +54,6 @@ export default {
     openedTaskGroup() {
       return this.groups.find(({ id }) => id === this.groupId);
     },
-    // tasks() {
-    //   return this.currGroup.tasks;
-    // },
   },
   methods: {
     showGroupTasks() {
@@ -71,10 +68,11 @@ export default {
       const currGroupIdx = this.groups.findIndex(({id}) => id === this.groupId);
       const currTaskIdx = this.groups[currGroupIdx].tasks.findIndex(({id}) => id === this.taskId);
       const currTask = this.groups[currGroupIdx].tasks.find(({id}) => id === this.taskId);
-      this.groups[newGroupIdx].tasks.splice(newTaskIdx, 0, currTask);
       this.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
-      console.log('this.groups[newGroupIdx].tasks',this.groups[newGroupIdx].tasks);
-      // this.$emit('changeTaskPos', this.group);
+      this.groups[newGroupIdx].tasks.splice(newTaskIdx, 0, currTask);
+      this.$emit('updateTaskPos', this.groups[newGroupIdx]);
+      this.$emit('updateTaskPos', this.groups[currGroupIdx]);
+      this.$emit('closePopup');
     }
   }
 };

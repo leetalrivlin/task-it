@@ -108,38 +108,40 @@
     </section>
     <section class="flex column align-center nav-container">
       <p class="task-details-title btns-title">Actions</p>
-       <div class="open-popup-btn-container">
-      <button
-        class="flex el-btn-details open-popup-btn"
-        @click="isMoveTask = true"
-      >
-        <i class="el-icon-right fa-nav-icon"></i>
-        <p>Move</p>
-        <popup v-if="isMoveTask" @closePopup="isMoveTask = false">
-          <template v-slot:title>
-            <p>Move card</p>
-          </template>
-          <move-task-popup
-            :groups="groups"
-            :groupId="groupId"
-            :taskId="taskId"
-          />
-        </popup>
-      </button>
-      <button
-        class="flex el-btn-details open-popup-btn"
-        @click="isDeleteTask = true"
-      >
-        <i class="el-icon-delete fa-nav-icon"></i>
-        <p>Delete</p>
-        <popup v-if="isDeleteTask" @closePopup="isDeleteTask = false">
-          <template v-slot:title>
-            <p>Delete card?</p>
-          </template>
-          <delete-task-popup :taskId="taskId" @deleteTask="deleteTask" />
-        </popup>
-      </button>
-       </div>
+      <div class="open-popup-btn-container">
+        <button
+          class="flex el-btn-details open-popup-btn"
+          @click="isMoveTask = true"
+        >
+          <i class="el-icon-right fa-nav-icon"></i>
+          <p>Move</p>
+          <popup v-if="isMoveTask" @closePopup="isMoveTask = false">
+            <template v-slot:title>
+              <p>Move card</p>
+            </template>
+            <move-task-popup
+              :groups="groups"
+              :groupId="groupId"
+              :taskId="taskId"
+              @updateTaskPos="updateTaskPos"
+              @closePopup="isMoveTask = false"
+            />
+          </popup>
+        </button>
+        <button
+          class="flex el-btn-details open-popup-btn"
+          @click="isDeleteTask = true"
+        >
+          <i class="el-icon-delete fa-nav-icon"></i>
+          <p>Delete</p>
+          <popup v-if="isDeleteTask" @closePopup="isDeleteTask = false">
+            <template v-slot:title>
+              <p>Delete card?</p>
+            </template>
+            <delete-task-popup :taskId="taskId" @deleteTask="deleteTask" />
+          </popup>
+        </button>
+      </div>
     </section>
   </nav>
 </template>
@@ -150,7 +152,7 @@ import { faUser, faClock } from '@fortawesome/free-regular-svg-icons';
 import {
   faTag,
   faCheckSquare,
-  faPaperclip,
+  faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import popup from '../../popup.vue';
 import coverAttachments from '../task-details/details-popup/cover-attachments.vue';
@@ -167,29 +169,29 @@ library.add(faUser, faTag, faCheckSquare, faClock, faPaperclip);
 export default {
   props: {
     cover: {
-      type: Boolean,
+      type: Boolean
     },
     labels: {
-      type: Array,
+      type: Array
     },
     taskLableIds: {
-      type: Array,
+      type: Array
     },
     members: {
-      type: Array,
+      type: Array
     },
     taskMembers: {
-      type: Array,
+      type: Array
     },
     taskId: {
-      type: String,
+      type: String
     },
     groupId: {
-      type: String,
+      type: String
     },
     groups: {
-      type: Array,
-    },
+      type: Array
+    }
   },
   data() {
     return {
@@ -201,7 +203,7 @@ export default {
       isMembers: false,
       isDeleteTask: false,
       isMoveTask: false,
-      dueDate: '',
+      dueDate: ''
     };
   },
   methods: {
@@ -240,6 +242,9 @@ export default {
     deleteTask(taskId) {
       this.$emit('deleteTask', taskId);
     },
+    updateTaskPos(updatedGroup) {
+      this.$emit('updateTaskPos', updatedGroup);
+    },
   },
   components: {
     popup,
@@ -251,7 +256,7 @@ export default {
     datePopup,
     membersPopup,
     deleteTaskPopup,
-    moveTaskPopup,
-  },
+    moveTaskPopup
+  }
 };
 </script>

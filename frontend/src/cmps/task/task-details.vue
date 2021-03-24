@@ -14,7 +14,7 @@
         @saveImg="updateTask"
       />
       <section class="details-grid">
-        <task-title :task="task" :group="group" @updateTask="updateTask" />
+        <task-title :groups="groups" :task="task" :group="group" @updateTask="updateTask"/>
         <task-details-menu
           :members="members"
           :taskMembers="task.members"
@@ -33,6 +33,7 @@
           @setDueDate="setDueDate"
           @addMemberToTask="setMember"
           @deleteTask="deleteTask"
+          @updateTaskPos="updateBoard"
         />
         <section class="flex column task-main">
           <div class="d-desc">
@@ -76,7 +77,6 @@
             />
           </ul>
         </section>
-                
       </section>
     </section>
   </section>
@@ -108,7 +108,7 @@ export default {
     taskCover,
     taskTitle,
     taskDate,
-    taskMember,
+    taskMember
   },
   computed: {
     task() {
@@ -131,7 +131,7 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
-    },
+    }
     // group() {
     //   return boardCopy.groups.find((group) =>
     //     group.tasks.some(({ id }) => id === this.task.id)
@@ -186,7 +186,7 @@ export default {
     setLabel(label) {
       console.log('label', label);
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex((id) => {
+      const labelIdx = this.task.labelIds.findIndex(id => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
@@ -227,10 +227,10 @@ export default {
       this.updateTask(this.task);
     },
     deleteTask(taskId) {
-      console.log('taskId', taskId);
       const taskIdx = this.group.tasks.findIndex(({ id }) => id === taskId);
       this.group.tasks.splice(taskIdx, 1);
       this.updateBoard(this.group);
+      this.closeDetails();
     },
     updateBoard(updatedGroup) {
       const cloneBoard = this.$clone(this.$store.getters.board);
@@ -239,8 +239,8 @@ export default {
       );
       cloneBoard.groups.splice(idx, 1, updatedGroup);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
-      this.closeDetails();
-    },
+      // this.closeDetails();
+    }
   },
   created() {
     const taskId = this.$route.params.taskId;
@@ -248,7 +248,7 @@ export default {
   },
   mounted() {
     this.setDetails();
-  },
+  }
   // destroyed() {
   //   this.$store.commit({ type: 'setTask', task: null });
   // },
