@@ -59,7 +59,7 @@
         >
       </form>
     </div>
-    <hr />
+    <!-- <hr /> -->
     <!-- <details>
       <summary>Admin Section</summary>
       <ul>
@@ -69,6 +69,7 @@
         </li>
       </ul>
     </details> -->
+    <img src="../assets/vectors/login-img.png">
   </div>
 </template>
 
