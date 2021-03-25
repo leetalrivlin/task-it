@@ -27,6 +27,38 @@
         border-radius: 5px;
         color: #fff;
 
+        .data-container {
+            .task-amount {
+                .task-icon {
+                    color: rgb(255, 255, 255);
+                    height: 100%;
+                    padding: 15px;
+                    font-size: 24px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 5px 0 0 5px;
+                    background-color: rgba(145, 194, 196, 0.89);
+                    width: 19px;
+                    padding: 20px 23px 50px 23px;
+                }
+                .data-task {
+                    padding: 2px 19px 0px 6px;
+                    color: grey;
+                    background-color: white;
+                    clip-path: polygon(0 0, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+
+                    p{
+                        font-size: rem(20px);
+                    }
+                    span{
+                        display: block;
+                        font-size: 32px;
+                    }
+                }
+            }
+        }
+
         .close-btn {
             position: absolute;
             top: 10px;
@@ -38,6 +70,8 @@
         .dashboard-header {
             font-size: 30px;
             font-family: Segoe-Bold, serif;
+            margin-top: 47px;
         }
     }
+
 }
