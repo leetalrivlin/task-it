@@ -4,10 +4,16 @@
   .main-header-board-container {
     height: 50px;
     .logo {
-      width: 140px;
       position: absolute;
       left: 50%;
       transform: translate(-50%);
+      .task-it-logo {
+        font-family: Baumans;
+        font-size: 30px;
+      }
+      .gif-icon {
+        width: 50px;
+      }
     }
     a {
       border-radius: 3px;

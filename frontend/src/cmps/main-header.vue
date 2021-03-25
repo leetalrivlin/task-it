@@ -4,7 +4,7 @@
       <div class="container"></div>
       <span
         class="flex justify-center align-center logo">
-        <router-link to="/"><img src="~@/assets/imgs/task-it-logo-purple.png" class="task-it-logo"></router-link></span
+        <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-clr1-bounce.gif" class="gif-icon"></div></router-link></span
       >
       <section
         class="window-overlay"
@@ -33,7 +33,14 @@
             @closePopup="userPopup = false"
             @logout="doLogout"
           />
-        </section> 
+        </section>
+        <hr class="mobile-separator">
+        <user-popup
+          class="loggedin-user-mobile"
+          :loggedInUser="loggedInUser"
+          @closePopup="userPopup = false"
+          @logout="doLogout"
+        />
       </nav>
     </section>
     <button class="menu-btn el-btn" @click="openNav">☰</button>
