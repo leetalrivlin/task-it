@@ -143,8 +143,12 @@
     grid-template-columns: 1fr;
     .d-cntrlr {
       grid-column: 1;
-      // display: grid;
-      // grid-template-columns: repeat(6,1fr);
+      .d-menu {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-gap: 8px;
+      }
     }
   }
 }

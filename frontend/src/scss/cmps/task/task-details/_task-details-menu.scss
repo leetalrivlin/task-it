@@ -34,6 +34,10 @@
 
 @include for-mobile-layout {
   .cntrlr-container {
+    // position: fixed;
+    // bottom: 0;
+    // background-color: grey;
+    // z-index: 10;
     .nav-container {
       .open-popup-btn-container {
         display: flex;

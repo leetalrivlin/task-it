@@ -1,8 +1,8 @@
 <template>
-  <nav class="d-cntrlr flex column align-center cntrlr-container">
+  <nav class="d-cntrlr cntrlr-container">
     <section class="flex column align-center nav-container">
       <p class="task-details-title btns-title">Add To Card</p>
-      <div class="open-popup-btn-container">
+      <div class="open-popup-btn-container d-menu">
         <button
           class="flex el-btn-details open-popup-btn"
           @click.stop="isMembers = true"
@@ -108,7 +108,7 @@
     </section>
     <section class="flex column align-center nav-container">
       <p class="task-details-title btns-title">Actions</p>
-      <div class="open-popup-btn-container">
+      <div class="open-popup-btn-container d-menu">
         <button
           class="flex el-btn-details open-popup-btn"
           @click="isMoveTask = true"
