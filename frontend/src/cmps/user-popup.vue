@@ -1,5 +1,5 @@
 <template>
-  <section class="user-popup" @click.stop>
+  <section v-if="loggedInUser" class="user-popup" @click.stop>
     <section class="flex align-center justify-center header">
       <p>Account</p>
       <i class="el-icon-close close-cntrl" @click.stop="closePopup"></i>

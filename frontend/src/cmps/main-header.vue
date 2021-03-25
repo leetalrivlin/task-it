@@ -13,8 +13,8 @@
         v-if="ismobile"
       ></section>
       <nav ref="navMenu" class="flex align-center">
-        <router-link class="" to="/login">Signin</router-link>
-        <router-link class="" to="/board">Boards</router-link>
+        <router-link class="el-btn" to="/login">Signin</router-link>
+        <router-link class="el-btn" to="/board">Boards</router-link>
         <section
           @click="userPopup = !userPopup"
           class="loggedin-user"
@@ -43,7 +43,7 @@
         />
       </nav>
     </section>
-    <button class="menu-btn el-btn" @click="openNav">☰</button>
+    <button class="el-btn menu-btn " @click="openNav">☰</button>
   </header>
 </template>
 <script>
