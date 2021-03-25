@@ -8,15 +8,8 @@
         <router-link class="el-btn" to="/board">Boards</router-link>
       </div>
       <span class="flex justify-center align-center logo">
-        <!-- <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-clr1-bounce.gif" class="gif-icon"></div></router-link></span -->
-        <router-link to="/"
-          ><div class="flex justify-center align-center">
-            <span class="task-it-logo">Taskit</span
-            ><img
-              src="~@/assets/imgs/task-it-icon-clr1.png"
-              class="gif-icon"
-            /></div></router-link
-      ></span>
+        <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-clr1-bounce.gif" class="gif-icon"></div></router-link>
+        </span>
       <section
         class="window-overlay"
         @click="closeNav"
