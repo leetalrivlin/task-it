@@ -4,7 +4,7 @@
       <div class="container"></div>
       <span
         class="flex justify-center align-center logo">
-        <router-link to="/"><div class="flex justify-center align-center"><img src="~@/assets/imgs/task-it-logo-words-clr1.png" class="task-it-logo"><img src="~@/assets/imgs/task-it-logo-clr1-bounce.gif" class="gif-icon"></div></router-link></span
+        <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-clr1-bounce.gif" class="gif-icon"></div></router-link></span
       >
       <section
         class="window-overlay"
