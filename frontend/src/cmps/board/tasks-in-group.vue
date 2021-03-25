@@ -3,8 +3,7 @@
     <tasks-in-group-chart
       v-if="chartData"
       :chartData="chartData"
-      label=" tasks per group"
-      :optains="options"
+      :options="options"
     />
   </section>
 </template>
@@ -21,19 +20,19 @@ export default {
   },
   data() {
     return {
-      chartData: {},
+      chartData: {
+        borderWidth: 4,
+        borderColor: 'black',
+      },
       options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scaleFontColor: '#FFFFFF',
-
-        legend: {
-          fontColor: '#fff',
-          labels: {
-            fontColor: 'white',
-            fontSize: 20,
-          },
+        title: {
+          display: true,
+          text: 'Tasks per group',
+          fontSize: 25,
         },
+      },
+      legend: {
+        position: 'left',
       },
     };
   },
@@ -46,17 +45,22 @@ export default {
     this.chartData.lengthGroup = Object.values(groupToShow);
     this.chartData.title = Object.keys(groupToShow);
     console.log(this.chartData);
+
+    var colors = [
+      'rgb(170, 79, 77)',
+      '#4d96c9',
+      '#D8DA7C',
+      'rgb(141 87 148 / 89%)',
+      '#85B1B3',
+      '#763857',
+      '#f7d9d9',
+    ];
+
+    this.chartData.colors = colors;
+    this.showChart = true;
   },
   components: {
     tasksInGroupChart,
   },
 };
 </script>
-
-  let groupMap = {};
-            this.board.groups.forEach(group => {
-                let groupTitle = group.title
-                groupMap[groupTitle] = group.tickets.length
-            });
-            this.chartData.groupTitle = Object.keys(groupMap)
-            this.chartData.ticketCount = Object.values(groupMap)

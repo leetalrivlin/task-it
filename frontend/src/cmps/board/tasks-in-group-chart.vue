@@ -11,12 +11,10 @@ export default {
     label: {
       type: String,
     },
-    Option: {
+    options: {
       type: Object,
     },
   },
-
-
 
   mounted() {
     this.renderChart(
@@ -24,8 +22,11 @@ export default {
         labels: this.chartData.title,
         datasets: [
           {
-            backgroundColor: ['#8790b9', '#7c4d7a', 'f9b9bb', '#f5d993' , ],
+            label: this.chartData.title,
             data: this.chartData.lengthGroup,
+            backgroundColor:this.chartData.colors,
+           borderColor:this.chartData.colors,
+           
           },
         ],
       },

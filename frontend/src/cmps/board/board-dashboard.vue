@@ -30,7 +30,7 @@
           <i class="el-icon-time flex justify-center align-center icon" />
           <div class="data">
             <p>Activity</p>
-            {{ countActivity }}
+            <!-- {{ countActivity }} -->
           </div>
         </li>
         <li class="flex column amount comments-amount">
@@ -39,13 +39,14 @@
           />
           <div class="data">
             <p>Comments</p>
-            {{ countComments }}
+            <!-- {{ countComments }} -->
           </div>
         </li>
       </ul>
 
-      <div class="flex justify-center charts">
-        <tasks-in-group class="tasks-users" :board="board" />
+      <div class="flex charts">
+        <tasks-in-group  :board="board" />
+        <member-task-count  :board="board" />
       </div>
     </div>
   </section>
@@ -53,6 +54,7 @@
 
 <script>
 import tasksInGroup from './tasks-in-group.vue';
+import memberTaskCount from './member-task-count.vue';
 export default {
   props: {
     board: {
@@ -84,6 +86,7 @@ export default {
   },
   components: {
     tasksInGroup,
+    memberTaskCount,
   },
 };
 </script>
