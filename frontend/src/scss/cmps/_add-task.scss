@@ -7,9 +7,10 @@
     .el-button--info {
         margin-inline-end: 10px;
     }
-    .el-textarea__inner {
+    .textarea {
         padding: 6px 8px;
         margin-block-end: 10px;
+        color:$clr1;
     }
     .el-icon-close:before {
         font-size: rem(16px);
