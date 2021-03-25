@@ -9,7 +9,7 @@
         role="img"
         aria-label="logo"
       >
-        <router-link to="/"><div class="flex justify-center align-center"><img src="~@/assets/imgs/task-it-logo-words-white.png" class="task-it-logo"><img src="~@/assets/imgs/task-it-logo-white-bounce.gif" class="gif-icon"></div></router-link></span
+        <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-white-bounce.gif" class="gif-icon"></div></router-link></span
       >
       <section
         class="window-overlay"
