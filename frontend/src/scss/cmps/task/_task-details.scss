@@ -137,6 +137,7 @@
 
 @include for-mobile-layout {
   .window-overlay {
+    padding: 0;
     .task-details {
       width: 100%;
       min-height: 100vh;
