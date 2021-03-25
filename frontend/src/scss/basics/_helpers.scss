@@ -45,12 +45,16 @@
 
 /* BUTTON HELPERS */
 .el-btn {
-  background-color: hsla(0, 0%, 100%, 0.24);
+  background-color: rgba(255, 255, 255, 0.24);
   border: none;
   color: #fff;
-  padding: 6px 10px;
+  height: 30px;
   border-radius: 3px;
   outline: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
   &:hover {
     background-color: hsla(0, 0%, 100%, 0.32);
     border-color: #bfbfbfd6;

@@ -34,6 +34,10 @@
         cursor: pointer;
       }
 
+      .loggedin-user-mobile {
+        display: none;
+      }
+
       > * {
         margin-inline-start: rem(10px);
       }
@@ -60,9 +64,18 @@
         transform: translateX(100%);
         box-shadow: none;
         z-index: 20;
-        transition: transform 0.8s, box-shadow 0.8s;
-        font-size: 22px;
-        padding: 40px 0;
+        transition: transform 1s, box-shadow 1s;
+
+        > * {
+          margin-inline-start: unset;
+        }
+
+        .loggedin-user {
+          display: none;
+        }
+        .loggedin-user-mobile {
+          display: block;
+        }
 
         a {
           color: $clr1;
@@ -71,7 +84,11 @@
           margin-block-end: 12px;
           background-color: transparent;
           border: none;
-          font-size: 14px;
+          padding: 9px 12px;
+          font-size: 18px;
+          &:hover {
+            background: rgba(9, 30, 66, 0.04);
+          }
         }
       }
     }

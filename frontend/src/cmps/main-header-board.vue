@@ -21,7 +21,7 @@
         <router-link class="el-btn" to="/board">Boards</router-link>
         <section
           @click="userPopup = !userPopup"
-          className="loggedin-user"
+          class="loggedin-user"
           v-if="loggedInUser"
         >
           <div class="avatar-container">
@@ -41,6 +41,12 @@
             @logout="doLogout"
           />
         </section>
+        <user-popup
+          class="loggedin-user-mobile"
+          :loggedInUser="loggedInUser"
+          @closePopup="userPopup = false"
+          @logout="doLogout"
+        />
       </nav>
     </section>
     <button class="menu-btn el-btn" @click="openNav">☰</button>

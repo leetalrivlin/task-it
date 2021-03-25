@@ -14,7 +14,6 @@
 
   .board-title {
     font-family: Segoe-Bold, serif;
-    font-size: rem(18px);
   }
   .board-menu-btn {
     position: relative;
@@ -41,8 +40,8 @@
       position: relative;
     }
   }
-  .invite-button {
-    margin-inline-start:rem(10px);
+  .invite-btn {
+    margin-inline-start: rem(10px);
   }
 
   .dashboard-btn {
@@ -55,8 +54,12 @@
 
 @include for-narrow-layout {
   .board-header {
-    .members {
+    .members-list {
       display: none;
+    }
+
+    .invite-btn {
+      margin-inline-start: unset;
     }
     .dashboard-btn {
       font-size: rem(18px);
