@@ -7,10 +7,15 @@
   .main-header-container {
     height: 70px;
     .logo {
-      width: 155px;
       position: absolute;
       left: 50%;
       transform: translate(-50%);
+      .task-it-logo {
+        width: 20%;
+      }
+      .gif-icon {
+        width: 10%;
+      }
     }
     a {
       color: $clr1;
