@@ -4,7 +4,7 @@
       <p>Account</p>
       <i class="el-icon-close close-cntrl" @click.stop="closePopup"></i>
     </section>
-    <hr />
+    <hr class="web-separator" />
     <section class="main">
       <section class="flex align-center user-info">
         <avatar
@@ -20,7 +20,7 @@
           <p class="username">{{ loggedInUser.username }}</p>
         </section>
       </section>
-      <hr />
+      <hr class="web-separator" />
       <section class="btn-container">
         <router-link :to="`/user/${loggedInUser._id}`">Profile </router-link>
         <button @click="doLogout">Logout</button>

@@ -34,6 +34,7 @@
             @logout="doLogout"
           />
         </section>
+        <hr class="mobile-separator">
         <user-popup
           class="loggedin-user-mobile"
           :loggedInUser="loggedInUser"
