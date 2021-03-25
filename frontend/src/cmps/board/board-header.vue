@@ -1,8 +1,9 @@
 <template>
   <header class="flex align-center space-between header-layout board-header">
-    <el-button class="el-btn board-title">{{ board.title }}</el-button>
+    <button class="el-btn board-title">{{ board.title }}</button>
     <div class="members flex">
-      <div v-for="member in membersBoard" :key="member._id">
+      <ul class="clean-list flex members-list">
+      <li v-for="member in membersBoard" :key="member._id">
         <avatar
           class="member"
           :username="member.fullname"
@@ -10,10 +11,10 @@
           color="white"
           :size="30"
         ></avatar>
-      </div>
-
+      </li>
+      </ul>
       <span>
-        <el-button class="el-btn invite-button" @click.stop="addMembers"
+        <button class="el-btn invite-btn" @click.stop="addMembers"
           >Invite
           <popup
             v-if="isAddMembers"
@@ -29,7 +30,7 @@
               @updateBoardMembers="updateBoardMembers"
             />
           </popup>
-        </el-button>
+        </button>
       </span>
     </div>
 
