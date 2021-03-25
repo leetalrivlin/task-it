@@ -9,7 +9,8 @@
         role="img"
         aria-label="logo"
       >
-        <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-white-bounce.gif" class="gif-icon"></div></router-link></span
+        <!-- <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-white-bounce.gif" class="gif-icon"></div></router-link></span -->
+        <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img :src="logoSrc" class="gif-icon" @mouseover="isLogoHover = true" @mouseleave="isLogoHover = false"></div></router-link></span
       >
       <section
         class="window-overlay"
@@ -65,6 +66,7 @@ export default {
     return {
       userPopup: false,
       ismobile: false,
+      isLogoHover: false,
     };
   },
   methods: {
@@ -86,6 +88,9 @@ export default {
       console.log(this.$store.getters.loggedinUser);
       return this.$store.getters.loggedinUser;
     },
+    logoSrc() {
+      return (this.isLogoHover) ? require('@/assets/imgs/task-it-logo-white-bounce.gif') : require('@/assets/imgs/task-it-icon-white.png');
+    }
   },
 };
 </script>
