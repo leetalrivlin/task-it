@@ -5,6 +5,7 @@
     flex-wrap: wrap;
     .list-item {
       span {
+        position: relative;
         border-radius: 3px;
         float: left;
         height: 32px;

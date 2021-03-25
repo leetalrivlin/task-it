@@ -61,3 +61,24 @@
     }
   }
 }
+
+@include for-narrow-layout {
+  .user-popup {
+    position: unset;
+    background-color: unset;
+    width: 300px;
+    box-shadow: unset;
+    margin-block-start: 8px;
+    .header {
+      display: none;
+    }
+    .main {
+      .btn-container {
+        > * {
+          font-size: 14px;
+          background-color: unset;
+        }
+      }
+    }
+  }
+}

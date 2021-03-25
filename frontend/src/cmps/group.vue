@@ -26,6 +26,7 @@
       @change="moveTask"
       @start="isDragging = true"
       @end="isDragging = false"
+      dragClass="drag-task"
       group="tasks"
     >
       <li

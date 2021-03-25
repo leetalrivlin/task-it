@@ -2,10 +2,12 @@
   <header class="header-layout main-header">
     <section class="flex align-center space-between main-header-container">
       <div class="container"></div>
-      <span
-        class="flex justify-center align-center logo">
-        <router-link to="/"><img src="~@/assets/imgs/task-it-logo-purple.png" class="task-it-logo"></router-link></span
-      >
+      <span class="flex justify-center align-center logo">
+        <router-link to="/"
+          ><img
+            src="~@/assets/imgs/task-it-logo-purple.png"
+            class="task-it-logo" /></router-link
+      ></span>
       <section
         class="window-overlay"
         @click="closeNav"
@@ -33,7 +35,13 @@
             @closePopup="userPopup = false"
             @logout="doLogout"
           />
-        </section> 
+        </section>
+        <user-popup
+          class="loggedin-user-mobile"
+          :loggedInUser="loggedInUser"
+          @closePopup="userPopup = false"
+          @logout="doLogout"
+        />
       </nav>
     </section>
     <button class="menu-btn el-btn" @click="openNav">☰</button>

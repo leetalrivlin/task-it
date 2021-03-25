@@ -15,7 +15,6 @@
         @change="moveGroup"
         @start="isDragging = true"
         @end="isDragging = false"
-        :animation="200"
         ghostClass="ghost"
         chosenClass="chosen"
         dragClass="drag"
