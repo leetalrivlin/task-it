@@ -40,7 +40,7 @@
   padding: 0 rem(20.4px);
   display: grid;
   grid-template-columns: 2fr 0.8fr;
-  grid-template-rows: rem(100px) minmax(1px, 1fr);
+  // grid-template-rows: rem(100px) minmax(1px, 1fr);
   column-gap: rem(20.4px);
   .d-cntrlr {
     grid-column: 2;
