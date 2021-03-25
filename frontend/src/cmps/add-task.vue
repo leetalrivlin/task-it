@@ -17,7 +17,7 @@
         </textarea>
         <div class="flex align-center">
           <el-button type="info" @click="saveTask">Add Task</el-button>
-          <i class="el-icon-close" @click="closeTask"> </i>
+          <i class="el-icon-close" @click="closeTask"></i>
         </div>
       </form>
     </transition>
@@ -41,7 +41,8 @@ export default {
     saveTask() {
       if(!this.emptyTask.title)return
       this.$emit('saveTask', this.emptyTask);
-      this.emptyTask = boardService.getEmptyTask();
+      this.closeTask();
+      // this.emptyTask = boardService.getEmptyTask();
     },
     addTask() {
       this.emptyTask = boardService.getEmptyTask();

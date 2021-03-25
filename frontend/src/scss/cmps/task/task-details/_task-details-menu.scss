@@ -6,6 +6,9 @@
   }
   .btns-title {
     align-self: flex-start;
+    &:first-of-type {
+      padding: 8px 0 0 0;
+    }
   }
   .nav-container {
     .open-popup-btn-container {
@@ -35,25 +38,29 @@
 
 @include for-mobile-layout {
   .cntrlr-container {
-    // position: fixed;
-    // bottom: 0;
-    // background-color: grey;
-    // z-index: 10;
+    position: sticky;
+    bottom: 0;
+    background-color: #f5f5f7;
+    // -webkit-box-shadow: 1px -2px 15px -5px #000000;
+    // box-shadow: 1px -2px 15px -5px #000000;
+    z-index: 2;
+    .btns-title {
+      &:first-of-type {
+        padding: 0;
+      }
+    }
     .nav-container {
       &:last-of-type {
-        margin-block-end: 50px;
+        margin-block-end: 25px;
       }
       .open-popup-btn-container {
-        // display: flex;
-      
         .open-popup-btn {
           margin: 0;
-          // width: 40px;
           display: flex;
           align-content: center;
           justify-content: center;
           align-items: center;
-          .popup-btn-title{
+          .popup-btn-title {
             display: none;
           }
           .fa-nav-icon {

@@ -52,7 +52,7 @@
             <template v-slot:title>
               <p>Add Checklist</p>
             </template>
-            <checklist-popup @addChecklist="addChecklist" />
+            <checklist-popup @addChecklist="addChecklist" @closePopup="isChecklist = false"/>
           </popup>
         </button>
 

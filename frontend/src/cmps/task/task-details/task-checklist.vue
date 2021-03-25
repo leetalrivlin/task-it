@@ -33,7 +33,6 @@
       />
     </ul>
 
-    <!-- <div class="d-container"> -->
     <div class="d-icon"></div>
     <button
       v-if="!isAddTodos"
@@ -59,7 +58,6 @@
         <i class="el-icon-close" @click="isAddTodos = false"></i>
       </div>
     </form>
-    <!-- </div> -->
   </section>
 </template>
 

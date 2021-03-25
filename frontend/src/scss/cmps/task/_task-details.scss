@@ -142,6 +142,8 @@
   }
   .details-grid {
     grid-template-columns: 1fr;
+    height: calc(100vh - 120px);
+    overflow-y: scroll;
     .d-cntrlr {
       grid-column: 1;
       .nav-container {
