@@ -13,8 +13,8 @@
 
       <div class="data-container">
         <div class="task-amount flex">
-          <div class=" task-icon flex justify-center align-center ">
-            <i class="el-icon-tickets flex justify-center align-center " />
+          <div class="task-icon">
+            <i class="el-icon-tickets  flex justify-center align-center task-icon-task" />
           </div>
           <div class="data-task">
             <span> {{ countTasks }}</span>
