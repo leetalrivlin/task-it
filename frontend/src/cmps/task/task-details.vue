@@ -15,29 +15,9 @@
       />
       <section class="details-grid">
         <task-title :groups="groups" :task="task" :group="group" @updateTaskPos="updateBoard"/>
-        <task-details-menu
-          :members="members"
-          :taskMembers="task.members"
-          :cover="cover"
-          :labels="boardLabels"
-          :taskLableIds="task.labelIds"
-          :taskId="task.id"
-          :groups="groups"
-          :groupId="group.id"
-          @addChecklist="setEmptyChecklist"
-          @addCover="setCover"
-          @addImg="setImg"
-          @addAttach="setAttach"
-          @addLabel="setLabel"
-          @updateLabel="updateBoardLabel"
-          @setDueDate="setDueDate"
-          @addMemberToTask="setMember"
-          @deleteTask="deleteTask"
-          @updateTaskPos="updateBoard"
-        />
+        
         <section class="flex column task-main">
-          <div class="d-desc">
-            <div class="d-icon"></div>
+          <div v-if="task.members || task.labelIds || task.dueDate" class="d-desc">
             <div class="d-content flex task-data-container">
               <task-member
                 v-if="task.members"
@@ -77,6 +57,26 @@
             />
           </ul>
         </section>
+        <task-details-menu
+          :members="members"
+          :taskMembers="task.members"
+          :cover="cover"
+          :labels="boardLabels"
+          :taskLableIds="task.labelIds"
+          :taskId="task.id"
+          :groups="groups"
+          :groupId="group.id"
+          @addChecklist="setEmptyChecklist"
+          @addCover="setCover"
+          @addImg="setImg"
+          @addAttach="setAttach"
+          @addLabel="setLabel"
+          @updateLabel="updateBoardLabel"
+          @setDueDate="setDueDate"
+          @addMemberToTask="setMember"
+          @deleteTask="deleteTask"
+          @updateTaskPos="updateBoard"
+        />
       </section>
     </section>
   </section>

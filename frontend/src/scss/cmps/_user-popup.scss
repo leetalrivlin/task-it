@@ -68,8 +68,11 @@
     background-color: unset;
     width: 100%;
     box-shadow: unset;
-    margin-block-start: 8px;
+    margin:unset;
 
+    .loggedin-user-mobile{
+      margin: 0;
+    }
     .web-separator {
       display: none;
     }

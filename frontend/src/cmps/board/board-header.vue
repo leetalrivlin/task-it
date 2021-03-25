@@ -1,39 +1,40 @@
 <template>
   <header class="flex align-center space-between header-layout board-header">
-    <button class="el-btn board-title">{{ board.title }}</button>
-    <div class="members flex">
-      <ul class="clean-list flex members-list">
-      <li v-for="member in membersBoard" :key="member._id">
-        <avatar
-          class="member"
-          :username="member.fullname"
-          :src="member.imgUrl"
-          color="white"
-          :size="30"
-        ></avatar>
-      </li>
-      </ul>
-      <span>
-        <button class="el-btn invite-btn" @click.stop="addMembers"
-          >Invite
-          <popup
-            v-if="isAddMembers"
-            @closePopup="closeMembersPopup"
-            v-click-outside="closeMembersPopup"
-          >
-            <template v-slot:title>
-              <p>Invite to board</p>
-            </template>
-            <add-members
-              :boardMembers="this.board.members"
-              :systemUsers="this.users"
-              @updateBoardMembers="updateBoardMembers"
-            />
-          </popup>
-        </button>
-      </span>
+    <div class="flex">
+      <button class="el-btn board-title">{{ board.title }}</button>|
+      <div class="members flex">
+        <ul class="clean-list flex members-list">
+          <li v-for="member in membersBoard" :key="member._id">
+            <avatar
+              class="member"
+              :username="member.fullname"
+              :src="member.imgUrl"
+              color="white"
+              :size="30"
+            ></avatar>
+          </li>
+        </ul>
+        <span>
+          <button class="el-btn invite-btn" @click.stop="addMembers">
+            Invite
+            <popup
+              v-if="isAddMembers"
+              @closePopup="closeMembersPopup"
+              v-click-outside="closeMembersPopup"
+            >
+              <template v-slot:title>
+                <p>Invite to board</p>
+              </template>
+              <add-members
+                :boardMembers="this.board.members"
+                :systemUsers="this.users"
+                @updateBoardMembers="updateBoardMembers"
+              />
+            </popup>
+          </button>
+        </span>
+      </div>
     </div>
-
     <div class="flex">
       <button class="flex el-btn dashboard-btn" @click="isDashboardOpen = true">
         <i class="el-icon-s-data dashboard-icon" />
@@ -46,7 +47,10 @@
         v-click-outside="closeDashboard"
       />
 
-      <button class="flex align-center el-btn board-menu-btn" @click="isMenuOpen = true">
+      <button
+        class="flex align-center el-btn board-menu-btn"
+        @click="isMenuOpen = true"
+      >
         <i class="el-icon-more icon"></i>
         <p>Show Menu</p>
       </button>

@@ -3,15 +3,26 @@
     <section
       class="flex align-center space-between main-header-board-container"
     >
-      <div class="container"></div>
+      <div class="container flex align-center">
+        <router-link to="/"><font-awesome-icon class="el-btn home-icon" icon="home" /></router-link>
+        <router-link class="el-btn" to="/board">Boards</router-link>
+      </div>
       <span
         class="flex justify-center align-center logo"
         role="img"
         aria-label="logo"
       >
         <!-- <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-white-bounce.gif" class="gif-icon"></div></router-link></span -->
-        <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img :src="logoSrc" class="gif-icon" @mouseover="isLogoHover = true" @mouseleave="isLogoHover = false"></div></router-link></span
-      >
+        <router-link to="/"
+          ><div class="flex justify-center align-center">
+            <span class="task-it-logo">Taskit</span
+            ><img
+              :src="logoSrc"
+              class="gif-icon"
+              @mouseover="isLogoHover = true"
+              @mouseleave="isLogoHover = false"
+            /></div></router-link
+      ></span>
       <section
         class="window-overlay"
         @click="closeNav"
@@ -19,7 +30,6 @@
       ></section>
       <nav class="flex align-center" ref="navMenu">
         <router-link class="el-btn" to="/login">Signin</router-link>
-        <router-link class="el-btn" to="/board">Boards</router-link>
         <section
           @click="userPopup = !userPopup"
           class="loggedin-user"
@@ -56,6 +66,10 @@
 <script>
 import Avatar from 'vue-avatar';
 import userPopup from './user-popup.vue';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+library.add(faHome);
+
 export default {
   name: 'mainHeaderBoard',
   components: {
@@ -89,8 +103,10 @@ export default {
       return this.$store.getters.loggedinUser;
     },
     logoSrc() {
-      return (this.isLogoHover) ? require('@/assets/imgs/task-it-logo-white-bounce.gif') : require('@/assets/imgs/task-it-icon-white.png');
-    }
+      return this.isLogoHover
+        ? require('@/assets/imgs/task-it-logo-white-bounce.gif')
+        : require('@/assets/imgs/task-it-icon-white.png');
+    },
   },
 };
 </script>

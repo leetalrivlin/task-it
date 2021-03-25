@@ -4,8 +4,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   height: 70px;
 
+  .menu-btn{
+    display: none;
+  }
   .main-header-container {
     height: 70px;
+
+    .home-icon{
+      font-size: 32px;
+      margin-inline-end: 4px;
+      color: $clr1;
+    }
     .logo {
       position: absolute;
       left: 50%;
@@ -40,16 +49,16 @@
         display: none;
       }
 
-      a {
-        border: 1px solid white;
-        background-color: white;
-        padding: 6px 8px;
-        border-radius: 3px;
-        &:hover {
-          background-color: transparent;
-          transition: 1s;
-        }
-      }
+      // a {
+      //   border: 1px solid white;
+      //   background-color: white;
+      //   padding: 6px 8px;
+      //   border-radius: 3px;
+      //   &:hover {
+      //     background-color: transparent;
+      //     transition: 1s;
+      //   }
+      // }
     }
   }
 }
@@ -109,7 +118,6 @@
       right: 14px;
       cursor: pointer;
       color: $clr1;
-      background-color: white;
     }
   }
 }
