@@ -95,6 +95,7 @@
 
 // TASK DETAILS HELPERS
 .task-details-header {
+  font-family: Segoe, serif;
   font-size: 16px;
   line-height: 20px;
   padding: 8px 0;
@@ -143,11 +144,13 @@
     grid-template-columns: 1fr;
     .d-cntrlr {
       grid-column: 1;
-      .d-menu {
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        grid-gap: 8px;
+      .nav-container {
+        .d-menu {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          grid-gap: 8px;
+        }
       }
     }
   }
