@@ -28,6 +28,7 @@
         color: #fff;
 
         .data-container {
+            margin: 20px 60px 9px 60px;
             .task-amount {
                 .task-icon {
                     color: rgb(255, 255, 255);
@@ -38,7 +39,6 @@
                     .task-icon-task {
                         padding-block-start: 31px;
                         font-size: 30px;
-                        
                     }
                 }
                 .data-task {
@@ -51,7 +51,67 @@
                     p {
                         font-size: rem(20px);
                         margin-inline-end: 13px;
-                        margin-block-end: 9px;
+                        margin-block-end: 16px;
+                    }
+                    span {
+                        font-size: 32px;
+                        margin-inline-end: 13px;
+                    }
+                }
+            }
+            .user-amount {
+                .user-icon {
+                    color: rgb(255, 255, 255);
+                    font-size: 24px;
+                    border-radius: 5px 0 0 5px;
+                    background-color: rgba(141, 87, 148, 0.89);
+                    width: 45px;
+                    .user-icon-task {
+                        padding-block-start: 31px;
+                        font-size: 30px;
+                    }
+                }
+                .data-task {
+                    color: grey;
+                    background-color: white;
+                    clip-path: polygon(0 0, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+                    width: 80px;
+                    text-align: center;
+
+                    p {
+                        font-size: rem(20px);
+                        margin-inline-end: 13px;
+                        margin-block-end: 16px;
+                    }
+                    span {
+                        font-size: 32px;
+                        margin-inline-end: 13px;
+                    }
+                }
+            }
+            .activity-amount {
+                .activity-icon {
+                    color: rgb(255, 255, 255);
+                    font-size: 24px;
+                    border-radius: 5px 0 0 5px;
+                    background-color: rgba(238, 240, 134, 0.89);
+                    width: 45px;
+                    .activity-icon-task {
+                        padding-block-start: 31px;
+                        font-size: 30px;
+                    }
+                }
+                .data-task {
+                    color: grey;
+                    background-color: white;
+                    clip-path: polygon(0 0, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+                    width: 80px;
+                    text-align: center;
+
+                    p {
+                        font-size: rem(20px);
+                        margin-inline-end: 8px;
+                        margin-block-end: 16px;
                     }
                     span {
                         font-size: 32px;
@@ -61,7 +121,7 @@
             }
         }
 
-        .charts{
+        .charts {
             margin-block-start: 10px;
         }
 
@@ -76,7 +136,7 @@
         .dashboard-header {
             font-size: 30px;
             font-family: Segoe-Bold, serif;
-            margin-top: 47px;
+            margin-block-start: 70px;
         }
     }
 }
