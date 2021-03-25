@@ -11,43 +11,39 @@
         </p>
       </div>
 
-      <div class="flex space-between data-container">
-        <div class="task-amount flex">
-          <div class="task-icon">
-            <i
-              class="el-icon-tickets flex justify-center align-center task-icon-task"
-            />
-          </div>
-          <div class="data-task">
-            <span> {{ countTasks }}</span>
+      <ul class="flex space-between clean-list data-container">
+        <li class="flex column amount task-amount">
+          <i class="el-icon-tickets flex justify-center align-center icon" />
+          <div class="data">
             <p>Tasks</p>
+            {{ countTasks }}
           </div>
-        </div>
-
-        <div class="user-amount flex">
-          <div class="user-icon">
-            <i
-              class="el-icon-user flex justify-center align-center user-icon-task"
-            />
-          </div>
-          <div class="data-task">
-            <span> {{ countUsers }}</span>
+        </li>
+        <li class="flex column amount user-amount">
+          <i class="el-icon-user flex justify-center align-center icon" />
+          <div class="data">
             <p>Users</p>
+            {{ countUsers }}
           </div>
-        </div>
-
-        <div class="activity-amount flex">
-          <div class="activity-icon">
-            <i
-              class="el-icon-time flex justify-center align-center activity-icon-task"
-            />
-          </div>
-          <div class="data-task">
-            <span> {{ countActivity }}</span>
+        </li>
+        <li class="flex column amount activity-amount">
+          <i class="el-icon-time flex justify-center align-center icon" />
+          <div class="data">
             <p>Activity</p>
+            {{ countActivity }}
           </div>
-        </div>
-      </div>
+        </li>
+        <li class="flex column amount comments-amount">
+          <i
+            class="el-icon-chat-dot-square flex justify-center align-center icon"
+          />
+          <div class="data">
+            <p>Comments</p>
+            {{ countComments }}
+          </div>
+        </li>
+      </ul>
+
       <div class="flex justify-center charts">
         <tasks-in-group class="tasks-users" :board="board" />
       </div>
