@@ -15,18 +15,17 @@
 
     .board-dashboard-container {
         position: absolute;
-        top: 60px;
+        top: 50px;
         left: 50%;
+        -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
-        width: 800px;
-        height: 500px;
+        width: 837px;
+        height: 596px;
         overflow-y: auto;
         background-color: rgba(34, 34, 39, 0.95);
         z-index: 7;
-        padding: 25px;
         border-radius: 5px;
         color: #fff;
-
         .data-container {
             margin: 20px 60px 9px 60px;
             .amount {
@@ -50,7 +49,7 @@
                     background-color: rgba(238, 240, 134, 0.89);
                 }
                 &.comments-amount {
-                    background-color:rgba(187,84,81, 0.89);
+                    background-color: rgba(187, 84, 81, 0.89);
                 }
             }
             .data {
@@ -80,16 +79,16 @@
 
         .close-btn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 28px;
+            top: 12px;
+            right: 12px;
+            font-size: 31px;
             cursor: pointer;
         }
 
         .dashboard-header {
             font-size: 30px;
             font-family: Segoe-Bold, serif;
-            margin-block-start: 70px;
+            margin-block-start: -21px;
         }
     }
 }
