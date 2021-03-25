@@ -11,14 +11,40 @@
         </p>
       </div>
 
-      <div class="data-container">
+      <div class="flex space-between data-container">
         <div class="task-amount flex">
           <div class="task-icon">
-            <i class="el-icon-tickets  flex justify-center align-center task-icon-task" />
+            <i
+              class="el-icon-tickets flex justify-center align-center task-icon-task"
+            />
           </div>
           <div class="data-task">
             <span> {{ countTasks }}</span>
             <p>Tasks</p>
+          </div>
+        </div>
+
+        <div class="user-amount flex">
+          <div class="user-icon">
+            <i
+              class="el-icon-user flex justify-center align-center user-icon-task"
+            />
+          </div>
+          <div class="data-task">
+            <span> {{ countUsers }}</span>
+            <p>Users</p>
+          </div>
+        </div>
+
+        <div class="activity-amount flex">
+          <div class="activity-icon">
+            <i
+              class="el-icon-time flex justify-center align-center activity-icon-task"
+            />
+          </div>
+          <div class="data-task">
+            <span> {{ countActivity }}</span>
+            <p>Activity</p>
           </div>
         </div>
       </div>
@@ -51,6 +77,13 @@ export default {
         });
       });
       return tasks;
+    },
+    countUsers() {
+      var users = 0;
+      this.board.members.forEach((user) => {
+        users++;
+      });
+      return users;
     },
   },
   components: {
