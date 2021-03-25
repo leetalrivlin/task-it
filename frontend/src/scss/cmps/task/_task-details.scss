@@ -72,7 +72,6 @@
   }
   .d-checklist {
     grid-column: 1;
-    // grid-row: 2;
     display: grid;
     grid-template-columns: rem(34px) 1fr;
     .d-container {
@@ -133,15 +132,19 @@
 
 @include for-mobile-layout {
   .window-overlay {
+    padding: 0;
     .task-details {
       width: 100%;
       min-height: 100vh;
+      border-radius: 0;
     }
   }
   .details-grid {
     grid-template-columns: 1fr;
     .d-cntrlr {
       grid-column: 1;
+      // display: grid;
+      // grid-template-columns: repeat(6,1fr);
     }
   }
 }

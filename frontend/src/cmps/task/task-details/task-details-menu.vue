@@ -1,7 +1,7 @@
 <template>
   <nav class="d-cntrlr flex column align-center cntrlr-container">
     <section class="flex column align-center nav-container">
-      <p class="task-details-title btns-title">Add To Cart</p>
+      <p class="task-details-title btns-title">Add To Card</p>
       <div class="open-popup-btn-container">
         <button
           class="flex el-btn-details open-popup-btn"
