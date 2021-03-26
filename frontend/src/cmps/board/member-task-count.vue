@@ -34,7 +34,7 @@ export default {
         title: {
           display: true,
           text: 'Tasks per member',
-          fontSize: 25,
+          fontSize: 16,
         },
         scales: {
           xAxes: [
@@ -100,7 +100,6 @@ export default {
       ];
 
       this.chartData.colors = colors;
-      this.showChart = true;
     },
   },
   created() {
