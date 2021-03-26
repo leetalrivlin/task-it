@@ -29,7 +29,7 @@
         <li class="flex column amount activity-amount">
           <i class="el-icon-time flex justify-center align-center icon" />
           <div class="data">
-            <p>Activity</p>
+            <p>Activitys</p>
             <!-- {{ countActivity }} -->
           </div>
         </li>
@@ -44,9 +44,9 @@
         </li>
       </ul>
 
-      <div class="flex charts">
-        <tasks-in-group  :board="board" />
-        <member-task-count  :board="board" />
+      <div class="charts">
+        <tasks-in-group class="chart" :board="board" />
+        <member-task-count class="chart" :board="board" />
       </div>
     </div>
   </section>

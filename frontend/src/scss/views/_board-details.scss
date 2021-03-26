@@ -3,15 +3,29 @@
     position: relative;
     overflow-x: scroll;
     flex: 1;
-  }
-  .group-container {
-    .group {
-      background-color: $clr2;
-      border-radius: 3px;
+    .group-container {
+      .group {
+        position: relative;
+        background-color: $clr2;
+        border-radius: 3px;
+        margin-inline-end: 8px;
+        width: 272px;
+        height: fit-content;
+      }
+    }
+    &::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.386);
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(9, 30, 66, 0.08);
+      border-radius: 5px;
+      margin-inline-start: 8px;
       margin-inline-end: 8px;
-      width: 270px;
-      padding: 10px;
-      height: fit-content;
     }
   }
   .drag-drop-move {

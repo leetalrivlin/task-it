@@ -1,36 +1,72 @@
-.group-content {
-    cursor: pointer;
+.group {
+    max-height: 88vh;
+  .group-header {
+    width: 100%;
+    padding: 8px 8px;
+    font-size: 14px;
+    line-height: 20px;
 
-    .group-header {
-        margin-block-end: 5px;
-        width: 100%;
-        font-size: 0.975em;
-        input {
-            border-radius: 3px;
-            width: 100%;
-            outline: none;
-            color: $clr1;
-            font-weight: 600;
-            font-size: rem(16px);
-            border: none;
-            background-color: transparent;
-            padding: 6px 8px;
-            &:focus {
-                background-color: #fff;
-                box-shadow: inset 0 0 0 2px #464646;
-            }
-        }
-        .group-action {
-            position: relative;
-            font-size: 1em;
-            color: #6b778c;
-            padding: 8px 8px;
-            border-radius: 3px;
-
-            &:hover {
-                color: $clr1;
-                background-color: rgba(9, 30, 66, 0.08);
-            }
-        }
+    input {
+      border-radius: 3px;
+      width: 100%;
+      outline: none;
+      border: none;
+      color: $clr1;
+      padding: 4px 8px;
+      background-color: transparent;
+      &:focus {
+        background-color: #fff;
+        box-shadow: inset 0 0 0 2px #464646;
+      }
     }
+    .group-action {
+      padding: 6px;
+      position: relative;
+      color: #6b778c;
+      border-radius: 3px;
+
+      &:hover {
+        color: $clr1;
+        background-color: rgba(9, 30, 66, 0.08);
+      }
+    }
+  }
+  .group-main-content {
+    margin: 0 4px;
+    padding: 0 4px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1 1 auto;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(9, 30, 66, 0.08);
+      border-radius: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(9, 30, 66, 0.08);
+      border-radius: 5px;
+      margin-inline-start: 8px;
+      margin-inline-end: 8px;
+    }
+  }
+  .add-task-container {
+    .adding {
+      display: block;
+      color: #6b778c;
+      border-radius: 3px;
+      margin: 2px 8px 8px 8px;
+      padding: 4px 8px;
+      font-size: 14px;
+      line-height: 20px;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(9, 30, 66, 0.08);
+        color: #172b4d;
+      }
+    }
+  }
 }

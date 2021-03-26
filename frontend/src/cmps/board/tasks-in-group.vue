@@ -26,10 +26,13 @@ export default {
         borderColor: 'black',
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        responsiveAnimationDuration: 2,
         title: {
           display: true,
           text: 'Tasks per group',
-          fontSize: 25,
+          fontSize: 16,
         },
       },
       legend: {
@@ -59,7 +62,6 @@ export default {
       ];
 
       this.chartData.colors = colors;
-      this.showChart = true;
     },
   },
   created() {

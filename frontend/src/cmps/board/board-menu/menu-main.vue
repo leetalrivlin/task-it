@@ -12,6 +12,10 @@
       <i class="el-icon-search icon"></i>
       <span>Search cards </span>
     </a>
+    <a class="flex align-center menu-main-item">
+      <i class="el-icon-delete-solid icon"></i>
+      <p>Delete board</p>
+    </a>
   </section>
 </template>
 

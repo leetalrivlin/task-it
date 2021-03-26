@@ -16,10 +16,13 @@
         <li
           v-for="label in labels"
           :key="label.id"
-          class="flex align-center list-item"
+          class="flex align-center space-between list-item"
         >
+        <div class="flex space-between align-center">
           <span :style="{ backgroundColor: label.color }"> </span>
           <p>{{ label.title }}</p>
+        </div>
+         <i  class="el-icon-check check"> </i>
         </li>
       </ul>
       <hr />
@@ -29,19 +32,21 @@
         <li
           v-for="member in members"
           :key="member._id"
-          class="flex align-center list-item"
+          class="flex align-center space-between list-item"
         >
-          <avatar
-            class="avatar-item"
-            :username="member.fullname"
-            :src="member.imgUrl"
-            color="white"
-            :size="33"
-          ></avatar>
-          <p>{{ member.fullname }}</p>
+          <div class="flex space-between align-center">
+            <avatar
+              class="avatar-item"
+              :username="member.fullname"
+              :src="member.imgUrl"
+              color="white"
+              :size="33"
+            ></avatar>
+            <p>{{ member.fullname }}</p>
+          </div>
+          <i  class="el-icon-check check"> </i>
         </li>
       </ul>
-      <hr />
     </div>
   </section>
 </template>
@@ -88,9 +93,16 @@ export default {
     labels() {
       return this.$store.getters.boardLabels;
     },
-    members(){
-      return this.board.members
+    members() {
+      return this.board.members;
     },
+    // clickMember() {
+      
+    // },
+    // clickLabel(){
+      
+    //   console.log('label');
+    // }
   },
 };
 </script>
