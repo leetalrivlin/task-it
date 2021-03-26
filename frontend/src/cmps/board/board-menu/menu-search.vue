@@ -22,12 +22,37 @@
           <p>{{ label.title }}</p>
         </li>
       </ul>
+      <hr />
+    </div>
+    <div class="filter-members">
+      <ul class="clean-list flex column">
+        <li
+          v-for="member in members"
+          :key="member._id"
+          class="flex align-center list-item"
+        >
+          <avatar
+            class="avatar-item"
+            :username="member.fullname"
+            :src="member.imgUrl"
+            color="white"
+            :size="33"
+          ></avatar>
+          <p>{{ member.fullname }}</p>
+        </li>
+      </ul>
+      <hr />
     </div>
   </section>
 </template>
 
 <script>
+import Avatar from 'vue-avatar';
 export default {
+  name: 'menuSearch',
+  components: {
+    Avatar,
+  },
   props: {
     board: {
       type: Object,
@@ -62,6 +87,9 @@ export default {
   computed: {
     labels() {
       return this.$store.getters.boardLabels;
+    },
+    members(){
+      return this.board.members
     },
   },
 };
