@@ -87,6 +87,14 @@ export const boardStore = {
         console.log('cant update board', err);
       }
     },
+    async saveBoard({ commit }, { newBoard }) {
+      try {
+        const board = await boardService.save(newBoard);
+        commit({ type: 'setBoard', board });
+      } catch (err) {
+        console.log('cant save board', err);
+      }
+    },
     async updateTask({ commit, dispatch, state }, { task }) {
       try {
         commit({ type: 'setTask', task });

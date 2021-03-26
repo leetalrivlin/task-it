@@ -12,11 +12,10 @@ async function getBoard(req, res) {
   }
 }
 
-async function updateBoard(req, res) {
+async function saveBoard(req, res) {
   try {
     const board = req.body;
-    console.log('req.body', req.body);
-    const savedBoard = await boardService.update(board);
+    const savedBoard = await boardService.save(board);
     socketService.broadcast({ type: 'board-updated', data: savedBoard, room: savedBoard._id });
     res.send(savedBoard);
   } catch (err) {
@@ -35,8 +34,9 @@ async function getBoards(req, res) {
   }
 }
 
+
 module.exports = {
   getBoard,
   getBoards,
-  updateBoard,
+  saveBoard,
 };

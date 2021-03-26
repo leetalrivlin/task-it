@@ -1,5 +1,5 @@
 .group {
-  //   max-height: 88vh;
+    max-height: 88vh;
   .group-header {
     width: 100%;
     padding: 8px 8px;
@@ -34,7 +34,6 @@
   .group-main-content {
     margin: 0 4px;
     padding: 0 4px;
-    max-height: 740px;
     overflow-y: auto;
     overflow-x: hidden;
     flex: 1 1 auto;

@@ -1,9 +1,9 @@
 <template>
   <section class="main-content main-layout board-list">
-    <h1>Pick a Borad </h1>
+    <h1>Pick a Borad</h1>
     <!-- <button @click='getBoard'>board</button> -->
     <ul class="flex justify-center clean-list">
-      <li>
+      <li @click="createBoard">
         <i class="el-icon-plus add-board flex justify-center align-center"></i>
       </li>
       <li v-for="board in boards" :key="board._id">
@@ -21,20 +21,29 @@
 </template>
 
 <script>
+import { boardService } from '../services/board.service.js';
+
 export default {
   name: 'boardList',
   async created() {
     // await this.$store.dispatch('loadBoards');
   },
   methods: {
-    // getBoard(){
-    //   this.$route.params(boardId)
-    // }
+    async createBoard() {
+      const emptyBoard = boardService.getEmptyBoard();
+      await this.$store.dispatch({ type: 'saveBoard', newBoard: emptyBoard });
+      this.$nextTick(() => {
+        const board = this.board;
+        this.$router.push(`/board/${board._id}`);
+      });
+    },
   },
   computed: {
     boards() {
-      console.log(this.$store.getters.boards);
       return this.$store.getters.boards;
+    },
+    board() {
+      return this.$store.getters.board;
     },
   },
   mounted() {

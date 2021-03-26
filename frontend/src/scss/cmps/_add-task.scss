@@ -1,6 +1,7 @@
 .add-task {
   form {
     padding: 4px 11px;
+    margin-block-end: 4px;
 
     .el-button--info {
       margin-inline-end: 10px;
@@ -8,6 +9,7 @@
     .textarea {
       padding: 6px 8px;
       color: $clr1;
+      margin-block-end: 4px;
     }
     .el-icon-close {
       cursor: pointer;

@@ -25,23 +25,17 @@ async function getById(boardId) {
   }
 }
 
-async function update(board) {
+async function save(board) {
   try {
-    board._id = ObjectId(board._id);
-    // const boardToSave = {
-    //   _id: ObjectId(board._id),
-    //   title: board.title,
-    //   createdAt: board.createdAt,
-    //   createdBy: board.createdBy,
-    //   style: board.style,
-    //   labels: board.labels,
-    //   members: board.members,
-    //   groups: board.groups,
-    //   activities: board.activities,
-    // };
     const collection = await dbService.getCollection('board');
-    await collection.updateOne({ _id: board._id }, { $set: board });
-    return board;
+    if (board._id) {
+      board._id = ObjectId(board._id);
+       await collection.updateOne({ _id: board._id }, { $set: board });
+      return board
+    } else {
+      const res = await collection.insertOne(board);
+      return res.ops[0];
+    }
   } catch (err) {
     logger.error(`cannot update board ${board._id}`, err);
     throw err;
@@ -51,5 +45,5 @@ async function update(board) {
 module.exports = {
   query,
   getById,
-  update,
+  save,
 };
