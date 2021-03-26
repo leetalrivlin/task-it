@@ -98,10 +98,6 @@ export default {
        this.$emit('closeMenu');
     }
   },
-  computed: {},
-  created() {
-    console.log(this.group, 'this.group');
-  }
 };
 </script>
 
