@@ -6,6 +6,7 @@
       @updateBoardMembers="updatEntireBoard"
       @updateBoardStyle="updatEntireBoard"
       @tasksToShow="tasksToShow"
+      @deleteBoard="deleteBoard"
     />
     <section class="flex align-start main-content main-layout board-content">
       <draggable
@@ -119,6 +120,9 @@ export default {
     },
     updatEntireBoard(updatedBoard) {
       this.$store.dispatch({ type: 'updateBoard', board: updatedBoard });
+    },
+    deleteBoard() {
+      console.log('deleteBoard');
     },
   },
   computed: {

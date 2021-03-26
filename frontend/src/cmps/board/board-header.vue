@@ -61,6 +61,7 @@
           @closeMenu="isMenuOpen = false"
           @colorPicked="updateBoard"
           @photoPicked="updateBoard"
+          @deleteBoard="deleteBoard"
           :board="board"
         />
       </transition>
@@ -121,6 +122,9 @@ export default {
     },
     closeDashboard() {
       this.isDashboardOpen = !this.isDashboardOpen;
+    },
+    deleteBoard() {
+      this.$emit('deleteBoard');
     },
   },
   computed: {
