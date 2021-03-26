@@ -14,7 +14,7 @@
         }}</span>
         {{ activity.txt }}
       </p>
-      <p class="created-at">{{ activity.createdAt | moment("calendar") }}</p>
+      <p class="created-at">{{ activity.createdAt | moment('from', 'now') }}</p>
     </div>
   </li>
 </template>

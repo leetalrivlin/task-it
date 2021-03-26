@@ -131,15 +131,14 @@ export const boardStore = {
     },
     async updateTask({ commit, dispatch, state }, { payload }) {
       try {
-        console.log('updatedTask', payload.task);
-        console.log('activity', payload.activity);
         commit({ type: 'setTask', payload });
         const boardCopy = clone(state.board);
         payload.activity.byMember = state.loggedinUser
           ? state.loggedinUser
           : { fullname: 'Guest', imgUrl: '' };
-        boardCopy.activities.unshift(payload.activity);
-        console.log('boardCopy', boardCopy);
+        if (payload.activity.txt !== '') {
+          boardCopy.activities.unshift(payload.activity);
+        }
         const groupIdx = boardCopy.groups.findIndex(group =>
           group.tasks.some(({ id }) => id === payload.task.id)
         );

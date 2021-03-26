@@ -137,7 +137,9 @@ export default {
       );
       const copyTask = this.$clone(this.task);
       copyTask.checklists.splice(checklistIdx, 1);
-      this.$emit('updateTask', copyTask);
+        const activity = boardService.getEmptyActivity();
+        activity.txt = `removed ${this.checklist.title} from ${this.task.title}`;
+      this.$emit('updateTask', copyTask, activity);
     },
   },
   created() {

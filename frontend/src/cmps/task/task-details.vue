@@ -143,27 +143,18 @@ export default {
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
     }
-    // group() {
-    //   return boardCopy.groups.find((group) =>
-    //     group.tasks.some(({ id }) => id === this.task.id)
-    //   );
-    // },
   },
   methods: {
-    setDetails() {
-      // this.isChecklist();
-    },
     closeDetails() {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}`);
     },
-    // isChecklist() {
-    //   this.isShowChecklist = this.task.checklists ? true : false;
-    // },
     setEmptyChecklist(emptyChecklist) {
       if (!this.task.checklists) this.task.checklists = [];
       this.task.checklists.push(emptyChecklist);
-      this.updateTask(this.task);
+      const activity = boardService.getEmptyActivity();
+      activity.txt = `added ${emptyChecklist.title} to ${this.task.title}`;
+      this.updateTask(this.task, activity);
     },
     setCover(color) {
       this.task.cover = {};
@@ -180,30 +171,34 @@ export default {
       this.updateTask(this.task);
     },
     setAttach(attachment) {
-      console.log(attachment);
       if (!this.task.attachments) this.task.attachments = [];
       this.task.attachments.push(attachment);
-      this.updateTask(this.task);
+      const activity = boardService.getEmptyActivity();
+      activity.txt = `attached ${attachment.name} to ${this.task.title}`;
+      this.updateTask(this.task, activity);
     },
     removeAttach(attachId) {
       const idx = this.task.attachments.findIndex(({ id }) => id === attachId);
       this.task.attachments.splice(idx, 1);
       if (this.task.attachments.length === 0) delete this.task.attachments;
-      console.log('this.task.attachments', this.task.attachments);
-      this.updateTask(this.task);
+      const activity = boardService.getEmptyActivity();
+      activity.txt = `deleted the ${attachment.name} attachment from ${this.task.title}`;
+      this.updateTask(this.task, activity);
     },
     setLabel(label) {
-      console.log('label', label);
+      const activity = boardService.getEmptyActivity();
       if (!this.task.labelIds) this.task.labelIds = [];
       const labelIdx = this.task.labelIds.findIndex(id => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
         this.task.labelIds.splice(labelIdx, 1);
+        activity.txt = `removed label from ${this.task.title}`;
       } else {
         this.task.labelIds.push(label.id);
+        activity.txt = `added label to ${this.task.title}`;
       }
-      this.updateTask(this.task);
+      this.updateTask(this.task, activity);
     },
     setMember(chosenMember) {
       const activity = boardService.getEmptyActivity();
@@ -221,7 +216,6 @@ export default {
       this.updateTask(this.task, activity);
     },
     updateBoardLabel(updatedLabel) {
-      console.log('updatedLabel', updatedLabel);
       const labelIdx = this.boardLabels.findIndex(
         ({ id }) => id === updatedLabel.id
       );
@@ -232,11 +226,15 @@ export default {
     },
     setDueDate(dueDate) {
       this.task.dueDate = dueDate;
-      this.updateTask(this.task);
+      const activity = boardService.getEmptyActivity();
+      activity.txt = `set ${this.task.title} to be due at ${dueDate}`;
+      this.updateTask(this.task, activity);
     },
     removeDate() {
       delete this.task.dueDate;
-      this.updateTask(this.task);
+      const activity = boardService.getEmptyActivity();
+      activity.txt = `removed the due date from ${this.task.title}`;
+      this.updateTask(this.task, activity);
     },
     updateTask(task, activity = {}) {
       this.$store.dispatch({ type: 'updateTask', payload: {task, activity}});
@@ -261,11 +259,5 @@ export default {
     console.log('taskId',taskId);
     this.$store.dispatch({ type: 'setTaskById', taskId });
   },
-  mounted() {
-    this.setDetails();
-  }
-  // destroyed() {
-  //   this.$store.commit({ type: 'setTask', task: null });
-  // },
 };
 </script>
