@@ -116,12 +116,6 @@ export default {
       return this.group.tasks.length === 0 ? 'Add a task' : 'Add another task';
     },
   },
-<<<<<<< HEAD
-  created() {
-    console.log(this.group, 'this.group');
-  },
-=======
->>>>>>> cf13d521e26b9c60057f75c971dad3cefd90d667
 };
 </script>
 
