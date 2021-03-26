@@ -360,6 +360,7 @@ async function save(board) {
 
 function remove(boardId) {
   // return storageService.remove('user', userId);
+  console.log('deleting board', boardId);
   return httpService.delete(`board/${boardId}`, boardId);
 }
 // async function getUsers() {
@@ -425,49 +426,50 @@ function getEmptyActivity() {
     id: utilService.makeId(4),
     txt: '',
     createdAt: Date.now()
-  }
-  }
+  };
+}
 
-  function getEmptyBoard() {
-    return {
-      title: 'newBoard',
-      createdAt: Date.now(),
-      createdBy: '',
-      style: {
-        background: 'url(/img/bgc-4.0061c796.jpg)'
+function getEmptyBoard() {
+  return {
+    title: 'newBoard',
+    createdAt: Date.now(),
+    createdBy: '',
+    style: {
+      background: 'url(/img/bgc-4.0061c796.jpg)'
+    },
+    labels: [
+      {
+        id: 'l101',
+        title: '',
+        color: '#60BD4F'
       },
-      labels: [
-        {
-          id: 'l101',
-          title: '',
-          color: '#60BD4F'
-        },
-        {
-          id: 'l102',
-          title: '',
-          color: '#F2D600'
-        },
-        {
-          id: 'l103',
-          title: 'orange',
-          color: '#ff9f1a'
-        },
-        {
-          id: 'l104',
-          title: '',
-          color: '#eb5a46'
-        },
-        {
-          id: 'l105',
-          title: '',
-          color: '#c377e0'
-        },
-        {
-          id: 'l106',
-          title: '',
-          color: '#0079bf'
-        }
-      ],
-      groups: [getEmptyGroup()]
-    }
-    }
+      {
+        id: 'l102',
+        title: '',
+        color: '#F2D600'
+      },
+      {
+        id: 'l103',
+        title: 'orange',
+        color: '#ff9f1a'
+      },
+      {
+        id: 'l104',
+        title: '',
+        color: '#eb5a46'
+      },
+      {
+        id: 'l105',
+        title: '',
+        color: '#c377e0'
+      },
+      {
+        id: 'l106',
+        title: '',
+        color: '#0079bf'
+      }
+    ],
+    groups: [getEmptyGroup()],
+    activities: []
+  };
+}

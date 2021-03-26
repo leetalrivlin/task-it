@@ -124,6 +124,12 @@ export default {
     },
     deleteBoard() {
       console.log('deleteBoard');
+      this.$store.commit({
+        type: 'removeBoardFromList',
+        boardId: this.board._id,
+      });
+      this.$store.dispatch({ type: 'deleteBoard', boardId: this.board._id });
+      this.$router.push('/board');
     },
   },
   computed: {
