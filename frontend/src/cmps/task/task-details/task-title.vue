@@ -6,7 +6,6 @@
         type="text"
         class="flex align-center title-input"
         v-model="task.title"
-        @change="updateTaskTitle"
         @keyup.enter.exact="updateTaskTitle"
       />
       <p>In list

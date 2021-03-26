@@ -4,7 +4,7 @@
       All actions will be removed from the activity feed and you won’t be able
       to re-open the card. There is no undo.
     </p>
-    <button class="delete-btn" @click="deleteTask">Delete</button>
+    <button class="delete-btn" @click="removeTask">Delete</button>
   </section>
 </template>
 
@@ -16,8 +16,8 @@ export default {
     }
   },
   methods: {
-    deleteTask() {
-      this.$emit('deleteTask', this.taskId);
+    removeTask() {
+      this.$emit('removeTask', this.taskId);
     }
   }
 };

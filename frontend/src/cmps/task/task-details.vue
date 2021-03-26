@@ -14,10 +14,19 @@
         @saveImg="updateTask"
       />
       <section class="details-grid">
-        <task-title :groups="groups" :task="task" :group="group" @updateTaskPos="updateBoard"/>
-        
+        <task-title
+          :groups="groups"
+          :group="group"
+          :task="task"
+          @updateTask="updateTask"
+          @updateTaskPos="updateBoard"
+        />
+
         <section class="flex column task-main">
-          <div v-if="task.members || task.labelIds || task.dueDate" class="d-desc">
+          <div
+            v-if="task.members || task.labelIds || task.dueDate"
+            class="d-desc"
+          >
             <div class="d-content flex task-data-container">
               <task-member
                 v-if="task.members"
@@ -74,7 +83,7 @@
           @updateLabel="updateBoardLabel"
           @setDueDate="setDueDate"
           @addMemberToTask="setMember"
-          @deleteTask="deleteTask"
+          @removeTask="removeTask"
           @updateTaskPos="updateBoard"
         />
       </section>
@@ -111,14 +120,14 @@ export default {
     taskMember
   },
   computed: {
-    task() {
-      return this.$clone(this.$store.getters.task);
+    groups() {
+      return this.$clone(this.$store.getters.board).groups;
     },
     group() {
       return this.$clone(this.$store.getters.group);
     },
-    groups() {
-      return this.$clone(this.$store.getters.board).groups;
+    task() {
+      return this.$clone(this.$store.getters.task);
     },
     boardLabels() {
       return this.$clone(this.$store.getters.boardLabels);
@@ -146,14 +155,10 @@ export default {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}`);
     },
-    updateTask(updatedTask) {
-      this.$store.dispatch({ type: 'updateTask', task: updatedTask });
-    },
     isChecklist() {
       this.isShowChecklist = this.task.checklists ? true : false;
     },
     setEmptyChecklist(emptyChecklist) {
-      // const emptyCheckList = boardService.getEmptyChecklist();
       if (!this.task.checklists) this.task.checklists = [];
       this.task.checklists.push(emptyChecklist);
       this.updateTask(this.task);
@@ -226,11 +231,8 @@ export default {
       delete this.task.dueDate;
       this.updateTask(this.task);
     },
-    deleteTask(taskId) {
-      const taskIdx = this.group.tasks.findIndex(({ id }) => id === taskId);
-      this.group.tasks.splice(taskIdx, 1);
-      this.updateBoard(this.group);
-      this.closeDetails();
+    updateTask(updatedTask) {
+      this.$store.dispatch({ type: 'updateTask', task: updatedTask });
     },
     updateBoard(updatedGroup) {
       const cloneBoard = this.$clone(this.$store.getters.board);
@@ -239,8 +241,13 @@ export default {
       );
       cloneBoard.groups.splice(idx, 1, updatedGroup);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
-      // this.closeDetails();
-    }
+    },
+    removeTask(taskId) {
+      const taskIdx = this.group.tasks.findIndex(({ id }) => id === taskId);
+      this.group.tasks.splice(taskIdx, 1);
+      this.updateBoard(this.group);
+      this.closeDetails();
+    },
   },
   created() {
     const taskId = this.$route.params.taskId;
