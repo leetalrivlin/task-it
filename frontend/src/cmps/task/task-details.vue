@@ -169,7 +169,7 @@ export default {
       this.task.cover = {};
       this.task.cover.backgroundColor = color;
       const activity = boardService.getEmptyActivity();
-      activity.txt = 'changed the background color of the cover';
+      activity.txt = 'changed cover color';
       this.updateTask(this.task, activity);
     },
     setImg(img) {

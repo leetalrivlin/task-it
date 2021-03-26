@@ -1,0 +1,22 @@
+.activity-container {
+  .activity-avatar {
+    margin: 0 0 0 8px;
+    object-fit: cover;
+  }
+  .activity-info {
+    margin-inline-start: 8px;
+    padding: 8px;
+    .user-activity {
+      font-size: 14px;
+      line-height: 18px;
+      .userName {
+        font-family: Sageo-bold, sans-serif;
+        font-weight: 700;
+      }
+    }
+    .created-at {
+      color: #5e6c84;
+      font-size: 12px;
+    }
+  }
+}

@@ -137,8 +137,8 @@ export const boardStore = {
         const boardCopy = clone(state.board);
         payload.activity.byMember = state.loggedinUser
           ? state.loggedinUser
-          : 'Guest';
-        boardCopy.activities.push(payload.activity);
+          : { fullname: 'Guest', imgUrl: '' };
+        boardCopy.activities.unshift(payload.activity);
         console.log('boardCopy', boardCopy);
         const groupIdx = boardCopy.groups.findIndex(group =>
           group.tasks.some(({ id }) => id === payload.task.id)

@@ -13,6 +13,7 @@ import Avatar from 'vue-avatar';
 import VueCharts from 'vue-chartjs'
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
+Vue.use(require('vue-moment'));
 Vue.use(vClickOutside);
 Vue.use(ElementUI, { locale });
 
