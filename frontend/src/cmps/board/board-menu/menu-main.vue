@@ -16,10 +16,16 @@
       <i class="el-icon-delete-solid icon"></i>
       <p>Delete board</p>
     </a>
+    <a class="flex align-center menu-main-item">
+      <i class="el-icon-s-fold icon"></i>
+      <p>Activity</p>
+    </a>
+    <menu-activity />
   </section>
 </template>
 
 <script>
+import menuActivity from './menu-activity.vue'
 export default {
   name: 'menu-main',
   methods: {
@@ -36,5 +42,8 @@ export default {
       this.$emit('deleteBoard');
     },
   },
+  components: {
+    menuActivity,
+  }
 };
 </script>
