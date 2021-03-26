@@ -21,14 +21,19 @@ export const store = new Vuex.Store({
   state: {
     boards: null
   },
-  getters:{
+  getters: {
     boards(state) {
       return state.boards;
-    },
+    }
   },
   mutations: {
     setBoards(state, { boards }) {
       state.boards = boards;
+    },
+    removeBoardFromList(state, { boardId }) {
+      console.log(state.boards);
+      const boardIdx = state.boards.findIndex(({ _id }) => _id === boardId);
+      state.boards.splice(boardIdx, 1);
     }
   },
   actions: {

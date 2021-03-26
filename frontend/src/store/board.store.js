@@ -36,10 +36,13 @@ export const boardStore = {
     setBoard(state, { board }) {
       state.board = board;
     },
-    setTask(state, {payload}) {
-      console.log('updatedTask',payload.task);
+    setTask(state, { payload }) {
+      console.log('updatedTask', payload.task);
       state.task = payload.task;
     },
+    deleteBoard(state) {
+      state.board = null;
+    }
     // The version before that worked:
     // setTask(state, { task }) {
     //   state.task = task;
@@ -72,15 +75,15 @@ export const boardStore = {
     },
 
     async setTaskById({ commit, state }, { taskId }) {
-      console.log('taskId from store:',taskId);
+      console.log('taskId from store:', taskId);
       state.board.groups.forEach(group => {
         group.tasks.forEach(task => {
           if (task.id === taskId) {
-            commit({ type: 'setTask', payload: {task} });
+            commit({ type: 'setTask', payload: { task } });
             socketService.emit('task-watch', taskId);
             socketService.off('task-updated');
             socketService.on('task-updated', task => {
-              commit({ type: 'setTask', payload: {task} });
+              commit({ type: 'setTask', payload: { task } });
             });
           }
         });
@@ -118,15 +121,25 @@ export const boardStore = {
         console.log('cant save board', err);
       }
     },
-    async updateTask({ commit, dispatch, state }, {payload}) {
+    async deleteBoard({ commit }, { boardId }) {
+      try {
+        commit({ type: 'deleteBoard' });
+        await boardService.remove(boardId);
+      } catch (err) {
+        console.log('cant delete board', err);
+      }
+    },
+    async updateTask({ commit, dispatch, state }, { payload }) {
       try {
         console.log('updatedTask', payload.task);
         console.log('activity', payload.activity);
-        commit({ type: 'setTask', payload});
+        commit({ type: 'setTask', payload });
         const boardCopy = clone(state.board);
-        payload.activity.byMember = (state.loggedinUser) ? state.loggedinUser : 'Guest';
+        payload.activity.byMember = state.loggedinUser
+          ? state.loggedinUser
+          : 'Guest';
         boardCopy.activities.push(payload.activity);
-        console.log('boardCopy',boardCopy);
+        console.log('boardCopy', boardCopy);
         const groupIdx = boardCopy.groups.findIndex(group =>
           group.tasks.some(({ id }) => id === payload.task.id)
         );
@@ -139,7 +152,7 @@ export const boardStore = {
       } catch (err) {
         console.log('cannot update task', err);
       }
-    },
+    }
     // The version before that worked:
     // async updateTask({ commit, dispatch, state }, {task}) {
     //   try {
