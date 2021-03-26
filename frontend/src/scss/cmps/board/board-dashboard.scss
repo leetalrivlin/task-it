@@ -19,7 +19,7 @@
         left: 50%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
-        width: 837px;
+        width: 836px;
         height: 596px;
         overflow-y: auto;
         background-color: rgba(34, 34, 39, 0.95);
@@ -30,7 +30,7 @@
             margin: 20px 60px 9px 60px;
             .amount {
                 border-radius: 8px;
-                margin: 0 12px 0 0 ;
+                margin: 0 12px 0 0;
                 .icon {
                     font-size: 30px;
                     color: rgb(255, 255, 255);
@@ -76,6 +76,10 @@
 
         .charts {
             margin-block-start: 10px;
+            display: flex;
+            .chart {
+                min-width: 50%;
+            }
         }
 
         .close-btn {
@@ -95,9 +99,35 @@
 }
 
 @include for-medium-layout {
-    .window-overlay .board-dashboard-container{
+    .window-overlay .board-dashboard-container {
         width: 630px;
+        .data-container {
+            margin: 20px 12px 9px 31px;
+            // flex-direction: column;
+        }
     }
 }
-// $break-narrow: 700px;
-// $break-mobile: 550px;
+@include for-mobile-layout {
+    .window-overlay .board-dashboard-container {
+        width: 350px;
+        .data-container {
+            margin: 19px 12px 9px 9px;
+            .data {
+                width: 72px;
+                height: 32px;
+                text-align: center;
+                font-size: 17px;
+
+                p{
+                    font-size: 0.75rem;
+                }
+            }
+            .chart{
+                flex-direction: column;
+                .chart {
+                    min-width: 100%;
+                }
+            }
+        }
+    }
+}
