@@ -63,6 +63,7 @@
           @photoPicked="updateBoard"
           @deleteBoard="deleteBoard"
           :board="board"
+          :activities="activities"
         />
       </transition>
     </div>
@@ -94,6 +95,9 @@ export default {
     users: {
       type: Array,
     },
+    activities: {
+      type: Array
+    }
   },
   data() {
     return {

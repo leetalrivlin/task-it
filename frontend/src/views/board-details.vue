@@ -7,6 +7,7 @@
       @updateBoardStyle="updatEntireBoard"
       @tasksToShow="tasksToShow"
       @deleteBoard="deleteBoard"
+      :activities="board.activities"
     />
     <section class="flex align-start main-content main-layout board-content">
       <draggable

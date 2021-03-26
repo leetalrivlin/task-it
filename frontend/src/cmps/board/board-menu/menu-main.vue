@@ -16,18 +16,26 @@
       <i class="el-icon-delete-solid icon"></i>
       <p>Delete board</p>
     </a>
+    <hr>
     <a class="flex align-center menu-main-item">
       <i class="el-icon-s-fold icon"></i>
       <p>Activity</p>
     </a>
-    <menu-activity />
+    <ul v-for="activity in activities" :key="activity.id">
+      <menu-activity :activity="activity" />
+    </ul>
   </section>
 </template>
 
 <script>
-import menuActivity from './menu-activity.vue'
+import menuActivity from './menu-activity.vue';
 export default {
   name: 'menu-main',
+  props: {
+    activities: {
+      type: Array
+    }
+  },
   methods: {
     toggleAbout() {
       this.$emit('openAbout');
@@ -40,10 +48,10 @@ export default {
     },
     deleteBoard() {
       this.$emit('deleteBoard');
-    },
+    }
   },
   components: {
-    menuActivity,
+    menuActivity
   }
 };
 </script>

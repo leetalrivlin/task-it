@@ -20,6 +20,7 @@
         @openBgc="toggleBgc"
         @openSearch="toggleSearch"
         @deleteBoard="deleteBoard"
+        :activities="activities"
       />
       <transition name="slide-in">
         <menu-about v-if="isAbout" />
@@ -55,6 +56,9 @@ export default {
     board: {
       type: Object,
     },
+    activities: {
+      type: Array
+    }
   },
   data() {
     return {
