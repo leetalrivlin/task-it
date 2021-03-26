@@ -60,7 +60,7 @@ export default {
       var chosenGroup;
       if (this.chosenGroupId === this.openedTaskGroup.id) chosenGroup = this.openedTaskGroup;
       chosenGroup = this.groups.find(({ id }) => id === this.chosenGroupId);
-      this.tasksLen = chosenGroup.tasks.length;
+      this.tasksLen = (chosenGroup.tasks.length + 1);
     },
     changeTaskPos() {
       const newGroupIdx = this.groups.findIndex(({id}) => id === this.chosenGroupId);

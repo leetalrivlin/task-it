@@ -16,10 +16,35 @@
         <li
           v-for="label in labels"
           :key="label.id"
-          class="flex align-center list-item"
+          class="flex align-center space-between list-item"
         >
+        <div class="flex space-between align-center">
           <span :style="{ backgroundColor: label.color }"> </span>
           <p>{{ label.title }}</p>
+        </div>
+         <i  class="el-icon-check check"> </i>
+        </li>
+      </ul>
+      <hr />
+    </div>
+    <div class="filter-members">
+      <ul class="clean-list flex column">
+        <li
+          v-for="member in members"
+          :key="member._id"
+          class="flex align-center space-between list-item"
+        >
+          <div class="flex space-between align-center">
+            <avatar
+              class="avatar-item"
+              :username="member.fullname"
+              :src="member.imgUrl"
+              color="white"
+              :size="33"
+            ></avatar>
+            <p>{{ member.fullname }}</p>
+          </div>
+          <i  class="el-icon-check check"> </i>
         </li>
       </ul>
     </div>
@@ -27,7 +52,12 @@
 </template>
 
 <script>
+import Avatar from 'vue-avatar';
 export default {
+  name: 'menuSearch',
+  components: {
+    Avatar,
+  },
   props: {
     board: {
       type: Object,
@@ -63,6 +93,16 @@ export default {
     labels() {
       return this.$store.getters.boardLabels;
     },
+    members() {
+      return this.board.members;
+    },
+    // clickMember() {
+      
+    // },
+    // clickLabel(){
+      
+    //   console.log('label');
+    // }
   },
 };
 </script>
