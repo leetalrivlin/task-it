@@ -19,6 +19,7 @@
         @openAbout="toggleAbout"
         @openBgc="toggleBgc"
         @openSearch="toggleSearch"
+        @deleteBoard="deleteBoard"
       />
       <transition name="slide-in">
         <menu-about v-if="isAbout" />
@@ -101,6 +102,9 @@ export default {
     },
     tasksToShow(tasks){
        this.$emit('tasksToShow', tasks);
+    },
+    deleteBoard(){
+      this.$emit('deleteBoard')
     }
   },
   computed: {
