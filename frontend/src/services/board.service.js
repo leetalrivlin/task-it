@@ -311,23 +311,22 @@ const USERS_URL = 'usersDb';
 
 export const boardService = {
   query,
-  // getBoards,
   getById,
   save,
+  remove,
+
   getEmptyGroup,
   getEmptyTask,
   getEmptyBoard,
-  // updateBoard,
   getEmptyChecklist,
   getEmptyTodo,
-  getEmptyAttachment,
-  getUsers
+  getEmptyAttachment
 };
 
 async function query() {
   try {
     const boards = await httpService.get(BOARD_URL);
-    return boards
+    return boards;
   } catch (err) {
     console.log('cant load boards', err);
   }
@@ -342,7 +341,6 @@ async function getById(id) {
     console.log(`cnat load board ${boardId}`, err);
   }
 }
-
 
 async function save(board) {
   var newBoard;
@@ -359,56 +357,30 @@ async function save(board) {
   }
 }
 
-async function getUsers() {
-  var users;
-  try {
-    users = await storageService.query(USERS_URL);
-    if (!users.length || !users) {
-      users = gUsers;
-      localStorage.setItem(USERS_URL, JSON.stringify(users));
-    }
-    return users;
-    // return httpService.get(`user`)
-  } catch (err) {
-    console.log('cant load users', err);
-  }
+function remove(boardId) {
+  // return storageService.remove('user', userId);
+  return httpService.delete(`board/${boardId}`, boardId);
 }
-
-function remove(userId) {
-  return storageService.remove('user', userId);
-  // return httpService.delete(`user/${userId}`)
-}
+// async function getUsers() {
+//   var users;
+//   try {
+//     users = await storageService.query(USERS_URL);
+//     if (!users.length || !users) {
+//       users = gUsers;
+//       localStorage.setItem(USERS_URL, JSON.stringify(users));
+//     }
+//     return users;
+//     // return httpService.get(`user`)
+//   } catch (err) {
+//     console.log('cant load users', err);
+//   }
+// }
 
 async function update(user) {
   return storageService.put('user', user);
   // user = await httpService.put(`user/${user._id}`, user)
   // Handle case in which admin updates other user's details
 }
-
-// async function getGroupById(boardId, groupId) {
-//   try {
-//     const board = await getById(boardId);
-//     const group = board.find(group => {
-//       return group.id === groupId;
-//     })
-//     return group;
-//   } catch(err) {
-//     console.log('cannot get group',err);
-//   }
-// }
-
-// async function getTaskById(boardId, groupId, taskId) {
-//   try {
-//     const board = await getById(boardId);
-//     const group = await getGroupById(boardId, groupId);
-//     const task = board.group.find((task) => {
-//       return task.id === taskId;
-//     });
-//     return task;
-//   } catch (err) {
-//     console.log('cannot get task', err);
-//   }
-// }
 
 function getEmptyGroup() {
   return {
@@ -447,48 +419,46 @@ function getEmptyAttachment() {
   };
 }
 
-function getEmptyBoard(){
+function getEmptyBoard() {
   return {
-      title: 'newBoard',
-      createdAt: Date.now(),
-      createdBy: '',
-      style: {
-          background: "url(/img/bgc-4.0061c796.jpg)"
+    title: 'newBoard',
+    createdAt: Date.now(),
+    createdBy: '',
+    style: {
+      background: 'url(/img/bgc-4.0061c796.jpg)'
+    },
+    labels: [
+      {
+        id: 'l101',
+        title: '',
+        color: '#60BD4F'
       },
-      labels: [
-          {
-              "id": "l101",
-              "title": "",
-              "color": "#60BD4F"
-          },
-          {
-              "id": "l102",
-              "title": "",
-              "color": "#F2D600"
-          },
-          {
-              "id": "l103",
-              "title": "orange",
-              "color": "#ff9f1a"
-          },
-          {
-              "id": "l104",
-              "title": "",
-              "color": "#eb5a46"
-          },
-          {
-              "id": "l105",
-              "title": "",
-              "color": "#c377e0"
-          },
-          {
-              "id": "l106",
-              "title": "",
-              "color": "#0079bf"
-          }
-      ],
-      groups:[
-        getEmptyGroup()
-      ]
-  }
+      {
+        id: 'l102',
+        title: '',
+        color: '#F2D600'
+      },
+      {
+        id: 'l103',
+        title: 'orange',
+        color: '#ff9f1a'
+      },
+      {
+        id: 'l104',
+        title: '',
+        color: '#eb5a46'
+      },
+      {
+        id: 'l105',
+        title: '',
+        color: '#c377e0'
+      },
+      {
+        id: 'l106',
+        title: '',
+        color: '#0079bf'
+      }
+    ],
+    groups: [getEmptyGroup()]
+  };
 }

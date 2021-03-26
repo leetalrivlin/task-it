@@ -42,8 +42,25 @@ async function save(board) {
   }
 }
 
+async function remove(boardId) {
+  try {
+      // const store = asyncLocalStorage.getStore()
+      // const { userId, isAdmin } = store
+      const collection = await dbService.getCollection('board')
+      // remove only if user is owner/admin
+      // const query = { _id: ObjectId(reviewId) }
+      // if (!isAdmin) query.byUserId = ObjectId(userId)
+      await collection.deleteOne({ _id: ObjectId(boardId)})
+      // return await collection.deleteOne({ _id: ObjectId(reviewId), byUserId: ObjectId(userId) })
+  } catch (err) {
+      logger.error(`cannot remove review ${reviewId}`, err)
+      throw err
+  }
+}
+
 module.exports = {
   query,
   getById,
   save,
+  remove
 };

@@ -34,9 +34,19 @@ async function getBoards(req, res) {
   }
 }
 
+async function deleteBoard(req, res) {
+  try {
+    await boardService.remove(req.params.id);
+    res.send({ msg: 'Deleted successfully' });
+  } catch (err) {
+    logger.error('Failed to delete board', err);
+    res.status(500).send({ err: 'Failed to delete board' });
+  }
+}
 
 module.exports = {
   getBoard,
   getBoards,
   saveBoard,
+  deleteBoard,
 };

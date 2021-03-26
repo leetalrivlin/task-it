@@ -1,6 +1,5 @@
 <template>
   <div id="app" :style="background" class="flex column main-app">
-    <!-- <main-header-board @logout="doLogout" /> -->
     <component :is="selectedHeader" @logout="doLogout"></component>
     <router-view />
   </div>

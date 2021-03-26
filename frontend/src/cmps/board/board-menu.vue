@@ -1,6 +1,6 @@
 <template>
-  <section class="board-menu flex column">
-    <section class="menu-header flex align-center space-between">
+  <section class="flex column board-menu">
+    <section class="flex align-center space-between menu-header">
       <div class="back-btn-container">
         <i
           v-if="isBack"
@@ -13,7 +13,7 @@
       <i class="el-icon-close close-menu" @click="closeMenue"></i>
     </section>
     <hr class="board-menu-header-divider" />
-    <div class="menu-content flex column">
+    <div class="flex column menu-content">
       <menu-main
         v-if="isMain"
         @openAbout="toggleAbout"
