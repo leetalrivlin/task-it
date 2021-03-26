@@ -40,6 +40,7 @@
                 }
                 &.task-amount {
                     background-color: rgba(145, 194, 196, 0.89);
+                    
                 }
 
                 &.user-amount {
@@ -97,7 +98,10 @@
 @include for-medium-layout {
     .window-overlay .board-dashboard-container{
         width: 630px;
+        .data-container {
+            margin: 20px 12px 9px 31px;
     }
+}
 }
 // $break-narrow: 700px;
 // $break-mobile: 550px;
