@@ -5,6 +5,7 @@
   margin-block-end: 10px;
   cursor: pointer;
   position: relative;
+  font-size: 14px;
 
   .labels-list {
     flex-wrap: wrap;
@@ -12,7 +13,6 @@
       span {
         float: left;
         font-size: 12px;
-        font-weight: 700;
         height: 8px;
         line-height: 100px;
         margin: 0 4px 4px 0;

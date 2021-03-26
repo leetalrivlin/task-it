@@ -1,21 +1,20 @@
 .add-task {
-    .adding {
-        display: block;
-        color: #6b778c;
-        padding: 4px 8px;
-    }
+  form {
+    padding: 4px 11px;
+
     .el-button--info {
-        margin-inline-end: 10px;
+      margin-inline-end: 10px;
     }
     .textarea {
-        padding: 6px 8px;
-        margin-block-end: 10px;
-        color:$clr1;
+      padding: 6px 8px;
+      color: $clr1;
     }
-    .el-icon-close:before {
-        font-size: rem(16px);
+    .el-icon-close {
+      cursor: pointer;
+      font-size: rem(14px);
     }
     ::placeholder {
-        color: $clr1;
+      color: $clr1;
     }
+  }
 }
