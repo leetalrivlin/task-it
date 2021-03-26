@@ -1,6 +1,6 @@
 <template>
-  <div v-if="group" class="flex column group-content">
-    <div class="group-header flex space-between align-center">
+  <div v-if="group" class="flex column group">
+    <div class="flex space-between align-center group-header">
       <input
         type="text"
         class="title flex align-center"
@@ -9,18 +9,17 @@
         @keyup.enter.exact="inputChange"
       />
       <i @click="toggleMenu" class="el-icon-more group-action">
-      <group-menu
-        class="group-menu"
-        v-if="isGroupMenu"
-        @deleteGroup="deleteGroup"
-        @closeMenu="toggleMenu"
-        v-click-outside="toggleMenu"
-      />
-       </i>
+        <group-menu
+          class="group-menu"
+          v-if="isGroupMenu"
+          @deleteGroup="deleteGroup"
+          @closeMenu="toggleMenu"
+          v-click-outside="toggleMenu"
+        />
+      </i>
     </div>
-
     <draggable
-      class="clean-list"
+      class="clean-list group-main-content"
       :list="group.tasks"
       tag="ul"
       @change="moveTask"
@@ -36,8 +35,22 @@
       >
         <task :task="task" @deleteTask="deleteTask" />
       </li>
-      <add-task @saveTask="saveTask" :tasksLen="group.tasks.length" />
     </draggable>
+    <section class="add-task-container">
+      <a
+        v-if="!isAddingTask"
+        @click="isAddingTask = true"
+        class="adding flex align-center"
+      >
+        <i class="el-icon-plus"></i> {{ addTxt }}
+      </a>
+      <add-task
+        v-else
+        @saveTask="saveTask"
+        @closePopup="isAddingTask = false"
+        :tasksLen="group.tasks.length"
+      />
+    </section>
   </div>
 </template>
 
@@ -64,11 +77,12 @@ export default {
     return {
       isDragging: false,
       isGroupMenu: false,
+      isAddingTask: false,
     };
   },
   methods: {
     toggleMenu() {
-      this.isGroupMenu=!this.isGroupMenu;
+      this.isGroupMenu = !this.isGroupMenu;
     },
     taskClicked(taskId) {
       const boardId = this.$route.params.boardId;
@@ -77,7 +91,6 @@ export default {
     saveTask(taskTitle) {
       this.$emit('saveTask', taskTitle, this.group.id);
     },
-
     moveTask() {
       this.$emit('updateGroup', this.$clone(this.group));
     },
@@ -95,13 +108,17 @@ export default {
       this.$emit('changeTitle', this.group);
     },
     closeMenu() {
-       this.$emit('closeMenu');
-    }
+      this.$emit('closeMenu');
+    },
   },
-  computed: {},
+  computed: {
+    addTxt() {
+      return this.group.tasks.length === 0 ? 'Add a task' : 'Add another task';
+    },
+  },
   created() {
     console.log(this.group, 'this.group');
-  }
+  },
 };
 </script>
 
