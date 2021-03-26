@@ -31,6 +31,9 @@ export default {
           text: 'Tasks per group',
           fontSize: 25,
         },
+        responsive: true,
+        maintainAspectRatio: false,
+        responsiveAnimationDuration:2,
       },
       legend: {
         position: 'left',

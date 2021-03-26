@@ -6,7 +6,7 @@
     </div>
     <hr class="task-menu-header-divider" />
     <div class="menu-opt flex align-center space-between" @click="deleteTask">
-      <p>Archive this Task</p>
+      <p>Delete this Task</p>
       <i class="el-icon-delete icon-del"></i>
     </div>
   </section>

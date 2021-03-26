@@ -14,7 +14,7 @@
 <script>
 import memberTaskCountChart from './member-task-count-chart.vue';
 
-Chart.defaults.global.defaultFontColor= 'white'
+Chart.defaults.global.defaultFontColor = 'white';
 export default {
   props: {
     board: {
@@ -36,14 +36,20 @@ export default {
           text: 'Tasks per member',
           fontSize: 25,
         },
-          scales: {
-            xAxes: [{
-                stacked: true
-            }],
-            yAxes: [{
-                stacked: true
-            }]
+        scales: {
+          xAxes: [
+            {
+              stacked: true,
+            },
+          ],
+          yAxes: [
+            {
+              stacked: true,
+            },
+          ],
         },
+        responsive: true,
+        maintainAspectRatio: false,
         legend: {
           display: false,
         },
@@ -80,31 +86,26 @@ export default {
         this.chartData.tasksCount.push(membersPerTask[member].tasksCount);
       }
     },
-    colors(){
-        var colors = [
-      'rgb(170, 79, 77)',
-      '#4d96c9',
-      '#D8DA7C',
-      'rgb(141 87 148 / 89%)',
-      '#85B1B3',
-      '#763857',
-      '#f7d9d9',
-      '#763857',
-      '#f7d9d9',
-    ];
+    colors() {
+      var colors = [
+        'rgb(170, 79, 77)',
+        '#4d96c9',
+        '#D8DA7C',
+        'rgb(141 87 148 / 89%)',
+        '#85B1B3',
+        '#763857',
+        '#f7d9d9',
+        '#763857',
+        '#f7d9d9',
+      ];
 
-    this.chartData.colors = colors;
-    this.showChart = true;
-
-    }
-    
-    
+      this.chartData.colors = colors;
+      this.showChart = true;
+    },
   },
   created() {
     this.calcMemberPerTask();
     this.colors();
-
-    
   },
   components: {
     memberTaskCountChart,

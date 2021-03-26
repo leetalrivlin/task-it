@@ -30,6 +30,7 @@
             margin: 20px 60px 9px 60px;
             .amount {
                 border-radius: 8px;
+                margin: 0 12px 0 0 ;
                 .icon {
                     font-size: 30px;
                     color: rgb(255, 255, 255);
@@ -92,3 +93,11 @@
         }
     }
 }
+
+@include for-medium-layout {
+    .window-overlay .board-dashboard-container{
+        width: 630px;
+    }
+}
+// $break-narrow: 700px;
+// $break-mobile: 550px;

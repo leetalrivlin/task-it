@@ -6,7 +6,7 @@
     </div>
     <hr class="group-menu-header-divider" />
     <div class="menu-opt flex align-center space-between" @click="deleteGroup">
-      <p>Archive this List</p>
+      <p>Delete this List</p>
       <i class="el-icon-delete"></i>
     </div>
   </section>
