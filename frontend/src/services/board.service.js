@@ -316,18 +316,18 @@ export const boardService = {
   save,
   getEmptyGroup,
   getEmptyTask,
-
   // updateBoard,
   getEmptyChecklist,
   getEmptyTodo,
   getEmptyAttachment,
+  getEmptyActivity,
   getUsers
 };
 
 async function query() {
   try {
     const boards = await httpService.get(BOARD_URL);
-    return boards
+    return boards;
   } catch (err) {
     console.log('cant load boards', err);
   }
@@ -443,5 +443,13 @@ function getEmptyAttachment() {
     id: utilService.makeId(4),
     name: '',
     url: ''
+  };
+}
+
+function getEmptyActivity() {
+  return {
+    id: utilService.makeId(4),
+    txt: '',
+    createdAt: Date.now()
   };
 }

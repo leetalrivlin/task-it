@@ -33,6 +33,7 @@
       <transition name="slide-in">
         <menu-search v-if="isSearch" :board="board" @tasksToShow="tasksToShow"/>
       </transition>
+      <menu-activity />
     </div>
   </section>
 </template>
@@ -42,6 +43,7 @@ import menuMain from './board-menu/menu-main.vue';
 import menuAbout from './board-menu/menu-about.vue';
 import menuBgc from './board-menu/menu-bgc';
 import menuSearch from './board-menu/menu-search.vue';
+import menuActivity from './board-menu/menu-activity.vue';
 
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -114,6 +116,7 @@ export default {
     menuBgc,
     menuAbout,
     menuSearch,
+    menuActivity,
   },
 };
 </script>

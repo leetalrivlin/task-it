@@ -103,6 +103,7 @@ import taskTitle from '../task/task-details/task-title.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faColumns } from '@fortawesome/free-solid-svg-icons';
 import taskDate from './task-details/task-date.vue';
+import { boardService } from '../../services/board.service';
 
 library.add(faColumns);
 
@@ -127,6 +128,7 @@ export default {
       return this.$clone(this.$store.getters.group);
     },
     task() {
+      console.log('this.$store.getters.task',this.$store.getters.task);
       return this.$clone(this.$store.getters.task);
     },
     boardLabels() {
@@ -149,15 +151,15 @@ export default {
   },
   methods: {
     setDetails() {
-      this.isChecklist();
+      // this.isChecklist();
     },
     closeDetails() {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}`);
     },
-    isChecklist() {
-      this.isShowChecklist = this.task.checklists ? true : false;
-    },
+    // isChecklist() {
+    //   this.isShowChecklist = this.task.checklists ? true : false;
+    // },
     setEmptyChecklist(emptyChecklist) {
       if (!this.task.checklists) this.task.checklists = [];
       this.task.checklists.push(emptyChecklist);
@@ -166,7 +168,9 @@ export default {
     setCover(color) {
       this.task.cover = {};
       this.task.cover.backgroundColor = color;
-      this.updateTask(this.task);
+      const activity = boardService.getEmptyActivity();
+      activity.txt = 'changed the background color of the cover';
+      this.updateTask(this.task, activity);
     },
     setImg(img) {
       this.task.cover = {};
@@ -231,8 +235,8 @@ export default {
       delete this.task.dueDate;
       this.updateTask(this.task);
     },
-    updateTask(updatedTask) {
-      this.$store.dispatch({ type: 'updateTask', task: updatedTask });
+    updateTask(task, activity = {}) {
+      this.$store.dispatch({ type: 'updateTask', payload: {task, activity}});
     },
     updateBoard(updatedGroup) {
       const cloneBoard = this.$clone(this.$store.getters.board);
@@ -251,6 +255,7 @@ export default {
   },
   created() {
     const taskId = this.$route.params.taskId;
+    console.log('taskId',taskId);
     this.$store.dispatch({ type: 'setTaskById', taskId });
   },
   mounted() {

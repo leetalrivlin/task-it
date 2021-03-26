@@ -36,9 +36,15 @@ export const boardStore = {
     setBoard(state, { board }) {
       state.board = board;
     },
-    setTask(state, { task }) {
-      state.task = task;
-    }
+    setTask(state, {payload}) {
+      console.log('updatedTask',payload.task);
+      state.task = payload.task;
+    },
+    // The version before that worked:
+    // setTask(state, { task }) {
+    //   state.task = task;
+    // }
+
     // setTaskById(state, { taskId }) {
     //   state.board.groups.forEach(group => {
     //     group.tasks.forEach(task => {
@@ -66,19 +72,36 @@ export const boardStore = {
     },
 
     async setTaskById({ commit, state }, { taskId }) {
+      console.log('taskId from store:',taskId);
       state.board.groups.forEach(group => {
         group.tasks.forEach(task => {
           if (task.id === taskId) {
-            commit({ type: 'setTask', task });
+            commit({ type: 'setTask', payload: {task} });
             socketService.emit('task-watch', taskId);
             socketService.off('task-updated');
             socketService.on('task-updated', task => {
-              commit({ type: 'setTask', task });
+              commit({ type: 'setTask', payload: {task} });
             });
           }
         });
       });
     },
+    // The version that worked:
+    // async setTaskById({ commit, state }, { taskId }) {
+    //   console.log('taskId from store:',taskId);
+    //   state.board.groups.forEach(group => {
+    //     group.tasks.forEach(task => {
+    //       if (task.id === taskId) {
+    //         commit({ type: 'setTask', task });
+    //         socketService.emit('task-watch', taskId);
+    //         socketService.off('task-updated');
+    //         socketService.on('task-updated', task => {
+    //           commit({ type: 'setTask', task });
+    //         });
+    //       }
+    //     });
+    //   });
+    // },
     async updateBoard({ commit }, { board }) {
       try {
         commit({ type: 'setBoard', board });
@@ -87,22 +110,45 @@ export const boardStore = {
         console.log('cant update board', err);
       }
     },
-    async updateTask({ commit, dispatch, state }, { task }) {
+    async updateTask({ commit, dispatch, state }, {payload}) {
       try {
-        commit({ type: 'setTask', task });
+        console.log('updatedTask', payload.task);
+        console.log('activity', payload.activity);
+        commit({ type: 'setTask', payload});
         const boardCopy = clone(state.board);
+        payload.activity.byMember = (state.loggedinUser) ? state.loggedinUser : 'Guest';
+        boardCopy.activities.push(payload.activity);
+        console.log('boardCopy',boardCopy);
         const groupIdx = boardCopy.groups.findIndex(group =>
-          group.tasks.some(({ id }) => id === task.id)
+          group.tasks.some(({ id }) => id === payload.task.id)
         );
         const taskIdx = boardCopy.groups[groupIdx].tasks.findIndex(
-          ({ id }) => id === task.id
+          ({ id }) => id === payload.task.id
         );
-        boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1, task);
-        socketService.emit('task-updated', task);
+        boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1, payload.task);
+        socketService.emit('task-updated', payload.task);
         dispatch({ type: 'updateBoard', board: boardCopy });
       } catch (err) {
         console.log('cannot update task', err);
       }
-    }
+    },
+    // The version before that worked:
+    // async updateTask({ commit, dispatch, state }, {task}) {
+    //   try {
+    //     commit({ type: 'setTask', task});
+    //     const boardCopy = clone(state.board);
+    //     const groupIdx = boardCopy.groups.findIndex(group =>
+    //       group.tasks.some(({ id }) => id === task.id)
+    //     );
+    //     const taskIdx = boardCopy.groups[groupIdx].tasks.findIndex(
+    //       ({ id }) => id === task.id
+    //     );
+    //     boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1, task);
+    //     socketService.emit('task-updated', task);
+    //     dispatch({ type: 'updateBoard', board: boardCopy });
+    //   } catch (err) {
+    //     console.log('cannot update task', err);
+    //   }
+    // }
   }
 };
