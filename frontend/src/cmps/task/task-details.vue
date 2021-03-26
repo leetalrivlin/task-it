@@ -206,16 +206,19 @@ export default {
       this.updateTask(this.task);
     },
     setMember(chosenMember) {
+      const activity = boardService.getEmptyActivity();
       if (!this.task.members) this.task.members = [];
       const memberIdx = this.task.members.findIndex(({ _id }) => {
         return _id === chosenMember._id;
       });
       if (memberIdx >= 0) {
         this.task.members.splice(memberIdx, 1);
+        activity.txt = `removed ${chosenMember.fullname} from ${this.task.title}`;
       } else {
         this.task.members.push(chosenMember);
+        activity.txt = `added ${chosenMember.fullname} to ${this.task.title}`;
       }
-      this.updateTask(this.task);
+      this.updateTask(this.task, activity);
     },
     updateBoardLabel(updatedLabel) {
       console.log('updatedLabel', updatedLabel);

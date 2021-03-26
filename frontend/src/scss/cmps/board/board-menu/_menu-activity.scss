@@ -2,9 +2,10 @@
   .activity-avatar {
     margin: 0 0 0 8px;
     object-fit: cover;
+    min-width: 32px;
   }
   .activity-info {
-    margin-inline-start: 8px;
+    // margin-inline-start: 8px;
     padding: 8px;
     .user-activity {
       font-size: 14px;
