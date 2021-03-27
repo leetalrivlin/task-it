@@ -4,6 +4,12 @@
   position: relative;
   // color: white;
 
+  .devider{
+    border-left: 1px solid rgba(255, 255, 255, 0.24);;
+    height: 16px;
+    margin: 8px 8px 12px 4px;
+  }
+
   a {
     border-radius: 3px;
     line-height: 32px;
@@ -36,7 +42,7 @@
     transform: translateX(350px);
   }
   .members {
-    margin-inline-start: 8px;
+    // margin-inline-start: 8px;
     .member {
       text-align: center;
     }

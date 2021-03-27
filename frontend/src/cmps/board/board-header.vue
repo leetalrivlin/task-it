@@ -1,7 +1,8 @@
 <template>
   <header class="flex align-center space-between header-layout board-header">
     <div class="flex">
-      <button class="el-btn board-title">{{ board.title }}</button>|
+      <button class="el-btn board-title">{{ board.title }}</button
+      ><span class="devider"></span>
       <div class="members flex">
         <ul class="clean-list flex members-list">
           <li v-for="member in membersBoard" :key="member._id">
@@ -96,8 +97,8 @@ export default {
       type: Array,
     },
     activities: {
-      type: Array
-    }
+      type: Array,
+    },
   },
   data() {
     return {

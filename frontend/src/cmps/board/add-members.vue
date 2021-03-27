@@ -12,7 +12,7 @@
 
       <ul class="clean-list">
         <li
-          v-for="user in membersToShow"
+          v-for="user in usersToShow"
           :key="user._id"
           class="member flex align-center space-between"
           @click="updateBoardMembers(user)"
@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       searchedMember: '',
-      membersToShow: this.systemUsers,
+      usersToShow: this.systemUsers,
     };
   },
   props: {
@@ -61,27 +61,28 @@ export default {
       this.$emit('closeMenu');
     },
     updateBoardMembers(user) {
-      const userIdx = this.boardMembers.findIndex(
+      const members = this.boardMembers? this.$clone(this.boardMembers) : [];
+      const userIdx = members.findIndex(
         ({ _id }) => _id === user._id
       );
       if (userIdx >= 0) {
-        this.boardMembers.splice(userIdx, 1);
+        members.splice(userIdx, 1);
       } else {
-        this.boardMembers.push(user);
+        members.push(user);
       }
-      this.$emit('updateBoardMembers', this.boardMembers);
+      this.$emit('updateBoardMembers', members);
     },
     filterMembers() {
-      var membersToShow;
+      var usersToShow;
       if (!this.searchedMember || this.searchedMember === '') {
-        membersToShow = this.systemUsers;
+        usersToShow = this.systemUsers;
       }
-      membersToShow = this.systemUsers.filter((member) => {
+      usersToShow = this.systemUsers.filter((member) => {
         return member.fullname
           .toLowerCase()
           .includes(this.searchedMember.toLowerCase());
       });
-      this.membersToShow = membersToShow;
+      this.usersToShow = usersToShow;
     },
   },
 
