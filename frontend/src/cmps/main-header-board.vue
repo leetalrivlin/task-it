@@ -4,15 +4,19 @@
       class="flex align-center space-between main-header-board-container"
     >
       <div class="container flex align-center">
-        <router-link to="/"><font-awesome-icon class="el-btn home-icon" icon="home" /></router-link>
-        <router-link class="el-btn" to="/board">Boards</router-link>
+        <router-link to="/"
+          ><font-awesome-icon class="el-btn home-icon" icon="home"
+        /></router-link>
+        <router-link class="el-btn" to="/board">
+          <img class="boards-icon" src="../assets/trello-icon-pack/trello-white.svg" />
+          Boards</router-link
+        >
       </div>
       <span
         class="flex justify-center align-center logo"
         role="img"
         aria-label="logo"
       >
-        <!-- <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-white-bounce.gif" class="gif-icon"></div></router-link></span -->
         <router-link to="/"
           ><div class="flex justify-center align-center">
             <span class="task-it-logo">Taskit</span
@@ -29,7 +33,9 @@
         v-if="ismobile"
       ></section>
       <nav class="flex align-center" ref="navMenu">
-        <router-link class="el-btn" to="/login">Signin</router-link>
+        <router-link v-if="!loggedInUser" class="el-btn" to="/login"
+          >Signin</router-link
+        >
         <section
           @click="userPopup = !userPopup"
           class="loggedin-user"
@@ -99,7 +105,6 @@ export default {
 
   computed: {
     loggedInUser() {
-      console.log(this.$store.getters.loggedinUser);
       return this.$store.getters.loggedinUser;
     },
     logoSrc() {

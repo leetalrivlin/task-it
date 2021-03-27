@@ -21,7 +21,7 @@
 
   .board-title {
     font-family: Segoe-Bold, serif;
-    margin-inline-end: 8px;
+    margin-inline-end: 5px;
   }
 
   .board-menu-btn {
@@ -41,17 +41,17 @@
   .slide-leave-to {
     transform: translateX(350px);
   }
-  .members {
-    // margin-inline-start: 8px;
+  .members-list {
+    &:last-of-type{
+    margin-inline-end: 8px;
+    }
     .member {
       text-align: center;
+
     }
     span {
       position: relative;
     }
-  }
-  .invite-btn {
-    margin-inline-start: rem(10px);
   }
 
   .dashboard-btn {

@@ -5,7 +5,10 @@
         <router-link to="/"
           ><font-awesome-icon class="el-btn home-icon" icon="home"
         /></router-link>
-        <router-link class="el-btn" to="/board">Boards</router-link>
+        <router-link class="el-btn boards" to="/board">
+        <img class="boards-icon" src="../assets/trello-icon-pack/trello-slate-blue.svg">
+        Boards
+        </router-link>
       </div>
       <span class="flex justify-center align-center logo">
         <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-clr1-bounce.gif" class="gif-icon"></div></router-link>
@@ -16,7 +19,7 @@
         v-if="ismobile"
       ></section>
       <nav ref="navMenu" class="flex align-center">
-        <router-link class="el-btn" to="/login">Signin</router-link>
+        <router-link v-if="!loggedInUser" class="el-btn" to="/login">Signin</router-link>
         <section
           @click="userPopup = !userPopup"
           class="loggedin-user"
@@ -78,7 +81,6 @@ export default {
   },
   computed: {
     loggedInUser() {
-      console.log(this.$store.getters.loggedinUser);
       return this.$store.getters.loggedinUser;
     },
   },

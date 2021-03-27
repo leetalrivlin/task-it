@@ -3,9 +3,16 @@
   color: white;
   .main-header-board-container {
     height: 40px;
-    .home-icon{
-      font-size: 32px;
-      margin-inline-end: 4px;
+
+    .container {
+      .boards-icon {
+        margin-inline-end: 4px;
+      }
+
+      .home-icon {
+        font-size: 36px;
+        margin-inline-end: 4px;
+      }
     }
     .logo {
       position: absolute;

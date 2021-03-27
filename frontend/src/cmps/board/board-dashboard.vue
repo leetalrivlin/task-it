@@ -78,6 +78,7 @@ export default {
     },
     countUsers() {
       var users = 0;
+      if(!this.board.members) return
       this.board.members.forEach((user) => {
         users++;
       });

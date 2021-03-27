@@ -1,20 +1,11 @@
 <template>
-  <section v-if="user">
+  <section class="flex column align-center" v-if="user">
     <h1>User Details - {{ user.fullname }}</h1>
-    <h3>{{ user.username }} score: {{ user.score }}</h3>
-    <ul>
-      <li v-for="review in user.givenReviews" :key="review._id">
-        {{ review.txt }}
-        <router-link :to="`/user/${review.aboutUser._id}`">
-          About {{ review.aboutUser.fullname }}
-        </router-link>
-      </li>
-    </ul>
 
-    <details>
+    <!-- <details>
       <summary>Full JSON</summary>
       <pre>{{ user }}</pre>
-    </details>
+    </details> -->
   </section>
 </template>
 
