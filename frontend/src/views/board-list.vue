@@ -1,8 +1,8 @@
 <template>
-  <section class="main-content main-layout board-list">
+  <section class="flex column align-center main-content main-layout board-list">
     <h1>Pick a Borad</h1>
     <!-- <button @click='getBoard'>board</button> -->
-    <ul class="flex justify-center clean-list">
+    <ul class="flex clean-list">
       <li @click="createBoard">
         <i class="el-icon-plus add-board flex justify-center align-center"></i>
       </li>
