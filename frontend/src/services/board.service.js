@@ -384,10 +384,10 @@ async function update(user) {
   // Handle case in which admin updates other user's details
 }
 
-function getEmptyGroup() {
+function getEmptyGroup(title = '') {
   return {
     id: utilService.makeId(3),
-    title: '',
+    title,
     tasks: []
   };
 }
@@ -421,10 +421,10 @@ function getEmptyAttachment() {
   };
 }
 
-function getEmptyActivity() {
+function getEmptyActivity(txt = '') {
   return {
     id: utilService.makeId(4),
-    txt: '',
+    txt,
     createdAt: Date.now()
   };
 }
@@ -469,7 +469,7 @@ function getEmptyBoard() {
         color: '#0079bf'
       }
     ],
-    groups: [getEmptyGroup()],
-    activities: []
+    groups: [getEmptyGroup('Backlog')],
+    activities: [getEmptyActivity('Board created')]
   };
 }
