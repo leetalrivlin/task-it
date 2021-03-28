@@ -116,7 +116,25 @@ export default {
     },
     tasksToShow() {
       console.log(this.filterBy);
-      if (!this.filterBy || Object.keys(this.filterBy).length === 0) return this.group.tasks;
+      if (!this.filterBy || Object.keys(this.filterBy).length === 0)
+        return this.group.tasks;
+      if (
+        this.filterBy.txt === '' &&
+        this.filterBy.labels.length === 0 &&
+        this.filterBy.members.length === 0
+      )
+        return this.group.tasks;
+      else {
+        return this.group.tasks.filter((task) => {
+          return (
+            task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
+            task.labelIds.some((label) => this.filterBy.labels.includes(label)) &&
+            task.members.some((member) =>
+              this.filterBy.members.includes(member)
+            )
+          );
+        });
+      }
     },
   },
 };
