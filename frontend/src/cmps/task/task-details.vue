@@ -65,6 +65,13 @@
               @updateTask="updateTask"
             />
           </ul>
+          <ul
+            v-for="activity in activitiesToShow"
+            :key="activity.id"
+            class="clean-list"
+          >
+            <menu-activity :activity="activity" />
+          </ul>
         </section>
         <task-details-menu
           :members="members"
@@ -141,6 +148,9 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
+    },
+    activitiesToShow() {
+      return this.$clone(this.$store.getters.board).activities.filter(activity => activity.task.id === this.task.id)
     }
   },
   methods: {
@@ -259,7 +269,7 @@ export default {
           ? this.$store.getters.loggedinUser
           : { fullname: 'Guest', imgUrl: '' };
       }
-      activity.task = {id: this.task.id, title: this.task.title}
+      activity.task = { id: this.task.id, title: this.task.title };
       this.$store.dispatch({ type: 'updateTask', payload: { task, activity } });
     },
     updateBoard(updatedGroup, activity = {}) {
@@ -273,7 +283,7 @@ export default {
         ({ id }) => id === updatedGroup.id
       );
       cloneBoard.groups.splice(idx, 1, updatedGroup);
-      console.log('activity in updateBoard',activity);
+      console.log('activity in updateBoard', activity);
       this.$store.dispatch({
         type: 'updateBoard',
         payload: { board: cloneBoard, activity }
@@ -284,7 +294,7 @@ export default {
       const txt = `removed ${this.task.title} from ${this.group.title}`;
       const activity = this.setActivity(txt);
       this.group.tasks.splice(taskIdx, 1);
-      console.log('activity in removeTask',activity);
+      console.log('activity in removeTask', activity);
       this.updateBoard(this.group, activity);
       this.closeDetails();
     }
