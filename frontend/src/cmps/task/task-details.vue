@@ -256,7 +256,6 @@ export default {
   },
   created() {
     const taskId = this.$route.params.taskId;
-    console.log('taskId',taskId);
     this.$store.dispatch({ type: 'setTaskById', taskId });
   },
 };
