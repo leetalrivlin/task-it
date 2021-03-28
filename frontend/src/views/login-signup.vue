@@ -79,7 +79,7 @@ export default {
     return {
       signUp: true,
       msg: '',
-      loginCred: { username: 'chen', password: '0000' },
+      loginCred: { username:'' , password:''  },
       signupCred: { username: '', password: '', fullname: '' },
     };
   },
