@@ -272,6 +272,7 @@ export default {
         ({ id }) => id === updatedGroup.id
       );
       cloneBoard.groups.splice(idx, 1, updatedGroup);
+      console.log('activity in updateBoard',activity);
       this.$store.dispatch({
         type: 'updateBoard',
         payload: { board: cloneBoard, activity }
@@ -279,9 +280,10 @@ export default {
     },
     removeTask(taskId) {
       const taskIdx = this.group.tasks.findIndex(({ id }) => id === taskId);
-      this.group.tasks.splice(taskIdx, 1);
       const txt = `removed ${this.task.title} from ${this.group.title}`;
       const activity = this.setActivity(txt);
+      this.group.tasks.splice(taskIdx, 1);
+      console.log('activity in removeTask',activity);
       this.updateBoard(this.group, activity);
       this.closeDetails();
     }

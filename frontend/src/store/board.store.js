@@ -108,6 +108,10 @@ export const boardStore = {
     async updateBoard({ commit }, { payload }) {
       try {
         commit({ type: 'setBoard', payload });
+        const boardCopy = clone(state.board);
+        if (payload.activity.txt !== '') {
+          boardCopy.activities.unshift(payload.activity);
+        }
         const updatedBoard = await boardService.save(payload.board);
       } catch (err) {
         console.log('cant update board', err);
