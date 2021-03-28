@@ -4,8 +4,8 @@
   position: relative;
   // color: white;
 
-  .devider{
-    border-left: 1px solid rgba(255, 255, 255, 0.24);;
+  .devider {
+    border-left: 1px solid rgba(255, 255, 255, 0.24);
     height: 16px;
     margin: 8px 8px 12px 4px;
   }
@@ -42,16 +42,18 @@
     transform: translateX(350px);
   }
   .members-list {
-    &:last-of-type{
-    margin-inline-end: 8px;
+    &:last-of-type {
+      margin-inline-end: 8px;
     }
     .member {
       text-align: center;
-
     }
     span {
       position: relative;
     }
+  }
+  .invite-btn {
+    position: absolute;
   }
 
   .dashboard-btn {

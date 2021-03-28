@@ -20,7 +20,7 @@
       .home-icon {
         font-size: 36px;
         margin-inline-end: 4px;
-        color: #42526E;
+        color: #42526e;
         background-color: rgba(255, 255, 255, 0.8);
       }
     }
@@ -44,6 +44,9 @@
     nav {
       .mobile-separator {
         display: none;
+      }
+      a {
+        background-color: rgba(255, 255, 255, 0.8);
       }
 
       color: $clr1;
