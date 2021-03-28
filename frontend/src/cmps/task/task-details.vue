@@ -65,15 +65,17 @@
               @updateTask="updateTask"
             />
           </ul>
-          <ul
-            v-for="activity in activitiesToShow"
-            :key="activity.id"
-            class="clean-list task-activity-container d-desc"
-          >
+          <div class="d-desc">
             <i class="el-icon-s-fold d-icon"></i>
             <h1 class="task-details-header">Activity</h1>
-            <menu-activity :activity="activity" />
-          </ul>
+            <ul
+              v-for="activity in activitiesToShow"
+              :key="activity.id"
+              class="clean-list task-activity-container d-content"
+            >
+              <menu-activity :activity="activity" />
+            </ul>
+          </div>
         </section>
         <task-details-menu
           :members="members"
