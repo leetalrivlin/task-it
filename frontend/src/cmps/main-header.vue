@@ -6,20 +6,32 @@
           ><font-awesome-icon class="el-btn home-icon" icon="home"
         /></router-link>
         <router-link class="el-btn boards" to="/board">
-        <img class="boards-icon" src="../assets/trello-icon-pack/trello-slate-blue.svg">
-        <span>Boards</span>
+          <img
+            class="boards-icon"
+            src="../assets/trello-icon-pack/trello-slate-blue.svg"
+          />
+          <span>Boards</span>
         </router-link>
       </div>
       <span class="flex justify-center align-center logo">
-        <router-link to="/"><div class="flex justify-center align-center"><span class="task-it-logo">Taskit</span><img src="~@/assets/imgs/task-it-logo-clr1-bounce.gif" class="gif-icon"></div></router-link>
-        </span>
+        <router-link to="/"
+          ><div class="flex justify-center align-center">
+            <span class="task-it-logo">Taskit</span
+            ><img
+              src="~@/assets/imgs/task-it-logo-clr1-bounce.gif"
+              class="gif-icon"
+            /></div
+        ></router-link>
+      </span>
       <section
         class="window-overlay"
         @click="closeNav"
         v-if="ismobile"
       ></section>
       <nav ref="navMenu" class="flex align-center">
-        <router-link v-if="!loggedInUser" class="el-btn" to="/login">Signin</router-link>
+        <router-link v-if="!loggedInUser" class="el-btn" to="/login"
+          >Signin</router-link
+        >
         <section
           @click="userPopup = !userPopup"
           class="loggedin-user"
@@ -47,8 +59,8 @@
           @logout="doLogout"
         />
       </nav>
+      <button class="el-btn menu-btn" @click="openNav">☰</button>
     </section>
-    <button class="el-btn menu-btn" @click="openNav">☰</button>
   </header>
 </template>
 <script>
@@ -58,12 +70,12 @@ export default {
   name: 'mainHeader',
   components: {
     Avatar,
-    userPopup,
+    userPopup
   },
   data() {
     return {
       userPopup: false,
-      ismobile: false,
+      ismobile: false
     };
   },
   methods: {
@@ -77,12 +89,12 @@ export default {
     openNav() {
       this.$refs.navMenu.style.transform = 'translateX(0)';
       this.ismobile = true;
-    },
+    }
   },
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
-    },
-  },
+    }
+  }
 };
 </script>

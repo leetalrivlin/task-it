@@ -68,8 +68,8 @@
           @logout="doLogout"
         />
       </nav>
+      <button class="menu-btn el-btn" @click="openNav">☰</button>
     </section>
-    <button class="menu-btn el-btn" @click="openNav">☰</button>
   </header>
 </template>
 <script>
