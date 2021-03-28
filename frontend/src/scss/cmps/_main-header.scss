@@ -134,3 +134,23 @@
     }
   }
 }
+
+@include for-mobile-layout {
+  .main-header {
+    .main-header-container {
+      .container {
+        span {
+          display: none;
+        }
+      }
+      .logo {
+        .task-it-logo {
+          font-size: 25px;
+        }
+        .gif-icon {
+          width: 40px;
+        }
+      }
+    }
+  }
+}

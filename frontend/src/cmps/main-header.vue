@@ -7,7 +7,7 @@
         /></router-link>
         <router-link class="el-btn boards" to="/board">
         <img class="boards-icon" src="../assets/trello-icon-pack/trello-slate-blue.svg">
-        Boards
+        <span>Boards</span>
         </router-link>
       </div>
       <span class="flex justify-center align-center logo">
