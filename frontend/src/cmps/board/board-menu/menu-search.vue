@@ -96,7 +96,6 @@ export default {
       this.filterBoard();
     },
     filterBoard() {
-      console.log(this.filterBy);
       this.$emit('filterBoard', this.filterBy);
     },
   },
