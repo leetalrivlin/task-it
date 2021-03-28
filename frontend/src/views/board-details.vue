@@ -65,7 +65,7 @@ export default {
     return {
       boardId: null,
       isDragging: false,
-      filterBy: {},
+      filterBy: { txt: '', labels: [], members: [] },
     };
   },
   methods: {
@@ -73,8 +73,8 @@ export default {
       const activity = boardService.getEmptyActivity();
       activity.txt = txt;
       activity.byMember = this.$store.getters.loggedinUser
-          ? this.$store.getters.loggedinUser
-          : { fullname: 'Guest', imgUrl: '' };
+        ? this.$store.getters.loggedinUser
+        : { fullname: 'Guest', imgUrl: '' };
       return activity;
     },
     async getBoard() {
@@ -96,7 +96,10 @@ export default {
       const cloneBoard = this.$clone(this.board);
       const txt = `added a new group ${newGroup.title}`;
       const activity = this.setActivity(txt);
-      this.$store.dispatch({ type: 'updateBoard', payload: {board: cloneBoard, activity }});
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board: cloneBoard, activity },
+      });
     },
     saveTask(task, groupId) {
       const group = this.getGroup(groupId);
@@ -120,7 +123,10 @@ export default {
       const groupIdx = this.board.groups.findIndex(({ id }) => id === groupId);
       this.board.groups.splice(groupIdx, 1);
       const cloneBoard = this.$clone(this.board);
-      this.$store.dispatch({ type: 'updateBoard', payload: {board: cloneBoard, activity} });
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board: cloneBoard, activity },
+      });
     },
     updateGroup(updatedGroup, activity) {
       const idx = this.board.groups.findIndex(
@@ -128,7 +134,10 @@ export default {
       );
       this.board.groups.splice(idx, 1, updatedGroup);
       const cloneBoard = this.$clone(this.board);
-      this.$store.dispatch({ type: 'updateBoard',payload:{ board: cloneBoard , activity}});
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board: cloneBoard, activity },
+      });
     },
     tasksToShow(tasks) {
       console.log('tasks');
@@ -137,9 +146,12 @@ export default {
     moveGroup() {
       const txt = `moved a group`;
       const activity = this.setActivity(txt);
-      this.$store.dispatch({ type: 'updateBoard', payload: {board: this.board, activity }});
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board: this.board, activity },
+      });
     },
-    getGroup(groupId) { 
+    getGroup(groupId) {
       return this.board.groups.find((group) => {
         return group.id === groupId;
       });
@@ -151,7 +163,10 @@ export default {
       this.updateBoard(this.board, activity);
     },
     updateBoard(updatedBoard, activity = {}) {
-      this.$store.dispatch({ type: 'updateBoard', payload: {board: updatedBoard, activity }});
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board: updatedBoard, activity },
+      });
     },
     deleteBoard() {
       this.$store.commit({
