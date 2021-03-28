@@ -75,7 +75,6 @@ export const boardStore = {
     },
 
     async setTaskById({ commit, state }, { taskId }) {
-      console.log('taskId from store:', taskId);
       state.board.groups.forEach(group => {
         group.tasks.forEach(task => {
           if (task.id === taskId) {
@@ -107,10 +106,10 @@ export const boardStore = {
     // },
     async updateBoard({ commit }, { payload }) {
       try {
-        // const boardCopy = clone(state.board);
-        if (payload.activity.txt !== '') {
+        if (payload.activity.txt) {
           payload.board.activities.unshift(payload.activity);
         }
+        console.log('payload in updateBoard',payload);
         commit({ type: 'setBoard', payload });
         const updatedBoard = await boardService.save(payload.board);
       } catch (err) {
@@ -146,9 +145,6 @@ export const boardStore = {
       try {
         commit({ type: 'setTask', payload });
         const boardCopy = clone(state.board);
-        // if (payload.activity.txt !== '') {
-        //   boardCopy.activities.unshift(payload.activity);
-        // }
         const groupIdx = boardCopy.groups.findIndex(group =>
           group.tasks.some(({ id }) => id === payload.task.id)
         );
