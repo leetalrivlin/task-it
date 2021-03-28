@@ -107,11 +107,11 @@ export const boardStore = {
     // },
     async updateBoard({ commit }, { payload }) {
       try {
-        commit({ type: 'setBoard', payload });
-        const boardCopy = clone(state.board);
+        // const boardCopy = clone(state.board);
         if (payload.activity.txt !== '') {
-          boardCopy.activities.unshift(payload.activity);
+          payload.board.activities.unshift(payload.activity);
         }
+        commit({ type: 'setBoard', payload });
         const updatedBoard = await boardService.save(payload.board);
       } catch (err) {
         console.log('cant update board', err);
@@ -146,9 +146,9 @@ export const boardStore = {
       try {
         commit({ type: 'setTask', payload });
         const boardCopy = clone(state.board);
-        if (payload.activity.txt !== '') {
-          boardCopy.activities.unshift(payload.activity);
-        }
+        // if (payload.activity.txt !== '') {
+        //   boardCopy.activities.unshift(payload.activity);
+        // }
         const groupIdx = boardCopy.groups.findIndex(group =>
           group.tasks.some(({ id }) => id === payload.task.id)
         );
