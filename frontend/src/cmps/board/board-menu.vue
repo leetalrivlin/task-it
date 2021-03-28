@@ -33,7 +33,7 @@
         />
       </transition>
       <transition name="slide-in">
-        <menu-search v-if="isSearch" :board="board" @tasksToShow="tasksToShow"/>
+        <menu-search v-if="isSearch" :board="board" @filterBoard="filterBoard"/>
       </transition>
       
     </div>
@@ -103,8 +103,8 @@ export default {
     photoPicked(style) {
       this.$emit('photoPicked', style);
     },
-    tasksToShow(tasks){
-       this.$emit('tasksToShow', tasks);
+    filterBoard(filterBy){
+       this.$emit('filterBoard', filterBy);
     },
     deleteBoard(){
       this.$emit('deleteBoard')

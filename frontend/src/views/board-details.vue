@@ -8,6 +8,7 @@
       @tasksToShow="tasksToShow"
       @deleteBoard="deleteBoard"
       @saveTitle="saveTitle"
+      @filterBoard="filterBoard"
       :activities="board.activities"
     />
     <section class="flex align-start main-content main-layout board-content">
@@ -34,6 +35,7 @@
           @updateGroup="updateGroup"
           @deleteGroup="deleteGroup"
           :group="group"
+          :filterBy="filterBy"
         />
 
         <!-- </transition-group> -->
@@ -63,6 +65,7 @@ export default {
     return {
       boardId: null,
       isDragging: false,
+      filterBy: {},
     };
   },
   methods: {
@@ -76,6 +79,9 @@ export default {
       } catch (err) {
         console.log(err);
       }
+    },
+    filterBoard(filterBy) {
+      this.filterBy = filterBy;
     },
     saveGroup(newGroup) {
       this.board.groups.push(newGroup);

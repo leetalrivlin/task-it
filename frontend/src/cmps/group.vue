@@ -20,7 +20,7 @@
     </div>
     <draggable
       class="clean-list group-main-content"
-      :list="group.tasks"
+      :list="tasksToShow"
       tag="ul"
       @change="moveTask"
       @start="isDragging = true"
@@ -30,7 +30,7 @@
     >
       <li
         @click="taskClicked(task.id)"
-        v-for="task in group.tasks"
+        v-for="task in tasksToShow"
         :key="task.id"
       >
         <task :task="task" @deleteTask="deleteTask" />
@@ -70,6 +70,9 @@ export default {
   name: 'group',
   props: {
     group: {
+      type: Object,
+    },
+    filterBy: {
       type: Object,
     },
   },
@@ -114,6 +117,10 @@ export default {
   computed: {
     addTxt() {
       return this.group.tasks.length === 0 ? 'Add a task' : 'Add another task';
+    },
+    tasksToShow() {
+      console.log(this.filterBy);
+      if (!this.filterBy || Object.keys(this.filterBy).length === 0) return this.group.tasks;
     },
   },
 };
