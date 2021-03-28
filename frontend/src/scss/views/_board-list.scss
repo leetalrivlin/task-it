@@ -6,17 +6,18 @@
     color: $clr1;
   }
   ul {
-    flex-wrap: wrap;
-    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    width: 100%;
+    gap: 15px;
+    margin-right: 8px;
     li {
       a {
         display: block;
         font-family: Segoe-Bold;
-        width: 300px;
         height: 200px;
         border-radius: 8px;
         color: white;
-        margin: 0 15px 15px 0;
         background-color: $clr2;
       }
       p {
@@ -27,11 +28,9 @@
         line-height: 2;
       }
       .add-board {
-        width: 300px;
         height: 200px;
         border-radius: 8px;
         color: $clr1;
-        margin: 0 15px 15px 0;
         padding: 10px;
         background-color: #d6d3e5e3;
         line-height: 80px;
