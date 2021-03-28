@@ -24,9 +24,9 @@
       > * {
         margin-block-end: 20px;
       }
-      .task-activity-container {
-        a {
-          color: $clr1;
+      .activity-container {
+        .task-activity-avatar {
+          margin: 0;
         }
       }
     }

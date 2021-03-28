@@ -1,7 +1,7 @@
 <template>
-  <li class="flex justify-start align-center activity-container d-content">
+  <li class="flex justify-start align-center activity-container">
     <avatar
-      class="activity-avatar"
+      class="activity-avatar task-activity-avatar"
       :username="activity.byMember.fullname || 'New Guest'"
       :src="activity.byMember.imgUrl || 'require(@/assets/imgs/guest-avatar.png)'"
       color="white"
