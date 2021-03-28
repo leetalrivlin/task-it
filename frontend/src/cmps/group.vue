@@ -59,6 +59,7 @@ import task from '../cmps/task.vue';
 import groupMenu from '../cmps/group-menu.vue';
 import addTask from '../cmps/add-task.vue';
 import draggable from 'vuedraggable';
+import {boardService} from '../services/board.service'
 
 export default {
   components: {
@@ -94,8 +95,8 @@ export default {
     saveTask(task) {
       this.$emit('saveTask', task, this.group.id);
     },
-    moveTask() {
-      this.$emit('updateGroup', this.$clone(this.group));
+    moveTask(ev) {
+      this.$emit('moveTask', this.$clone(this.group), ev);
     },
     deleteTask(task) {
       this.$emit('deleteTask', task, this.group.id);
