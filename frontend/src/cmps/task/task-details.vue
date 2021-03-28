@@ -259,6 +259,7 @@ export default {
           ? this.$store.getters.loggedinUser
           : { fullname: 'Guest', imgUrl: '' };
       }
+      activity.task = {id: this.task.id, title: this.task.title}
       this.$store.dispatch({ type: 'updateTask', payload: { task, activity } });
     },
     updateBoard(updatedGroup, activity = {}) {
