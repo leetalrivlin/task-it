@@ -1,5 +1,5 @@
 <template>
-  <li class="flex justify-start align-center activity-container">
+  <li class="flex justify-start align-center activity-container d-content">
     <avatar
       class="activity-avatar"
       :username="activity.byMember.fullname || 'New Guest'"
@@ -30,8 +30,6 @@ export default {
     activity: {
       type: Object
     }
-  },
-  computed: {
   },
 };
 </script>

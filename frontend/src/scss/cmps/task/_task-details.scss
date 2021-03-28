@@ -24,6 +24,11 @@
       > * {
         margin-block-end: 20px;
       }
+      .task-activity-container {
+        a {
+          color: $clr1;
+        }
+      }
     }
     .task-data-container {
       flex-wrap: wrap;

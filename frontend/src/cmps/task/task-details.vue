@@ -65,6 +65,15 @@
               @updateTask="updateTask"
             />
           </ul>
+          <ul
+            v-for="activity in activitiesToShow"
+            :key="activity.id"
+            class="clean-list task-activity-container d-desc"
+          >
+            <i class="el-icon-s-fold d-icon"></i>
+            <h1 class="task-details-header">Activity</h1>
+            <menu-activity :activity="activity" />
+          </ul>
         </section>
         <task-details-menu
           :members="members"
@@ -100,6 +109,7 @@ import taskChecklist from '../task/task-details/task-checklist.vue';
 import taskAttachment from '../task/task-details/task-attachment.vue';
 import taskCover from '../task/task-details/task-cover.vue';
 import taskTitle from '../task/task-details/task-title.vue';
+import menuActivity from '../board/board-menu/menu-activity.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faColumns } from '@fortawesome/free-solid-svg-icons';
 import taskDate from './task-details/task-date.vue';
@@ -118,7 +128,8 @@ export default {
     taskCover,
     taskTitle,
     taskDate,
-    taskMember
+    taskMember,
+    menuActivity
   },
   computed: {
     groups() {
@@ -141,6 +152,12 @@ export default {
     },
     checklists() {
       return this.task.checklists ? this.task.checklists : [];
+    },
+    activitiesToShow() {
+      const copyBoard = this.$clone(this.$store.getters.board);
+      return copyBoard.activities.filter(activity => {
+        if (activity.task) return activity.task.id === this.task.id;
+      });
     }
   },
   methods: {
@@ -259,7 +276,7 @@ export default {
           ? this.$store.getters.loggedinUser
           : { fullname: 'Guest', imgUrl: '' };
       }
-      activity.task = {id: this.task.id, title: this.task.title}
+      activity.task = { id: this.task.id, title: this.task.title };
       this.$store.dispatch({ type: 'updateTask', payload: { task, activity } });
     },
     updateBoard(updatedGroup, activity = {}) {
@@ -273,7 +290,7 @@ export default {
         ({ id }) => id === updatedGroup.id
       );
       cloneBoard.groups.splice(idx, 1, updatedGroup);
-      console.log('activity in updateBoard',activity);
+      console.log('activity in updateBoard', activity);
       this.$store.dispatch({
         type: 'updateBoard',
         payload: { board: cloneBoard, activity }
@@ -284,7 +301,7 @@ export default {
       const txt = `removed ${this.task.title} from ${this.group.title}`;
       const activity = this.setActivity(txt);
       this.group.tasks.splice(taskIdx, 1);
-      console.log('activity in removeTask',activity);
+      console.log('activity in removeTask', activity);
       this.updateBoard(this.group, activity);
       this.closeDetails();
     }
