@@ -1,8 +1,12 @@
 <template>
   <header class="flex align-center space-between header-layout board-header">
     <div class="flex">
-      <button class="el-btn board-title">{{ board.title }}</button
-      ><span class="devider"></span>
+      <input
+        @keyup.enter="saveTitle"
+        v-model="boardTitle"
+        class="el-btn board-title"
+      />
+      <span class="devider"></span>
       <div class="members flex">
         <ul class="clean-list flex members-list">
           <li v-for="member in membersBoard" :key="member._id">
@@ -105,6 +109,7 @@ export default {
       isMenuOpen: false,
       isAddMembers: false,
       isDashboardOpen: false,
+      boardTitle: this.board.title,
     };
   },
   methods: {
@@ -130,6 +135,10 @@ export default {
     },
     deleteBoard() {
       this.$emit('deleteBoard');
+    },
+    saveTitle() {
+      console.log(this.boardTitle);
+      this.$emit('saveTitle', this.boardTitle);
     },
   },
   computed: {

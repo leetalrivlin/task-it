@@ -3,10 +3,11 @@
     <board-header
       :board="board"
       :users="users"
-      @updateBoardMembers="updatEntireBoard"
-      @updateBoardStyle="updatEntireBoard"
+      @updateBoardMembers="updateBoard"
+      @updateBoardStyle="updateBoard"
       @tasksToShow="tasksToShow"
       @deleteBoard="deleteBoard"
+      @saveTitle="saveTitle"
       :activities="board.activities"
     />
     <section class="flex align-start main-content main-layout board-content">
@@ -29,8 +30,8 @@
           class="group"
           @saveTask="saveTask"
           @deleteTask="deleteTask"
-          @changeTitle="updateBoard"
-          @updateGroup="updateBoard"
+          @changeTitle="updateGroup"
+          @updateGroup="updateGroup"
           @deleteGroup="deleteGroup"
           :group="group"
         />
@@ -84,13 +85,13 @@ export default {
     saveTask(taskTitle, groupId) {
       const group = this.getGroup(groupId);
       group.tasks.push(taskTitle);
-      this.updateBoard(group);
+      this.updateGroup(group);
     },
     deleteTask(task, groupId) {
       const group = this.getGroup(groupId);
       const taskIdx = group.tasks.findIndex(({ id }) => id === task.id);
       group.tasks.splice(taskIdx, 1);
-      this.updateBoard(group);
+      this.updateGroup(group);
     },
     deleteGroup(groupId) {
       const group = this.getGroup(groupId);
@@ -99,7 +100,7 @@ export default {
       const cloneBoard = this.$clone(this.board);
       this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
     },
-    updateBoard(updatedGroup) {
+    updateGroup(updatedGroup) {
       const idx = this.board.groups.findIndex(
         ({ id }) => id === updatedGroup.id
       );
@@ -119,7 +120,11 @@ export default {
         return group.id === groupId;
       });
     },
-    updatEntireBoard(updatedBoard) {
+    saveTitle(boardTitle) {
+      this.board.title = boardTitle;
+      this.updateBoard(this.board);
+    },
+    updateBoard(updatedBoard) {
       this.$store.dispatch({ type: 'updateBoard', board: updatedBoard });
     },
     deleteBoard() {
