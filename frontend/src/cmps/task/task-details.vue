@@ -145,6 +145,11 @@ export default {
     }
   },
   methods: {
+    setActivity(txt) {
+      const activity = boardService.getEmptyActivity();
+      activity.txt = txt;
+      return activity;
+    },
     closeDetails() {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}`);
@@ -152,15 +157,15 @@ export default {
     setEmptyChecklist(emptyChecklist) {
       if (!this.task.checklists) this.task.checklists = [];
       this.task.checklists.push(emptyChecklist);
-      const activity = boardService.getEmptyActivity();
-      activity.txt = `added ${emptyChecklist.title} to ${this.task.title}`;
+      const txt = `added ${emptyChecklist.title} to ${this.task.title}`;
+      const activity = this.setActivity(txt);
       this.updateTask(this.task, activity);
     },
     setCover(color) {
       this.task.cover = {};
       this.task.cover.backgroundColor = color;
-      const activity = boardService.getEmptyActivity();
-      activity.txt = 'changed cover color';
+      const txt = 'changed cover color';
+      const activity = this.setActivity(txt);
       this.updateTask(this.task, activity);
     },
     setImg(img) {
@@ -168,13 +173,15 @@ export default {
       this.task.cover.img = img;
       if (!this.task.attachments) this.task.attachments = [];
       this.task.attachments.push(img);
-      this.updateTask(this.task);
+      const txt = 'changed cover image';
+      const activity = this.setActivity(txt);
+      this.updateTask(this.task, activity);
     },
     setAttach(attachment) {
       if (!this.task.attachments) this.task.attachments = [];
       this.task.attachments.push(attachment);
-      const activity = boardService.getEmptyActivity();
-      activity.txt = `attached ${attachment.name} to ${this.task.title}`;
+      const txt = `attached ${attachment.name} to ${this.task.title}`;
+      const activity = this.setActivity(txt);
       this.updateTask(this.task, activity);
     },
     removeAttach(attachId) {
