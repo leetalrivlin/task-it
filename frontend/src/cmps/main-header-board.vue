@@ -8,9 +8,12 @@
           ><font-awesome-icon class="el-btn home-icon" icon="home"
         /></router-link>
         <router-link class="el-btn" to="/board">
-          <img class="boards-icon" src="../assets/trello-icon-pack/trello-white.svg" />
-          Boards</router-link
-        >
+          <img
+            class="boards-icon"
+            src="../assets/trello-icon-pack/trello-white.svg"
+          />
+          <span>Boards</span>
+        </router-link>
       </div>
       <span
         class="flex justify-center align-center logo"
@@ -80,13 +83,13 @@ export default {
   name: 'mainHeaderBoard',
   components: {
     Avatar,
-    userPopup,
+    userPopup
   },
   data() {
     return {
       userPopup: false,
       ismobile: false,
-      isLogoHover: false,
+      isLogoHover: false
     };
   },
   methods: {
@@ -100,7 +103,7 @@ export default {
     openNav() {
       this.$refs.navMenu.style.transform = 'translateX(0)';
       this.ismobile = true;
-    },
+    }
   },
 
   computed: {
@@ -111,7 +114,7 @@ export default {
       return this.isLogoHover
         ? require('@/assets/imgs/task-it-logo-white-bounce.gif')
         : require('@/assets/imgs/task-it-icon-white.png');
-    },
-  },
+    }
+  }
 };
 </script>

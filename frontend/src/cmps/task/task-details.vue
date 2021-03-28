@@ -65,13 +65,17 @@
               @updateTask="updateTask"
             />
           </ul>
-          <ul
-            v-for="activity in activitiesToShow"
-            :key="activity.id"
-            class="clean-list"
-          >
-            <menu-activity :activity="activity" />
-          </ul>
+          <div class="d-desc">
+            <i class="el-icon-s-fold d-icon"></i>
+            <h1 class="task-details-header">Activity</h1>
+            <ul
+              v-for="activity in activitiesToShow"
+              :key="activity.id"
+              class="clean-list task-activity-container d-content"
+            >
+              <menu-activity :activity="activity" />
+            </ul>
+          </div>
         </section>
         <task-details-menu
           :members="members"
@@ -107,6 +111,7 @@ import taskChecklist from '../task/task-details/task-checklist.vue';
 import taskAttachment from '../task/task-details/task-attachment.vue';
 import taskCover from '../task/task-details/task-cover.vue';
 import taskTitle from '../task/task-details/task-title.vue';
+import menuActivity from '../board/board-menu/menu-activity.vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faColumns } from '@fortawesome/free-solid-svg-icons';
 import taskDate from './task-details/task-date.vue';
@@ -125,7 +130,8 @@ export default {
     taskCover,
     taskTitle,
     taskDate,
-    taskMember
+    taskMember,
+    menuActivity
   },
   computed: {
     groups() {
@@ -150,7 +156,10 @@ export default {
       return this.task.checklists ? this.task.checklists : [];
     },
     activitiesToShow() {
-      return this.$clone(this.$store.getters.board).activities.filter(activity => activity.task.id === this.task.id)
+      const copyBoard = this.$clone(this.$store.getters.board);
+      return copyBoard.activities.filter(activity => {
+        if (activity.task) return activity.task.id === this.task.id;
+      });
     }
   },
   methods: {

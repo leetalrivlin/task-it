@@ -24,6 +24,11 @@
       > * {
         margin-block-end: 20px;
       }
+      .activity-container {
+        .task-activity-avatar {
+          margin: 0;
+        }
+      }
     }
     .task-data-container {
       flex-wrap: wrap;
