@@ -40,13 +40,13 @@ export const boardStore = {
       console.log('updatedTask', payload.task);
       state.task = payload.task;
     },
-    deleteBoard(state) {
-      state.board = null;
-    }
     // The version before that worked:
     // setTask(state, { task }) {
     //   state.task = task;
     // }
+    deleteBoard(state) {
+      state.board = null;
+    }
 
     // setTaskById(state, { taskId }) {
     //   state.board.groups.forEach(group => {

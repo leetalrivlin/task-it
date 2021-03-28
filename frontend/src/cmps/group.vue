@@ -91,15 +91,12 @@ export default {
       const boardId = this.$route.params.boardId;
       this.$router.push(`/board/${boardId}/${taskId}`);
     },
-    saveTask(taskTitle) {
-      this.$emit('saveTask', taskTitle, this.group.id);
+    saveTask(task) {
+      this.$emit('saveTask', task, this.group.id);
     },
     moveTask() {
       this.$emit('updateGroup', this.$clone(this.group));
     },
-    // saveTask(taskTitle) {
-    //   this.$emit('saveTask', taskTitle, this.group.id);
-    // },
     deleteTask(task) {
       this.$emit('deleteTask', task, this.group.id);
     },

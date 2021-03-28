@@ -98,10 +98,10 @@ export default {
       const activity = this.setActivity(txt);
       this.$store.dispatch({ type: 'updateBoard', payload: {board: cloneBoard, activity }});
     },
-    saveTask(taskTitle, groupId) {
+    saveTask(task, groupId) {
       const group = this.getGroup(groupId);
-      group.tasks.push(taskTitle);
-      const txt = `added the task ${taskTitle.title} to ${group.title}`;
+      group.tasks.push(task);
+      const txt = `added the task ${task.title} to ${group.title}`;
       const activity = this.setActivity(txt);
       this.updateGroup(group, activity);
     },
@@ -139,7 +139,6 @@ export default {
       const activity = this.setActivity(txt);
       this.$store.dispatch({ type: 'updateBoard', payload: {board: this.board, activity }});
     },
-    /////////
     getGroup(groupId) { 
       return this.board.groups.find((group) => {
         return group.id === groupId;
@@ -147,13 +146,14 @@ export default {
     },
     saveTitle(boardTitle) {
       this.board.title = boardTitle;
-      this.updateBoard(this.board);
+      const txt = `changed the board title to ${this.board.title}`;
+      const activity = this.setActivity(txt);
+      this.updateBoard(this.board, activity);
     },
-    updateBoard(updatedBoard) {
-      this.$store.dispatch({ type: 'updateBoard', board: updatedBoard });
+    updateBoard(updatedBoard, activity = {}) {
+      this.$store.dispatch({ type: 'updateBoard', payload: {board: updatedBoard, activity }});
     },
     deleteBoard() {
-      console.log('deleteBoard');
       this.$store.commit({
         type: 'removeBoardFromList',
         boardId: this.board._id,
