@@ -97,10 +97,9 @@ export default {
     moveTask() {
       this.$emit('updateGroup', this.$clone(this.group));
     },
-
-    saveTask(taskTitle) {
-      this.$emit('saveTask', taskTitle, this.group.id);
-    },
+    // saveTask(taskTitle) {
+    //   this.$emit('saveTask', taskTitle, this.group.id);
+    // },
     deleteTask(task) {
       this.$emit('deleteTask', task, this.group.id);
     },

@@ -232,7 +232,10 @@ export default {
       copyBoard.labels = this.boardLabels;
       const txt = `updated board labels`;
       const activity = this.setActivity(txt);
-      this.$store.dispatch({ type: 'updateBoard', payload:{ board: copyBoard, activity } });
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board: copyBoard, activity }
+      });
     },
     setDueDate(dueDate) {
       this.task.dueDate = dueDate;
@@ -251,18 +254,28 @@ export default {
       this.updateTask(this.task, activity);
     },
     updateTask(task, activity = {}) {
-      activity.byMember = this.$store.getters.loggedinUser
-        ? this.$store.getters.loggedinUser
-        : { fullname: 'Guest', imgUrl: '' };
+      if (!activity.byMember) {
+        activity.byMember = this.$store.getters.loggedinUser
+          ? this.$store.getters.loggedinUser
+          : { fullname: 'Guest', imgUrl: '' };
+      }
       this.$store.dispatch({ type: 'updateTask', payload: { task, activity } });
     },
     updateBoard(updatedGroup, activity = {}) {
+      if (!activity.byMember) {
+        activity.byMember = this.$store.getters.loggedinUser
+          ? this.$store.getters.loggedinUser
+          : { fullname: 'Guest', imgUrl: '' };
+      }
       const cloneBoard = this.$clone(this.$store.getters.board);
       const idx = cloneBoard.groups.findIndex(
         ({ id }) => id === updatedGroup.id
       );
       cloneBoard.groups.splice(idx, 1, updatedGroup);
-      this.$store.dispatch({ type: 'updateBoard', payload:{ board: cloneBoard, activity }});
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board: cloneBoard, activity }
+      });
     },
     removeTask(taskId) {
       const taskIdx = this.group.tasks.findIndex(({ id }) => id === taskId);
