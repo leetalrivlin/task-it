@@ -20,7 +20,7 @@
     </div>
     <draggable
       class="clean-list group-main-content"
-      :list="tasksToShow"
+      :list="group.tasks"
       tag="ul"
       @change="moveTask"
       @start="isDragging = true"
