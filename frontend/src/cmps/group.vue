@@ -115,7 +115,7 @@ export default {
       return this.group.tasks.length === 0 ? 'Add a task' : 'Add another task';
     },
     tasksToShow() {
-      console.log(this.filterBy);
+      console.log('this.filterBy', this.filterBy);
       if (!this.filterBy || Object.keys(this.filterBy).length === 0)
         return this.group.tasks;
       if (
@@ -125,15 +125,25 @@ export default {
       )
         return this.group.tasks;
       else {
-        return this.group.tasks.filter((task) => {
-          return (
-            task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
-            task.labelIds.some((label) => this.filterBy.labels.includes(label)) &&
-            task.members.some((member) =>
-              this.filterBy.members.includes(member)
-            )
-          );
+        const filter = this.group.tasks.filter((task) => {
+          if (task.labelIds && task.members) {
+            const membersIds = task.members.map((member) => member._id);
+            console.log('membersIds',membersIds );
+            return (
+              // task.title
+              //   .toLowerCase()
+              //   .includes(this.filterBy.txt.toLowerCase()) &&
+              // this.filterBy.labels.every((label) =>
+              //   task.labelIds.includes(label)
+              // ) &&
+              this.filterBy.members.every((member) =>
+                membersIds.includes(member)
+              )
+            );
+          }
         });
+        console.log('filter',filter);
+        return filter;
       }
     },
   },
