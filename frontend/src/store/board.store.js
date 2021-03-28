@@ -33,8 +33,8 @@ export const boardStore = {
     }
   },
   mutations: {
-    setBoard(state, { board }) {
-      state.board = board;
+    setBoard(state, { payload }) {
+      state.board = payload.board;
     },
     setTask(state, { payload }) {
       console.log('updatedTask', payload.task);
@@ -62,11 +62,11 @@ export const boardStore = {
     async loadBoard({ commit }, { boardId }) {
       try {
         const board = await boardService.getById(boardId);
-        commit({ type: 'setBoard', board });
+        commit({ type: 'setBoard', payload: {board} });
         socketService.emit('board-watch', boardId);
         socketService.off('board-updated');
         socketService.on('board-updated', board => {
-          commit({ type: 'setBoard', board });
+          commit({ type: 'setBoard', payload: {board} });
         });
       } catch (err) {
         console.log('boardStore: Error in loadBoard', err);
@@ -105,18 +105,27 @@ export const boardStore = {
     //     });
     //   });
     // },
-    async updateBoard({ commit }, { board }) {
+    async updateBoard({ commit }, { payload }) {
       try {
-        commit({ type: 'setBoard', board });
-        const updatedBoard = await boardService.save(board);
+        commit({ type: 'setBoard', payload });
+        const updatedBoard = await boardService.save(payload.board);
       } catch (err) {
         console.log('cant update board', err);
       }
     },
+    // UpdateBoard version that works:
+    // async updateBoard({ commit }, { board }) {
+    //   try {
+    //     commit({ type: 'setBoard', board });
+    //     const updatedBoard = await boardService.save(board);
+    //   } catch (err) {
+    //     console.log('cant update board', err);
+    //   }
+    // },
     async saveBoard({ commit }, { newBoard }) {
       try {
         const board = await boardService.save(newBoard);
-        commit({ type: 'setBoard', board });
+        commit({ type: 'setBoard', payload: {board} });
       } catch (err) {
         console.log('cant save board', err);
       }
@@ -144,7 +153,7 @@ export const boardStore = {
         );
         boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1, payload.task);
         socketService.emit('task-updated', payload.task);
-        dispatch({ type: 'updateBoard', board: boardCopy });
+        dispatch({ type: 'updateBoard', payload: {board: boardCopy, activity: payload.activity }});
       } catch (err) {
         console.log('cannot update task', err);
       }

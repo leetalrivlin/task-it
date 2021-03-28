@@ -230,7 +230,12 @@ export default {
       this.boardLabels.splice(labelIdx, 1, updatedLabel);
       const copyBoard = this.$clone(this.$store.getters.board);
       copyBoard.labels = this.boardLabels;
-      this.$store.dispatch({ type: 'updateBoard', board: copyBoard });
+      const txt = `updated board labels`;
+      const activity = this.setActivity(txt);
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board: copyBoard, activity }
+      });
     },
     setDueDate(dueDate) {
       this.task.dueDate = dueDate;
@@ -249,23 +254,35 @@ export default {
       this.updateTask(this.task, activity);
     },
     updateTask(task, activity = {}) {
-      activity.byMember = this.$store.getters.loggedinUser
-        ? this.$store.getters.loggedinUser
-        : { fullname: 'Guest', imgUrl: '' };
+      if (!activity.byMember) {
+        activity.byMember = this.$store.getters.loggedinUser
+          ? this.$store.getters.loggedinUser
+          : { fullname: 'Guest', imgUrl: '' };
+      }
       this.$store.dispatch({ type: 'updateTask', payload: { task, activity } });
     },
-    updateBoard(updatedGroup) {
+    updateBoard(updatedGroup, activity = {}) {
+      if (!activity.byMember) {
+        activity.byMember = this.$store.getters.loggedinUser
+          ? this.$store.getters.loggedinUser
+          : { fullname: 'Guest', imgUrl: '' };
+      }
       const cloneBoard = this.$clone(this.$store.getters.board);
       const idx = cloneBoard.groups.findIndex(
         ({ id }) => id === updatedGroup.id
       );
       cloneBoard.groups.splice(idx, 1, updatedGroup);
-      this.$store.dispatch({ type: 'updateBoard', board: cloneBoard });
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board: cloneBoard, activity }
+      });
     },
     removeTask(taskId) {
       const taskIdx = this.group.tasks.findIndex(({ id }) => id === taskId);
       this.group.tasks.splice(taskIdx, 1);
-      this.updateBoard(this.group);
+      const txt = `removed ${this.task.title} from ${this.group.title}`;
+      const activity = this.setActivity(txt);
+      this.updateBoard(this.group, activity);
       this.closeDetails();
     }
   },
