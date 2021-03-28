@@ -65,7 +65,7 @@ export default {
     return {
       boardId: null,
       isDragging: false,
-      filterBy: {}
+      filterBy: { txt: '', labels: [], members: [] },
     };
   },
   methods: {

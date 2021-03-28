@@ -116,36 +116,23 @@ export default {
       return this.group.tasks.length === 0 ? 'Add a task' : 'Add another task';
     },
     tasksToShow() {
-      console.log('this.filterBy', this.filterBy);
-      if (!this.filterBy || Object.keys(this.filterBy).length === 0)
-        return this.group.tasks;
-      if (
-        this.filterBy.txt === '' &&
-        this.filterBy.labels.length === 0 &&
-        this.filterBy.members.length === 0
-      )
-        return this.group.tasks;
-      else {
-        const filter = this.group.tasks.filter((task) => {
-          if (task.labelIds && task.members) {
-            const membersIds = task.members.map((member) => member._id);
-            console.log('membersIds',membersIds );
-            return (
-              // task.title
-              //   .toLowerCase()
-              //   .includes(this.filterBy.txt.toLowerCase()) &&
-              // this.filterBy.labels.every((label) =>
-              //   task.labelIds.includes(label)
-              // ) &&
-              this.filterBy.members.every((member) =>
-                membersIds.includes(member)
-              )
-            );
-          }
-        });
-        console.log('filter',filter);
-        return filter;
-      }
+      if (!this.filterBy) return this.group.tasks;
+      const tasks = this.group.tasks.filter((task) => {
+        if (!task.labelIds) task.labelIds = [];
+        if (!task.members) task.members = [];
+        return (
+          task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
+          (!this.filterBy.labels.length ||
+            this.filterBy.labels.every((label) =>
+              task.labelIds.includes(label)
+            )) &&
+          (!this.filterBy.members.length ||
+            this.filterBy.members.every((id) =>
+              task.members.some((member) => member._id === id)
+            ))
+        );
+      });
+      return tasks;
     },
   },
 };

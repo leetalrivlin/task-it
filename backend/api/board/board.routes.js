@@ -11,7 +11,8 @@ router.get('/', getBoards);
 router.get('/:id', getBoard);
 router.put('/:id', saveBoard);
 router.delete('/:id', deleteBoard);
-router.post('/',requireAuth, saveBoard);
+router.post('/', saveBoard);
+// router.post('/',requireAuth, saveBoard);
 
 
 module.exports = router;
