@@ -14,8 +14,30 @@
       </div>
       <img src="../assets/vectors/home-page-img.png" />
     </div>
+    <div class="features flex column align-center justify-center">
+      <h1>Features</h1>
+      <div class="flex feature-icons">
+        <section class="flex column item">
+          <img src="../assets/trello-icon-pack/trello-slate-blue.svg" />
+          <p>
+            Have as many boards as you wish, manage and edit all in one place.
+          </p>
+        </section>
+        <section class="flex column item">
+          <img src="../assets/trello-icon-pack/team-slate-blue.svg" />
+          <p>
+            Collaborate with your team members, assign tasks easilly and
+            controll the work-flow.
+          </p>
+        </section>
+        <section class="flex column item">
+          <img src="../assets/trello-icon-pack/settings-slate-blue.svg" />
+          <p>Apply your own preferences and make each board your-own.</p>
+        </section>
+      </div>
+    </div>
     <div class="main flex align-center">
-      <img src="../assets/vectors/shutterstock_1390480307.jpg">
+      <img src="../assets/vectors/shutterstock_1390480307.png" />
       <div class="main-content">
         <ul>
           <li>Invite your team members on click</li>
