@@ -133,9 +133,6 @@ export const boardStore = {
       try {
         commit({ type: 'setTask', payload });
         const boardCopy = clone(state.board);
-        payload.activity.byMember = state.loggedinUser
-          ? state.loggedinUser
-          : { fullname: 'Guest', imgUrl: '' };
         if (payload.activity.txt !== '') {
           boardCopy.activities.unshift(payload.activity);
         }

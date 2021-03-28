@@ -128,7 +128,6 @@ export default {
       return this.$clone(this.$store.getters.group);
     },
     task() {
-      console.log('this.$store.getters.task',this.$store.getters.task);
       return this.$clone(this.$store.getters.task);
     },
     boardLabels() {
@@ -186,40 +185,42 @@ export default {
     },
     removeAttach(attachId) {
       const idx = this.task.attachments.findIndex(({ id }) => id === attachId);
-      activity.txt = `deleted the ${this.task.attachments[idx].name} attachment from ${this.task.title}`;
+      const txt = `deleted the ${this.task.attachments[idx].name} attachment from ${this.task.title}`;
+      const activity = this.setActivity(txt);
       this.task.attachments.splice(idx, 1);
       if (this.task.attachments.length === 0) delete this.task.attachments;
-      const activity = boardService.getEmptyActivity();
       this.updateTask(this.task, activity);
     },
     setLabel(label) {
-      const activity = boardService.getEmptyActivity();
+      var txt;
       if (!this.task.labelIds) this.task.labelIds = [];
       const labelIdx = this.task.labelIds.findIndex(id => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
         this.task.labelIds.splice(labelIdx, 1);
-        activity.txt = `removed label from ${this.task.title}`;
+        txt = `removed label from ${this.task.title}`;
       } else {
         this.task.labelIds.push(label.id);
-        activity.txt = `added label to ${this.task.title}`;
+        txt = `added label to ${this.task.title}`;
       }
+      const activity = this.setActivity(txt);
       this.updateTask(this.task, activity);
     },
     setMember(chosenMember) {
-      const activity = boardService.getEmptyActivity();
+      var txt;
       if (!this.task.members) this.task.members = [];
       const memberIdx = this.task.members.findIndex(({ _id }) => {
         return _id === chosenMember._id;
       });
       if (memberIdx >= 0) {
         this.task.members.splice(memberIdx, 1);
-        activity.txt = `removed ${chosenMember.fullname} from ${this.task.title}`;
+        txt = `removed ${chosenMember.fullname} from ${this.task.title}`;
       } else {
         this.task.members.push(chosenMember);
-        activity.txt = `added ${chosenMember.fullname} to ${this.task.title}`;
+        txt = `added ${chosenMember.fullname} to ${this.task.title}`;
       }
+      const activity = this.setActivity(txt);
       this.updateTask(this.task, activity);
     },
     updateBoardLabel(updatedLabel) {
@@ -233,18 +234,25 @@ export default {
     },
     setDueDate(dueDate) {
       this.task.dueDate = dueDate;
-      const activity = boardService.getEmptyActivity();
-      activity.txt = `set ${this.task.title} to be due at ${dueDate}`;
+      const date = new Date(dueDate);
+      const dateStr = `${this.$dayjs(date).format('MMM DD')} at ${this.$dayjs(
+        date
+      ).format('h:mm A')}`;
+      const txt = `set ${this.task.title} to be due at ${dateStr}`;
+      const activity = this.setActivity(txt);
       this.updateTask(this.task, activity);
     },
     removeDate() {
       delete this.task.dueDate;
-      const activity = boardService.getEmptyActivity();
-      activity.txt = `removed the due date from ${this.task.title}`;
+      const txt = `removed the due date from ${this.task.title}`;
+      const activity = this.setActivity(txt);
       this.updateTask(this.task, activity);
     },
     updateTask(task, activity = {}) {
-      this.$store.dispatch({ type: 'updateTask', payload: {task, activity}});
+      activity.byMember = this.$store.getters.loggedinUser
+        ? this.$store.getters.loggedinUser
+        : { fullname: 'Guest', imgUrl: '' };
+      this.$store.dispatch({ type: 'updateTask', payload: { task, activity } });
     },
     updateBoard(updatedGroup) {
       const cloneBoard = this.$clone(this.$store.getters.board);
@@ -259,11 +267,11 @@ export default {
       this.group.tasks.splice(taskIdx, 1);
       this.updateBoard(this.group);
       this.closeDetails();
-    },
+    }
   },
   created() {
     const taskId = this.$route.params.taskId;
     this.$store.dispatch({ type: 'setTaskById', taskId });
-  },
+  }
 };
 </script>

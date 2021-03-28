@@ -138,7 +138,7 @@
             <template v-slot:title>
               <p>Delete card?</p>
             </template>
-            <delete-task-popup :taskId="taskId" @deleteTask="deleteTask" />
+            <delete-task-popup :taskId="taskId" @removeTask="removeTask" />
           </popup>
         </button>
       </div>
@@ -239,8 +239,8 @@ export default {
       console.log(this.dueDate);
       this.$emit('setDueDate', this.dueDate);
     },
-    deleteTask(taskId) {
-      this.$emit('deleteTask', taskId);
+    removeTask(taskId) {
+      this.$emit('removeTask', taskId);
     },
     updateTaskPos(updatedGroup) {
       this.$emit('updateTaskPos', updatedGroup);
