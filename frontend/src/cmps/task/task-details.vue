@@ -179,10 +179,10 @@ export default {
     },
     removeAttach(attachId) {
       const idx = this.task.attachments.findIndex(({ id }) => id === attachId);
+      activity.txt = `deleted the ${this.task.attachments[idx].name} attachment from ${this.task.title}`;
       this.task.attachments.splice(idx, 1);
       if (this.task.attachments.length === 0) delete this.task.attachments;
       const activity = boardService.getEmptyActivity();
-      activity.txt = `deleted the ${attachment.name} attachment from ${this.task.title}`;
       this.updateTask(this.task, activity);
     },
     setLabel(label) {
