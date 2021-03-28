@@ -67,6 +67,7 @@
           @colorPicked="updateBoard"
           @photoPicked="updateBoard"
           @deleteBoard="deleteBoard"
+          @filterBoard="filterBoard"
           :board="board"
           :activities="activities"
         />
@@ -139,6 +140,9 @@ export default {
     saveTitle() {
       console.log(this.boardTitle);
       this.$emit('saveTitle', this.boardTitle);
+    },
+    filterBoard(filterBy) {
+      this.$emit('filterBoard', filterBy);
     },
   },
   computed: {

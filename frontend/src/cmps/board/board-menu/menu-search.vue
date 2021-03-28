@@ -17,12 +17,17 @@
           v-for="label in labels"
           :key="label.id"
           class="flex align-center space-between list-item"
+          @click="pickLabel(label.id)"
         >
-        <div class="flex space-between align-center">
-          <span :style="{ backgroundColor: label.color }"> </span>
-          <p>{{ label.title }}</p>
-        </div>
-         <i  class="el-icon-check check"> </i>
+          <div class="flex space-between align-center">
+            <span :style="{ backgroundColor: label.color }"> </span>
+            <p>{{ label.title }}</p>
+          </div>
+          <i
+            v-if="filterBy.labels.includes(label.id)"
+            class="el-icon-check check"
+          >
+          </i>
         </li>
       </ul>
       <hr />
@@ -33,6 +38,7 @@
           v-for="member in members"
           :key="member._id"
           class="flex align-center space-between list-item"
+          @click="pickMember(member._id)"
         >
           <div class="flex space-between align-center">
             <avatar
@@ -44,7 +50,11 @@
             ></avatar>
             <p>{{ member.fullname }}</p>
           </div>
-          <i  class="el-icon-check check"> </i>
+          <i
+            v-if="filterBy.members.includes(member._id)"
+            class="el-icon-check check"
+          >
+          </i>
         </li>
       </ul>
     </div>
@@ -73,20 +83,21 @@ export default {
     };
   },
   methods: {
+    pickLabel(labelId) {
+      const idx = this.filterBy.labels.findIndex((id) => id === labelId);
+      if (idx >= 0) this.filterBy.labels.splice(idx, 1);
+      else this.filterBy.labels.push(labelId);
+      this.filterBoard();
+    },
+    pickMember(memberId) {
+      const idx = this.filterBy.members.findIndex((id) => id === memberId);
+      if (idx >= 0) this.filterBy.members.splice(idx, 1);
+      else this.filterBy.members.push(memberId);
+      this.filterBoard();
+    },
     filterBoard() {
-      var tasksToShow = [];
-      this.board.groups.forEach((group) => {
-        group.tasks.forEach((task) => {
-          if (
-            task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase())
-          )
-            tasksToShow.push(task);
-        });
-      });
-      if (tasksToShow.length) {
-        console.log(tasksToShow, 'tasksToShow');
-        this.$emit('tasksToShow', tasksToShow);
-      }
+      console.log(this.filterBy);
+      this.$emit('filterBoard', this.filterBy);
     },
   },
   computed: {
@@ -96,13 +107,6 @@ export default {
     members() {
       return this.board.members;
     },
-    // clickMember() {
-      
-    // },
-    // clickLabel(){
-      
-    //   console.log('label');
-    // }
   },
 };
 </script>
