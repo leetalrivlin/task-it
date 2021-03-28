@@ -242,8 +242,8 @@ export default {
     removeTask(taskId) {
       this.$emit('removeTask', taskId);
     },
-    updateTaskPos(updatedGroup) {
-      this.$emit('updateTaskPos', updatedGroup);
+    updateTaskPos(updatedGroup, activity) {
+      this.$emit('updateTaskPos', updatedGroup, activity);
     },
   },
   components: {

@@ -109,7 +109,6 @@ export const boardStore = {
         if (payload.activity.txt) {
           payload.board.activities.unshift(payload.activity);
         }
-        console.log('payload in updateBoard',payload);
         commit({ type: 'setBoard', payload });
         const updatedBoard = await boardService.save(payload.board);
       } catch (err) {

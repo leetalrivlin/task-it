@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import {boardService} from '../../../../services/board.service'
 export default {
   props: {
     groups: {
@@ -70,8 +71,10 @@ export default {
       const currTask = this.groups[currGroupIdx].tasks.find(({id}) => id === this.taskId);
       this.groups[currGroupIdx].tasks.splice(currTaskIdx, 1);
       this.groups[newGroupIdx].tasks.splice(newTaskIdx, 0, currTask);
+      const activity = boardService.getEmptyActivity();
+      activity.txt = `moved the task ${currTask.title}`;
       this.$emit('updateTaskPos', this.groups[newGroupIdx]);
-      this.$emit('updateTaskPos', this.groups[currGroupIdx]);
+      this.$emit('updateTaskPos', this.groups[currGroupIdx], activity);
       this.$emit('closePopup');
     }
   }
