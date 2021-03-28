@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="main flex align-center">
-      <img src="../assets/vectors/shutterstock_1390480307.jpg" />
+      <img src="../assets/vectors/shutterstock_1390480307.png" />
       <div class="main-content">
         <ul>
           <li>Invite your team members on click</li>
