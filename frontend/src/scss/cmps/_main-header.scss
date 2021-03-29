@@ -2,13 +2,13 @@
   background-color: transparent;
   color: $clr1;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  height: 70px;
+  height: 40px;
 
   .menu-btn {
     display: none;
   }
   .main-header-container {
-    height: 70px;
+    height: 100%;
 
     .container {
       .boards {
@@ -32,6 +32,7 @@
       .task-it-logo {
         font-family: Baumans;
         font-size: 30px;
+        font-weight: bold;
       }
       .gif-icon {
         width: 50px;
