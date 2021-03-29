@@ -1,14 +1,14 @@
 <template>
   <section class="menu-main">
-    <a class="menu-main-item flex align-center" @click="toggleAbout">
+    <a class="flex align-center menu-main-item" @click="toggleAbout">
       <i class="el-icon-info icon"></i>
       <span class="menu-title">About this board </span>
     </a>
-    <a class="menu-main-item flex align-center" @click="toggleBgc">
+    <a class="flex align-center menu-main-item" @click="toggleBgc">
       <font-awesome-icon icon="square" class="icon square" />
       <span class="menu-title">Change background </span>
     </a>
-    <a class="menu-main-item flex align-center" @click="toggleSearch">
+    <a class="flex align-center menu-main-item" @click="toggleSearch">
       <i class="el-icon-search icon"></i>
       <span class="menu-title">Search cards </span>
     </a>
