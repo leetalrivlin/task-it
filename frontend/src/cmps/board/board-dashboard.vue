@@ -29,7 +29,7 @@
         <li class="flex column amount activity-amount">
           <i class="el-icon-time flex justify-center align-center icon" />
           <div class="data">
-            <p>Activitys</p>
+            <p>Activities</p>
             {{ countActivity }}
           </div>
         </li>
