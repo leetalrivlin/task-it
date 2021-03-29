@@ -1,6 +1,6 @@
 <template>
   <section class="task-attachment-container d-desc">
-    <font-awesome-icon class="d-icon" icon="paperclip" />
+    <img src="~@/assets/trello-icon-pack/attachment.svg" class="d-icon">
     <div class="d-content">
       <h1 class="task-details-header">Attachment</h1>
       <ul class="clean-list task-attachment flex column">
@@ -38,12 +38,9 @@
 </template>
 
 <script>
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import popup from '../../popup.vue';
 import attachmentPopup from '../task-details/details-popup/attachment-popup.vue';
 
-library.add(faPaperclip);
 export default {
   name: 'taskAttachment',
   props: {

@@ -21,6 +21,14 @@
         position: relative;
         .fa-nav-icon {
           margin-inline-end: 10px;
+          width: 18px;
+        }
+        .label-icon {
+          width: 14px;
+        }
+        .cover-icon,
+        .date-icon {
+          width: 16px;
         }
       }
     }

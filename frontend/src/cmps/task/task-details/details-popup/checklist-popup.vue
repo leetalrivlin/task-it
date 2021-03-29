@@ -28,7 +28,6 @@ export default {
     addChecklist() {
       const emptyCheckList = boardService.getEmptyChecklist();
       emptyCheckList.title = this.title;
-      console.log('emptyCheckList', emptyCheckList);
       this.$emit('addChecklist', this.$clone(emptyCheckList));
       this.title = '';
       this.$emit('closePopup');

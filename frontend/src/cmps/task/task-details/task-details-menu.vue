@@ -4,13 +4,10 @@
       <p class="task-details-title btns-title">Add To Card</p>
       <div class="open-popup-btn-container d-menu">
         <button
-          class="flex el-btn-details open-popup-btn"
+          class="flex align-center el-btn-details open-popup-btn"
           @click.stop="isMembers = true"
         >
-          <font-awesome-icon
-            class="d-icon fa-nav-icon"
-            :icon="['far', 'user']"
-          />
+          <img src="~@/assets/trello-icon-pack/user.svg" class="fa-nav-icon">
           <p class="popup-btn-title">Members</p>
           <popup v-if="isMembers" @closePopup="isMembers = false">
             <template v-slot:title>
@@ -25,9 +22,9 @@
         </button>
         <button
           @click.stop="isLabel = true"
-          class="flex el-btn-details open-popup-btn"
+          class="flex align-center el-btn-details open-popup-btn"
         >
-          <font-awesome-icon class="d-icon fa-nav-icon" icon="tag" />
+          <img src="~@/assets/trello-icon-pack/label.svg" class="fa-nav-icon label-icon">
           <p class="popup-btn-title">Labels</p>
           <popup v-if="isLabel" @closePopup="isLabel = false">
             <template v-slot:title>
@@ -44,10 +41,9 @@
 
         <button
           @click.stop="isChecklist = true"
-          class="flex el-btn-details open-popup-btn"
+          class="flex align-center el-btn-details open-popup-btn"
         >
-          <font-awesome-icon class="d-icon fa-nav-icon" icon="check-square" />
-          <!-- <img src="../../../assets/trello-icon-pack/checkbox.svg"> -->
+          <img src="~@/assets/trello-icon-pack/checkbox.svg" class="fa-nav-icon">
           <p class="popup-btn-title">Checklist</p>
           <popup v-if="isChecklist" @closePopup="isChecklist = false">
             <template v-slot:title>
@@ -58,13 +54,10 @@
         </button>
 
         <button
-          class="flex el-btn-details open-popup-btn"
+          class="flex align-center el-btn-details open-popup-btn"
           @click="openDatePopup"
         >
-          <font-awesome-icon
-            class="d-icon fa-nav-icon"
-            :icon="['far', 'clock']"
-          />
+          <img src="~@/assets/trello-icon-pack/clock.svg" class="fa-nav-icon date-icon">
           <p class="popup-btn-title">Due Date</p>
           <el-date-picker
             ref="datePickerInput"
@@ -79,9 +72,9 @@
 
         <button
           @click="isAttach = !isAttach"
-          class="flex el-btn-details open-popup-btn"
+          class="flex align-center el-btn-details open-popup-btn"
         >
-          <font-awesome-icon class="d-icon fa-nav-icon" icon="paperclip" />
+          <img src="~@/assets/trello-icon-pack/attachment.svg" class="fa-nav-icon">
           <p class="popup-btn-title">Attachments</p>
           <popup v-if="isAttach" @closePopup="isAttach = false">
             <template v-slot:title>
@@ -92,11 +85,10 @@
         </button>
         <button
           v-if="!cover"
-          class="flex el-btn-details open-popup-btn"
-          icon="el-icon-set-up fa-nav-icon"
+          class="flex align-center el-btn-details open-popup-btn"
           @click="isCoverPopUp = !isCoverPopUp"
         >
-          <i class="el-icon-set-up fa-nav-icon"></i>
+          <img src="~@/assets/trello-icon-pack/cover.svg" class="fa-nav-icon cover-icon">
           <p class="popup-btn-title">Cover</p>
           <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
             <template v-slot:title>
