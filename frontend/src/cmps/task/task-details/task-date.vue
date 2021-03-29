@@ -2,7 +2,7 @@
   <section class="due-date">
     <p class="task-details-title">Due Date</p>
     <div class="flex align-center date-container">
-      <el-checkbox v-model="checked"></el-checkbox>
+      <el-checkbox @change="taskCompletion" v-model="checked"></el-checkbox>
       <div class="flex align-center date-txt-container">
         <p>{{ date }}</p>
         <span v-if="tag" :style="theme" class="tag">{{ txt }}</span>
@@ -23,12 +23,11 @@
 </template>
 
 <script>
-
 export default {
   name: 'dueDate',
   props: {
-    dueDate: {
-      type: Number,
+    task: {
+      type: Object,
     },
   },
   data() {
@@ -48,17 +47,20 @@ export default {
     removeDueDate() {
       this.$emit('removeDueDate');
     },
+    taskCompletion() {
+      this.$emit('taskCompletionStatus', this.checked);
+    },
   },
   computed: {
     date() {
-      const date = new Date(this.dueDate);
-      const dateStr = `${this.$dayjs(date).format('MMM DD')} at ${this.$dayjs(date).format(
-        'h:mm A'
-      )}`;
+      const date = new Date(this.task.dueDate);
+      const dateStr = `${this.$dayjs(date).format('MMM DD')} at ${this.$dayjs(
+        date
+      ).format('h:mm A')}`;
       return dateStr;
     },
     tag() {
-      if (Date.now() > this.dueDate || this.checked) return true;
+      if (Date.now() > this.task.dueDate || this.checked) return true;
       else return false;
     },
     txt() {
@@ -69,6 +71,9 @@ export default {
         ? { backgroundColor: '#60BD4F' }
         : { backgroundColor: '#ec9488' };
     },
+  },
+  created() {
+    this.checked = this.task.completed ? true : false;
   },
 };
 </script>
