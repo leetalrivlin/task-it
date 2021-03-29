@@ -24,7 +24,7 @@
           </popup>
         </button>
         <button
-          @click="isLabel = !isLabel"
+          @click.stop="isLabel = true"
           class="flex el-btn-details open-popup-btn"
         >
           <font-awesome-icon class="d-icon fa-nav-icon" icon="tag" />
@@ -95,7 +95,7 @@
           icon="el-icon-set-up fa-nav-icon"
           @click="isCoverPopUp = !isCoverPopUp"
         >
-          <i class="el-icon-set-up"></i>
+          <i class="el-icon-set-up fa-nav-icon"></i>
           <p class="popup-btn-title">Cover</p>
           <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
             <template v-slot:title>
