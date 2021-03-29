@@ -37,7 +37,6 @@ export const boardStore = {
       state.board = payload.board;
     },
     setTask(state, { payload }) {
-      console.log('updatedTask', payload.task);
       state.task = payload.task;
     },
     deleteBoard(state) {
