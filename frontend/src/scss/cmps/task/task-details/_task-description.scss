@@ -29,5 +29,11 @@
       padding: 8px 12px;
       color: $clr1;
     }
+    .btn-container {
+      .x-btn {
+        cursor: pointer;
+        margin-inline-start: 8px;
+      }
+    }
   }
 }
