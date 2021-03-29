@@ -27,7 +27,7 @@
         border-radius: 5px;
         color: #fff;
         .data-container {
-            margin: 20px 60px 9px 60px;
+            margin: 20px 60px 20px 60px;
             .amount {
                 border-radius: 8px;
                 margin: 0 12px 0 0;
@@ -79,21 +79,22 @@
             display: flex;
             .chart {
                 min-width: 50%;
+                padding: 0 20px 20px 20px;
             }
         }
 
         .close-btn {
             position: absolute;
-            top: 12px;
-            right: 12px;
-            font-size: 31px;
+            top: 32px;
+            right: 32px;
+            font-size: 32px;
             cursor: pointer;
         }
 
         .dashboard-header {
             font-size: 30px;
             font-family: Segoe-Bold, serif;
-            margin-block-start: -21px;
+            margin-block-start: 42px;
         }
     }
 }
@@ -103,7 +104,6 @@
         width: 630px;
         .data-container {
             margin: 20px 12px 9px 31px;
-            // flex-direction: column;
         }
     }
 }
