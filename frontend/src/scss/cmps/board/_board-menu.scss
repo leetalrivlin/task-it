@@ -54,6 +54,12 @@
   }
 }
 
+@include for-medium-layout {
+  .board-menu {
+    height: 93%;
+  }
+}
+
 @include for-mobile-layout {
   .board-menu {
     width: 100%;
