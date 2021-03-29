@@ -17,28 +17,27 @@
     <div class="features flex column align-center justify-center">
       <h1>Features</h1>
       <div class="flex feature-icons">
-        <section class="flex column item">
+        <section class="flex align-center column item">
           <img src="../assets/trello-icon-pack/trello-slate-blue.svg" />
           <p>
             Have as many boards as you wish, manage and edit all in one place.
           </p>
         </section>
-        <section class="flex column item">
+        <section class="flex align-center column item">
           <img src="../assets/trello-icon-pack/team-slate-blue.svg" />
           <p>
             Collaborate with your team members, assign tasks easilly and
             controll the work-flow.
           </p>
         </section>
-        <section class="flex column item">
+        <section class="flex align-center column item">
           <img src="../assets/trello-icon-pack/settings-slate-blue.svg" />
-          <p>Apply your own preferences and make each board your-own.</p>
+          <p>Apply preferences of your own and make each board your-own.</p>
         </section>
       </div>
     </div>
     <div class="flex align-center justify-center main">
       <img src="../assets/vectors/shutterstock_1390480307.png" />
-      <!-- <div class="main-content"> -->
         <ul class="advantages-container">
           <li>Invite your team members on click</li>
           <li>Easy adding and deleting tasks</li>
@@ -46,7 +45,6 @@
           <li>Eye pleasing interface</li>
           <li>Get real-time updates with innovative Dashboards</li>
         </ul>
-      <!-- </div> -->
     </div>
   </section>
 </template>

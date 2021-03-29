@@ -47,6 +47,7 @@
           class="flex el-btn-details open-popup-btn"
         >
           <font-awesome-icon class="d-icon fa-nav-icon" icon="check-square" />
+          <!-- <img src="../../../assets/trello-icon-pack/checkbox.svg"> -->
           <p class="popup-btn-title">Checklist</p>
           <popup v-if="isChecklist" @closePopup="isChecklist = false">
             <template v-slot:title>
