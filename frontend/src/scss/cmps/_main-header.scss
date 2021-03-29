@@ -126,13 +126,33 @@
     }
     .menu-btn {
       display: flex;
-      position: absolute;
-      top: 22px;
-      right: 14px;
+      // position: absolute;
+      // top: 22px;
+      // right: 14px;
       cursor: pointer;
       color: $clr1;
       background-color: rgba(255, 255, 255, 0.8);
 
+    }
+  }
+}
+
+@include for-mobile-layout {
+  .main-header {
+    .main-header-container {
+      .container {
+        span {
+          display: none;
+        }
+      }
+      .logo {
+        .task-it-logo {
+          font-size: 25px;
+        }
+        .gif-icon {
+          width: 40px;
+        }
+      }
     }
   }
 }

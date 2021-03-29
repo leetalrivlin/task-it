@@ -77,14 +77,14 @@
     background-color: #ede9fe;
     padding: 40px 0;
     width: 100%;
-    .main-content {
-      ul {
-        list-style-type: circle;
-        font-size: 26px;
-      }
+    .advantages-container {
+      list-style-type: circle;
+      font-size: 26px;
+      max-width: 35ch;
     }
     img {
-      width: 600px;
+      // width: 600px;
+      width: 50%;
     }
   }
 }
@@ -101,20 +101,18 @@
           font-size: 20px;
         }
       }
-      img {
-        width: 500px;
-      }
+      // img {
+      //   width: 500px;
+      // }
     }
     .main {
-      .main-content {
-        ul {
+      .advantages-container {
           font-size: 22px;
           // max-width: 20ch;
-        }
       }
-      img {
-        width: 500px;
-      }
+      // img {
+      //   width: 500px;
+      // }
     }
   }
 }
@@ -135,14 +133,12 @@
       }
     }
     .main {
-      .main-content {
-        ul {
+      .advantages-container {
           font-size: 18px;
-        }
       }
-      img {
-        width: 400px;
-      }
+      // img {
+      //   width: 400px;
+      // }
     }
   }
 }

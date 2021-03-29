@@ -36,17 +36,17 @@
         </section>
       </div>
     </div>
-    <div class="main flex align-center">
+    <div class="flex align-center justify-center main">
       <img src="../assets/vectors/shutterstock_1390480307.png" />
-      <div class="main-content">
-        <ul>
+      <!-- <div class="main-content"> -->
+        <ul class="advantages-container">
           <li>Invite your team members on click</li>
           <li>Easy adding and deleting tasks</li>
           <li>Simple and clear navigation</li>
           <li>Eye pleasing interface</li>
           <li>Get real-time updates with innovative Dashboards</li>
         </ul>
-      </div>
+      <!-- </div> -->
     </div>
   </section>
 </template>
