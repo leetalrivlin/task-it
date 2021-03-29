@@ -43,9 +43,10 @@
               />
               <task-date
                 v-if="task.dueDate"
-                :dueDate="task.dueDate"
+                :task="task"
                 @setDueDate="setDueDate"
                 @removeDueDate="removeDate"
+                @taskCompletionStatus="taskCompletionStatus"
               />
             </div>
           </div>
@@ -131,7 +132,7 @@ export default {
     taskTitle,
     taskDate,
     taskMember,
-    menuActivity
+    menuActivity,
   },
   computed: {
     groups() {
@@ -157,10 +158,10 @@ export default {
     },
     activitiesToShow() {
       const copyBoard = this.$clone(this.$store.getters.board);
-      return copyBoard.activities.filter(activity => {
+      return copyBoard.activities.filter((activity) => {
         if (activity.task) return activity.task.id === this.task.id;
       });
-    }
+    },
   },
   methods: {
     setActivity(txt) {
@@ -213,7 +214,7 @@ export default {
     setLabel(label) {
       var txt;
       if (!this.task.labelIds) this.task.labelIds = [];
-      const labelIdx = this.task.labelIds.findIndex(id => {
+      const labelIdx = this.task.labelIds.findIndex((id) => {
         return id === label.id;
       });
       if (labelIdx >= 0) {
@@ -253,7 +254,7 @@ export default {
       const activity = this.setActivity(txt);
       this.$store.dispatch({
         type: 'updateBoard',
-        payload: { board: copyBoard, activity }
+        payload: { board: copyBoard, activity },
       });
     },
     setDueDate(dueDate) {
@@ -269,6 +270,18 @@ export default {
     removeDate() {
       delete this.task.dueDate;
       const txt = `removed the due date from ${this.task.title}`;
+      const activity = this.setActivity(txt);
+      this.updateTask(this.task, activity);
+    },
+    taskCompletionStatus(isCompleted) {
+      var txt;
+      if (isCompleted) {
+        this.task.completed = true;
+        txt = `completed the task ${this.task.title}`;
+      } else {
+        if (this.task.completed) delete this.task.completed;
+        txt = `marked the task ${this.task.title} as uncompleted`;
+      }
       const activity = this.setActivity(txt);
       this.updateTask(this.task, activity);
     },
@@ -295,7 +308,7 @@ export default {
       console.log('activity in updateBoard', activity);
       this.$store.dispatch({
         type: 'updateBoard',
-        payload: { board: cloneBoard, activity }
+        payload: { board: cloneBoard, activity },
       });
     },
     removeTask(taskId) {
@@ -306,11 +319,11 @@ export default {
       console.log('activity in removeTask', activity);
       this.updateBoard(this.group, activity);
       this.closeDetails();
-    }
+    },
   },
   created() {
     const taskId = this.$route.params.taskId;
     this.$store.dispatch({ type: 'setTaskById', taskId });
-  }
+  },
 };
 </script>

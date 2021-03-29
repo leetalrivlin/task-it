@@ -16,20 +16,20 @@
         {{ task.title }}
       </p>
       <div class="flex align-center space-between task-details-icons">
-        <div class="icons-inner-container">
-          <span v-if="task.dueDate">
+        <div class="flex align-center icons-inner-container">
+          <span v-if="task.dueDate" :style="theme">
             <i class="el-icon-time"></i>
             {{ $dayjs(task.dueDate).format('MMM DD') }}
           </span>
-          <span v-if="task.description" class="description-icon">
-            <font-awesome-icon class="d-icon" icon="stream" />
+          <span v-if="task.description" class="flex align-center description-icon">
+            <img src="~@/assets/trello-icon-pack/paragraph.svg">
           </span>
-          <span v-if="task.attachments" class="attachments-icon">
-            <i class="el-icon-paperclip"></i>
+          <span v-if="task.attachments" class="flex align-center attachments-icon">
+            <img src="~@/assets/trello-icon-pack/attachment.svg">
             {{ task.attachments.length }}
           </span>
-          <span v-if="task.checklists" class="checklists-icon">
-            <font-awesome-icon class="fa-nav-icon" icon="check-square" />
+          <span v-if="task.checklists" class="flex align-center checklists-icon">
+            <img src="~@/assets/trello-icon-pack/checkbox.svg">
             {{ task.checklists.length }}
           </span>
         </div>
@@ -47,7 +47,11 @@
           </ul>
         </span>
       </div>
-      <i @click.stop="toggleMenu" ref="taskEditBtn" class="el-icon-edit task-action">
+      <i
+        @click.stop="toggleMenu"
+        ref="taskEditBtn"
+        class="el-icon-edit task-action"
+      >
         <task-menu
           v-if="isTaskMenu"
           @deleteTask="deleteTask"
@@ -90,9 +94,6 @@ export default {
     deleteTask() {
       this.$emit('deleteTask', this.task);
     },
-    // closeMenu(){
-    //   this.isTaskMenu=false;
-    // }
   },
   computed: {
     coverColor() {
@@ -103,6 +104,12 @@ export default {
     boardLabels() {
       const labels = this.$store.getters.boardLabels;
       return labels.filter((label) => this.task.labelIds.includes(label.id));
+    },
+    theme() {
+      if (this.task.completed)
+        return { backgroundColor: '#61bd4f', color: '#ffffff' };
+      else if (Date.now() > this.task.dueDate)
+        return { backgroundColor: '#ec9488', color: '#ffffff' };
     },
   },
   components: {
