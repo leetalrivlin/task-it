@@ -1,6 +1,16 @@
 <template>
   <section class="flex column align-center" v-if="user">
-    <h1>User Details - {{ user.fullname }}</h1>
+    <div class="flex user-header">
+      <avatar
+        class="member"
+        :username="user.fullname"
+        :src="user.imgUrl"
+        color="white"
+        :size="40"
+      >
+      </avatar>
+      <h1>User Details - {{ user.fullname }}</h1>
+    </div>
 
     <!-- <details>
       <summary>Full JSON</summary>
@@ -10,9 +20,12 @@
 </template>
 
 <script>
-// import {userService} from '../services/user.service';
-
+import Avatar from 'vue-avatar';
 export default {
+  name: 'userDetails',
+  components: {
+    Avatar,
+  },
   data() {
     return {
       // user: null
@@ -25,7 +38,7 @@ export default {
   watch: {
     userId: {
       handler() {
-        this.$store.dispatch({ type: "loadAndWatchUser", userId: this.userId });
+        this.$store.dispatch({ type: 'loadAndWatchUser', userId: this.userId });
       },
       immediate: true,
     },
