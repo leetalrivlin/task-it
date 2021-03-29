@@ -1,7 +1,7 @@
 .board-menu {
   background: $clr2;
   width: 339px;
-  height: 96%;
+  height: 95%;
   position: absolute;
   top: 40px;
   right: 0;
@@ -54,8 +54,15 @@
   }
 }
 
+@include for-medium-layout {
+  .board-menu {
+    height: 93%;
+  }
+}
+
 @include for-mobile-layout {
   .board-menu {
+    height: 100%;
     width: 100%;
   }
 }

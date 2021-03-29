@@ -127,8 +127,8 @@ export default {
               task.labelIds.includes(label)
             )) &&
           (!this.filterBy.members.length ||
-            this.filterBy.members.every((id) =>
-              task.members.some((member) => member._id === id)
+            this.filterBy.members.every((memberId) =>
+              task.members.some((member) => member._id === memberId)
             ))
         );
       });
