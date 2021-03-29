@@ -2,12 +2,13 @@
   width: 97%;
   margin: auto;
   h1 {
-    margin: 30px 0 10px;
+    margin: 30px 0 0;
     text-align: center;
     color: $clr1;
+    font-size: 32px;
   }
-  p{
-    margin-block-end: 20px;
+  p {
+    margin-block-end: 35px;
   }
   ul {
     display: grid;
