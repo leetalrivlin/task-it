@@ -38,7 +38,7 @@
         >
       </form>
       <form v-else class="flex column align-center" @submit.prevent="doLogin">
-        <h2>Login to Task-it</h2>
+        <h2>Login to Taskit</h2>
         <select v-model="loginCred.username">
           <option value="">Select User</option>
           <option v-for="user in users" :key="user._id" :value="user.username">
