@@ -20,7 +20,6 @@
       </div>
     </div>
     <div class="description-container flex">
-      <!-- <i class="el-icon-s-unfold d-icon task-details-icon"></i> -->
        <font-awesome-icon class="icon" icon="stream" />
       <h1 class="details">Description</h1>
     </div>

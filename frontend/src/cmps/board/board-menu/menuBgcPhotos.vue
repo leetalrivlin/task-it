@@ -30,7 +30,6 @@ export default {
         require('../../../assets/imgs/bgc-8.jpg'),
         require('../../../assets/imgs/bgc-9.jpg'),
         require('../../../assets/imgs/bgc-10.jpg'),
-        
       ],
     };
   },
