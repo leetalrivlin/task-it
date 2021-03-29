@@ -1,7 +1,6 @@
 <template>
   <section class="flex column align-center main-content main-layout board-list">
     <h1>Pick a Borad</h1>
-    <!-- <button @click='getBoard'>board</button> -->
     <ul class="clean-list">
       <li @click="createBoard">
         <i class="el-icon-plus add-board flex justify-center align-center"></i>
@@ -25,9 +24,6 @@ import { boardService } from '../services/board.service.js';
 
 export default {
   name: 'boardList',
-  async created() {
-    // await this.$store.dispatch('loadBoards');
-  },
   methods: {
     async createBoard() {
       const emptyBoard = boardService.getEmptyBoard();
