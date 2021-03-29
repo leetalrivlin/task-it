@@ -4,7 +4,7 @@
       class="el-btn-details fa-nav-icon cover-btn"
       @click="isEditCover = !isEditCover"
       >
-      <img src="~@/assets/trello-icon-pack/cover-new-color.svg" class="cover-icon">
+      <img src="~@/assets/trello-icon-pack/cover-top.svg" class="cover-icon">
       <!-- <i class="el-icon-set-up"></i> -->
       Cover
       <popup v-if="isEditCover" @closePopup="isEditCover = false">
