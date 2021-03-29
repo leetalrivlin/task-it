@@ -122,10 +122,7 @@ export default {
       const txt = `added a new group ${newGroup.title}`;
       const activity = this.setActivity(txt);
       this.updateBoard(cloneBoard, activity);
-      // this.$store.dispatch({
-      //   type: 'updateBoard',
-      //   payload: { board: cloneBoard, activity },
-      // });
+   
     },
     saveTask(task, groupId) {
       const group = this.getGroup(groupId);
@@ -156,10 +153,7 @@ export default {
       this.board.groups.splice(groupIdx, 1);
       const cloneBoard = this.$clone(this.board);
       this.updateBoard(cloneBoard, activity);
-      // this.$store.dispatch({
-      //   type: 'updateBoard',
-      //   payload: { board: cloneBoard, activity },
-      // });
+    
     },
     updateGroup(updatedGroup, activity = {}) {
       if (activity.txt && !activity.byMember) {
@@ -173,10 +167,7 @@ export default {
       this.board.groups.splice(idx, 1, updatedGroup);
       const cloneBoard = this.$clone(this.board);
       this.updateBoard(cloneBoard, activity);
-      // this.$store.dispatch({
-      //   type: 'updateBoard',
-      //   payload: { board: cloneBoard, activity },
-      // });
+    
     },
     tasksToShow(tasks) {
       console.log('tasks');
