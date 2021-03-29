@@ -4,12 +4,6 @@
     @mouseover="todoOnFocus = true"
     @mouseleave="hideIcon"
   >
-    <!-- <input
-      type="checkbox"
-      v-model="isDone"
-      @change="toggleTodo"
-      class="d-todo-icon"
-    /> -->
     <el-checkbox
       v-model="isDone"
       @input="toggleTodo"

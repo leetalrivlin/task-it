@@ -40,23 +40,9 @@ export const boardStore = {
       console.log('updatedTask', payload.task);
       state.task = payload.task;
     },
-    // The version before that worked:
-    // setTask(state, { task }) {
-    //   state.task = task;
-    // }
     deleteBoard(state) {
       state.board = null;
     }
-
-    // setTaskById(state, { taskId }) {
-    //   state.board.groups.forEach(group => {
-    //     group.tasks.forEach(task => {
-    //       if (task.id === taskId) {
-    //         state.task = task;
-    //       }
-    //     });
-    //   });
-    // }
   },
   actions: {
     async loadBoard({ commit }, { boardId }) {
@@ -88,42 +74,17 @@ export const boardStore = {
         });
       });
     },
-    // The version that worked:
-    // async setTaskById({ commit, state }, { taskId }) {
-    //   console.log('taskId from store:',taskId);
-    //   state.board.groups.forEach(group => {
-    //     group.tasks.forEach(task => {
-    //       if (task.id === taskId) {
-    //         commit({ type: 'setTask', task });
-    //         socketService.emit('task-watch', taskId);
-    //         socketService.off('task-updated');
-    //         socketService.on('task-updated', task => {
-    //           commit({ type: 'setTask', task });
-    //         });
-    //       }
-    //     });
-    //   });
-    // },
     async updateBoard({ commit }, { payload }) {
       try {
         if (payload.activity.txt) {
           payload.board.activities.unshift(payload.activity);
         }
         commit({ type: 'setBoard', payload });
-        const updatedBoard = await boardService.save(payload.board);
+        await boardService.save(payload.board);
       } catch (err) {
         console.log('cant update board', err);
       }
     },
-    // UpdateBoard version that works:
-    // async updateBoard({ commit }, { board }) {
-    //   try {
-    //     commit({ type: 'setBoard', board });
-    //     const updatedBoard = await boardService.save(board);
-    //   } catch (err) {
-    //     console.log('cant update board', err);
-    //   }
-    // },
     async saveBoard({ commit }, { newBoard }) {
       try {
         const board = await boardService.save(newBoard);
@@ -157,23 +118,5 @@ export const boardStore = {
         console.log('cannot update task', err);
       }
     }
-    // The version before that worked:
-    // async updateTask({ commit, dispatch, state }, {task}) {
-    //   try {
-    //     commit({ type: 'setTask', task});
-    //     const boardCopy = clone(state.board);
-    //     const groupIdx = boardCopy.groups.findIndex(group =>
-    //       group.tasks.some(({ id }) => id === task.id)
-    //     );
-    //     const taskIdx = boardCopy.groups[groupIdx].tasks.findIndex(
-    //       ({ id }) => id === task.id
-    //     );
-    //     boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1, task);
-    //     socketService.emit('task-updated', task);
-    //     dispatch({ type: 'updateBoard', board: boardCopy });
-    //   } catch (err) {
-    //     console.log('cannot update task', err);
-    //   }
-    // }
   }
 };
