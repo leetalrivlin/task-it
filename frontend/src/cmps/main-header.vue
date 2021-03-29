@@ -18,8 +18,10 @@
           ><div class="flex justify-center align-center">
             <span class="task-it-logo">Taskit</span
             ><img
-              src="~@/assets/imgs/task-it-logo-clr1-bounce.gif"
+              :src="logoSrc"
               class="gif-icon"
+              @mouseover="isLogoHover = true"
+              @mouseleave="isLogoHover = false"
             /></div
         ></router-link>
       </span>
@@ -75,7 +77,8 @@ export default {
   data() {
     return {
       userPopup: false,
-      ismobile: false
+      ismobile: false,
+      isLogoHover: false
     };
   },
   methods: {
@@ -94,6 +97,11 @@ export default {
   computed: {
     loggedInUser() {
       return this.$store.getters.loggedinUser;
+    },
+    logoSrc() {
+      return this.isLogoHover
+        ? require('@/assets/imgs/task-it-logo-clr1-bounce.gif')
+        : require('@/assets/imgs/task-it-icon-clr1.png');
     }
   }
 };
