@@ -7,10 +7,23 @@
       @updateBoardStyle="updateBoard"
       @tasksToShow="tasksToShow"
       @deleteBoard="deleteBoard"
-      @saveTitle="saveTitle"
-      @filterBoard="filterBoard"
+      @openMenue="isMenuOpen = true"
       :activities="board.activities"
     />
+    <transition name="slide">
+      <board-menu
+        @tasksToShow="tasksToShow"
+        v-if="isMenuOpen"
+        @closeMenu="isMenuOpen = false"
+        @colorPicked="updateStyle"
+        @photoPicked="updateStyle"
+        @deleteBoard="deleteBoard"
+        @filterBoard="filterBoard"
+        :board="board"
+        :activities="board.activities"
+      />
+    </transition>
+
     <section class="flex align-start main-content main-layout board-content">
       <draggable
         class="flex group-container"
@@ -52,6 +65,7 @@ import boardHeader from '../cmps/board/board-header.vue';
 import group from '../cmps/group.vue';
 import addGroup from '../cmps/add-group.vue';
 import draggable from 'vuedraggable';
+import boardMenu from '../cmps/board/board-menu.vue';
 
 export default {
   name: 'boardDetails',
@@ -59,12 +73,14 @@ export default {
     boardHeader,
     group,
     addGroup,
-    draggable
+    draggable,
+    boardMenu,
   },
   data() {
     return {
       boardId: null,
       isDragging: false,
+      isMenuOpen: false,
       filterBy: { txt: '', labels: [], members: [] },
     };
   },
@@ -81,7 +97,7 @@ export default {
       try {
         await this.$store.dispatch({
           type: 'loadBoard',
-          boardId: this.boardId
+          boardId: this.boardId,
         });
         this.board;
       } catch (err) {
@@ -90,6 +106,10 @@ export default {
     },
     filterBoard(filterBy) {
       this.filterBy = filterBy;
+    },
+    updateStyle(style) {
+      this.board.style = style;
+      this.updateBoard(this.board);
     },
     changeTitle(group) {
       const txt = `changed the title to the list ${group.title}`;
@@ -101,10 +121,11 @@ export default {
       const cloneBoard = this.$clone(this.board);
       const txt = `added a new group ${newGroup.title}`;
       const activity = this.setActivity(txt);
-      this.$store.dispatch({
-        type: 'updateBoard',
-        payload: { board: cloneBoard, activity }
-      });
+      this.updateBoard(cloneBoard, activity);
+      // this.$store.dispatch({
+      //   type: 'updateBoard',
+      //   payload: { board: cloneBoard, activity },
+      // });
     },
     saveTask(task, groupId) {
       const group = this.getGroup(groupId);
@@ -134,10 +155,11 @@ export default {
       const groupIdx = this.board.groups.findIndex(({ id }) => id === groupId);
       this.board.groups.splice(groupIdx, 1);
       const cloneBoard = this.$clone(this.board);
-      this.$store.dispatch({
-        type: 'updateBoard',
-        payload: { board: cloneBoard, activity }
-      });
+      this.updateBoard(cloneBoard, activity);
+      // this.$store.dispatch({
+      //   type: 'updateBoard',
+      //   payload: { board: cloneBoard, activity },
+      // });
     },
     updateGroup(updatedGroup, activity = {}) {
       if (activity.txt && !activity.byMember) {
@@ -150,10 +172,11 @@ export default {
       );
       this.board.groups.splice(idx, 1, updatedGroup);
       const cloneBoard = this.$clone(this.board);
-      this.$store.dispatch({
-        type: 'updateBoard',
-        payload: { board: cloneBoard, activity }
-      });
+      this.updateBoard(cloneBoard, activity);
+      // this.$store.dispatch({
+      //   type: 'updateBoard',
+      //   payload: { board: cloneBoard, activity },
+      // });
     },
     tasksToShow(tasks) {
       console.log('tasks');
@@ -162,13 +185,14 @@ export default {
     moveGroup() {
       const txt = `moved a group`;
       const activity = this.setActivity(txt);
-      this.$store.dispatch({
-        type: 'updateBoard',
-        payload: { board: this.board, activity }
-      });
+      this.updateBoard(this.board, activity);
+      // this.$store.dispatch({
+      //   type: 'updateBoard',
+      //   payload: { board: this.board, activity },
+      // });
     },
     getGroup(groupId) {
-      return this.board.groups.find(group => {
+      return this.board.groups.find((group) => {
         return group.id === groupId;
       });
     },
@@ -181,17 +205,17 @@ export default {
     updateBoard(updatedBoard, activity = {}) {
       this.$store.dispatch({
         type: 'updateBoard',
-        payload: { board: updatedBoard, activity }
+        payload: { board: updatedBoard, activity },
       });
     },
     deleteBoard() {
       this.$store.commit({
         type: 'removeBoardFromList',
-        boardId: this.board._id
+        boardId: this.board._id,
       });
       this.$store.dispatch({ type: 'deleteBoard', boardId: this.board._id });
       this.$router.push('/board');
-    }
+    },
   },
   computed: {
     board() {
@@ -199,12 +223,12 @@ export default {
     },
     users() {
       return this.$clone(this.$store.getters.users);
-    }
+    },
   },
   mounted() {
     this.boardId = this.$route.params.boardId;
     this.getBoard();
-  }
+  },
   // destroyed() {
   //   this.$store.commit({ type: 'setBoard', task: null });
   // },

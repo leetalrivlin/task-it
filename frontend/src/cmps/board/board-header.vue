@@ -54,31 +54,18 @@
 
       <button
         class="flex align-center el-btn board-menu-btn"
-        @click="isMenuOpen = true"
+        @click="openMenue"
       >
         <i class="el-icon-more icon"></i>
         <p>Show Menu</p>
       </button>
-      <transition name="slide">
-        <board-menu
-          @tasksToShow="tasksToShow"
-          v-if="isMenuOpen"
-          @closeMenu="isMenuOpen = false"
-          @colorPicked="updateBoard"
-          @photoPicked="updateBoard"
-          @deleteBoard="deleteBoard"
-          @filterBoard="filterBoard"
-          :board="board"
-          :activities="activities"
-        />
-      </transition>
     </div>
   </header>
 </template>
 
 <script>
 import addMembers from './add-members';
-import boardMenu from './board-menu.vue';
+// import boardMenu from './board-menu.vue';
 import Avatar from 'vue-avatar';
 import AddGroup from '../add-group.vue';
 import popup from '../popup.vue';
@@ -86,7 +73,6 @@ import boardDashboard from './board-dashboard.vue';
 
 export default {
   components: {
-    boardMenu,
     Avatar,
     AddGroup,
     addMembers,
@@ -143,6 +129,9 @@ export default {
     },
     filterBoard(filterBy) {
       this.$emit('filterBoard', filterBy);
+    },
+    openMenue() {
+      this.$emit('openMenue');
     },
   },
   computed: {

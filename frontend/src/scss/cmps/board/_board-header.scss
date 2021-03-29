@@ -31,16 +31,6 @@
     }
   }
 
-  .slide-enter-active {
-    transition: all 0.2s ease;
-  }
-  .slide-leave-active {
-    transition: all 0.2s ease;
-  }
-  .slide-enter,
-  .slide-leave-to {
-    transform: translateX(350px);
-  }
   .members-list {
     &:last-of-type {
       margin-inline-end: 8px;
