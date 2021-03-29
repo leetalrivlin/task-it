@@ -3,9 +3,7 @@
     <avatar
       class="activity-avatar task-activity-avatar"
       :username="getUser"
-      :src="
-        activity.byMember.imgUrl || 'require(@/assets/imgs/guest-avatar.png)'
-      "
+      :src="getUserImg"
       color="white"
       :size="32"
     ></avatar>
@@ -35,6 +33,9 @@ export default {
     getUser() {
       return this.activity.byMember ? this.activity.byMember.fullname : 'Guest';
     },
+    getUserImg() {
+      return this.activity.byMember ? this.activity.byMember.imgUrl : 'require(@/assets/imgs/guest-avatar.png)';
+    }
   },
 };
 </script>
