@@ -30,12 +30,24 @@ export default {
         require('../../../assets/imgs/bgc-8.jpg'),
         require('../../../assets/imgs/bgc-9.jpg'),
         require('../../../assets/imgs/bgc-10.jpg'),
+        require('../../../assets/imgs/bgc-11.jpg'),
+        require('../../../assets/imgs/bgc-12.jpg'),
+        require('../../../assets/imgs/bgc-13.jpg'),
+        require('../../../assets/imgs/bgc-14.jpg'),
+        require('../../../assets/imgs/bgc-15.jpg'),
+        require('../../../assets/imgs/bgc-16.jpg'),
+        require('../../../assets/imgs/bgc-17.jpg'),
+        require('../../../assets/imgs/bgc-18.jpg'),
+        require('../../../assets/imgs/bgc-19.jpg'),
+        require('../../../assets/imgs/bgc-20.jpg'),
+        require('../../../assets/imgs/bgc-21.jpg'),
+        require('../../../assets/imgs/bgc-22.jpg'),
       ],
     };
   },
   methods: {
     changePhoto(photo) {
-      this.$emit('photoPicked', {background:`url(${photo})`})
+      this.$emit('photoPicked', { background: `url(${photo})` });
     },
   },
 };
