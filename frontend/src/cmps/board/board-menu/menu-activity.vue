@@ -34,7 +34,7 @@ export default {
       return this.activity.byMember ? this.activity.byMember.fullname : 'Guest';
     },
     getUserImg() {
-      return this.activity.byMember ? this.activity.byMember.imgUrl : 'require(@/assets/imgs/guest-avatar.png)';
+      return this.activity.byMember ? this.activity.byMember.imgUrl : require('@/assets/imgs/guest-avatar.png');
     }
   },
 };
