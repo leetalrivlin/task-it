@@ -16,8 +16,11 @@
     <div class="profile">
       <p class="header-profile">Profile and visability</p>
     </div>
-
-    <img src="~@/assets/imgs/user-profile.svg" alt="">
+    <img class="image-user" src="~@/assets/imgs/user-profile.svg" alt="">
+    <div class="about flex align-center">
+      <h3>About</h3>
+      <hr>
+    </div>
   </section>
 </template>
 

@@ -1,9 +1,9 @@
 .user-header {
-  height: 191px;
+  height: 112px;
   width: 100%;
   // background-color: white;
   .username {
-    margin-block-start: 50px;
+    margin-block-start: 34px;
     .member {
       margin-inline-end: 10px;
     }
@@ -22,14 +22,32 @@
     color: #0c3953;
     font-weight: 700;
     margin: 2px 2px 0;
-    // position: relative;
     bottom: 46px;
     background-color: #fbfbff;
     border: none;
-    height: 30px;
+    height: 38px;
     border-radius: 3px;
     outline: none;
     font-size: 14px;
-    padding: 0 10px;
+    padding: 8px 10px;
+  }
+}
+.image-user{
+  width: 60%;
+  margin-inline-end: 210px;
+}
+
+
+.about {
+  h3{
+    color: #172b4d;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -.008em;
+    line-height: 24px;
+    margin-top: 28px;
+    font-weight: 500;
+    line-height: 26px;
+    margin-top: 40px;
   }
 }
