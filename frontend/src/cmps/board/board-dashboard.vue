@@ -30,7 +30,7 @@
           <i class="el-icon-time flex justify-center align-center icon" />
           <div class="data">
             <p>Activitys</p>
-            <!-- {{ countActivity }} -->
+            {{ countActivity }}
           </div>
         </li>
         <li class="flex column amount comments-amount">
@@ -84,6 +84,14 @@ export default {
       });
       return users;
     },
+    countActivity() {
+      var activities=0;
+       if(!this.board.activities) return
+      this.board.activities.forEach((activity) => {
+        activities++;
+      });
+      return activities;
+    }
   },
   components: {
     tasksInGroup,
