@@ -12,15 +12,14 @@
           class="textarea"
           @keyup.enter.exact="saveDesc"
           @keydown.enter.exact.prevent
-          name=""
-          id=""
+          ref="descInput"
           cols="20"
           rows="5"
           v-model="task.description"
         ></textarea>
         <div class="btn-container">
           <el-button class="task-details-btn" type="info" @click.prevent="saveDesc">Save</el-button>
-          <i class="el-icon-close" @click="isAddDesc = false"></i>
+          <i class="el-icon-close x-btn" @click="isAddDesc = false"></i>
         </div>
       </form>
     </div>
@@ -60,11 +59,14 @@ export default {
     addDesc() {
       this.isAddDesc = true;
       if (!this.task.description) this.task.description = '';
+      this.$nextTick(() => {
+        this.$refs.descInput.focus()
+      });
     },
     saveDesc() {
       this.$emit('saveDescription', this.task);
       this.isAddDesc = false;
-    }
+    },
   },
   created() {}
 };
