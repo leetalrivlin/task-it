@@ -1,21 +1,23 @@
 <template>
   <section class="flex column align-center" v-if="user">
-    <div class="flex user-header">
-      <avatar
-        class="member"
-        :username="user.fullname"
-        :src="user.imgUrl"
-        color="white"
-        :size="40"
-      >
-      </avatar>
-      <h1>User Details - {{ user.fullname }}</h1>
+    <div class=" user-header">
+      <div class="flex align-center justify-center username">
+        <avatar
+          class="member"
+          :username="user.fullname"
+          :src="user.imgUrl"
+          color="white"
+          :size="50"
+        >
+        </avatar>
+        <h1>{{ user.fullname }}</h1>
+      </div>
+    </div>
+    <div class="profile">
+      <p class="header-profile">Profile and visability</p>
     </div>
 
-    <!-- <details>
-      <summary>Full JSON</summary>
-      <pre>{{ user }}</pre>
-    </details> -->
+    <img src="~@/assets/imgs/user-profile.svg" alt="">
   </section>
 </template>
 
