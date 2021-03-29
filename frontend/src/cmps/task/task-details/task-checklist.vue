@@ -1,6 +1,7 @@
 <template>
   <section class="d-checklist checklist-container">
-    <font-awesome-icon class="d-icon" icon="check-square" />
+    <img src="~@/assets/trello-icon-pack/checkbox.svg" class="d-icon">
+    <!-- <font-awesome-icon class="d-icon" icon="check-square" /> -->
 
     <div class="d-content">
       <div class="flex space-between align-center">

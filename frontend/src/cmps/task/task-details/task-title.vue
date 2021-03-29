@@ -1,6 +1,6 @@
 <template>
   <section class="d-header header-container">
-    <font-awesome-icon class="d-icon" icon="columns" />
+    <img src="~@/assets/trello-icon-pack/card.svg" class="d-icon">
     <div class="d-content task-title-container">
       <input
         type="text"

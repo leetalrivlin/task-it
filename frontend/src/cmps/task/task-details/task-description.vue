@@ -1,7 +1,7 @@
 <template>
   <section v-if="task" class="task-desc-container d-desc">
     <!-- <i class="el-icon-s-unfold d-icon task-details-icon"></i> -->
-    <font-awesome-icon class="d-icon" icon="stream" />
+    <img src="~@/assets/trello-icon-pack/paragraph.svg" class="d-icon">
     <div class="d-content">
       <h1 class="task-details-header">Description</h1>
       <a v-if="!isAddDesc" class="emptyDesc" :class="descStyle" @click="addDesc">{{
