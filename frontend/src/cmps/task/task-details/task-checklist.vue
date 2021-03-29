@@ -1,8 +1,6 @@
 <template>
   <section class="d-checklist checklist-container">
-    <img src="~@/assets/trello-icon-pack/checkbox.svg" class="d-icon">
-    <!-- <font-awesome-icon class="d-icon" icon="check-square" /> -->
-
+    <img src="~@/assets/trello-icon-pack/checkbox.svg" class="d-icon" />
     <div class="d-content">
       <div class="flex space-between align-center">
         <h1 class="task-details-header">{{ checklist.title }}</h1>
@@ -38,7 +36,7 @@
     <button
       v-if="!isAddTodos"
       class="el-btn-details details-item-btn checklist-btn d-content"
-      @click="isAddTodos = true"
+      @click="openInput"
     >
       Add an item
     </button>
@@ -48,6 +46,7 @@
         type="text"
         placeholder="Add an item"
         v-model="todoToAdd.txt"
+        ref="todoInput"
       ></el-input>
       <div class="btn-container">
         <el-button
@@ -74,16 +73,16 @@ export default {
   components: { checklistTodo },
   props: {
     task: {
-      type: Object,
+      type: Object
     },
     checklist: {
-      type: Object,
-    },
+      type: Object
+    }
   },
   data() {
     return {
       isAddTodos: false,
-      todoToAdd: null,
+      todoToAdd: null
     };
   },
   computed: {
@@ -94,13 +93,17 @@ export default {
       if (!this.checklist.todos || !this.checklist.todos.length) return 0;
       var isDoneCounter = 0;
       const todos = this.checklist.todos.length;
-      this.checklist.todos.forEach((todo) => {
+      this.checklist.todos.forEach(todo => {
         if (todo.isDone) isDoneCounter++;
       });
       return Math.round((100 * isDoneCounter) / todos);
-    },
+    }
   },
   methods: {
+    openInput() {
+      this.isAddTodos = true;
+      this.$nextTick(() => this.$refs.todoInput.focus());
+    },
     setEmptyTodo() {
       this.todoToAdd = boardService.getEmptyTodo();
     },
@@ -138,13 +141,13 @@ export default {
       );
       const copyTask = this.$clone(this.task);
       copyTask.checklists.splice(checklistIdx, 1);
-        const activity = boardService.getEmptyActivity();
-        activity.txt = `removed ${this.checklist.title} from ${this.task.title}`;
+      const activity = boardService.getEmptyActivity();
+      activity.txt = `removed ${this.checklist.title} from ${this.task.title}`;
       this.$emit('updateTask', copyTask, activity);
-    },
+    }
   },
   created() {
     this.setEmptyTodo();
-  },
+  }
 };
 </script>
