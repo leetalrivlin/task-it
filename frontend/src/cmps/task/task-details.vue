@@ -68,7 +68,7 @@
           </ul>
           <div class="d-desc">
             <img
-              src="~@/assets/trello-icon-pack/activities.svg"
+              src="~@/assets/trello-icon-pack/activities-new-color.svg"
               class="d-icon activity-icon"
             />
             <h1 class="task-details-header">Activity</h1>

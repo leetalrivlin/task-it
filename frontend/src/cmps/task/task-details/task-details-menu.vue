@@ -88,7 +88,7 @@
           class="flex align-center el-btn-details open-popup-btn"
           @click="isCoverPopUp = !isCoverPopUp"
         >
-          <img src="~@/assets/trello-icon-pack/cover.svg" class="fa-nav-icon cover-icon">
+          <img src="~@/assets/trello-icon-pack/cover-new-color.svg" class="fa-nav-icon cover-icon">
           <p class="popup-btn-title">Cover</p>
           <popup v-if="isCoverPopUp" @closePopup="isCoverPopUp = false">
             <template v-slot:title>
