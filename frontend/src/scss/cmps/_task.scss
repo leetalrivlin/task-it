@@ -40,7 +40,7 @@
       flex-wrap: wrap;
 
       .icons-inner-container {
-        img{
+        img {
           width: 16px;
         }
         > * {
@@ -48,13 +48,13 @@
           margin-inline-end: 3px;
           border-radius: 3px;
           color: #5e6c84;
-          padding: 3px;
+          padding: 2px 3px;
         }
       }
 
       .members-icon {
         ul {
-          > *:not(:last-child){
+          > *:not(:last-child) {
             margin-inline-end: 5px;
           }
         }

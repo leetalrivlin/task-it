@@ -67,7 +67,10 @@
             />
           </ul>
           <div class="d-desc">
-            <img src="~@/assets/trello-icon-pack/activities.svg" class="d-icon activity-icon">
+            <img
+              src="~@/assets/trello-icon-pack/activities.svg"
+              class="d-icon activity-icon"
+            />
             <h1 class="task-details-header">Activity</h1>
             <ul
               v-for="activity in activitiesToShow"
@@ -219,6 +222,7 @@ export default {
       });
       if (labelIdx >= 0) {
         this.task.labelIds.splice(labelIdx, 1);
+        if (this.task.labelIds.length === 0) delete this.task.labelIds;
         txt = `removed label from ${this.task.title}`;
       } else {
         this.task.labelIds.push(label.id);
@@ -235,6 +239,7 @@ export default {
       });
       if (memberIdx >= 0) {
         this.task.members.splice(memberIdx, 1);
+        if (this.task.members.length === 0) delete this.task.members;
         txt = `removed ${chosenMember.fullname} from ${this.task.title}`;
       } else {
         this.task.members.push(chosenMember);
