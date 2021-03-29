@@ -35,7 +35,6 @@
       <transition name="slide-in">
         <menu-search v-if="isSearch" :board="board" @filterBoard="filterBoard"/>
       </transition>
-      
     </div>
   </section>
 </template>

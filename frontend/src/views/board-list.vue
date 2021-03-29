@@ -45,6 +45,9 @@ export default {
   mounted() {
     console.log(this.$store.getters.boards);
   },
+  created() {
+    this.$store.dispatch('loadBoards');
+  },
 };
 </script>
 

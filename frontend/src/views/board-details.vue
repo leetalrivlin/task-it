@@ -4,9 +4,9 @@
       :board="board"
       :users="users"
       @updateBoardMembers="updateBoard"
-      @updateBoardStyle="updateBoard"
       @tasksToShow="tasksToShow"
       @deleteBoard="deleteBoard"
+      @saveTitle="saveTitle"
       @openMenue="isMenuOpen = true"
       :activities="board.activities"
     />
@@ -189,7 +189,7 @@ export default {
     },
     saveTitle(boardTitle) {
       this.board.title = boardTitle;
-      const txt = `changed the board title to ${this.board.title}`;
+      const txt = `changed the board title to ${boardTitle}`;
       const activity = this.setActivity(txt);
       this.updateBoard(this.board, activity);
     },

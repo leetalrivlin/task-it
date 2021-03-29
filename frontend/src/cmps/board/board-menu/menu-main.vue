@@ -22,7 +22,7 @@
       <p class="menu-title activity-title">Activity</p>
     </a>
     <ul v-for="activity in activities" :key="activity.id" class="clean-list">
-      <menu-activity :activity="activity" />
+      <menu-activity  v-if="activity" :activity="activity" />
     </ul>
   </section>
 </template>
