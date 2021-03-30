@@ -1,6 +1,7 @@
 .board-details {
   position: relative;
   .board-content {
+    cursor: grab;
     position: relative;
     overflow-x: scroll;
     flex: 1;

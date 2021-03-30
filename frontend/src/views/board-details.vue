@@ -25,7 +25,7 @@
         class="flex group-container"
         :list="board.groups"
         tag="section"
-        @change="moveGroup"
+        @change="moveGroup"_
         @start="isDragging = true"
         @end="isDragging = false"
         ghostClass="ghost"
