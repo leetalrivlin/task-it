@@ -23,32 +23,27 @@
 </template>
 
 <script>
-import {boardService} from '../services/board.service.js'
+import { boardService } from '../services/board.service.js';
 export default {
   name: 'addGroup',
   data() {
     return {
-      // isCreating: false,
       emptyGroup: null,
     };
   },
   methods: {
     saveGroup() {
       this.$emit('saveGroup', this.emptyGroup);
-      this.emptyGroup =  boardService.getEmptyGroup();
+      this.emptyGroup = boardService.getEmptyGroup();
     },
     createNewGroup() {
       this.isCreating = true;
-      this.emptyGroup =  boardService.getEmptyGroup();
-      console.log(this.emptyGroup );
+      this.emptyGroup = boardService.getEmptyGroup();
     },
   },
   computed: {
     newGroupTxt() {
       return 'Add new list';
-      //   return this.board.groups.length === 0
-      //     ? "Create a list"
-      //     : "Add another list";
     },
   },
 };

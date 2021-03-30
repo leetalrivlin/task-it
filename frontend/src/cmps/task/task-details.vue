@@ -29,13 +29,13 @@
           >
             <div class="d-content flex task-data-container">
               <task-member
-                v-if="task.members"
+                v-if="task.members && task.members.length >0"
                 :taskMembers="task.members"
                 :members="members"
                 @addMemberToTask="setMember"
               />
               <task-label
-                v-if="task.labelIds"
+                v-if="task.labelIds && task.labelIds.length >0"
                 :labels="boardLabels"
                 :task="task"
                 @addLabel="setLabel"

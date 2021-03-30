@@ -1,8 +1,10 @@
 .board-details {
+  position: relative;
   .board-content {
     position: relative;
     overflow-x: scroll;
     flex: 1;
+    margin-bottom: 8px;
     .group-container {
       .group {
         position: relative;

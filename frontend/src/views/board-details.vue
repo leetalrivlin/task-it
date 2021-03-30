@@ -4,15 +4,12 @@
       :board="board"
       :users="users"
       @updateBoardMembers="updateBoard"
-      @tasksToShow="tasksToShow"
-      @deleteBoard="deleteBoard"
       @saveTitle="saveTitle"
       @openMenue="isMenuOpen = true"
       :activities="board.activities"
     />
     <transition name="slide">
       <board-menu
-        @tasksToShow="tasksToShow"
         v-if="isMenuOpen"
         @closeMenu="isMenuOpen = false"
         @colorPicked="updateStyle"
@@ -37,7 +34,6 @@
         dragClass="drag"
         group="groups"
       >
-        <!-- <transition-group name="drag-drop"> -->
         <group
           v-for="group in board.groups"
           :key="group.id"
@@ -50,8 +46,6 @@
           :group="group"
           :filterBy="filterBy"
         />
-
-        <!-- </transition-group> -->
       </draggable>
       <add-group @saveGroup="saveGroup" />
       <router-view />
@@ -122,7 +116,6 @@ export default {
       const txt = `added a new group ${newGroup.title}`;
       const activity = this.setActivity(txt);
       this.updateBoard(cloneBoard, activity);
-   
     },
     saveTask(task, groupId) {
       const group = this.getGroup(groupId);
@@ -151,9 +144,7 @@ export default {
       const activity = this.setActivity(txt);
       const groupIdx = this.board.groups.findIndex(({ id }) => id === groupId);
       this.board.groups.splice(groupIdx, 1);
-      const cloneBoard = this.$clone(this.board);
-      this.updateBoard(cloneBoard, activity);
-    
+      this.updateBoard(this.board, activity);
     },
     updateGroup(updatedGroup, activity = {}) {
       if (activity.txt && !activity.byMember) {
@@ -165,22 +156,12 @@ export default {
         ({ id }) => id === updatedGroup.id
       );
       this.board.groups.splice(idx, 1, updatedGroup);
-      const cloneBoard = this.$clone(this.board);
-      this.updateBoard(cloneBoard, activity);
-    
+      this.updateBoard(this.board, activity);
     },
-    tasksToShow(tasks) {
-      console.log('tasks');
-    },
-
     moveGroup() {
       const txt = `moved a group`;
       const activity = this.setActivity(txt);
       this.updateBoard(this.board, activity);
-      // this.$store.dispatch({
-      //   type: 'updateBoard',
-      //   payload: { board: this.board, activity },
-      // });
     },
     getGroup(groupId) {
       return this.board.groups.find((group) => {
