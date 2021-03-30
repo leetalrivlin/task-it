@@ -20,15 +20,25 @@
         font-weight: 700;
       }
     }
-
+    
     &:hover {
       color: $clr1;
       background-color: rgba(9, 30, 66, 0.08);
     }
-
+    
     .icon {
-      font-size: rem(20px);
+      width: 20px;
       margin-inline-end: 5px;
     }
+    .activity-icon {
+      width: 13px;
+    }
+    .delete-icon {
+      font-size: 18px;
+      padding-inline-start: 2px;
+    }
+  }
+  .menu-activity-container {
+    overflow-y: scroll;
   }
 }
