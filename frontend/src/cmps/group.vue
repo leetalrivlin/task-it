@@ -28,13 +28,14 @@
       dragClass="drag-task"
       group="tasks"
     >
-      <li
-        @click="taskClicked(task.id)"
-        v-for="task in tasksToShow"
-        :key="task.id"
-      >
-        <task :task="task" @deleteTask="deleteTask" />
-      </li>
+        <li
+          v-for="task in tasksToShow"
+          :key="task.id" 
+        >
+        <v-touch @tap="taskClicked(task.id)">
+          <task :task="task" @deleteTask="deleteTask" />
+        </v-touch>
+        </li>
     </draggable>
     <section class="add-task-container">
       <a
@@ -59,29 +60,29 @@ import task from '../cmps/task.vue';
 import groupMenu from '../cmps/group-menu.vue';
 import addTask from '../cmps/add-task.vue';
 import draggable from 'vuedraggable';
-import {boardService} from '../services/board.service'
+import { boardService } from '../services/board.service';
 
 export default {
   components: {
     task,
     addTask,
     draggable,
-    groupMenu,
+    groupMenu
   },
   name: 'group',
   props: {
     group: {
-      type: Object,
+      type: Object
     },
     filterBy: {
-      type: Object,
-    },
+      type: Object
+    }
   },
   data() {
     return {
       isDragging: false,
       isGroupMenu: false,
-      isAddingTask: false,
+      isAddingTask: false
     };
   },
   methods: {
@@ -109,7 +110,7 @@ export default {
     },
     closeMenu() {
       this.$emit('closeMenu');
-    },
+    }
   },
   computed: {
     addTxt() {
@@ -117,24 +118,23 @@ export default {
     },
     tasksToShow() {
       if (!this.filterBy) return this.group.tasks;
-      const tasks = this.group.tasks.filter((task) => {
+      const tasks = this.group.tasks.filter(task => {
         if (!task.labelIds) task.labelIds = [];
         if (!task.members) task.members = [];
         return (
           task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
           (!this.filterBy.labels.length ||
-            this.filterBy.labels.every((label) =>
+            this.filterBy.labels.every(label =>
               task.labelIds.includes(label)
             )) &&
           (!this.filterBy.members.length ||
-            this.filterBy.members.every((memberId) =>
-              task.members.some((member) => member._id === memberId)
+            this.filterBy.members.every(memberId =>
+              task.members.some(member => member._id === memberId)
             ))
         );
       });
       return tasks;
-    },
-  },
+    }
+  }
 };
 </script>
-
