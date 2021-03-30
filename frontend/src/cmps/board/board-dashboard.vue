@@ -4,8 +4,8 @@
       class="board-dashboard-container flex column justify-center"
       v-click-outside="closeDashboard"
     >
+      <div class="header-dashboard flex align-center justify-center">
       <i class="el-icon-close close-btn" @click="closeDashboard"></i>
-      <div class="header-dashboard flex justify-center">
         <p class="dashboard-header">
           <i class="el-icon-s-data dashboard-icon" /> Dashboard
         </p>
@@ -17,6 +17,15 @@
           <div class="data">
             <p>Tasks</p>
             {{ countTasks }}
+          </div>
+        </li>
+          <li class="flex column amount comments-amount">
+          <i
+            class="el-icon-chat-dot-square flex justify-center align-center icon"
+          />
+          <div class="data">
+            <p>Complited</p>
+            {{ countComplited }}
           </div>
         </li>
         <li class="flex column amount user-amount">
@@ -33,15 +42,7 @@
             {{ countActivity }}
           </div>
         </li>
-        <li class="flex column amount comments-amount">
-          <i
-            class="el-icon-chat-dot-square flex justify-center align-center icon"
-          />
-          <div class="data">
-            <p>Comments</p>
-            <!-- {{ countComments }} -->
-          </div>
-        </li>
+      
       </ul>
 
       <div class="charts">
@@ -91,6 +92,16 @@ export default {
         activities++;
       });
       return activities;
+    },
+    countComplited(){
+      var complited=0;
+      this.board.groups.forEach((group)=>{
+          group.tasks.forEach((task) => {
+             if(!task.complited) return
+            complited++
+      });
+    });
+    return complited;
     }
   },
   components: {

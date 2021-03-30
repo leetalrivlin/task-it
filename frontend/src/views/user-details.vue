@@ -1,5 +1,5 @@
 <template>
-  <section class="flex column align-center" v-if="user">
+  <section class=" flex column align-center user-container" v-if="user">
     <div class=" user-header">
       <div class="flex align-center justify-center username">
         <avatar

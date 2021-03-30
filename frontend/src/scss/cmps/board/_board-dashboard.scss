@@ -84,16 +84,16 @@
 
         .close-btn {
             position: absolute;
-            top: 32px;
-            right: 32px;
-            font-size: 32px;
+            top: 26px;
+            right: 26px;
+            font-size: 30px;
             cursor: pointer;
         }
 
         .dashboard-header {
-            font-size: 30px;
+            font-size: 25px;
             font-family: Segoe-Bold, serif;
-            margin-block-start: 42px;
+            margin-block-start: 20px;
         }
     }
 }
@@ -117,11 +117,11 @@
                 text-align: center;
                 font-size: 17px;
 
-                p{
+                p {
                     font-size: 0.75rem;
                 }
             }
-            .chart{
+            .chart {
                 flex-direction: column;
                 .chart {
                     min-width: 100%;
