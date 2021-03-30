@@ -73,6 +73,10 @@
     min-height: 37px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+    img {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
   }
 
   .task-action {
