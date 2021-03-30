@@ -11,11 +11,13 @@ import vClickOutside from 'v-click-outside';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Avatar from 'vue-avatar';
 import VueCharts from 'vue-chartjs'
+import VueDragscroll from 'vue-dragscroll'
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(require('vue-moment'));
 Vue.use(vClickOutside);
 Vue.use(ElementUI, { locale });
+Vue.use(VueDragscroll)
 
 const debug = process.env.NODE_ENV !== 'production';
 Vue.config.productionTip = debug;

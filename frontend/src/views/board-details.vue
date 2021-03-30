@@ -20,7 +20,7 @@
         :activities="board.activities"
       />
     </transition>
-    <section class="flex align-start main-content main-layout board-content">
+    <section v-dragscroll:firstchilddrag class="flex align-start main-content main-layout board-content">
       <draggable
         class="flex group-container"
         :list="board.groups"
