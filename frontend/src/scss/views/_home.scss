@@ -50,13 +50,14 @@
   .features {
     margin: 60px auto;
     h1 {
-      font-size: 30px;
+      font-size: 38px;
       margin-block-end: 20px;
+      font-family: Segoe;
     }
 
     .feature-icons {
       .item {
-        margin-inline-end: 80px;
+        margin-inline-end: 150px;
         &:last-of-type {
           margin: 0;
         }
@@ -67,7 +68,7 @@
         p {
           font-size: 16px;
           max-width: 20ch;
-          margin-inline-start: 12px;
+          // margin-inline-start: 12px;
         }
       }
     }
@@ -104,6 +105,13 @@
       //   width: 500px;
       // }
     }
+    .features {
+      .feature-icons {
+        .item {
+          margin-inline-end: 120px;
+        }
+      }
+    }
     .main {
       .advantages-container {
           font-size: 22px;
@@ -129,6 +137,13 @@
       }
       img {
         width: 400px;
+      }
+    }
+    .features {
+      .feature-icons {
+        .item {
+          margin-inline-end: 80px;
+        }
       }
     }
     .main {
