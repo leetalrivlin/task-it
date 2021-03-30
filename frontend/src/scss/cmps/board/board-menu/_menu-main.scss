@@ -18,28 +18,29 @@
         font-size: 14px;
         font-family: Sageo-bold, sans-serif;
         font-weight: 700;
+        margin-inline-start: 9px;
       }
     }
-    
+
     &:hover {
       color: $clr1;
       background-color: rgba(9, 30, 66, 0.08);
     }
-    
+
     .icon {
       width: 20px;
-      margin: 0 5px;
+      margin: 5px 0 5px 5px;
     }
 
-    .square{
+    .square {
       width: 18px;
-    height: 18px;
-    border-radius: 3px;
-    background-color: #4d5a76;
-    margin-inline-start: 1px;
+      height: 18px;
+      border-radius: 3px;
+      background-color: #4d5a76;
     }
     .activity-icon {
-      width: 13px;
+      width: 15px;
+      margin-inline-start: 8px;
     }
     .delete-icon {
       font-size: 18px;
