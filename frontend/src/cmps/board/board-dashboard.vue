@@ -5,7 +5,7 @@
       v-click-outside="closeDashboard"
     >
       <div class="header-dashboard flex align-center justify-center">
-      <i class="el-icon-close close-btn" @click="closeDashboard"></i>
+        <i class="el-icon-close close-btn" @click="closeDashboard"></i>
         <p class="dashboard-header">
           <i class="el-icon-s-data dashboard-icon" /> Dashboard
         </p>
@@ -19,20 +19,20 @@
             {{ countTasks }}
           </div>
         </li>
-          <li class="flex column amount comments-amount">
+        <li class="flex column amount comments-amount">
           <i
             class="el-icon-chat-dot-square flex justify-center align-center icon"
           />
-          <div class="data">
+          <div class="data flex column">
             <p>Complited</p>
-            {{ countComplited }}
+            <span>{{ countComplited }}</span>
           </div>
         </li>
         <li class="flex column amount user-amount">
           <i class="el-icon-user flex justify-center align-center icon" />
-          <div class="data">
+          <div class="data flex column">
             <p>Users</p>
-            {{ countUsers }}
+           <span> {{ countUsers }}</span> 
           </div>
         </li>
         <li class="flex column amount activity-amount">
@@ -42,7 +42,6 @@
             {{ countActivity }}
           </div>
         </li>
-      
       </ul>
 
       <div class="charts">
@@ -79,30 +78,29 @@ export default {
     },
     countUsers() {
       var users = 0;
-      if(!this.board.members) return
+      if (!this.board.members) return;
       this.board.members.forEach((user) => {
         users++;
       });
       return users;
     },
     countActivity() {
-      var activities=0;
-       if(!this.board.activities) return
+      var activities = 0;
+      if (!this.board.activities) return;
       this.board.activities.forEach((activity) => {
         activities++;
       });
       return activities;
     },
-    countComplited(){
-      var complited=0;
-      this.board.groups.forEach((group)=>{
-          group.tasks.forEach((task) => {
-             if(!task.complited) return
-            complited++
+    countComplited() {
+      var completed = 0;
+      this.board.groups.forEach((group) => {
+        group.tasks.forEach((task) => {
+          if (task.completed) completed++;
+        });
       });
-    });
-    return complited;
-    }
+      return completed;
+    },
   },
   components: {
     tasksInGroup,
