@@ -1,13 +1,6 @@
 <template>
   <div class="main-layout main-content flex column align-center signup">
     <p>{{ msg }}</p>
-    <!-- <div v-if="loggedinUser">
-      <h3>
-        Loggedin User:
-        {{ loggedinUser.username }}
-        <button @click="doLogout">Logout</button>
-      </h3>
-    </div> -->
     <div >
       <form
         v-if="signUp"
@@ -39,18 +32,18 @@
       </form>
       <form v-else class="flex column align-center" @submit.prevent="doLogin">
         <h2>Login to Taskit</h2>
-        <select v-model="loginCred.username">
+        <!-- <select v-model="loginCred.username">
           <option value="">Select User</option>
           <option v-for="user in users" :key="user._id" :value="user.username">
             {{ user.fullname }}
-          </option>
-        </select>
-        <!-- <input type="text" v-model="loginCred.username" placeholder="User name" />
+          </option> -->
+        <!-- </select> -->
+        <input type="text" v-model="loginCred.username" placeholder="User name" />
         <input
-          type="text"
+          type="password"
           v-model="loginCred.password"
           placeholder="Password"
-        /> -->
+        />
         <button>Login</button>
         <hr />
         <a
@@ -79,7 +72,7 @@ export default {
     return {
       signUp: true,
       msg: '',
-      loginCred: { username:'' , password:'0000'  },
+      loginCred: { username:'' , password:''  },
       signupCred: { username: '', password: '', fullname: '' },
     };
   },
