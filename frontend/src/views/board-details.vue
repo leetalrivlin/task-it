@@ -20,8 +20,8 @@
         :activities="board.activities"
       />
     </transition>
+      <!-- v-dragscroll:firstchilddrag -->
     <section
-      v-dragscroll:firstchilddrag
       class="flex align-start main-content main-layout board-content"
     >
       <draggable
@@ -128,7 +128,6 @@ export default {
       this.updateGroup(group, activity);
     },
     moveTask(group, ev) {
-      console.log(ev);
       const activity = boardService.getEmptyActivity();
       activity.txt = 'moved a task';
       this.updateGroup(group, activity);
