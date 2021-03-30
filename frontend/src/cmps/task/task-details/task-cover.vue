@@ -1,12 +1,11 @@
 <template>
   <section class="task-cover flex justify-center" :style="coverColor">
     <button
-      class="el-btn-details fa-nav-icon cover-btn"
+      class="flex align-center el-btn-details fa-nav-icon cover-btn"
       @click="isEditCover = !isEditCover"
-      >
-      <img src="~@/assets/trello-icon-pack/cover-top.svg" class="cover-icon">
-      <!-- <i class="el-icon-set-up"></i> -->
-      Cover
+    >
+      <img src="~@/assets/trello-icon-pack/cover-top.svg" class="cover-icon" />
+      <p class="cover-btn-txt">Cover</p>
       <popup v-if="isEditCover" @closePopup="isEditCover = false">
         <template v-slot:title>
           <p>Cover</p>

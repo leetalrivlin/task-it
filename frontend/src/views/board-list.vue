@@ -43,9 +43,6 @@ export default {
       return this.$store.getters.board;
     },
   },
-  mounted() {
-    console.log(this.$store.getters.boards);
-  },
   created() {
     this.$store.dispatch('loadBoards');
   },

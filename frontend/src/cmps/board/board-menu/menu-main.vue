@@ -1,7 +1,10 @@
 <template>
   <section class="menu-main">
     <a class="flex align-center menu-main-item" @click="toggleAbout">
-      <i class="el-icon-info icon"></i>
+      <img
+        src="~@/assets/trello-icon-pack/trello-slate-blue.svg"
+        class="icon"
+      />
       <span class="menu-title">About this board </span>
     </a>
     <a class="flex align-center menu-main-item" @click="toggleBgc">
@@ -9,21 +12,29 @@
       <span class="menu-title">Change background </span>
     </a>
     <a class="flex align-center menu-main-item" @click="toggleSearch">
-      <i class="el-icon-search icon"></i>
+      <img
+        src="~@/assets/trello-icon-pack/search-slate-blue.svg"
+        class="icon"
+      />
       <span class="menu-title">Search cards </span>
     </a>
     <a @click="deleteBoard" class="flex align-center menu-main-item">
-      <i class="el-icon-delete-solid icon"></i>
+      <i class="el-icon-delete-solid icon delete-icon"></i>
       <span class="menu-title">Delete board</span>
     </a>
-    <hr>
-    <a class="flex align-center menu-main-item">
-      <i class="el-icon-s-fold icon"></i>
-      <p class="menu-title activity-title">Activity</p>
-    </a>
-    <ul v-for="activity in activities" :key="activity.id" class="clean-list">
-      <menu-activity  v-if="activity" :activity="activity" />
-    </ul>
+    <hr />
+    <section class="menu-activity-container">
+      <a class="flex align-center menu-main-item">
+        <img
+          src="~@/assets/trello-icon-pack/activities-new-color.svg"
+          class="activity-icon icon"
+        />
+        <p class="menu-title activity-title">Activity</p>
+      </a>
+      <ul v-for="activity in activities" :key="activity.id" class="clean-list">
+        <menu-activity v-if="activity" :activity="activity" />
+      </ul>
+    </section>
   </section>
 </template>
 
