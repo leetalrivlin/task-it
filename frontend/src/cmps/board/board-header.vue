@@ -65,7 +65,6 @@
 
 <script>
 import addMembers from './add-members';
-// import boardMenu from './board-menu.vue';
 import Avatar from 'vue-avatar';
 import AddGroup from '../add-group.vue';
 import popup from '../popup.vue';
@@ -100,10 +99,6 @@ export default {
     };
   },
   methods: {
-    updateBoard(style) {
-      this.board.style = style;
-      this.$emit('updateBoardStyle', this.board);
-    },
     addMembers() {
       this.isAddMembers = true;
     },
@@ -114,14 +109,8 @@ export default {
       this.board.members = updatedBoardMembers;
       this.$emit('updateBoardMembers', this.board);
     },
-    tasksToShow(tasks) {
-      this.$emit('tasksToShow', tasks);
-    },
     closeDashboard() {
       this.isDashboardOpen = !this.isDashboardOpen;
-    },
-    deleteBoard() {
-      this.$emit('deleteBoard');
     },
     saveTitle() {
       console.log(this.boardTitle);

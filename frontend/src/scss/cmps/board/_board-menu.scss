@@ -1,9 +1,9 @@
 .board-menu {
   background: $clr2;
   width: 339px;
-  height: 95%;
+  height: 100%;
   position: absolute;
-  top: 40px;
+  top: 0;
   right: 0;
   z-index: 1;
   box-shadow: 0 12px 24px -6px rgba(9, 30, 66, 0.25),
@@ -54,15 +54,8 @@
   }
 }
 
-@include for-medium-layout {
-  .board-menu {
-    height: 93%;
-  }
-}
-
 @include for-mobile-layout {
   .board-menu {
-    height: 100%;
     width: 100%;
   }
 }
