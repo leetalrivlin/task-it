@@ -229,7 +229,6 @@ export default {
       this.$refs.datePickerInput.focus();
     },
     setDueDate() {
-      console.log(this.dueDate);
       this.$emit('setDueDate', this.dueDate);
     },
     removeTask(taskId) {
