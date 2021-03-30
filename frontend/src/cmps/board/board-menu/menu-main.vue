@@ -8,14 +8,10 @@
       <span class="menu-title">About this board </span>
     </a>
     <a class="flex align-center menu-main-item" @click="toggleBgc">
-<<<<<<< HEAD
-      <div class="square" :style="background"></div>
-=======
       <div
         class="square icon"
         :style="background"
       ></div>
->>>>>>> 2844bbea3c1d888a0ec67e523b18c57e473be3fe
       <span class="menu-title">Change background </span>
     </a>
     <a class="flex align-center menu-main-item" @click="toggleSearch">
