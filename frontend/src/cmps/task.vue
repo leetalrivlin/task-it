@@ -21,15 +21,24 @@
             <i class="el-icon-time"></i>
             {{ $dayjs(task.dueDate).format('MMM DD') }}
           </span>
-          <span v-if="task.description" class="flex align-center description-icon">
-            <img src="~@/assets/trello-icon-pack/paragraph.svg">
+          <span
+            v-if="task.description"
+            class="flex align-center description-icon"
+          >
+            <img src="~@/assets/trello-icon-pack/paragraph.svg" />
           </span>
-          <span v-if="task.attachments" class="flex align-center attachments-icon">
-            <img src="~@/assets/trello-icon-pack/attachment.svg">
+          <span
+            v-if="task.attachments"
+            class="flex align-center attachments-icon"
+          >
+            <img src="~@/assets/trello-icon-pack/attachment.svg" />
             {{ task.attachments.length }}
           </span>
-          <span v-if="task.checklists" class="flex align-center checklists-icon">
-            <img src="~@/assets/trello-icon-pack/checkbox.svg">
+          <span
+            v-if="task.checklists"
+            class="flex align-center checklists-icon"
+          >
+            <img src="~@/assets/trello-icon-pack/checkbox.svg" />
             {{ task.checklists.length }}
           </span>
         </div>
@@ -47,22 +56,18 @@
           </ul>
         </span>
       </div>
-      <i
-        @click.stop="toggleMenu"
-        ref="taskEditBtn"
-        class="el-icon-edit task-action"
-      >
-        <task-menu
-          v-if="isTaskMenu"
-          @deleteTask="deleteTask"
-          @closeMenu="toggleMenu"
-          v-click-outside="toggleMenu"
-      /></i>
+      <v-touch @tap="toggleMenu">
+        <i ref="taskEditBtn" class="el-icon-edit task-action">
+          <task-menu
+            v-if="isTaskMenu"
+            @deleteTask="deleteTask"
+            @closeMenu="toggleMenu"
+            v-click-outside="toggleMenu"
+        /></i>
+      </v-touch>
     </section>
   </section>
 </template>
-
-
 
 <script>
 import taskMenu from './task-menu';
@@ -77,13 +82,13 @@ export default {
   name: 'task',
   props: {
     task: {
-      type: Object,
-    },
+      type: Object
+    }
   },
   data() {
     return {
       taskOnFocus: false,
-      isTaskMenu: false,
+      isTaskMenu: false
     };
   },
   methods: {
@@ -93,7 +98,7 @@ export default {
     },
     deleteTask() {
       this.$emit('deleteTask', this.task);
-    },
+    }
   },
   computed: {
     coverColor() {
@@ -103,21 +108,20 @@ export default {
     },
     boardLabels() {
       const labels = this.$store.getters.boardLabels;
-      return labels.filter((label) => this.task.labelIds.includes(label.id));
+      return labels.filter(label => this.task.labelIds.includes(label.id));
     },
     theme() {
       if (this.task.completed)
         return { backgroundColor: '#61bd4f', color: '#ffffff' };
       else if (Date.now() > this.task.dueDate)
         return { backgroundColor: '#ec9488', color: '#ffffff' };
-    },
+    }
   },
   components: {
     taskMenu,
-    Avatar,
-  },
+    Avatar
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

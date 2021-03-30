@@ -8,7 +8,8 @@
         @change="inputChange"
         @keyup.enter.exact="inputChange"
       />
-      <i @click="toggleMenu" class="el-icon-more group-action">
+      <v-touch @tap="toggleMenu">
+      <i class="el-icon-more group-action">
         <group-menu
           class="group-menu"
           v-if="isGroupMenu"
@@ -17,6 +18,7 @@
           v-click-outside="toggleMenu"
         />
       </i>
+      </v-touch>
     </div>
     <draggable
       class="clean-list group-main-content"
@@ -38,15 +40,16 @@
         </li>
     </draggable>
     <section class="add-task-container">
+      <v-touch @tap="isAddingTask = true">
       <a
         v-if="!isAddingTask"
-        @click="isAddingTask = true"
         class="adding flex align-center"
       >
         <i class="el-icon-plus"></i> {{ addTxt }}
       </a>
+      </v-touch>
       <add-task
-        v-else
+        v-if="isAddingTask"
         @saveTask="saveTask"
         @closePopup="isAddingTask = false"
         :tasksLen="group.tasks.length"
