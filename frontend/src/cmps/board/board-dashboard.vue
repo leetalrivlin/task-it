@@ -14,9 +14,9 @@
       <ul class="flex space-between clean-list data-container">
         <li class="flex column amount task-amount">
           <i class="el-icon-tickets flex justify-center align-center icon" />
-          <div class="data">
+          <div class="data flex column">
             <p>Tasks</p>
-            {{ countTasks }}
+            <span>{{ countTasks }}</span>
           </div>
         </li>
         <li class="flex column amount comments-amount">
@@ -24,8 +24,8 @@
             class="el-icon-chat-dot-square flex justify-center align-center icon"
           />
           <div class="data flex column">
-            <p>Complited</p>
-            <span>{{ countComplited }}</span>
+            <p>Completed</p>
+            <span>{{ countCompleted }}</span>
           </div>
         </li>
         <li class="flex column amount user-amount">
@@ -37,9 +37,9 @@
         </li>
         <li class="flex column amount activity-amount">
           <i class="el-icon-time flex justify-center align-center icon" />
-          <div class="data">
+          <div class="data flex column">
             <p>Activities</p>
-            {{ countActivity }}
+           <span>{{ countActivity }}</span> 
           </div>
         </li>
       </ul>
@@ -92,7 +92,7 @@ export default {
       });
       return activities;
     },
-    countComplited() {
+    countCompleted() {
       var completed = 0;
       this.board.groups.forEach((group) => {
         group.tasks.forEach((task) => {

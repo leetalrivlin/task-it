@@ -15,7 +15,7 @@
 
     .board-dashboard-container {
         position: absolute;
-        top: 50px;
+        top: 14px;
         left: 50%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
@@ -59,14 +59,15 @@
                 text-align: center;
                 font-size: 29px;
                 padding: 4px 0;
+                border-bottom-left-radius: 3px;
+                border-bottom-right-radius: 3px;
 
                 p {
                     font-size: rem(17px);
                     display: inline;
-                  
                 }
                 span {
-                    font-size: 23px;
+                    font-size: 21px;
                 }
             }
         }
