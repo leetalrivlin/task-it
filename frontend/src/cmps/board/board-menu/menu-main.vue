@@ -8,10 +8,7 @@
       <span class="menu-title">About this board </span>
     </a>
     <a class="flex align-center menu-main-item" @click="toggleBgc">
-      <div
-        class="square"
-        :style="background"
-      ></div>
+      <div class="square" :style="background"></div>
       <span class="menu-title">Change background </span>
     </a>
     <a class="flex align-center menu-main-item" @click="toggleSearch">
@@ -21,9 +18,15 @@
       />
       <span class="menu-title">Search cards </span>
     </a>
-    <a @click="deleteBoard" class="flex align-center menu-main-item">
+    <a @click="isDeletePopup = true" class="flex align-center menu-main-item">
       <i class="el-icon-delete-solid icon delete-icon"></i>
       <span class="menu-title">Delete board</span>
+      <popup v-if="isDeletePopup" @closePopup="isDeletePopup = false">
+        <template v-slot:title>
+          <p>Delete board?</p>
+        </template>
+        <delete-board-popup @deleteBoard="deleteBoard" />
+      </popup>
     </a>
     <hr />
     <a class="flex align-center menu-main-item">
@@ -41,6 +44,8 @@
 
 <script>
 import menuActivity from './menu-activity.vue';
+import popup from '../../popup.vue';
+import deleteBoardPopup from '../delete-board-popup.vue';
 export default {
   name: 'menu-main',
   props: {
@@ -50,6 +55,11 @@ export default {
     boardBgc: {
       type: String,
     },
+  },
+  data() {
+    return {
+      isDeletePopup: false,
+    };
   },
   methods: {
     toggleAbout() {
@@ -65,13 +75,15 @@ export default {
       this.$emit('deleteBoard');
     },
   },
-  computed:{
-    background(){
-      return {background: this.boardBgc , backgroundSize: 'cover'}
-    }
+  computed: {
+    background() {
+      return { background: this.boardBgc, backgroundSize: 'cover' };
+    },
   },
   components: {
     menuActivity,
+    deleteBoardPopup,
+    popup,
   },
 };
 </script>

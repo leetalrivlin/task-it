@@ -20,7 +20,6 @@
         :activities="board.activities"
       />
     </transition>
-
     <section class="flex align-start main-content main-layout board-content">
       <draggable
         class="flex group-container"
@@ -186,7 +185,7 @@ export default {
         boardId: this.board._id,
       });
       this.$store.dispatch({ type: 'deleteBoard', boardId: this.board._id });
-      this.$router.push('/board');
+      this.$nextTick(() => this.$router.push('/board'));
     },
   },
   computed: {
