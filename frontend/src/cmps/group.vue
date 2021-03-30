@@ -8,7 +8,7 @@
         @change="inputChange"
         @keyup.enter.exact="inputChange"
       />
-      <i class="el-icon-more group-action" @click="toggleMenu">
+      <i class="el-icon-more group-action" v-touch="toggleMenu">
         <group-menu
           class="group-menu"
           v-if="isGroupMenu"
@@ -28,20 +28,18 @@
       dragClass="drag-task"
       group="tasks"
     >
-        <li
-          v-for="task in tasksToShow"
-          :key="task.id" 
-          @click="taskClicked(task.id)"
-        >
-          <task :task="task" @deleteTask="deleteTask" />
-        </li>
+      <li v-for="task in tasksToShow" :key="task.id">
+        <!-- @click="taskClicked(task.id)" -->
+        <task :task="task" @deleteTask="deleteTask" @taskClicked="taskClicked" />
+      </li>
     </draggable>
     <section class="add-task-container">
       <a
         v-if="!isAddingTask"
         class="adding flex align-center"
-        @click="isAddingTask = true"
+        v-touch:tap="toggleNewTask"
       >
+        <!-- @click="isAddingTask = true" -->
         <i class="el-icon-plus"></i> {{ addTxt }}
       </a>
       <add-task
@@ -85,12 +83,15 @@ export default {
     };
   },
   methods: {
+    toggleNewTask() {
+      this.isAddingTask = true;
+    },
     toggleMenu() {
       this.isGroupMenu = !this.isGroupMenu;
     },
     taskClicked(taskId) {
-      const boardId = this.$route.params.boardId;
-      this.$router.push(`/board/${boardId}/${taskId}`);
+        const boardId = this.$route.params.boardId;
+        this.$router.push(`/board/${boardId}/${taskId}`);
     },
     saveTask(task) {
       this.$emit('saveTask', task, this.group.id);

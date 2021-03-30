@@ -1,5 +1,5 @@
 <template>
-  <section class="task">
+  <section class="task" v-touch="taskClicked">
     <section v-if="task.cover" class="task-cover" :style="coverColor">
       <img
         v-if="task.cover.img && !task.cover.backgroundColor"
@@ -56,7 +56,7 @@
           </ul>
         </span>
       </div>
-        <i ref="taskEditBtn" class="el-icon-edit task-action" @click.stop="toggleMenu">
+        <i ref="taskEditBtn" class="el-icon-edit task-action" v-touch:tap:stop="toggleMenu" @click.stop>
           <task-menu
             v-if="isTaskMenu"
             @deleteTask="deleteTask"
@@ -90,6 +90,9 @@ export default {
     };
   },
   methods: {
+    taskClicked() {
+      this.$emit('taskClicked', this.task.id);
+    },
     toggleMenu() {
       this.isTaskMenu = !this.isTaskMenu;
       this.$refs.taskEditBtn.style.opacity = this.isTaskMenu ? 1 : 0;

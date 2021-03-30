@@ -10,9 +10,11 @@ import './scss/main.scss';
 import vClickOutside from 'v-click-outside';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Avatar from 'vue-avatar';
-import VueCharts from 'vue-chartjs'
-import VueDragscroll from 'vue-dragscroll'
+import VueCharts from 'vue-chartjs';
+import VueDragscroll from 'vue-dragscroll';
+import Vue2TouchEvents from 'vue2-touch-events'
 
+Vue.use(Vue2TouchEvents);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.use(require('vue-moment'));
 Vue.use(vClickOutside);
