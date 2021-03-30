@@ -9,7 +9,7 @@
     </a>
     <a class="flex align-center menu-main-item" @click="toggleBgc">
       <div
-        class="square"
+        class="square icon"
         :style="background"
       ></div>
       <span class="menu-title">Change background </span>
