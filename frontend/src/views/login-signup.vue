@@ -96,7 +96,6 @@ export default {
   },
   methods: {
     async doLogin() {
-      console.log(this.loginCred);
       if (!this.loginCred.username) {
         this.msg = 'Please enter username/password';
         return;

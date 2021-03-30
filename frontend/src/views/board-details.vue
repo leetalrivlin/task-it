@@ -10,7 +10,7 @@
     />
     <transition name="slide">
       <board-menu
-        v-if="isMenuOpen"
+        v-show="isMenuOpen"
         @closeMenu="isMenuOpen = false"
         @colorPicked="updateStyle"
         @photoPicked="updateStyle"

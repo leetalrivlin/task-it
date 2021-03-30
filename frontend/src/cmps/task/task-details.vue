@@ -19,7 +19,7 @@
           :group="group"
           :task="task"
           @updateTask="updateTask"
-          @updateTaskPos="updateBoard"
+          @updateTaskPos="updateGroup"
         />
 
         <section class="flex column task-main">
@@ -29,13 +29,13 @@
           >
             <div class="d-content flex task-data-container">
               <task-member
-                v-if="task.members && task.members.length >0"
+                v-if="task.members && task.members.length > 0"
                 :taskMembers="task.members"
                 :members="members"
                 @addMemberToTask="setMember"
               />
               <task-label
-                v-if="task.labelIds && task.labelIds.length >0"
+                v-if="task.labelIds && task.labelIds.length > 0"
                 :labels="boardLabels"
                 :task="task"
                 @addLabel="setLabel"
@@ -99,7 +99,7 @@
           @setDueDate="setDueDate"
           @addMemberToTask="setMember"
           @removeTask="removeTask"
-          @updateTaskPos="updateBoard"
+          @updateTaskPos="updateGroup"
         />
       </section>
     </section>
@@ -160,8 +160,8 @@ export default {
       return this.task.checklists ? this.task.checklists : [];
     },
     activitiesToShow() {
-      const copyBoard = this.$clone(this.$store.getters.board);
-      return copyBoard.activities.filter((activity) => {
+      const cloneBoard = this.$clone(this.$store.getters.board);
+      return cloneBoard.activities.filter((activity) => {
         if (activity.task) return activity.task.id === this.task.id;
       });
     },
@@ -253,14 +253,11 @@ export default {
         ({ id }) => id === updatedLabel.id
       );
       this.boardLabels.splice(labelIdx, 1, updatedLabel);
-      const copyBoard = this.$clone(this.$store.getters.board);
-      copyBoard.labels = this.boardLabels;
+      const cloneBoard = this.$clone(this.$store.getters.board);
+      cloneBoard.labels = this.boardLabels;
       const txt = `updated board labels`;
       const activity = this.setActivity(txt);
-      this.$store.dispatch({
-        type: 'updateBoard',
-        payload: { board: copyBoard, activity },
-      });
+      this.updateBoard(cloneBoard, activity);
     },
     setDueDate(dueDate) {
       this.task.dueDate = dueDate;
@@ -299,7 +296,7 @@ export default {
       activity.task = { id: this.task.id, title: this.task.title };
       this.$store.dispatch({ type: 'updateTask', payload: { task, activity } });
     },
-    updateBoard(updatedGroup, activity = {}) {
+    updateGroup(updatedGroup, activity = {}) {
       if (!activity.byMember) {
         activity.byMember = this.$store.getters.loggedinUser
           ? this.$store.getters.loggedinUser
@@ -310,11 +307,7 @@ export default {
         ({ id }) => id === updatedGroup.id
       );
       cloneBoard.groups.splice(idx, 1, updatedGroup);
-      console.log('activity in updateBoard', activity);
-      this.$store.dispatch({
-        type: 'updateBoard',
-        payload: { board: cloneBoard, activity },
-      });
+      this.updateBoard(cloneBoard, activity);
     },
     removeTask(taskId) {
       const taskIdx = this.group.tasks.findIndex(({ id }) => id === taskId);
@@ -322,8 +315,14 @@ export default {
       const activity = this.setActivity(txt);
       this.group.tasks.splice(taskIdx, 1);
       console.log('activity in removeTask', activity);
-      this.updateBoard(this.group, activity);
+      this.updateGroup(this.group, activity);
       this.closeDetails();
+    },
+    updateBoard(board, activity = {}) {
+      this.$store.dispatch({
+        type: 'updateBoard',
+        payload: { board, activity },
+      });
     },
   },
   created() {
