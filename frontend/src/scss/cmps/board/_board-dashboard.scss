@@ -67,7 +67,7 @@
                     display: inline;
                 }
                 span {
-                    font-size: 21px;
+                    font-size: 19px;
                 }
             }
         }
@@ -102,6 +102,11 @@
         width: 630px;
         .data-container {
             margin: 20px 12px 9px 31px;
+            .amount {
+                .icon {
+                    font-size: 19px;
+                }
+            }
         }
     }
 }
@@ -109,15 +114,16 @@
     .window-overlay .board-dashboard-container {
         width: 350px;
         .data-container {
-            margin: 19px 12px 9px 9px;
+            margin: 19px 12px 9px 23px;
             .data {
-                width: 72px;
-                height: 32px;
+                width: 60px;
                 text-align: center;
-                font-size: 17px;
 
                 p {
-                    font-size: 0.75rem;
+                    font-size: 0.65rem;
+                }
+                span {
+                    font-size: 12px;
                 }
             }
             .chart {
