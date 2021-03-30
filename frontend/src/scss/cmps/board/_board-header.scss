@@ -22,6 +22,10 @@
   .board-title {
     font-family: Segoe-Bold, serif;
     margin-inline-end: 5px;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .board-menu-btn {
