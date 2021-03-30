@@ -6,7 +6,7 @@
       <div class="flex column hero-content">
         <h1 class="flex">A better way to manage tasks.</h1>
         <p>
-          If you have time, <span>Task-it</span> helps you spend your time well.
+          If you have time, <span>Taskit</span> helps you spend your time well.
         </p>
         <router-link :to="`/board/60606de5b8b4f44277b7f5da`"
           >Try it now</router-link

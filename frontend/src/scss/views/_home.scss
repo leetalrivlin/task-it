@@ -3,8 +3,9 @@
   padding-inline-start: 0;
 
   .hero {
-    background-color: #ede9fe;
-    height: 600px;
+    // background-color: #ede9fe;
+    background-color: #fdf8dc;
+    // height: 600px;
     padding: 40px 60px;
     border-bottom-left-radius: 150px;
     width: 100%;
@@ -23,7 +24,8 @@
       p {
         font-size: 18px;
         span {
-          font-family: Baumans;
+          font-family: Lalezar;
+          padding-top: 10px;
           font-size: 22px;
         }
       }
@@ -68,13 +70,14 @@
         p {
           font-size: 16px;
           max-width: 20ch;
-          // margin-inline-start: 12px;
         }
       }
     }
   }
   .main {
-    background-color: #ede9fe;
+    // background-color: #ede9fe;
+    background-color: #fdf8dc;
+    border-top-right-radius: 150px;
     padding: 40px 0;
     width: 100%;
     .advantages-container {
@@ -114,8 +117,8 @@
     }
     .main {
       .advantages-container {
-          font-size: 22px;
-          // max-width: 20ch;
+        font-size: 22px;
+        // max-width: 20ch;
       }
       // img {
       //   width: 500px;
@@ -148,7 +151,7 @@
     }
     .main {
       .advantages-container {
-          font-size: 18px;
+        font-size: 18px;
       }
       // img {
       //   width: 400px;
