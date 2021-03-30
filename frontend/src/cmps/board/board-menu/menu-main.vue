@@ -8,7 +8,10 @@
       <span class="menu-title">About this board </span>
     </a>
     <a class="flex align-center menu-main-item" @click="toggleBgc">
-      <font-awesome-icon icon="square" class="icon square" />
+      <div
+        class="square"
+        :style="background"
+      ></div>
       <span class="menu-title">Change background </span>
     </a>
     <a class="flex align-center menu-main-item" @click="toggleSearch">
@@ -23,16 +26,16 @@
       <span class="menu-title">Delete board</span>
     </a>
     <hr />
-      <a class="flex align-center menu-main-item">
-        <img
-          src="~@/assets/trello-icon-pack/activities-new-color.svg"
-          class="activity-icon icon"
-        />
-        <p class="menu-title activity-title">Activity</p>
-      </a>
-      <ul v-for="activity in activities" :key="activity.id" class="clean-list">
-        <menu-activity v-if="activity" :activity="activity" />
-      </ul>
+    <a class="flex align-center menu-main-item">
+      <img
+        src="~@/assets/trello-icon-pack/activities-new-color.svg"
+        class="activity-icon icon"
+      />
+      <p class="menu-title activity-title">Activity</p>
+    </a>
+    <ul v-for="activity in activities" :key="activity.id" class="clean-list">
+      <menu-activity v-if="activity" :activity="activity" />
+    </ul>
   </section>
 </template>
 
@@ -42,8 +45,11 @@ export default {
   name: 'menu-main',
   props: {
     activities: {
-      type: Array
-    }
+      type: Array,
+    },
+    boardBgc: {
+      type: String,
+    },
   },
   methods: {
     toggleAbout() {
@@ -57,10 +63,15 @@ export default {
     },
     deleteBoard() {
       this.$emit('deleteBoard');
+    },
+  },
+  computed:{
+    background(){
+      return {background: this.boardBgc , backgroundSize: 'cover'}
     }
   },
   components: {
-    menuActivity
-  }
+    menuActivity,
+  },
 };
 </script>

@@ -21,6 +21,7 @@
         @openSearch="toggleSearch"
         @deleteBoard="deleteBoard"
         :activities="activities"
+        :boardBgc="board.style.background"
       />
       <transition name="slide-in">
         <menu-about v-if="isAbout" />
