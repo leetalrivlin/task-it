@@ -8,7 +8,7 @@
         <p>
           If you have time, <span>Taskit</span> helps you spend your time well.
         </p>
-        <router-link :to="`/board/60606de5b8b4f44277b7f5da`"
+        <router-link :to="`/board/6063370607af6acd9a72b47d`"
           >Try it now</router-link
         >
       </div>
