@@ -113,7 +113,6 @@ export default {
       this.isDashboardOpen = !this.isDashboardOpen;
     },
     saveTitle() {
-      console.log(this.boardTitle);
       this.$emit('saveTitle', this.boardTitle);
     },
     filterBoard(filterBy) {
