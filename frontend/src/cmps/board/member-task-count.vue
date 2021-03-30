@@ -67,7 +67,6 @@ export default {
           tasksToShow.push(task);
         });
       });
-      console.log(tasksToShow);
       tasksToShow.forEach((task) => {
         task.members.forEach((member) => {
           if (!membersPerTask.hasOwnProperty(member._id)) {
