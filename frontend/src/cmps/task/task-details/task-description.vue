@@ -7,7 +7,7 @@
       <a v-if="!isAddDesc" class="emptyDesc" :class="descStyle" @click="addDesc">{{
         descriptionTxt
       }}</a>
-      <form v-else >
+      <form v-else>
         <textarea
           class="textarea"
           @keyup.enter.exact="saveDesc"
@@ -16,6 +16,7 @@
           cols="20"
           rows="5"
           v-model="task.description"
+          v-click-outside="saveDesc"
         ></textarea>
         <div class="btn-container">
           <el-button class="task-details-btn" type="info" @click.prevent="saveDesc">Save</el-button>
@@ -66,7 +67,7 @@ export default {
     saveDesc() {
       this.$emit('saveDescription', this.task);
       this.isAddDesc = false;
-    },
+    }
   },
   created() {}
 };

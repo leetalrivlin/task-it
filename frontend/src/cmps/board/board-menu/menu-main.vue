@@ -23,7 +23,6 @@
       <span class="menu-title">Delete board</span>
     </a>
     <hr />
-    <section class="menu-activity-container">
       <a class="flex align-center menu-main-item">
         <img
           src="~@/assets/trello-icon-pack/activities-new-color.svg"
@@ -34,7 +33,6 @@
       <ul v-for="activity in activities" :key="activity.id" class="clean-list">
         <menu-activity v-if="activity" :activity="activity" />
       </ul>
-    </section>
   </section>
 </template>
 
