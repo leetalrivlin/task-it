@@ -56,15 +56,13 @@
           </ul>
         </span>
       </div>
-      <v-touch @tap="toggleMenu">
-        <i ref="taskEditBtn" class="el-icon-edit task-action">
+        <i ref="taskEditBtn" class="el-icon-edit task-action" @click.stop="toggleMenu">
           <task-menu
             v-if="isTaskMenu"
             @deleteTask="deleteTask"
             @closeMenu="toggleMenu"
             v-click-outside="toggleMenu"
         /></i>
-      </v-touch>
     </section>
   </section>
 </template>
