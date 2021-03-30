@@ -30,7 +30,11 @@
     >
       <li v-for="task in tasksToShow" :key="task.id">
         <!-- @click="taskClicked(task.id)" -->
-        <task :task="task" @deleteTask="deleteTask" @taskClicked="taskClicked" />
+        <task
+          :task="task"
+          @deleteTask="deleteTask"
+          @taskClicked="taskClicked"
+        />
       </li>
     </draggable>
     <section class="add-task-container">
@@ -39,7 +43,6 @@
         class="adding flex align-center"
         v-touch:tap="toggleNewTask"
       >
-        <!-- @click="isAddingTask = true" -->
         <i class="el-icon-plus"></i> {{ addTxt }}
       </a>
       <add-task
@@ -90,8 +93,8 @@ export default {
       this.isGroupMenu = !this.isGroupMenu;
     },
     taskClicked(taskId) {
-        const boardId = this.$route.params.boardId;
-        this.$router.push(`/board/${boardId}/${taskId}`);
+      const boardId = this.$route.params.boardId;
+      this.$router.push(`/board/${boardId}/${taskId}`);
     },
     saveTask(task) {
       this.$emit('saveTask', task, this.group.id);

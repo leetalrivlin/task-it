@@ -56,7 +56,7 @@
           </ul>
         </span>
       </div>
-        <i ref="taskEditBtn" class="el-icon-edit task-action" v-touch:tap:stop="toggleMenu" @click.stop>
+        <i ref="taskEditBtn" class="el-icon-edit task-action" v-touch="toggleMenu">
           <task-menu
             v-if="isTaskMenu"
             @deleteTask="deleteTask"
