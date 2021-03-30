@@ -15,7 +15,7 @@
 
     .board-dashboard-container {
         position: absolute;
-        top: 50px;
+        top: 14px;
         left: 50%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
@@ -35,7 +35,7 @@
                     color: rgb(255, 255, 255);
                     font-size: 24px;
                     border-radius: 5px 0 0 5px;
-                    height: 32px;
+                    padding: 4px 0;
                 }
                 &.task-amount {
                     background-color: rgba(145, 194, 196, 0.89);
@@ -56,19 +56,18 @@
                 color: grey;
                 background-color: white;
                 width: 130px;
-                height: 47px;
                 text-align: center;
-                font-size: 25px;
+                font-size: 29px;
+                padding: 4px 0;
+                border-bottom-left-radius: 3px;
+                border-bottom-right-radius: 3px;
 
                 p {
-                    font-size: rem(20px);
+                    font-size: rem(17px);
                     display: inline;
-                    // margin-inline-end: 13px;
-                    // margin-block-end: 16px;
                 }
                 span {
-                    font-size: 32px;
-                    margin-inline-end: 13px;
+                    font-size: 21px;
                 }
             }
         }
@@ -84,16 +83,16 @@
 
         .close-btn {
             position: absolute;
-            top: 32px;
-            right: 32px;
-            font-size: 32px;
+            top: 26px;
+            right: 26px;
+            font-size: 30px;
             cursor: pointer;
         }
 
         .dashboard-header {
-            font-size: 30px;
+            font-size: 25px;
             font-family: Segoe-Bold, serif;
-            margin-block-start: 42px;
+            margin-block-start: 20px;
         }
     }
 }
@@ -117,11 +116,11 @@
                 text-align: center;
                 font-size: 17px;
 
-                p{
+                p {
                     font-size: 0.75rem;
                 }
             }
-            .chart{
+            .chart {
                 flex-direction: column;
                 .chart {
                     min-width: 100%;

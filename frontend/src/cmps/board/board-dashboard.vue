@@ -4,8 +4,8 @@
       class="board-dashboard-container flex column justify-center"
       v-click-outside="closeDashboard"
     >
-      <i class="el-icon-close close-btn" @click="closeDashboard"></i>
-      <div class="header-dashboard flex justify-center">
+      <div class="header-dashboard flex align-center justify-center">
+        <i class="el-icon-close close-btn" @click="closeDashboard"></i>
         <p class="dashboard-header">
           <i class="el-icon-s-data dashboard-icon" /> Dashboard
         </p>
@@ -14,32 +14,32 @@
       <ul class="flex space-between clean-list data-container">
         <li class="flex column amount task-amount">
           <i class="el-icon-tickets flex justify-center align-center icon" />
-          <div class="data">
+          <div class="data flex column">
             <p>Tasks</p>
-            {{ countTasks }}
-          </div>
-        </li>
-        <li class="flex column amount user-amount">
-          <i class="el-icon-user flex justify-center align-center icon" />
-          <div class="data">
-            <p>Users</p>
-            {{ countUsers }}
-          </div>
-        </li>
-        <li class="flex column amount activity-amount">
-          <i class="el-icon-time flex justify-center align-center icon" />
-          <div class="data">
-            <p>Activities</p>
-            {{ countActivity }}
+            <span>{{ countTasks }}</span>
           </div>
         </li>
         <li class="flex column amount comments-amount">
           <i
             class="el-icon-chat-dot-square flex justify-center align-center icon"
           />
-          <div class="data">
-            <p>Comments</p>
-            <!-- {{ countComments }} -->
+          <div class="data flex column">
+            <p>Completed</p>
+            <span>{{ countCompleted }}</span>
+          </div>
+        </li>
+        <li class="flex column amount user-amount">
+          <i class="el-icon-user flex justify-center align-center icon" />
+          <div class="data flex column">
+            <p>Users</p>
+           <span> {{ countUsers }}</span> 
+          </div>
+        </li>
+        <li class="flex column amount activity-amount">
+          <i class="el-icon-time flex justify-center align-center icon" />
+          <div class="data flex column">
+            <p>Activities</p>
+           <span>{{ countActivity }}</span> 
           </div>
         </li>
       </ul>
@@ -78,20 +78,29 @@ export default {
     },
     countUsers() {
       var users = 0;
-      if(!this.board.members) return
+      if (!this.board.members) return;
       this.board.members.forEach((user) => {
         users++;
       });
       return users;
     },
     countActivity() {
-      var activities=0;
-       if(!this.board.activities) return
+      var activities = 0;
+      if (!this.board.activities) return;
       this.board.activities.forEach((activity) => {
         activities++;
       });
       return activities;
-    }
+    },
+    countCompleted() {
+      var completed = 0;
+      this.board.groups.forEach((group) => {
+        group.tasks.forEach((task) => {
+          if (task.completed) completed++;
+        });
+      });
+      return completed;
+    },
   },
   components: {
     tasksInGroup,
