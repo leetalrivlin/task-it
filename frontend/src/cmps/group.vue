@@ -45,7 +45,6 @@
         class="adding flex align-center"
         @click="toggleNewTask"
       >
-        <!-- @click="isAddingTask = true" -->
         <i class="el-icon-plus"></i> {{ addTxt }}
       </a>
       <add-task
