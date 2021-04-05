@@ -1,5 +1,5 @@
 <template>
-  <section class="task" v-touch="taskClicked">
+  <section class="task" @click="taskClicked">
     <section v-if="task.cover" class="task-cover" :style="coverColor">
       <img
         v-if="task.cover.img && !task.cover.backgroundColor"
@@ -56,7 +56,7 @@
           </ul>
         </span>
       </div>
-        <i ref="taskEditBtn" class="el-icon-edit task-action" v-touch:tap:stop="toggleMenu" @click.stop>
+        <i ref="taskEditBtn" class="el-icon-edit task-action" @click.stop="toggleMenu">
           <task-menu
             v-if="isTaskMenu"
             @deleteTask="deleteTask"

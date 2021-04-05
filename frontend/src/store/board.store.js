@@ -2,9 +2,6 @@ import { boardService } from '../services/board.service';
 import { socketService } from '../services/socket.service';
 const clone = require('rfdc')({ proto: true });
 
-// var localLoggedinUser = null;
-// if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user || null);
-
 export const boardStore = {
   state: {
     board: null,
@@ -47,11 +44,11 @@ export const boardStore = {
     async loadBoard({ commit }, { boardId }) {
       try {
         const board = await boardService.getById(boardId);
-        commit({ type: 'setBoard', payload: {board} });
+        commit({ type: 'setBoard', payload: { board } });
         socketService.emit('board-watch', boardId);
         socketService.off('board-updated');
         socketService.on('board-updated', board => {
-          commit({ type: 'setBoard', payload: {board} });
+          commit({ type: 'setBoard', payload: { board } });
         });
       } catch (err) {
         console.log('boardStore: Error in loadBoard', err);
@@ -76,6 +73,7 @@ export const boardStore = {
     async updateBoard({ commit }, { payload }) {
       try {
         if (payload.activity.txt) {
+          if (payload.board.activities.length >= 150) payload.board.activities.pop();
           payload.board.activities.unshift(payload.activity);
         }
         commit({ type: 'setBoard', payload });
@@ -87,7 +85,7 @@ export const boardStore = {
     async saveBoard({ commit }, { newBoard }) {
       try {
         const board = await boardService.save(newBoard);
-        commit({ type: 'setBoard', payload: {board} });
+        commit({ type: 'setBoard', payload: { board } });
       } catch (err) {
         console.log('cant save board', err);
       }
@@ -112,7 +110,10 @@ export const boardStore = {
         );
         boardCopy.groups[groupIdx].tasks.splice(taskIdx, 1, payload.task);
         socketService.emit('task-updated', payload.task);
-        dispatch({ type: 'updateBoard', payload: {board: boardCopy, activity: payload.activity }});
+        dispatch({
+          type: 'updateBoard',
+          payload: { board: boardCopy, activity: payload.activity }
+        });
       } catch (err) {
         console.log('cannot update task', err);
       }

@@ -8,7 +8,7 @@
         @change="inputChange"
         @keyup.enter.exact="inputChange"
       />
-      <i class="el-icon-more group-action" v-touch="toggleMenu">
+      <i class="el-icon-more group-action" @click="toggleMenu">
         <group-menu
           class="group-menu"
           v-if="isGroupMenu"
@@ -22,6 +22,8 @@
       class="clean-list group-main-content"
       :list="group.tasks"
       tag="ul"
+      delay="200"
+      :delay-on-touch-only="true"
       @change="moveTask"
       @start="isDragging = true"
       @end="isDragging = false"
@@ -30,14 +32,18 @@
     >
       <li v-for="task in tasksToShow" :key="task.id">
         <!-- @click="taskClicked(task.id)" -->
-        <task :task="task" @deleteTask="deleteTask" @taskClicked="taskClicked" />
+        <task
+          :task="task"
+          @deleteTask="deleteTask"
+          @taskClicked="taskClicked"
+        />
       </li>
     </draggable>
     <section class="add-task-container">
       <a
         v-if="!isAddingTask"
         class="adding flex align-center"
-        v-touch:tap="toggleNewTask"
+        @click="toggleNewTask"
       >
         <!-- @click="isAddingTask = true" -->
         <i class="el-icon-plus"></i> {{ addTxt }}
@@ -64,22 +70,22 @@ export default {
     task,
     addTask,
     draggable,
-    groupMenu
+    groupMenu,
   },
   name: 'group',
   props: {
     group: {
-      type: Object
+      type: Object,
     },
     filterBy: {
-      type: Object
-    }
+      type: Object,
+    },
   },
   data() {
     return {
       isDragging: false,
       isGroupMenu: false,
-      isAddingTask: false
+      isAddingTask: false,
     };
   },
   methods: {
@@ -90,8 +96,8 @@ export default {
       this.isGroupMenu = !this.isGroupMenu;
     },
     taskClicked(taskId) {
-        const boardId = this.$route.params.boardId;
-        this.$router.push(`/board/${boardId}/${taskId}`);
+      const boardId = this.$route.params.boardId;
+      this.$router.push(`/board/${boardId}/${taskId}`);
     },
     saveTask(task) {
       this.$emit('saveTask', task, this.group.id);
@@ -110,31 +116,28 @@ export default {
     },
     closeMenu() {
       this.$emit('closeMenu');
-    }
+    },
   },
   computed: {
     addTxt() {
       return this.group.tasks.length === 0 ? 'Add a task' : 'Add another task';
     },
     tasksToShow() {
-      if (!this.filterBy) return this.group.tasks;
-      const tasks = this.group.tasks.filter(task => {
-        if (!task.labelIds) task.labelIds = [];
-        if (!task.members) task.members = [];
+      const tasks = this.group.tasks.filter((task) => {
         return (
           task.title.toLowerCase().includes(this.filterBy.txt.toLowerCase()) &&
-          (!this.filterBy.labels.length ||
-            this.filterBy.labels.every(label =>
-              task.labelIds.includes(label)
-            )) &&
-          (!this.filterBy.members.length ||
-            this.filterBy.members.every(memberId =>
-              task.members.some(member => member._id === memberId)
-            ))
+          this.filterBy.labels.every(
+            (label) => task.labelIds && task.labelIds.includes(label)
+          ) &&
+          this.filterBy.members.every(
+            (memberId) =>
+              task.members &&
+              task.members.some((member) => member._id === memberId)
+          )
         );
       });
       return tasks;
-    }
-  }
+    },
+  },
 };
 </script>

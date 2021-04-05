@@ -28,6 +28,8 @@
         class="flex group-container"
         :list="board.groups"
         :force-fallback="true"
+        delay="200"
+        :delay-on-touch-only="true"
         tag="section"
         @change="moveGroup"
         @start="isDragging = true"
